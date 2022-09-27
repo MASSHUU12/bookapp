@@ -14,6 +14,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-bookapp-bookappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-bookapp-bookappTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E895DBB4485E4792ABE60044 /* AndadaPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C614AD2414C469A982EA82B /* AndadaPro-Bold.otf */; };
+		413F64B825A24853A5C54C6A /* AndadaPro-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08402805C3D4455A9F860337 /* AndadaPro-BoldItalic.otf */; };
+		13320014B6A6482580E59AE1 /* AndadaPro-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 14006FF384094BF5A41B03FA /* AndadaPro-ExtraBold.otf */; };
+		4EB0758AFACF44C08E0BDA63 /* AndadaPro-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5EF049E36F3D4ABD9FD19138 /* AndadaPro-ExtraBoldItalic.otf */; };
+		C044BB9E5B9C41CD974F3B33 /* AndadaPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 73769CF9C5A1493EAC94A089 /* AndadaPro-Italic.otf */; };
+		A0672C5DC6B94DC69908B7C6 /* AndadaPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0A94F94494A638184DDCC /* AndadaPro-Medium.otf */; };
+		6455C054568048E0B5AC17E3 /* AndadaPro-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A742C22E35D435BBB639822 /* AndadaPro-MediumItalic.otf */; };
+		C75353CC772A48BC8B6E91BC /* AndadaPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F0BBD0AB82844EC99A8673F /* AndadaPro-Regular.otf */; };
+		356554F8A5804316AEBDC58E /* AndadaPro-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB93F2C3BF9E4855B4454401 /* AndadaPro-SemiBold.otf */; };
+		33A60120F31149C98788FE95 /* AndadaPro-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B989D15D494648F8AD474997 /* AndadaPro-SemiBoldItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,16 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = bookapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-bookapp-bookappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookapp-bookappTests.release.xcconfig"; path = "Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		6C614AD2414C469A982EA82B /* AndadaPro-Bold.otf */ = {isa = PBXFileReference; name = "AndadaPro-Bold.otf"; path = "../assets/fonts/AndadaPro-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		08402805C3D4455A9F860337 /* AndadaPro-BoldItalic.otf */ = {isa = PBXFileReference; name = "AndadaPro-BoldItalic.otf"; path = "../assets/fonts/AndadaPro-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14006FF384094BF5A41B03FA /* AndadaPro-ExtraBold.otf */ = {isa = PBXFileReference; name = "AndadaPro-ExtraBold.otf"; path = "../assets/fonts/AndadaPro-ExtraBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5EF049E36F3D4ABD9FD19138 /* AndadaPro-ExtraBoldItalic.otf */ = {isa = PBXFileReference; name = "AndadaPro-ExtraBoldItalic.otf"; path = "../assets/fonts/AndadaPro-ExtraBoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		73769CF9C5A1493EAC94A089 /* AndadaPro-Italic.otf */ = {isa = PBXFileReference; name = "AndadaPro-Italic.otf"; path = "../assets/fonts/AndadaPro-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6FD0A94F94494A638184DDCC /* AndadaPro-Medium.otf */ = {isa = PBXFileReference; name = "AndadaPro-Medium.otf"; path = "../assets/fonts/AndadaPro-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7A742C22E35D435BBB639822 /* AndadaPro-MediumItalic.otf */ = {isa = PBXFileReference; name = "AndadaPro-MediumItalic.otf"; path = "../assets/fonts/AndadaPro-MediumItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F0BBD0AB82844EC99A8673F /* AndadaPro-Regular.otf */ = {isa = PBXFileReference; name = "AndadaPro-Regular.otf"; path = "../assets/fonts/AndadaPro-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FB93F2C3BF9E4855B4454401 /* AndadaPro-SemiBold.otf */ = {isa = PBXFileReference; name = "AndadaPro-SemiBold.otf"; path = "../assets/fonts/AndadaPro-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B989D15D494648F8AD474997 /* AndadaPro-SemiBoldItalic.otf */ = {isa = PBXFileReference; name = "AndadaPro-SemiBoldItalic.otf"; path = "../assets/fonts/AndadaPro-SemiBoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +142,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				67792894826846469190B575 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +168,24 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		67792894826846469190B575 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				6C614AD2414C469A982EA82B /* AndadaPro-Bold.otf */,
+				08402805C3D4455A9F860337 /* AndadaPro-BoldItalic.otf */,
+				14006FF384094BF5A41B03FA /* AndadaPro-ExtraBold.otf */,
+				5EF049E36F3D4ABD9FD19138 /* AndadaPro-ExtraBoldItalic.otf */,
+				73769CF9C5A1493EAC94A089 /* AndadaPro-Italic.otf */,
+				6FD0A94F94494A638184DDCC /* AndadaPro-Medium.otf */,
+				7A742C22E35D435BBB639822 /* AndadaPro-MediumItalic.otf */,
+				3F0BBD0AB82844EC99A8673F /* AndadaPro-Regular.otf */,
+				FB93F2C3BF9E4855B4454401 /* AndadaPro-SemiBold.otf */,
+				B989D15D494648F8AD474997 /* AndadaPro-SemiBoldItalic.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +283,16 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E895DBB4485E4792ABE60044 /* AndadaPro-Bold.otf in Resources */,
+				413F64B825A24853A5C54C6A /* AndadaPro-BoldItalic.otf in Resources */,
+				13320014B6A6482580E59AE1 /* AndadaPro-ExtraBold.otf in Resources */,
+				4EB0758AFACF44C08E0BDA63 /* AndadaPro-ExtraBoldItalic.otf in Resources */,
+				C044BB9E5B9C41CD974F3B33 /* AndadaPro-Italic.otf in Resources */,
+				A0672C5DC6B94DC69908B7C6 /* AndadaPro-Medium.otf in Resources */,
+				6455C054568048E0B5AC17E3 /* AndadaPro-MediumItalic.otf in Resources */,
+				C75353CC772A48BC8B6E91BC /* AndadaPro-Regular.otf in Resources */,
+				356554F8A5804316AEBDC58E /* AndadaPro-SemiBold.otf in Resources */,
+				33A60120F31149C98788FE95 /* AndadaPro-SemiBoldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
