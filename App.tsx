@@ -35,6 +35,9 @@ const App = (): JSX.Element => {
           },
           tabBarActiveTintColor: '#355070',
           tabBarInactiveTintColor: '#6D6D6D',
+          tabBarLabelStyle: {
+            fontFamily: 'AndadaPro-Medium',
+          },
           headerShown: false,
         })}
         initialRouteName="Home">
