@@ -1,6 +1,10 @@
 import { StyleSheet, ScrollView } from 'react-native';
 import P from '../../common/P';
+import Search from './components/Search';
+import ReadLater from './components/ReadLater';
 import Stats from './components/Stats';
+import { strings } from '../../../i18n/strings';
+import CurrentReads from './components/CurrentReads';
 
 /**
  * Home screen
@@ -9,12 +13,15 @@ import Stats from './components/Stats';
  */
 const Home = (): JSX.Element => {
   return (
-    <ScrollView style={styles.container}>
-      <P size={14}>Welcome back</P>
+    <ScrollView nestedScrollEnabled style={styles.container}>
+      <P size={14}>{strings.home1}</P>
       <P size={24} font="AndadaPro-Bold">
-        Start your reading
+        {strings.home2}
       </P>
+      <Search />
       <Stats />
+      <ReadLater />
+      <CurrentReads />
     </ScrollView>
   );
 };
@@ -22,8 +29,7 @@ const Home = (): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F8F8F8',
-    padding: 25,
-    paddingBottom: 0,
+    paddingHorizontal: 25,
   },
 });
 

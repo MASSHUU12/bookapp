@@ -3,6 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 interface Props {
   children: string;
   size?: number;
+  color?: string;
   font?:
     | 'AndadaPro-Bold'
     | 'AndadaPro-BoldItalic'
@@ -20,6 +21,10 @@ interface Props {
  *
  *  Replacement for Text component.
  *
+ *  @param size - Font size
+ *  @param color - Font color
+ *  @param font - Font name
+ *
  */
 const P = (props: Props) => {
   return (
@@ -27,6 +32,7 @@ const P = (props: Props) => {
       style={{
         ...styles.text,
         fontSize: props.size ? props.size : 18,
+        color: props.color ? props.color : '#000',
         fontFamily: props.font ? props.font : 'AndadaPro-Regular',
       }}>
       {props.children}

@@ -1,43 +1,36 @@
-import { View, StyleSheet } from 'react-native';
-// import { ProgressChart } from 'react-native-chart-kit';
+import { View } from 'react-native';
+import { ProgressChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 import P from '../../../common/P';
+import { strings } from '../../../../i18n/strings';
 
 const Stats = (): JSX.Element => {
-  // const chartConfig = {
-  //   backgroundGradientFrom: '#1E2923',
-  //   backgroundGradientFromOpacity: 0,
-  //   backgroundGradientTo: '#08130D',
-  //   backgroundGradientToOpacity: 0.5,
-  //   color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-  //   strokeWidth: 2, // optional, default 3
-  //   barPercentage: 0.5,
-  //   useShadowColorFromDataset: false, // optional
-  // };
+  const chartConfig = {
+    backgroundGradientFrom: '#F8F8F8',
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: '#F8F8F8',
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(159, 159, 159, ${opacity})`,
+    useShadowColorFromDataset: false,
+  };
 
   return (
-    <View style={styles.container}>
-      <P>Your stats</P>
-      {/* <ProgressChart
+    <View>
+      <P>{strings.stats1}</P>
+      <ProgressChart
         data={{
-          labels: ['AAA', 'BBB'],
-          data: [0.3, 0.5],
+          labels: [strings.miscYear, strings.miscMonth],
+          data: [0.6, 0.4],
         }}
-        width={Dimensions.get('window').width}
-        height={220}
-        strokeWidth={10}
-        radius={32}
+        width={Dimensions.get('window').width * 0.75}
+        height={Dimensions.get('window').height * 0.2}
+        strokeWidth={12}
+        radius={16}
         chartConfig={chartConfig}
-        hideLegend={true}
-      /> */}
+        hideLegend={false}
+      />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 10,
-  },
-});
 
 export default Stats;
