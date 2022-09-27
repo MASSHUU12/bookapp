@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
 import Home from './components/screens/home/Home';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Books from './components/screens/books/Books';
@@ -98,7 +98,5 @@ const App = (): JSX.Element => {
     </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
