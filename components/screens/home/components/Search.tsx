@@ -1,7 +1,7 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View, StyleSheet } from 'react-native';
 import P from '../../../common/P';
-import { strings } from '../../../../i18n/strings';
+import { t } from '../../../../i18n/strings';
 
 /**
  * Search component
@@ -13,7 +13,7 @@ const Search = (): JSX.Element => {
     <View style={styles.container}>
       <Ionicons name="search" size={24} color="#9F9F9F" style={styles.icon} />
       <P color="#9F9F9F" size={14}>
-        {strings.search1}
+        {t.search1}
       </P>
     </View>
   );

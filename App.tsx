@@ -7,10 +7,40 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Books from './components/screens/books/Books';
 import Lists from './components/screens/lists/Lists';
 import Settings from './components/screens/settings/Settings';
-import { strings } from './i18n/strings';
+import { t } from './i18n/strings';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ReadingGoals from './components/screens/settings/screens/ReadingGoals';
+import NotificationPreferences from './components/screens/settings/screens/NotificationPreferences';
+import Options from './components/screens/settings/screens/Options';
 
 const App = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
+
+  const SettingsNavigator = () => (
+    <Stack.Navigator initialRouteName="Settings">
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="ReadingGoals"
+        component={ReadingGoals}
+        options={{ title: t.settings1 }}
+      />
+      <Tab.Screen
+        name="NotificationPreferences"
+        component={NotificationPreferences}
+        options={{ title: t.settings2 }}
+      />
+      <Tab.Screen
+        name="Options"
+        component={Options}
+        options={{ title: t.settings3 }}
+      />
+    </Stack.Navigator>
+  );
 
   return (
     <>
@@ -46,22 +76,22 @@ const App = (): JSX.Element => {
           <Tab.Screen
             name="Home"
             component={Home}
-            options={{ title: strings.nav1 }}
+            options={{ title: t.nav1 }}
           />
           <Tab.Screen
             name="Books"
             component={Books}
-            options={{ title: strings.nav2 }}
+            options={{ title: t.nav2 }}
           />
           <Tab.Screen
             name="Lists"
             component={Lists}
-            options={{ title: strings.nav3 }}
+            options={{ title: t.nav3 }}
           />
           <Tab.Screen
             name="Settings"
-            component={Settings}
-            options={{ title: strings.nav4 }}
+            component={SettingsNavigator}
+            options={{ title: t.nav4 }}
           />
         </Tab.Navigator>
       </NavigationContainer>

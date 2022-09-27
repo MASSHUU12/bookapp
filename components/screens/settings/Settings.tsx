@@ -1,29 +1,38 @@
-import { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import { strings } from '../../../i18n/strings';
+import { StyleSheet, View } from 'react-native';
+import { t } from '../../../i18n/strings';
+import P from '../../common/P';
+import SettingsBtn from '../../common/SettingsBtn';
 
-const Settings = (): JSX.Element => {
-  const [value, setValue] = useState(0);
-
+// TODO: change navigation type
+const Settings = ({ navigation }: any): JSX.Element => {
   return (
-    <View>
-      <Text>{strings.nav4}</Text>
-      <Button
-        title="PL"
-        onPress={() => {
-          strings.setLanguage('pl');
-          setValue(value => value + 1);
-        }}
+    <View style={styles.container}>
+      <P size={24}>{t.nav4}</P>
+      <SettingsBtn
+        icon="book-outline"
+        text={t.settings1}
+        action={() => navigation.navigate('ReadingGoals')}
       />
-      <Button
-        title="EN"
-        onPress={() => {
-          strings.setLanguage('en');
-          setValue(value => value + 1);
-        }}
+      <SettingsBtn
+        icon="notifications-outline"
+        text={t.settings2}
+        action={() => navigation.navigate('NotificationPreferences')}
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={t.settings3}
+        action={() => navigation.navigate('Options')}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F8F8F8',
+    paddingHorizontal: 25,
+    flex: 1,
+  },
+});
 
 export default Settings;
