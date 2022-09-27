@@ -1,12 +1,12 @@
 import { FlatList, View, StyleSheet } from 'react-native';
-import { strings } from '../../../../i18n/strings';
+import { t } from '../../../../i18n/strings';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
 const CurrentReads = (): JSX.Element => {
   return (
     <View>
-      <P>{strings.currentReads1}</P>
+      <P>{t.currentReads1}</P>
       <FlatList
         style={styles.header}
         ItemSeparatorComponent={({ highlighted }) => (

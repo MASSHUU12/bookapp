@@ -16,6 +16,10 @@ export const en = {
 
     currentReads1: 'Your Current Reads',
 
+    settings1: 'Reading Goals',
+    settings2: 'Notification preferences',
+    settings3: 'Options',
+
     miscYear: 'Year',
     miscMonth: 'Month',
   },

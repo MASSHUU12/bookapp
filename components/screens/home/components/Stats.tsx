@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { ProgressChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 import P from '../../../common/P';
-import { strings } from '../../../../i18n/strings';
+import { t } from '../../../../i18n/strings';
 
 const Stats = (): JSX.Element => {
   const chartConfig = {
@@ -16,10 +16,10 @@ const Stats = (): JSX.Element => {
 
   return (
     <View>
-      <P>{strings.stats1}</P>
+      <P>{t.stats1}</P>
       <ProgressChart
         data={{
-          labels: [strings.miscYear, strings.miscMonth],
+          labels: [t.miscYear, t.miscMonth],
           data: [0.6, 0.4],
         }}
         width={Dimensions.get('window').width * 0.75}

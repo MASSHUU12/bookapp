@@ -1,12 +1,12 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import Cover from '../../../common/Cover';
 import P from '../../../common/P';
-import { strings } from '../../../../i18n/strings';
+import { t } from '../../../../i18n/strings';
 
 const ReadLater = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <P>{strings.readLater1}</P>
+      <P>{t.readLater1}</P>
       <FlatList
         style={styles.list}
         horizontal
