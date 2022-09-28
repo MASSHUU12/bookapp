@@ -12,10 +12,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ReadingGoals from './components/screens/settings/screens/ReadingGoals';
 import NotificationPreferences from './components/screens/settings/screens/NotificationPreferences';
 import Options from './components/screens/settings/screens/Options';
+import Search from './components/screens/home/screens/Search';
 
 const App = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
+
+  const HomeNavigator = () => (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Search" component={Search} />
+    </Stack.Navigator>
+  );
 
   const SettingsNavigator = () => (
     <Stack.Navigator initialRouteName="Settings">
@@ -51,7 +61,7 @@ const App = (): JSX.Element => {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName = 'alert';
 
-              if (route.name === 'Home')
+              if (route.name === 'HomeNavigator')
                 iconName = focused ? 'home' : 'home-outline';
 
               if (route.name === 'Books')
@@ -74,8 +84,8 @@ const App = (): JSX.Element => {
           })}
           initialRouteName="Home">
           <Tab.Screen
-            name="Home"
-            component={Home}
+            name="HomeNavigator"
+            component={HomeNavigator}
             options={{ title: t.nav1 }}
           />
           <Tab.Screen
