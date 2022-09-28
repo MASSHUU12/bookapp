@@ -12,7 +12,7 @@ const Stats = (): JSX.Element => {
     backgroundGradientFrom: colors.background,
     backgroundGradientFromOpacity: 0,
     backgroundGradientTo: colors.background,
-    backgroundGradientToOpacity: 0.5,
+    backgroundGradientToOpacity: 0,
     color: (opacity = 1) => `rgba(159, 159, 159, ${opacity})`,
     useShadowColorFromDataset: false,
   };
