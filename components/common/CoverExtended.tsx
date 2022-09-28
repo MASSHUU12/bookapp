@@ -30,15 +30,15 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
         <View style={styles.infoTop}>
           <P size={14}>{item.item.title}</P>
           <P size={12} color="#5B5B5B">
-            Dr. Aziz Gazipura
+            {item.item.author_name}
           </P>
         </View>
         <View>
           <P size={12} color="#5B5B5B">
-            1h 12m (58%)
+            book
           </P>
           <P size={12} color="#979595">
-            Audiobook
+            pages: {item.item.number_of_pages_median}
           </P>
         </View>
       </View>

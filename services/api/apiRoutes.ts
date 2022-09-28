@@ -6,9 +6,14 @@ export class ApiRoutes {
 
   constructor(options: OptionsType) {
     this.URL = options.URL;
+    this.limit = 4;
   }
 
   search(query: string) {
-    return axios.get(URL + 'search.json?q=' + query);
+    const headers = { 'Content-Type': 'application/json' };
+
+    return axios.get(`${this.URL}search.json?q=${query}&limit=${this.limit}`, {
+      headers,
+    });
   }
 }

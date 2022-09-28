@@ -1,12 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, StyleSheet, TextInput, FlatList } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { t } from '../../../../i18n/strings';
+import api from '../../../../services/api/api';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
 const Search = () => {
   const [text, setText] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [searchResults, setSearchResults] = useState<any>([]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (text.length > 2) {
+        setLoading(true);
+        api.search(text).then(res => {
+          setSearchResults(res.data.docs);
+          setLoading(false);
+        });
+      } else if (text.length == 0) {
+        setLoading(false);
+        setSearchResults([]);
+      }
+    }, 700);
+    return () => clearTimeout(timeoutId);
+  }, [text]);
 
   return (
     <View style={styles.container}>
@@ -21,32 +40,21 @@ const Search = () => {
         />
       </View>
       <P size={14} color="#9F9F9F">
-        We found 3 results
+        We found {searchResults.length} results
       </P>
-      <FlatList
-        ItemSeparatorComponent={({ highlighted }) => (
-          <View style={{ marginTop: 15 }} />
-        )}
-        data={[
-          {
-            id: 0,
-            title: 'The Art Of Extraordinary Confidence',
-          },
-          {
-            id: 1,
-            title: '12 Months To $1 Million',
-          },
-          {
-            id: 2,
-            title: 'The Subtle Art of Not Giving a F*ck',
-          },
-          {
-            id: 3,
-            title: 'Title',
-          },
-        ]}
-        renderItem={item => <CoverExtended item={item} />}
-      />
+      {loading ? (
+        <P size={14} color="#000">
+          Loading data, wait
+        </P>
+      ) : (
+        <FlatList
+          ItemSeparatorComponent={({ highlighted }) => (
+            <View style={{ marginTop: 15 }} />
+          )}
+          data={searchResults}
+          renderItem={item => <CoverExtended item={item} />}
+        />
+      )}
     </View>
   );
 };
