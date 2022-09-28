@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import Home from './components/screens/home/Home';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -13,8 +13,14 @@ import ReadingGoals from './components/screens/settings/screens/ReadingGoals';
 import NotificationPreferences from './components/screens/settings/screens/NotificationPreferences';
 import Options from './components/screens/settings/screens/Options';
 import Search from './components/screens/home/screens/Search';
+import { Provider } from 'react-redux';
+import store from './app/store';
+// import { useAppDispatch } from './hooks';
+// import { isDark } from './features/theme/themeSlice';
 
 const App = (): JSX.Element => {
+  // const dispatch = useAppDispatch();
+
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 
@@ -52,8 +58,12 @@ const App = (): JSX.Element => {
     </Stack.Navigator>
   );
 
+  // useEffect(() => {
+  //   dispatch(isDark(false));
+  // }, []);
+
   return (
-    <>
+    <Provider store={store}>
       <StatusBar backgroundColor="#F8F8F8" barStyle="dark-content" />
       <NavigationContainer>
         <Tab.Navigator
@@ -105,7 +115,7 @@ const App = (): JSX.Element => {
           />
         </Tab.Navigator>
       </NavigationContainer>
-    </>
+    </Provider>
   );
 };
 
