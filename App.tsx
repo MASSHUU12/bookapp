@@ -60,7 +60,7 @@ const App = (): JSX.Element => {
               if (route.name === 'Lists')
                 iconName = focused ? 'checkbox' : 'checkbox-outline';
 
-              if (route.name === 'Settings')
+              if (route.name === 'SettingsNavigator')
                 iconName = focused ? 'settings' : 'settings-outline';
 
               return <Ionicons name={iconName} size={size} color={color} />;
@@ -89,7 +89,7 @@ const App = (): JSX.Element => {
             options={{ title: t.nav3 }}
           />
           <Tab.Screen
-            name="Settings"
+            name="SettingsNavigator"
             component={SettingsNavigator}
             options={{ title: t.nav4 }}
           />

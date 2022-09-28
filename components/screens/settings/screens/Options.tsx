@@ -7,20 +7,15 @@ const Options = () => {
 
   return (
     <View>
-      <Button
-        title="PL"
-        onPress={() => {
-          t.setLanguage('pl');
-          setValue(value => value + 1);
-        }}
-      />
-      <Button
-        title="EN"
-        onPress={() => {
-          t.setLanguage('en');
-          setValue(value => value + 1);
-        }}
-      />
+      {t.getAvailableLanguages().map(item => (
+        <Button
+          title={item.toUpperCase()}
+          onPress={() => {
+            t.setLanguage(item);
+            setValue(value => value + 1);
+          }}
+        />
+      ))}
     </View>
   );
 };

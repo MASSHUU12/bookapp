@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { t } from '../../../i18n/strings';
 import P from '../../common/P';
-import SettingsBtn from '../../common/SettingsBtn';
+import SettingsBtn from './components/SettingsBtn';
 
 // TODO: change navigation type
 const Settings = ({ navigation }: any): JSX.Element => {

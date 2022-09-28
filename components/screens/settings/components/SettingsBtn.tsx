@@ -1,6 +1,6 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Pressable, StyleSheet } from 'react-native';
-import P from './P';
+import P from '../../../common/P';
 
 interface Props {
   icon?: string;
@@ -21,7 +21,7 @@ const SettingsBtn = ({ icon, text, action }: Props): JSX.Element => {
     <Pressable
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? '#28373E' : '#fff', // TODO: Set better colors
+          opacity: pressed ? 0.5 : 1,
         },
         styles.container,
       ]}
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 15,
     marginTop: 15,
+    backgroundColor: '#fff',
   },
   icon: {
     marginRight: 15,
