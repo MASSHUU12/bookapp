@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Button, View } from 'react-native';
+import { isDark } from '../../../../features/theme/themeSlice';
+import { useAppDispatch } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 
 const Options = () => {
   const [value, setValue] = useState(0);
+  const dispatch = useAppDispatch();
 
   return (
     <View>
@@ -16,6 +19,8 @@ const Options = () => {
           }}
         />
       ))}
+      <Button title="Light theme" onPress={() => dispatch(isDark(false))} />
+      <Button title="Dark theme" onPress={() => dispatch(isDark(true))} />
     </View>
   );
 };
