@@ -2,20 +2,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
-import Home from './components/screens/home/Home';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Books from './components/screens/books/Books';
-import Lists from './components/screens/lists/Lists';
-import Settings from './components/screens/settings/Settings';
 import { t } from './i18n/strings';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ReadingGoals from './components/screens/settings/screens/ReadingGoals';
-import NotificationPreferences from './components/screens/settings/screens/NotificationPreferences';
-import Options from './components/screens/settings/screens/Options';
-import Search from './components/screens/home/screens/Search';
 import { Provider } from 'react-redux';
 import store from './app/store';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import HomeNavigator from './components/navigators/HomeNavigator';
+import BooksNavigator from './components/navigators/BooksNavigator';
+import ListsNavigator from './components/navigators/ListsNavigator';
+import SettingsNavigator from './components/navigators/SettingsNavigator';
 
 const App = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
@@ -24,64 +20,6 @@ const App = (): JSX.Element => {
   useEffect(() => {
     store.dispatch({ type: 'theme/isDark' });
   }, []);
-
-  const HomeNavigator = () => (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Search" component={Search} />
-      </Stack.Navigator>
-    </SafeAreaView>
-  );
-
-  const BooksNavigator = () => (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator
-        initialRouteName="Books"
-        screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Books" component={Books} />
-      </Stack.Navigator>
-    </SafeAreaView>
-  );
-
-  const ListsNavigator = () => (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator
-        initialRouteName="Lists"
-        screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Lists" component={Lists} />
-      </Stack.Navigator>
-    </SafeAreaView>
-  );
-
-  const SettingsNavigator = () => (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator initialRouteName="Settings">
-        <Tab.Screen
-          name="Settings"
-          component={Settings}
-          options={{ headerShown: false }}
-        />
-        <Tab.Screen
-          name="ReadingGoals"
-          component={ReadingGoals}
-          options={{ title: t.settings1 }}
-        />
-        <Tab.Screen
-          name="NotificationPreferences"
-          component={NotificationPreferences}
-          options={{ title: t.settings2 }}
-        />
-        <Tab.Screen
-          name="Options"
-          component={Options}
-          options={{ title: t.settings3 }}
-        />
-      </Stack.Navigator>
-    </SafeAreaView>
-  );
 
   return (
     <Provider store={store}>
