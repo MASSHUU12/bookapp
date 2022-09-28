@@ -1,20 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ThemeState } from '../../interfaces/Theme';
 import { colors as c } from '../../themes/colors';
-
-interface ThemeState {
-  colors: {
-    primary: string;
-    accent: string;
-    background: string;
-    surface: string;
-    text: string;
-    disabled: string;
-    placeholder: string;
-    backdrop: string;
-    onSurface: string;
-    notification: string;
-  };
-}
 
 const initialState: ThemeState = {
   colors: { ...c().colors },

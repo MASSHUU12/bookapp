@@ -1,12 +1,15 @@
 import { StyleSheet, View } from 'react-native';
+import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import { RouterProps } from '../../../interfaces/Navigation';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
 
 const Settings = ({ navigation }: RouterProps): JSX.Element => {
+  const colors = useAppSelector(state => state.theme.colors);
+
   return (
-    <View style={styles.container}>
+    <View style={{ backgroundColor: colors.background, ...styles.container }}>
       <P size={24}>{t.nav4}</P>
       <SettingsBtn
         icon="book-outline"
@@ -29,7 +32,6 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F8F8F8',
     paddingHorizontal: 25,
     flex: 1,
   },

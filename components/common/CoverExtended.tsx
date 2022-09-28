@@ -6,6 +6,7 @@ import {
   Dimensions,
   ListRenderItemInfo,
 } from 'react-native';
+import { useAppSelector } from '../../hooks';
 import P from './P';
 
 interface Props {
@@ -16,9 +17,11 @@ interface Props {
 }
 
 const CoverExtended = ({ item }: Props): JSX.Element => {
+  const colors = useAppSelector(state => state.theme.colors);
+
   return (
     <Pressable
-      style={styles.container}
+      style={{ backgroundColor: colors.white, ...styles.container }}
       onPress={() => console.log(item.item.title)}>
       <Image
         style={styles.image}
@@ -29,15 +32,15 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
       <View style={styles.info}>
         <View style={styles.infoTop}>
           <P size={14}>{item.item.title}</P>
-          <P size={12} color="#5B5B5B">
+          <P size={12} color={colors.text2}>
             Dr. Aziz Gazipura
           </P>
         </View>
         <View>
-          <P size={12} color="#5B5B5B">
+          <P size={12} color={colors.text2}>
             1h 12m (58%)
           </P>
-          <P size={12} color="#979595">
+          <P size={12} color={colors.text3}>
             Audiobook
           </P>
         </View>
@@ -53,7 +56,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#fff',
     paddingVertical: 10,
     borderRadius: 5,
   },

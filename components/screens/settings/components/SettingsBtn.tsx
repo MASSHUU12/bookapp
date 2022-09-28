@@ -1,6 +1,7 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Pressable, StyleSheet } from 'react-native';
 import P from '../../../common/P';
+import { useAppSelector } from '../../../../hooks';
 
 interface Props {
   icon?: string;
@@ -17,21 +18,29 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const SettingsBtn = ({ icon, text, action }: Props): JSX.Element => {
+  const colors = useAppSelector(state => state.theme.colors);
+
   return (
     <Pressable
       style={({ pressed }) => [
         {
           opacity: pressed ? 0.5 : 1,
+          backgroundColor: colors.white,
         },
         styles.container,
       ]}
       onPress={action}>
       {icon ? (
-        <Ionicons style={styles.icon} name={icon} size={24} color="#6D6D6D" />
+        <Ionicons
+          style={styles.icon}
+          name={icon}
+          size={24}
+          color={colors.placeholder}
+        />
       ) : (
         ''
       )}
-      <P color="#6D6D6D">{text}</P>
+      <P color={colors.placeholder}>{text}</P>
     </Pressable>
   );
 };
@@ -45,7 +54,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 15,
     marginTop: 15,
-    backgroundColor: '#fff',
   },
   icon: {
     marginRight: 15,

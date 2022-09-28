@@ -16,7 +16,7 @@ const SearchBar = (): JSX.Element => {
 
   return (
     <Pressable
-      style={styles.container}
+      style={{ backgroundColor: colors.surface, ...styles.container }}
       // ? It works, but throws error for some reason.
       onPress={() => navigation.navigate('Search')}>
       <Ionicons
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 'auto',
     borderRadius: 5,
-    backgroundColor: '#F2F2F2',
     paddingVertical: 15,
     display: 'flex',
     flexDirection: 'row',

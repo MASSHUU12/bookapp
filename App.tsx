@@ -15,14 +15,14 @@ import Options from './components/screens/settings/screens/Options';
 import Search from './components/screens/home/screens/Search';
 import { Provider } from 'react-redux';
 import store from './app/store';
-// import { useAppDispatch } from './hooks';
-// import { isDark } from './features/theme/themeSlice';
 
 const App = (): JSX.Element => {
-  // const dispatch = useAppDispatch();
-
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
+
+  useEffect(() => {
+    store.dispatch({ type: 'theme/isDark' });
+  }, []);
 
   const HomeNavigator = () => (
     <Stack.Navigator
@@ -58,10 +58,6 @@ const App = (): JSX.Element => {
     </Stack.Navigator>
   );
 
-  // useEffect(() => {
-  //   dispatch(isDark(false));
-  // }, []);
-
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="#F8F8F8" barStyle="dark-content" />
@@ -87,6 +83,8 @@ const App = (): JSX.Element => {
             },
             tabBarActiveTintColor: '#355070',
             tabBarInactiveTintColor: '#6D6D6D',
+            tabBarActiveBackgroundColor: store.getState().theme.colors.accent,
+            tabBarInactiveBackgroundColor: store.getState().theme.colors.accent,
             tabBarLabelStyle: {
               fontFamily: 'AndadaPro-Medium',
             },
