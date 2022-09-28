@@ -5,6 +5,7 @@ import ReadLater from './components/ReadLater';
 import Stats from './components/Stats';
 import { t } from '../../../i18n/strings';
 import CurrentReads from './components/CurrentReads';
+import { useAppSelector } from '../../../hooks';
 
 /**
  * Home screen
@@ -12,8 +13,12 @@ import CurrentReads from './components/CurrentReads';
  * @return {*}  {JSX.Element}
  */
 const Home = (): JSX.Element => {
+  const colors = useAppSelector(state => state.theme.colors);
+
   return (
-    <ScrollView nestedScrollEnabled style={styles.container}>
+    <ScrollView
+      nestedScrollEnabled
+      style={{ backgroundColor: colors.background, ...styles.container }}>
       <P size={14}>{t.home1}</P>
       <P size={24} font="AndadaPro-Bold">
         {t.home2}
@@ -28,7 +33,6 @@ const Home = (): JSX.Element => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F8F8F8',
     paddingHorizontal: 25,
     flex: 1,
   },

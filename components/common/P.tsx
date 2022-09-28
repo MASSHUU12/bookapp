@@ -1,4 +1,5 @@
 import { Text, StyleSheet } from 'react-native';
+import { useAppSelector } from '../../hooks';
 
 interface Props {
   children: string;
@@ -27,12 +28,14 @@ interface Props {
  *
  */
 const P = (props: Props) => {
+  const colors = useAppSelector(state => state.theme.colors);
+
   return (
     <Text
       style={{
         ...styles.text,
         fontSize: props.size ? props.size : 18,
-        color: props.color ? props.color : '#000',
+        color: props.color ? props.color : colors.text,
         fontFamily: props.font ? props.font : 'AndadaPro-Regular',
       }}>
       {props.children}
@@ -43,7 +46,6 @@ const P = (props: Props) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 18,
-    color: '#000000',
   },
 });
 

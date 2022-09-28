@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { View, StyleSheet, TextInput, FlatList } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
 const Search = () => {
+  const colors = useAppSelector(state => state.theme.colors);
   const [text, setText] = useState('');
 
   return (
-    <View style={styles.container}>
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={24} color="#9F9F9F" style={styles.icon} />
+    <View style={{ backgroundColor: colors.background, ...styles.container }}>
+      <View style={{ backgroundColor: colors.surface, ...styles.searchBar }}>
+        <Ionicons
+          name="search"
+          size={24}
+          color={colors.placeholder}
+          style={styles.icon}
+        />
         <TextInput
-          style={styles.searchBarText}
+          style={{ color: colors.placeholder, ...styles.searchBarText }}
           placeholder={t.search1}
           onChangeText={setText}
           value={text}
           autoFocus
         />
       </View>
-      <P size={14} color="#9F9F9F">
+      <P size={14} color={colors.placeholder}>
         We found 3 results
       </P>
       <FlatList
@@ -54,14 +61,12 @@ const Search = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F8F8',
     paddingHorizontal: 25,
   },
   searchBar: {
     width: '100%',
     height: 'auto',
     borderRadius: 5,
-    backgroundColor: '#F2F2F2',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -70,7 +75,6 @@ const styles = StyleSheet.create({
     marginBottom: '15%',
   },
   searchBarText: {
-    color: '#9F9F9F',
     fontFamily: 'AndadaPro-Medium',
     fontSize: 14,
     width: '100%',

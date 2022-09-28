@@ -3,12 +3,15 @@ import { ProgressChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
+import { useTheme } from '@react-navigation/native';
 
 const Stats = (): JSX.Element => {
+  const { colors } = useTheme();
+
   const chartConfig = {
-    backgroundGradientFrom: '#F8F8F8',
+    backgroundGradientFrom: colors.background,
     backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: '#F8F8F8',
+    backgroundGradientTo: colors.background,
     backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(159, 159, 159, ${opacity})`,
     useShadowColorFromDataset: false,
