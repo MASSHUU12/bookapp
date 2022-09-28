@@ -1,6 +1,6 @@
 import { StyleSheet, ScrollView } from 'react-native';
 import P from '../../common/P';
-import Search from './components/Search';
+import SearchBar from './components/SearchBar';
 import ReadLater from './components/ReadLater';
 import Stats from './components/Stats';
 import { t } from '../../../i18n/strings';
@@ -18,7 +18,7 @@ const Home = (): JSX.Element => {
       <P size={24} font="AndadaPro-Bold">
         {t.home2}
       </P>
-      <Search />
+      <SearchBar />
       <Stats />
       <ReadLater />
       <CurrentReads />

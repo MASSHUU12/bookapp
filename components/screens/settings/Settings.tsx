@@ -1,10 +1,10 @@
 import { StyleSheet, View } from 'react-native';
 import { t } from '../../../i18n/strings';
+import { RouterProps } from '../../../interfaces/Navigation';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
 
-// TODO: change navigation type
-const Settings = ({ navigation }: any): JSX.Element => {
+const Settings = ({ navigation }: RouterProps): JSX.Element => {
   return (
     <View style={styles.container}>
       <P size={24}>{t.nav4}</P>
