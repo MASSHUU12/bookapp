@@ -3,6 +3,7 @@ import { OptionsType } from './apiTypes';
 
 export class ApiRoutes {
   URL: string;
+  limit: number;
 
   constructor(options: OptionsType) {
     this.URL = options.URL;

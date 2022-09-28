@@ -15,6 +15,7 @@ interface Props {
     title: string;
     author_name: string;
     number_of_pages_median: string;
+    isbn: string;
   }>;
 }
 
@@ -24,12 +25,19 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
   return (
     <Pressable
       style={{ backgroundColor: colors.white, ...styles.container }}
-      onPress={() => console.log(item.item.title)}>
+      onPress={() => console.log(item.item.isbn[0])}>
       <Image
         style={styles.image}
-        source={require('../../assets/images/bookCoverTest.jpg')}
+        source={
+          item.item.isbn === undefined
+            ? require('../../assets/images/bookCoverTest.jpg')
+            : {
+                uri: `https://covers.openlibrary.org/b/isbn/${item.item.isbn[0]}-M.jpg`,
+              }
+        }
         resizeMode="contain"
-        // TODO: loadingIndicatorSource={}
+        // TODO: Need to be replaced with better image.
+        loadingIndicatorSource={require('../../assets/images/bookCoverTest.jpg')}
       />
       <View style={styles.info}>
         <View style={styles.infoTop}>
@@ -74,6 +82,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: Dimensions.get('window').height * 0.15,
+    width: Dimensions.get('window').width * 0.25,
   },
 });
 

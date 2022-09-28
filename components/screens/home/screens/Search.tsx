@@ -22,19 +22,23 @@ const Search = () => {
   const colors = useAppSelector(state => state.theme.colors);
 
   // Debounced version of search function.
-  const search = _(() => {
-    if (text.length > 2) {
-      setLoading(true);
+  const search = _(
+    () => {
+      if (text.length > 2) {
+        setLoading(true);
 
-      api.search(text).then(res => {
-        setSearchResults(res.data.docs);
-        setLoading(false);
-      });
-      return 0;
-    }
-    setLoading(false);
-    setSearchResults([]);
-  }, 250);
+        api.search(text).then(res => {
+          setSearchResults(res.data.docs);
+          setLoading(false);
+        });
+        return 0;
+      }
+      setLoading(false);
+      setSearchResults([]);
+    },
+    500,
+    false,
+  );
 
   useEffect(() => {
     search();
@@ -71,6 +75,8 @@ const Search = () => {
                 ItemSeparatorComponent={({ highlighted }) => (
                   <View style={{ marginTop: 15 }} />
                 )}
+                ListHeaderComponent={<View style={{ marginBottom: 25 }}></View>}
+                ListFooterComponent={<View style={{ marginBottom: 25 }}></View>}
                 data={searchResults}
                 renderItem={item => <CoverExtended item={item} />}
               />
