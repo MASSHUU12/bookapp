@@ -4,10 +4,10 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { t } from './i18n/strings';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import HomeNavigator from './components/navigators/HomeNavigator';
 import BooksNavigator from './components/navigators/BooksNavigator';
 import ListsNavigator from './components/navigators/ListsNavigator';
@@ -15,7 +15,6 @@ import SettingsNavigator from './components/navigators/SettingsNavigator';
 
 const App = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
-  const Stack = createNativeStackNavigator();
 
   useEffect(() => {
     store.dispatch({ type: 'theme/isDark' });
