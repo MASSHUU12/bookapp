@@ -4,7 +4,12 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Lists from '../screens/lists/Lists';
 
-const ListsNavigator = () => {
+/**
+ * Navigator storing all lists screens.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ListsNavigator = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

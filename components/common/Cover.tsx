@@ -13,7 +13,13 @@ interface Props {
   }>;
 }
 
-const Cover = ({ item }: Props) => {
+/**
+ * A component that displays the book cover.
+ *
+ * @param {Props} { item }
+ * @return {*}  {JSX.Element}
+ */
+const Cover = ({ item }: Props): JSX.Element => {
   return (
     <Pressable key={item.item.id} onPress={() => console.log(item.item.title)}>
       <Image

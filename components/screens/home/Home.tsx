@@ -6,10 +6,9 @@ import Stats from './components/Stats';
 import { t } from '../../../i18n/strings';
 import CurrentReads from './components/CurrentReads';
 import { useAppSelector } from '../../../hooks';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 /**
- * Home screen
+ * Home screen.
  *
  * @return {*}  {JSX.Element}
  */

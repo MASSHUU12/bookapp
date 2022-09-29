@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useAppSelector } from '../../../../hooks';
 
 /**
- * Search component
+ * A search item that takes user to the actual search screen.
  *
  * @return {*}  {JSX.Element}
  */

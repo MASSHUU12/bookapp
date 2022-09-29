@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { Button, View, StyleSheet } from 'react-native';
 import { ThemeNavigationContext } from '../../../../App';
 import { isNavigationDark } from '../../../../features/navigationTheme/navigationThemeSlice';
@@ -7,9 +6,12 @@ import { isDark } from '../../../../features/theme/themeSlice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 
-const Options = () => {
-  const [value, setValue] = useState(0);
-  // const [, forceUpdate] = useReducer(x => x + 1, 0);
+/**
+ * General options screen. Allows to change the language, or theme.
+ *
+ * @return {*} {JSX.Element}
+ */
+const Options = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const colors = useAppSelector(state => state.theme.colors);
   const { setIsThemeNavigationDark } = React.useContext(ThemeNavigationContext);
@@ -21,7 +23,6 @@ const Options = () => {
           title={item.toUpperCase()}
           onPress={() => {
             t.setLanguage(item);
-            setValue(value => value + 1);
           }}
         />
       ))}

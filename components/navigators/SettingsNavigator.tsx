@@ -7,7 +7,12 @@ import Options from '../screens/settings/screens/Options';
 import ReadingGoals from '../screens/settings/screens/ReadingGoals';
 import Settings from '../screens/settings/Settings';
 
-const SettingsNavigator = () => {
+/**
+ * Navigator storing all setting screens.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const SettingsNavigator = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

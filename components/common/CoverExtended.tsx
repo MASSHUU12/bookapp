@@ -19,6 +19,12 @@ interface Props {
   }>;
 }
 
+/**
+ * A component that displays the cover with basic information about the book.
+ *
+ * @param {Props} { item }
+ * @return {*}  {JSX.Element}
+ */
 const CoverExtended = ({ item }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 

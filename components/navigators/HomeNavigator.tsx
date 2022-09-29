@@ -4,7 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Home from '../screens/home/Home';
 import Search from '../screens/home/screens/Search';
 
-const HomeNavigator = () => {
+/**
+ * Navigator storing all home screens.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const HomeNavigator = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

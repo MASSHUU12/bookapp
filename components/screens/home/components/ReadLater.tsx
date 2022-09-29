@@ -3,6 +3,11 @@ import Cover from '../../../common/Cover';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
 
+/**
+ * A component that displays books from a to-read list.
+ *
+ * @return {*}  {JSX.Element}
+ */
 const ReadLater = (): JSX.Element => {
   return (
     <View style={styles.container}>

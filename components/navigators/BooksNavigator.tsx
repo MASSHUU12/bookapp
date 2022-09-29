@@ -3,7 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Books from '../screens/books/Books';
 
-const BooksNavigator = () => {
+/**
+ * Navigator storing all books screens.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const BooksNavigator = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

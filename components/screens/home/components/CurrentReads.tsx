@@ -3,6 +3,11 @@ import { t } from '../../../../i18n/strings';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
+/**
+ * A component that displays the books user are currently reading.
+ *
+ * @return {*}  {JSX.Element}
+ */
 const CurrentReads = (): JSX.Element => {
   return (
     <View>

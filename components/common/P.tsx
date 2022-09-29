@@ -27,7 +27,7 @@ interface Props {
  *  @param font - Font name
  *
  */
-const P = (props: Props) => {
+const P = (props: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

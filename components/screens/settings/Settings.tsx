@@ -5,6 +5,12 @@ import { RouterProps } from '../../../interfaces/Navigation';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
 
+/**
+ * The main settings screen, gives access to all options.
+ *
+ * @param {RouterProps} { navigation }
+ * @return {*}  {JSX.Element}
+ */
 const Settings = ({ navigation }: RouterProps): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 

@@ -15,7 +15,12 @@ import P from '../../../common/P';
 import { debounce as _ } from 'underscore';
 import NavLink from '../../../common/NavLink';
 
-const Search = () => {
+/**
+ * Search screen.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Search = (): JSX.Element => {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(true);
   const [searchResults, setSearchResults] = useState<any>([]);
