@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import { RouterProps } from '../../../interfaces/Navigation';
+import sql from '../../../services/sql/sql';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
 
@@ -31,6 +32,21 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
         icon="options-outline"
         text={t.settings3}
         action={() => navigation.navigate('Options')}
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={'insert book into list'}
+        action={() =>
+          sql.saveBookToList({
+            list: 'current',
+            bookId: 'works/OL45804W.json',
+          })
+        }
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={'log books in lists'}
+        action={() => sql.getBooksInList('current')}
       />
     </View>
   );

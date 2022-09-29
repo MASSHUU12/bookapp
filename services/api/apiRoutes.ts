@@ -17,4 +17,12 @@ export class ApiRoutes {
       headers,
     });
   }
+
+  get(id: string) {
+    const headers = { 'Content-Type': 'application/json' };
+
+    return axios.get(`${this.URL}works/${id}.json`, {
+      headers,
+    });
+  }
 }
