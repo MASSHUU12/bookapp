@@ -34,7 +34,7 @@ export class SqlModel {
 
   private prepareTables() {
     this.execute(
-      'CREATE TABLE IF NOT EXISTS lists (id INTEGER PRIMARY KEY AUTOINCREMENT, list TEXT, book_id TEXT)',
+      'CREATE TABLE IF NOT EXISTS lists (id INTEGER PRIMARY KEY AUTOINCREMENT, list TEXT, book_id TEXT, title TEXT, author_name TEXT, number_of_pages_median TEXT, isbn TEXT)',
     );
   }
 }

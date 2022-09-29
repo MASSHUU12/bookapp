@@ -39,7 +39,11 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
         action={() =>
           sql.saveBookToList({
             list: 'current',
-            bookId: 'works/OL45804W.json',
+            bookId: '/works/OL17837119W',
+            title: '12 Rules for Life',
+            author_name: 'Jordan B. Peterson',
+            number_of_pages_median: '123',
+            isbn: '9780241351659',
           })
         }
       />
@@ -47,6 +51,16 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
         icon="options-outline"
         text={'log books in lists'}
         action={() => sql.getBooksInList('current')}
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={'clear data from list table'}
+        action={() => sql.clearListTable()}
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={'drop table'}
+        action={() => sql.dropAlltables()}
       />
     </View>
   );

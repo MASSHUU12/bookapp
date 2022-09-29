@@ -21,7 +21,7 @@ export class ApiRoutes {
   get(id: string) {
     const headers = { 'Content-Type': 'application/json' };
 
-    return axios.get(`${this.URL}works/${id}.json`, {
+    return axios.get(`${this.URL}search.json?q=${id}&limit=1`, {
       headers,
     });
   }

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { t } from '../../../../i18n/strings';
+import api from '../../../../services/api/api';
+import sql from '../../../../services/sql/sql';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
@@ -10,7 +12,21 @@ import P from '../../../common/P';
  * @return {*}  {JSX.Element}
  */
 const CurrentReads = (): JSX.Element => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      title: 'test',
+      author_name: 'test',
+      number_of_pages_median: 'stest',
+      isbn: 'teaing',
+    },
+  ]);
+
+  useEffect(() => {
+    sql.getBooksInList('current', allBooksInList => {
+      setData(allBooksInList);
+    });
+  }, []);
 
   return (
     <View>
