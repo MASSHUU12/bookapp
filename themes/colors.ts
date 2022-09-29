@@ -16,6 +16,7 @@ export const colors = (isDark = false) => {
       onSurface: isDark ? '#000' : '#fff', // Background color for snackbars.
       notification: isDark ? '#000' : '#fff', // Background color for badges.
       white: isDark ? '#fff' : '#fff',
+      link: isDark ? '#fff' : '#597CF3',
     },
   };
 

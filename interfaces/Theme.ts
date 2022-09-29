@@ -13,5 +13,6 @@ export interface ThemeState {
     onSurface: string;
     notification: string;
     white: string;
+    link: string;
   };
 }

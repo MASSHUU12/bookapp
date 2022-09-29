@@ -13,6 +13,7 @@ import api from '../../../../services/api/api';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 import { debounce as _ } from 'underscore';
+import NavLink from '../../../common/NavLink';
 
 const Search = () => {
   const [text, setText] = useState('');
@@ -40,6 +41,7 @@ const Search = () => {
     false,
   );
 
+  // ! Issue: #8
   useEffect(() => {
     search();
   }, [text]);
@@ -76,16 +78,22 @@ const Search = () => {
                   <View style={{ marginTop: 15 }} />
                 )}
                 ListHeaderComponent={<View style={{ marginBottom: 25 }}></View>}
-                ListFooterComponent={<View style={{ marginBottom: 25 }}></View>}
+                ListFooterComponent={
+                  <View style={styles.footer}>
+                    <P color={colors.placeholder}>{t.search2}</P>
+                    <NavLink text={t.search3} target="Home" />
+                  </View>
+                }
                 data={searchResults}
                 renderItem={item => <CoverExtended item={item} />}
               />
             </>
           ) : (
-            <P color={colors.placeholder}>
-              Start writing and we will do our best to find what you are looking
-              for.
-            </P>
+            <View style={styles.beforeSearching}>
+              <P color={colors.placeholder}>{t.search4}</P>
+              <P color={colors.placeholder}>{t.search5}</P>
+              <NavLink text={t.search3} target="Home" />
+            </View>
           )}
         </>
       )}
@@ -116,6 +124,15 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingHorizontal: 15,
+  },
+  footer: {
+    marginVertical: 25,
+    flex: 1,
+    alignItems: 'center',
+  },
+  beforeSearching: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

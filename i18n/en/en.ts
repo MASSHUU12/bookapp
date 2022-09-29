@@ -9,6 +9,11 @@ export const en = {
     home2: 'Start your reading',
 
     search1: 'Search by a title, autor or isbn code',
+    search2: "Didn't find what you were looking for?",
+    search3: 'Add manually',
+    search4:
+      'Start writing and we will do our best to find what you are looking for.',
+    search5: 'If we failed, there are other options.',
 
     stats1: 'Your stats',
 
