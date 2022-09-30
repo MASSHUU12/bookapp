@@ -6,7 +6,7 @@ export const colors = (isDark = false) => {
       /** Primary color. */
       primary: isDark ? '#000' : '#fff',
       /** Secondary color. */
-      accent: isDark ? '#000' : '#fff',
+      accent: isDark ? '#000' : '#d6e9ee',
       /** Background color for pages. */
       background: isDark ? '#1c1c1e' : '#F8F8F8',
       /** Background color for elements containing content, such as cards. */

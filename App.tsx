@@ -15,6 +15,7 @@ import SettingsNavigator from './components/navigators/SettingsNavigator';
 import ListsNavigator from './components/navigators/ListsNavigator';
 import BooksNavigator from './components/navigators/BooksNavigator';
 import HomeNavigator from './components/navigators/HomeNavigator';
+import { navigationRef } from './helpers/Navigate';
 
 // Create new context. This error is fine, at least I hope so.
 export const ThemeNavigationContext = React.createContext();
@@ -44,7 +45,7 @@ const App = (): JSX.Element => {
       />
       <SafeAreaProvider>
         <ThemeNavigationContext.Provider value={themeData}>
-          <NavigationContainer theme={theme}>
+          <NavigationContainer theme={theme} ref={navigationRef}>
             <Tab.Navigator
               screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
@@ -72,6 +73,9 @@ const App = (): JSX.Element => {
                   fontFamily: 'AndadaPro-Medium',
                 },
                 headerShown: false,
+                headerTitleStyle: {
+                  fontFamily: 'AndadaPro-Medium',
+                },
               })}
               initialRouteName="Home">
               <Tab.Screen
