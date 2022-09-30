@@ -1,6 +1,6 @@
 import { View, StyleSheet, ScrollView, Image } from 'react-native';
 import { useAppSelector } from '../../../hooks';
-import Btn from '../../common/Btn';
+import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
@@ -14,7 +14,7 @@ const Single = (): JSX.Element => {
     bookId: '0394171349',
     tags: ['Game theory', 'Interpersonal relations', 'Social interaction'],
     rating: 4,
-    note: 'My notes for the book',
+    note: 'My note for the book.',
     firstSentence:
       'OBSERVATION of spontaneous social activity, most productively carried out in certain kinds of psychotherapy groups, reveals that from time to time people show noticeable changes in posture, viewpoint, voice, vocabulary, and other aspects of behavior.',
   };
@@ -52,7 +52,7 @@ const Single = (): JSX.Element => {
           ))}
         </View>
         {/* Rating */}
-        <P color={colors.placeholder} size={12}>
+        <P color={colors.placeholder} size={16}>
           Your rating
         </P>
         <View
@@ -65,15 +65,39 @@ const Single = (): JSX.Element => {
           <View style={{ marginTop: 0, ...styles.tags }}>
             <Rating rating={3} />
           </View>
-          <P size={14} color="#2487AF">
+          <P size={16} color="#2487AF">
             Edit rating
           </P>
         </View>
         {/* Mark as button */}
-        <Btn text="Mark as..." />
+        <OptionsBtn
+          text="Mark as..."
+          modalTexts={['Reread', 'Read Once', 'Read Later', 'Not Read']}
+          modalActions={[
+            () => console.log('Reread'),
+            () => console.log('Read Once'),
+            () => console.log('Read Later'),
+            () => console.log('Not Read'),
+          ]}
+        />
+        {/* Personal note */}
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            ...styles.tags,
+          }}>
+          <P size={16}>Personal note</P>
+          <P size={16} color="#2487AF">
+            Edit note
+          </P>
+        </View>
+        <P size={14} color="#9F9F9F">
+          {testData.note}
+        </P>
         {/* Description */}
         <View style={styles.desc}>
-          <P size={14}>First sentence</P>
+          <P size={16}>First sentence</P>
           <P size={14} color="#9F9F9F">
             {testData.firstSentence}
           </P>
