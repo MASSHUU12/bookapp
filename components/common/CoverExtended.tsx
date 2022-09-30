@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import {
   Image,
   Pressable,
@@ -6,6 +7,7 @@ import {
   Dimensions,
   ListRenderItemInfo,
 } from 'react-native';
+import { navigate } from '../../helpers/Navigate';
 import { useAppSelector } from '../../hooks';
 import P from './P';
 
@@ -26,7 +28,9 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
+  const navigation = useNavigation();
 const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
+  const navigation = useNavigation();
   const colors = useAppSelector(state => state.theme.colors);
 
   const isbnCodes = item.item.isbn;
@@ -35,7 +39,7 @@ const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
   return (
     <Pressable
       style={{ backgroundColor: colors.white, ...styles.container }}
-      onPress={() => onPress()}>
+      onPress={() => navigate('Single')}>
       <Image
         style={styles.image}
         source={

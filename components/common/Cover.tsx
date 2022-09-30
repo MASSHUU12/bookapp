@@ -5,6 +5,7 @@ import {
   Pressable,
   StyleSheet,
 } from 'react-native';
+import { navigate } from '../../helpers/Navigate';
 
 interface Props {
   item: ListRenderItemInfo<{
@@ -21,7 +22,7 @@ interface Props {
  */
 const Cover = ({ item }: Props): JSX.Element => {
   return (
-    <Pressable key={item.item.id} onPress={() => console.log(item.item.title)}>
+    <Pressable key={item.item.id} onPress={() => navigate('Single')}>
       <Image
         style={styles.image}
         source={require('../../assets/images/bookCoverTest.jpg')}
