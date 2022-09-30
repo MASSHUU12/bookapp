@@ -1,4 +1,5 @@
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { useRef } from 'react';
+import { View, StyleSheet, ScrollView, Image, Animated } from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
@@ -7,6 +8,7 @@ import Tag from '../../common/Tag';
 
 const Single = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
+  const pan = useRef(new Animated.ValueXY()).current;
 
   const testData = {
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -20,14 +22,43 @@ const Single = (): JSX.Element => {
   };
 
   return (
+    //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
     <ScrollView
-      style={{ backgroundColor: colors.background, ...styles.container }}>
+      style={{ backgroundColor: colors.background, ...styles.container }}
+      onScroll={Animated.event(
+        [{ nativeEvent: { contentOffset: { y: pan.y } } }],
+        {
+          useNativeDriver: false,
+        },
+      )}>
+      {/* Cover image */}
       <View
         style={{
           backgroundColor: colors.accent,
           ...styles.coverContainer,
         }}>
-        <Image source={require('../../../assets/images/bookCoverTest.jpg')} />
+        <Animated.Image
+          resizeMode="cover"
+          style={{
+            transform: [
+              {
+                translateY: pan.y.interpolate({
+                  inputRange: [-1000, 0],
+                  outputRange: [-100, 0],
+                  extrapolate: 'clamp',
+                }),
+              },
+              {
+                scale: pan.y.interpolate({
+                  inputRange: [-3000, 0],
+                  outputRange: [20, 1],
+                  extrapolate: 'clamp',
+                }),
+              },
+            ],
+          }}
+          source={require('../../../assets/images/bookCoverTest.jpg')}
+        />
       </View>
       <View
         style={{
