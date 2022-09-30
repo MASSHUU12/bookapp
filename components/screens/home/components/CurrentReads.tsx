@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
+import { useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import api from '../../../../services/api/api';
 import sql from '../../../../services/sql/sql';
@@ -13,12 +14,13 @@ import P from '../../../common/P';
  */
 const CurrentReads = (): JSX.Element => {
   const [data, setData] = useState([]);
+  const [state, dispatch] = useGlobalState();
 
   useEffect(() => {
     sql.getBooksInList('current', allBooksInList => {
       setData(allBooksInList);
     });
-  }, []);
+  }, [state]);
 
   return (
     <View>

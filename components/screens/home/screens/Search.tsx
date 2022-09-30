@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import api from '../../../../services/api/api';
 import CoverExtended from '../../../common/CoverExtended';
@@ -26,6 +26,7 @@ const Search = (): JSX.Element => {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(true);
   const [searchResults, setSearchResults] = useState<any>([]);
+  const [state, dispatch] = useGlobalState();
 
   const colors = useAppSelector(state => state.theme.colors);
 
@@ -62,6 +63,7 @@ const Search = (): JSX.Element => {
             number_of_pages_median: item.item.number_of_pages_median,
             isbn: item.item.isbn[0],
           });
+          dispatch(1);
         },
       },
       // The "No" button

@@ -35,26 +35,12 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
       />
       <SettingsBtn
         icon="options-outline"
-        text={'insert book into list'}
-        action={() =>
-          sql.saveBookToList({
-            list: 'current',
-            bookId: '/works/OL17837119W',
-            title: '12 Rules for Life',
-            author_name: 'Jordan B. Peterson',
-            number_of_pages_median: '123',
-            isbn: '9780241351659',
-          })
-        }
-      />
-      <SettingsBtn
-        icon="options-outline"
         text={'clear data from list table'}
         action={() => sql.clearListTable()}
       />
       <SettingsBtn
         icon="options-outline"
-        text={'drop table'}
+        text={'drop list table'}
         action={() => sql.dropAlltables()}
       />
     </View>
