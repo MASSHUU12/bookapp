@@ -5,6 +5,7 @@ import {
   TextInput,
   FlatList,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useAppSelector } from '../../../../hooks';
@@ -14,6 +15,7 @@ import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 import { debounce as _ } from 'underscore';
 import NavLink from '../../../common/NavLink';
+import sql from '../../../../services/sql/sql';
 
 /**
  * Search screen.
@@ -45,6 +47,33 @@ const Search = (): JSX.Element => {
     500,
     false,
   );
+
+  const showConfirmDialog = (item: any) => {
+    return Alert.alert(item.item.title, 'Add to list', [
+      // The "Yes" button
+      {
+        text: 'Add to current',
+        onPress: () => {
+          sql.saveBookToList({
+            list: 'current',
+            bookId: item.item.id,
+            title: item.item.title,
+            author_name: item.item.author_name,
+            number_of_pages_median: item.item.number_of_pages_median,
+            isbn: item.item.isbn[0],
+          });
+        },
+      },
+      // The "No" button
+      // Does nothing but dismiss the dialog when tapped
+      {
+        text: 'Add to read later',
+      },
+      {
+        text: 'Dismiss',
+      },
+    ]);
+  };
 
   // ! Issue: #8
   useEffect(() => {
@@ -90,7 +119,14 @@ const Search = (): JSX.Element => {
                   </View>
                 }
                 data={searchResults}
-                renderItem={item => <CoverExtended item={item} />}
+                renderItem={item => (
+                  <CoverExtended
+                    item={item}
+                    onPress={() => {
+                      showConfirmDialog(item);
+                    }}
+                  />
+                )}
               />
             </>
           ) : (

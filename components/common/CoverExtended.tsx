@@ -17,6 +17,7 @@ interface Props {
     number_of_pages_median: string;
     isbn: Array<string>;
   }>;
+  onPress: Function;
 }
 
 /**
@@ -25,7 +26,7 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
-const CoverExtended = ({ item }: Props): JSX.Element => {
+const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const isbnCodes = item.item.isbn;
@@ -34,7 +35,7 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
   return (
     <Pressable
       style={{ backgroundColor: colors.white, ...styles.container }}
-      onPress={() => console.log(item.item.isbn[0])}>
+      onPress={() => onPress()}>
       <Image
         style={styles.image}
         source={

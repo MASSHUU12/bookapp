@@ -12,15 +12,7 @@ import P from '../../../common/P';
  * @return {*}  {JSX.Element}
  */
 const CurrentReads = (): JSX.Element => {
-  const [data, setData] = useState([
-    {
-      id: 1,
-      title: 'test',
-      author_name: 'test',
-      number_of_pages_median: 'stest',
-      isbn: 'teaing',
-    },
-  ]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     sql.getBooksInList('current', allBooksInList => {
@@ -37,7 +29,14 @@ const CurrentReads = (): JSX.Element => {
           <View style={{ marginTop: 15 }} />
         )}
         data={data}
-        renderItem={item => <CoverExtended item={item} />}
+        renderItem={item => (
+          <CoverExtended
+            item={item}
+            onPress={() => {
+              console.log('pressed');
+            }}
+          />
+        )}
       />
     </View>
   );
