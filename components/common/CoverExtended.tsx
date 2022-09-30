@@ -36,7 +36,7 @@ const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
   return (
     <Pressable
       style={{ backgroundColor: colors.white, ...styles.container }}
-      onPress={() => navigate('Single')}>
+      onPress={() => onPress()}>
       <Image
         style={styles.image}
         source={
