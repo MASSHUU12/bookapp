@@ -31,7 +31,7 @@ const App = (): JSX.Element => {
   // Get theme from the store.
   const [theme, setTheme] = useState(store.getState().themeNavigation.value);
 
-  const [state, dispatch] = React.useReducer(x => x + 1, 0);
+  const [state, dispatch] = useReducer(x => x + 1, 0);
 
   const Tab = createBottomTabNavigator();
 
@@ -52,7 +52,7 @@ const App = (): JSX.Element => {
         <globalStateContext.Provider value={state}>
           <dispatchStateContext.Provider value={dispatch}>
             <ThemeNavigationContext.Provider value={themeData}>
-              <NavigationContainer theme={theme}>
+              <NavigationContainer theme={theme} ref={navigationRef}>
                 <Tab.Navigator
                   screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {

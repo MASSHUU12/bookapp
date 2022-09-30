@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import {
   Image,
   Pressable,
@@ -28,9 +27,7 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
-  const navigation = useNavigation();
 const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
-  const navigation = useNavigation();
   const colors = useAppSelector(state => state.theme.colors);
 
   const isbnCodes = item.item.isbn;
