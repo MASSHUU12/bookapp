@@ -11,6 +11,7 @@ interface Props {
   item: ListRenderItemInfo<{
     id: number;
     title: string;
+    isbn: string;
   }>;
 }
 
@@ -21,8 +22,11 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const Cover = ({ item }: Props): JSX.Element => {
+  const isbnCodes = item.item.isbn;
+  const formatedIsbnCode = Array.isArray(isbnCodes) ? isbnCodes[0] : isbnCodes;
+
   return (
-    <Pressable key={item.item.id} onPress={() => navigate('Single')}>
+    <Pressable key={item.item.isbn} onPress={() => navigate('Single')}>
       <Image
         style={styles.image}
         source={require('../../assets/images/bookCoverTest.jpg')}

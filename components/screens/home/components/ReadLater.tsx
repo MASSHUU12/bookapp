@@ -2,6 +2,9 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import Cover from '../../../common/Cover';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
+import { useEffect, useState } from 'react';
+import { useGlobalState } from '../../../../hooks';
+import sql from '../../../../services/sql/sql';
 
 /**
  * A component that displays books from a to-read list.
@@ -9,6 +12,15 @@ import { t } from '../../../../i18n/strings';
  * @return {*}  {JSX.Element}
  */
 const ReadLater = (): JSX.Element => {
+  const [data, setData] = useState([]);
+  const [state, dispatch] = useGlobalState();
+
+  useEffect(() => {
+    sql.getBooksInList('readLater', allBooksInList => {
+      setData(allBooksInList);
+    });
+  }, [state]);
+
   return (
     <View style={styles.container}>
       <P>{t.readLater1}</P>
@@ -18,24 +30,7 @@ const ReadLater = (): JSX.Element => {
         ItemSeparatorComponent={({ highlighted }) => (
           <View style={{ marginLeft: 0 }} />
         )}
-        data={[
-          {
-            id: 0,
-            title: 'Title',
-          },
-          {
-            id: 1,
-            title: 'Title',
-          },
-          {
-            id: 2,
-            title: 'Title',
-          },
-          {
-            id: 3,
-            title: 'Title',
-          },
-        ]}
+        data={data}
         renderItem={item => <Cover item={item} />}
       />
     </View>

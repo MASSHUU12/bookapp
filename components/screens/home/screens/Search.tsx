@@ -70,6 +70,17 @@ const Search = (): JSX.Element => {
       // Does nothing but dismiss the dialog when tapped
       {
         text: 'Add to read later',
+        onPress: () => {
+          sql.saveBookToList({
+            list: 'readLater',
+            bookId: item.item.id,
+            title: item.item.title,
+            author_name: item.item.author_name,
+            number_of_pages_median: item.item.number_of_pages_median,
+            isbn: item.item.isbn[0],
+          });
+          dispatch(1);
+        },
       },
       {
         text: 'Dismiss',
