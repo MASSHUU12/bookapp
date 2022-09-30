@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
 import { Pressable } from 'react-native';
+import { navigate } from '../../helpers/Navigate';
 import { useAppSelector } from '../../hooks';
 import P from './P';
 
@@ -15,13 +15,12 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const NavLink = ({ text, target }: Props): JSX.Element => {
-  const navigation = useNavigation();
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
     <Pressable
       onPress={() => {
-        navigation.navigate(target);
+        navigate(target);
       }}>
       <P color={colors.link}>{text}</P>
     </Pressable>

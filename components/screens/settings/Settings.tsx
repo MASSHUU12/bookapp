@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { navigate } from '../../../helpers/Navigate';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import { RouterProps } from '../../../interfaces/Navigation';
@@ -9,10 +10,9 @@ import SettingsBtn from './components/SettingsBtn';
 /**
  * The main settings screen, gives access to all options.
  *
- * @param {RouterProps} { navigation }
  * @return {*}  {JSX.Element}
  */
-const Settings = ({ navigation }: RouterProps): JSX.Element => {
+const Settings = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
@@ -21,17 +21,17 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
       <SettingsBtn
         icon="book-outline"
         text={t.settings1}
-        action={() => navigation.navigate('ReadingGoals')}
+        action={() => navigate('ReadingGoals')}
       />
       <SettingsBtn
         icon="notifications-outline"
         text={t.settings2}
-        action={() => navigation.navigate('NotificationPreferences')}
+        action={() => navigate('NotificationPreferences')}
       />
       <SettingsBtn
         icon="options-outline"
         text={t.settings3}
-        action={() => navigation.navigate('Options')}
+        action={() => navigate('Options')}
       />
       <SettingsBtn
         icon="options-outline"
