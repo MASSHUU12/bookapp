@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { StatusBar } from 'react-native';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -20,6 +20,9 @@ import { navigationRef } from './helpers/Navigate';
 // Create new context. This error is fine, at least I hope so.
 export const ThemeNavigationContext = React.createContext();
 
+export const globalStateContext = React.createContext(1);
+export const dispatchStateContext = React.createContext<any>(undefined);
+
 const App = (): JSX.Element => {
   // Updated by context when settings change.
   const [isThemeNavigationDark, setIsThemeNavigationDark] = useState(false);
@@ -27,6 +30,8 @@ const App = (): JSX.Element => {
 
   // Get theme from the store.
   const [theme, setTheme] = useState(store.getState().themeNavigation.value);
+
+  const [state, dispatch] = React.useReducer(x => x + 1, 0);
 
   const Tab = createBottomTabNavigator();
 
@@ -44,63 +49,66 @@ const App = (): JSX.Element => {
         barStyle={isThemeNavigationDark ? 'light-content' : 'dark-content'}
       />
       <SafeAreaProvider>
-        <ThemeNavigationContext.Provider value={themeData}>
-          <NavigationContainer theme={theme} ref={navigationRef}>
-            <Tab.Navigator
-              screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                  let iconName = 'alert';
+        <globalStateContext.Provider value={state}>
+          <dispatchStateContext.Provider value={dispatch}>
+            <ThemeNavigationContext.Provider value={themeData}>
+              <NavigationContainer theme={theme}>
+                <Tab.Navigator
+                  screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                      let iconName = 'alert';
 
-                  if (route.name === 'HomeNavigator')
-                    iconName = focused ? 'home' : 'home-outline';
+                      if (route.name === 'HomeNavigator')
+                        iconName = focused ? 'home' : 'home-outline';
 
-                  if (route.name === 'BooksNavigator')
-                    iconName = focused ? 'book' : 'book-outline';
+                      if (route.name === 'BooksNavigator')
+                        iconName = focused ? 'book' : 'book-outline';
 
-                  if (route.name === 'ListsNavigator')
-                    iconName = focused ? 'checkbox' : 'checkbox-outline';
+                      if (route.name === 'ListsNavigator')
+                        iconName = focused ? 'checkbox' : 'checkbox-outline';
 
-                  if (route.name === 'SettingsNavigator')
-                    iconName = focused ? 'settings' : 'settings-outline';
+                      if (route.name === 'SettingsNavigator')
+                        iconName = focused ? 'settings' : 'settings-outline';
 
-                  return <Ionicons name={iconName} size={size} color={color} />;
-                },
-                tabBarActiveTintColor: theme.colors.primary,
-                tabBarInactiveTintColor: theme.colors.text,
-                tabBarActiveBackgroundColor: theme.colors.card,
-                tabBarInactiveBackgroundColor: theme.colors.card,
-                tabBarLabelStyle: {
-                  fontFamily: 'AndadaPro-Medium',
-                },
-                headerShown: false,
-                headerTitleStyle: {
-                  fontFamily: 'AndadaPro-Medium',
-                },
-              })}
-              initialRouteName="Home">
-              <Tab.Screen
-                name="HomeNavigator"
-                component={HomeNavigator}
-                options={{ title: t.nav1 }}
-              />
-              <Tab.Screen
-                name="BooksNavigator"
-                component={BooksNavigator}
-                options={{ title: t.nav2 }}
-              />
-              <Tab.Screen
-                name="ListsNavigator"
-                component={ListsNavigator}
-                options={{ title: t.nav3 }}
-              />
-              <Tab.Screen
-                name="SettingsNavigator"
-                component={SettingsNavigator}
-                options={{ title: t.nav4 }}
-              />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </ThemeNavigationContext.Provider>
+                      return (
+                        <Ionicons name={iconName} size={size} color={color} />
+                      );
+                    },
+                    tabBarActiveTintColor: theme.colors.primary,
+                    tabBarInactiveTintColor: theme.colors.text,
+                    tabBarActiveBackgroundColor: theme.colors.card,
+                    tabBarInactiveBackgroundColor: theme.colors.card,
+                    tabBarLabelStyle: {
+                      fontFamily: 'AndadaPro-Medium',
+                    },
+                    headerShown: false,
+                  })}
+                  initialRouteName="Home">
+                  <Tab.Screen
+                    name="HomeNavigator"
+                    component={HomeNavigator}
+                    options={{ title: t.nav1 }}
+                  />
+                  <Tab.Screen
+                    name="BooksNavigator"
+                    component={BooksNavigator}
+                    options={{ title: t.nav2 }}
+                  />
+                  <Tab.Screen
+                    name="ListsNavigator"
+                    component={ListsNavigator}
+                    options={{ title: t.nav3 }}
+                  />
+                  <Tab.Screen
+                    name="SettingsNavigator"
+                    component={SettingsNavigator}
+                    options={{ title: t.nav4 }}
+                  />
+                </Tab.Navigator>
+              </NavigationContainer>
+            </ThemeNavigationContext.Provider>
+          </dispatchStateContext.Provider>
+        </globalStateContext.Provider>
       </SafeAreaProvider>
     </Provider>
   );

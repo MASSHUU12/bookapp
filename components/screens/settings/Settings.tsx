@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import { RouterProps } from '../../../interfaces/Navigation';
+import sql from '../../../services/sql/sql';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
 
@@ -31,6 +32,16 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
         icon="options-outline"
         text={t.settings3}
         action={() => navigation.navigate('Options')}
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={'clear data from list table'}
+        action={() => sql.clearListTable()}
+      />
+      <SettingsBtn
+        icon="options-outline"
+        text={'drop list table'}
+        action={() => sql.dropAlltables()}
       />
     </View>
   );

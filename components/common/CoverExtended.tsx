@@ -17,8 +17,9 @@ interface Props {
     title: string;
     author_name: string;
     number_of_pages_median: string;
-    isbn: string;
+    isbn: Array<string>;
   }>;
+  onPress: Function;
 }
 
 /**
@@ -27,9 +28,13 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
-const CoverExtended = ({ item }: Props): JSX.Element => {
+  const navigation = useNavigation();
+const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
   const navigation = useNavigation();
   const colors = useAppSelector(state => state.theme.colors);
+
+  const isbnCodes = item.item.isbn;
+  const formatedIsbnCode = Array.isArray(isbnCodes) ? isbnCodes[0] : isbnCodes;
 
   return (
     <Pressable
@@ -41,7 +46,7 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
           item.item.isbn === undefined
             ? require('../../assets/images/bookCoverTest.jpg')
             : {
-                uri: `https://covers.openlibrary.org/b/isbn/${item.item.isbn[0]}-M.jpg`,
+                uri: `https://covers.openlibrary.org/b/isbn/${formatedIsbnCode}-M.jpg`,
               }
         }
         resizeMode="contain"

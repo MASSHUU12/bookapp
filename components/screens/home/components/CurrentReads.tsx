@@ -1,5 +1,9 @@
+import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
+import { useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
+import api from '../../../../services/api/api';
+import sql from '../../../../services/sql/sql';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
@@ -9,6 +13,15 @@ import P from '../../../common/P';
  * @return {*}  {JSX.Element}
  */
 const CurrentReads = (): JSX.Element => {
+  const [data, setData] = useState([]);
+  const [state, dispatch] = useGlobalState();
+
+  useEffect(() => {
+    sql.getBooksInList('current', allBooksInList => {
+      setData(allBooksInList);
+    });
+  }, [state]);
+
   return (
     <View>
       <P>{t.currentReads1}</P>
@@ -17,25 +30,15 @@ const CurrentReads = (): JSX.Element => {
         ItemSeparatorComponent={({ highlighted }) => (
           <View style={{ marginTop: 15 }} />
         )}
-        data={[
-          {
-            id: 0,
-            title: 'The Art Of Extraordinary Confidence',
-          },
-          {
-            id: 1,
-            title: '12 Months To $1 Million',
-          },
-          {
-            id: 2,
-            title: 'The Subtle Art of Not Giving a F*ck',
-          },
-          {
-            id: 3,
-            title: 'Title',
-          },
-        ]}
-        renderItem={item => <CoverExtended item={item} />}
+        data={data}
+        renderItem={item => (
+          <CoverExtended
+            item={item}
+            onPress={() => {
+              console.log('pressed');
+            }}
+          />
+        )}
       />
     </View>
   );
