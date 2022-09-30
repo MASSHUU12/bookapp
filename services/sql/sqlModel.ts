@@ -25,7 +25,10 @@ export class SqlModel {
 
   private handleError(err: any) {
     console.log(err);
-    if (err.code === 5) {
+    if (
+      (err.message =
+        "no such table: lists (code 1 SQLITE_ERROR): , while compiling: SELECT * FROM lists where list = 'current'")
+    ) {
       this.prepareTables();
     }
   }
