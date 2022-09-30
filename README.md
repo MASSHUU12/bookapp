@@ -1,16 +1,8 @@
 # BookApp
 
-- [BookApp](#bookapp)
-- [Features include](#features-include)
-- [Tech](#tech)
-- [Overview](#overview)
-- [Installation](#installation)
-  - [Running from source](#running-from-source)
-    - [Prerequisites](#prerequisites)
-    - [Running application](#running-application)
-- [License](#license)
-
 Mobile app for tracking reading.
+
+This source code is available to everyone under the standard [MIT](https://github.com/MASSHUU12/bookapp/blob/master/LICENSE) license.
 
 # Features include
 
