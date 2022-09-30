@@ -8,6 +8,7 @@
   - [Running from source](#running-from-source)
     - [Prerequisites](#prerequisites)
     - [Running application](#running-application)
+- [License](#license)
 
 Mobile app for tracking reading.
 
@@ -52,3 +53,7 @@ To start Metro run `npm start` inside project root folder.
 Then run `npm run android` or `npm run ios`.
 
 More information can be found [here](https://reactnative.dev/docs/environment-setup).
+
+# License
+
+Licensed under the [MIT](https://github.com/MASSHUU12/bookapp/blob/master/LICENSE) license.
