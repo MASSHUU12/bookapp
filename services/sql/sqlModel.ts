@@ -1,6 +1,4 @@
 import { openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
-import { SqlErrorHandler } from './sqlErrorHandler';
-import { handleError } from './sqlUtils';
 
 export class SqlModel {
   db: SQLiteDatabase;

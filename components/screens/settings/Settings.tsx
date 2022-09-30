@@ -49,11 +49,6 @@ const Settings = ({ navigation }: RouterProps): JSX.Element => {
       />
       <SettingsBtn
         icon="options-outline"
-        text={'log books in lists'}
-        action={() => sql.getBooksInList('current')}
-      />
-      <SettingsBtn
-        icon="options-outline"
         text={'clear data from list table'}
         action={() => sql.clearListTable()}
       />

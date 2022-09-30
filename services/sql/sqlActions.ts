@@ -1,6 +1,4 @@
 import { saveBookTypes } from './sqlTypes';
-import { openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
-import { handleError } from './sqlUtils';
 import { SqlModel } from './sqlModel';
 
 export default class SqlActions {
