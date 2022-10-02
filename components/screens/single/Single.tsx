@@ -6,8 +6,10 @@ import {
   Animated,
   Pressable,
 } from 'react-native';
-import { useAppSelector } from '../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
+import sql from '../../../services/sql/sql';
+import { BookType } from '../../../types/bookType';
 import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
@@ -16,6 +18,7 @@ import Tag from '../../common/Tag';
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
+  const [state, dispatch] = useGlobalState();
 
   const testData = {
     bookId: '0394171349',
@@ -24,6 +27,18 @@ const Single = ({ route }: any): JSX.Element => {
     note: 'My note for the book.',
     firstSentence:
       'OBSERVATION of spontaneous social activity, most productively carried out in certain kinds of psychotherapy groups, reveals that from time to time people show noticeable changes in posture, viewpoint, voice, vocabulary, and other aspects of behavior.',
+  };
+
+  const handleMainButton = () => {
+    sql.saveBookToList({
+      list: 'current',
+      bookId: route.params.id,
+      title: route.params.title,
+      author_name: route.params.author_name,
+      number_of_pages_median: route.params.number_of_pages_median,
+      isbn: route.params.isbn[0],
+    });
+    dispatch(1);
   };
 
   return (
@@ -67,9 +82,7 @@ const Single = ({ route }: any): JSX.Element => {
       </View>
       <View style={styles.buttonContainer}>
         <Pressable
-          onPress={() => {
-            console.log('btn');
-          }}
+          onPress={handleMainButton}
           style={{
             backgroundColor: colors.textBtn,
             ...styles.mainButton,
