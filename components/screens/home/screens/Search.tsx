@@ -40,9 +40,14 @@ const Search = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (text.length < 2) return setSearchResults([]);
-
     setLoading(true);
+
+    if (text.length < 2) {
+      setSearchResults([]);
+      setLoading(false);
+      return;
+    }
+
     const delaySearchTimeout = setTimeout(() => {
       onSearch();
     }, 700);
