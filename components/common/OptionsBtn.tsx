@@ -49,7 +49,10 @@ const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
                     },
                   ]}
                   key={index}
-                  onPress={modalActions[index]}>
+                  onPress={() => {
+                    modalActions[index]();
+                    setShowModal(false);
+                  }}>
                   <P>{item}</P>
                 </Pressable>
               ))}
@@ -71,28 +74,22 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.25)',
   },
   modalView: {
     borderRadius: 10,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     paddingVertical: 25,
     paddingHorizontal: 10,
     paddingBottom: 20,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    width: '75%',
+    width: '100%',
   },
   btn: {
-    padding: 5,
+    paddingVertical: 10,
     width: '100%',
     display: 'flex',
     justifyContent: 'center',

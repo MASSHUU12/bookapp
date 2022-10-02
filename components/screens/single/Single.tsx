@@ -85,19 +85,8 @@ const Single = ({ route }: any): JSX.Element => {
         <P color={colors.placeholder} size={16}>
           {t.single1}
         </P>
-        <View
-          style={{
-            marginTop: 0,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            ...styles.tags,
-          }}>
-          <View style={{ marginTop: 0, ...styles.tags }}>
-            <Rating rating={3} />
-          </View>
-          <P size={16} color={colors.textBtn}>
-            {t.single2}
-          </P>
+        <View style={{ marginTop: 0, ...styles.tags }}>
+          <Rating rating={3} />
         </View>
         {/* Mark as button */}
         <OptionsBtn
