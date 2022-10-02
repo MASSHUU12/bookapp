@@ -6,8 +6,8 @@ export const navigationRef = createNavigationContainerRef();
 /**
  * A navigational function that does not throw errors unreasonably.
  */
-export const navigate = (target: string): void => {
+export const navigate = (target: string, params?: Object | undefined): void => {
   if (navigationRef.isReady()) {
-    navigationRef.dispatch(CommonActions.navigate(target));
+    navigationRef.dispatch(CommonActions.navigate(target, params));
   }
 };

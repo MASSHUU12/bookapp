@@ -17,7 +17,12 @@ const ListsNavigator = (): JSX.Element => {
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Navigator
         initialRouteName="Lists"
-        screenOptions={{ headerShown: false }}>
+        screenOptions={{
+          headerShown: false,
+          headerTitleStyle: {
+            fontFamily: 'AndadaPro-Medium',
+          },
+        }}>
         <Tab.Screen name="Lists" component={Lists} />
       </Stack.Navigator>
     </SafeAreaView>

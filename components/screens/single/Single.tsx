@@ -6,7 +6,7 @@ import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
 
-const Single = (): JSX.Element => {
+const Single = ({ route }): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
 
@@ -66,11 +66,11 @@ const Single = (): JSX.Element => {
           ...styles.detailsContainer,
         }}>
         {/* Title */}
-        <P size={18}>{testData.title}</P>
+        <P size={18}>{route.params.title}</P>
         {/* Author & ID */}
         <View style={styles.author}>
           <P color={colors.text2} size={12}>
-            {testData.author}
+            {route.params.author_name}
           </P>
           <P color={colors.text2} size={12}>
             {testData.bookId}

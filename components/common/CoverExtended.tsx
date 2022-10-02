@@ -36,7 +36,14 @@ const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
   return (
     <Pressable
       style={{ backgroundColor: colors.white, ...styles.container }}
-      onPress={() => onPress()}>
+      onPress={() =>
+        // Here later only the ID of the book should be transmitted.
+        navigate('Single', {
+          title: item.item.title,
+          author_name: item.item.author_name,
+          number_of_pages_median: item.item.number_of_pages_median,
+        })
+      }>
       <Image
         style={styles.image}
         source={

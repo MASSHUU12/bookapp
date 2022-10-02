@@ -18,7 +18,13 @@ const SettingsNavigator = (): JSX.Element => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator initialRouteName="Settings">
+      <Stack.Navigator
+        initialRouteName="Settings"
+        screenOptions={{
+          headerTitleStyle: {
+            fontFamily: 'AndadaPro-Medium',
+          },
+        }}>
         <Tab.Screen
           name="Settings"
           component={Settings}

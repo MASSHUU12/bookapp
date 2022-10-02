@@ -21,7 +21,12 @@ const HomeNavigator = (): JSX.Element => {
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ headerShown: false }}>
+        screenOptions={{
+          headerShown: false,
+          headerTitleStyle: {
+            fontFamily: 'AndadaPro-Medium',
+          },
+        }}>
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen
@@ -31,10 +36,6 @@ const HomeNavigator = (): JSX.Element => {
             headerShown: true,
             headerStyle: {
               backgroundColor: colors.accent,
-            },
-            headerTitleStyle: {
-              fontFamily: 'AndadaPro-Medium',
-              color: colors.text,
             },
           }}
         />

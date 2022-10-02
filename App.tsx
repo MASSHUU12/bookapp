@@ -18,11 +18,17 @@ import HomeNavigator from './components/navigators/HomeNavigator';
 import { navigationRef } from './helpers/Navigate';
 
 // Create new context. This error is fine, at least I hope so.
+// There is nothing I can put as default here.
 export const ThemeNavigationContext = React.createContext();
 
 export const globalStateContext = React.createContext(1);
 export const dispatchStateContext = React.createContext<any>(undefined);
 
+/**
+ * Main component.
+ *
+ * @return {*}  {JSX.Element}
+ */
 const App = (): JSX.Element => {
   // Updated by context when settings change.
   const [isThemeNavigationDark, setIsThemeNavigationDark] = useState(false);
@@ -41,17 +47,19 @@ const App = (): JSX.Element => {
   }, [isThemeNavigationDark]);
 
   return (
+    // Store provider.
     <Provider store={store}>
       <StatusBar
-        backgroundColor={
-          store.getState().themeNavigation.value.colors.background
-        }
+        backgroundColor={theme.colors.background}
         barStyle={isThemeNavigationDark ? 'light-content' : 'dark-content'}
       />
+      {/* Save area provider. */}
       <SafeAreaProvider>
+        {/* Context. */}
         <globalStateContext.Provider value={state}>
           <dispatchStateContext.Provider value={dispatch}>
             <ThemeNavigationContext.Provider value={themeData}>
+              {/* Navigation container. */}
               <NavigationContainer theme={theme} ref={navigationRef}>
                 <Tab.Navigator
                   screenOptions={({ route }) => ({
