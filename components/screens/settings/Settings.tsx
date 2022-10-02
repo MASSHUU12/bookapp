@@ -37,15 +37,6 @@ const Settings = (): JSX.Element => {
         text={'Dev'}
         action={() => navigate('Dev')}
       />
-      <SettingsBtn
-        icon="options-outline"
-        text={'console.log books in current list'}
-        action={() =>
-          sql.getBooksInList('current', res => {
-            console.log(res);
-          })
-        }
-      />
     </View>
   );
 };
