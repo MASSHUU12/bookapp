@@ -38,10 +38,14 @@ const App = (): JSX.Element => {
 
   // Set settings when app loads.
   useEffect(() => {
-    getItem('language').then(item => t.setLanguage(item as string));
+    getItem('language').then(item => {
+      item === null ? t.setLanguage('en') : t.setLanguage(item as string);
+    });
     getItem('theme').then(item => {
-      store.dispatch(isDark(item === 'light' ? false : true));
-      store.dispatch(isNavigationDark(item === 'light' ? false : true));
+      let i = item === null ? 'light' : item;
+
+      store.dispatch(isDark(i === 'light' ? false : true));
+      store.dispatch(isNavigationDark(i === 'light' ? false : true));
     });
   }, []);
 
