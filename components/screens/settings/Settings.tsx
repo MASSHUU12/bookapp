@@ -42,6 +42,15 @@ const Settings = (): JSX.Element => {
         text={'drop list table'}
         action={() => sql.dropAlltables()}
       />
+      <SettingsBtn
+        icon="options-outline"
+        text={'console.log books in current list'}
+        action={() =>
+          sql.getBooksInList('current', res => {
+            console.log(res);
+          })
+        }
+      />
     </View>
   );
 };

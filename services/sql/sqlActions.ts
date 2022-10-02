@@ -10,14 +10,15 @@ export default class SqlActions {
 
   saveBookToList(params: saveBookTypes) {
     this.db.execute(
-      `INSERT INTO lists(list, book_id, title, author_name, number_of_pages_median, isbn) VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO lists(list, book_id, title, author_name, number_of_pages_median, isbn, cover_i) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         params.list,
         params.bookId,
         params.title,
         params.author_name,
-        params.number_of_pages_median,
+        parseInt(params.number_of_pages_median),
         params.isbn,
+        parseInt(params.cover_i),
       ],
       () => {
         console.log('success');
@@ -40,6 +41,23 @@ export default class SqlActions {
         }
         console.log(results);
         callback(results);
+      },
+    );
+  }
+
+  getSingleBookDetailedInfo(id: string, callback: Function) {
+    this.db.execute(
+      `SELECT * FROM lists where book_id = ?`,
+      [id],
+      (tx, res) => {
+        const len = res.rows.length;
+
+        if (len === 0) return null;
+
+        const resultWithAppendedId = { ...res.rows.item(0), id: 0 };
+
+        console.log(resultWithAppendedId);
+        callback(resultWithAppendedId);
       },
     );
   }

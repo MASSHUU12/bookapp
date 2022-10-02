@@ -62,6 +62,7 @@ const Search = (): JSX.Element => {
             author_name: item.item.author_name,
             number_of_pages_median: item.item.number_of_pages_median,
             isbn: item.item.isbn[0],
+            cover_i: item.item.cover_i,
           });
           dispatch(1);
         },
@@ -78,6 +79,7 @@ const Search = (): JSX.Element => {
             author_name: item.item.author_name,
             number_of_pages_median: item.item.number_of_pages_median,
             isbn: item.item.isbn[0],
+            cover_i: item.item.cover_i,
           });
           dispatch(1);
         },

@@ -9,7 +9,7 @@ export class SqlModel {
     this.db = openDatabase({ name: this.dbName });
   }
 
-  execute(statement: string, args?: Array<string>, callback?: Function) {
+  execute(statement: string, args?: Array<any>, callback?: Function) {
     console.log(statement);
     this.db.transaction(tx => {
       tx.executeSql(
@@ -38,17 +38,19 @@ export class SqlModel {
       `CREATE TABLE IF NOT EXISTS lists (
         id INTEGER PRIMARY KEY AUTOINCREMENT, 
         list TEXT, 
+        cover_i INTERGER, 
         book_id TEXT, 
         title TEXT, 
         author_name TEXT, 
-        number_of_pages_median TEXT, 
+        number_of_pages_median INTERGER, 
         isbn TEXT
       );`,
     );
 
     this.execute(
       `CREATE TABLE IF NOT EXISTS list_details (
-        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        book_id TEXT,
         lists_id INTEGER, 
         user_notes TEXT,
         user_rating TEXT,

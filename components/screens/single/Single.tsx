@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   View,
   StyleSheet,
@@ -32,14 +32,21 @@ const Single = ({ route }: any): JSX.Element => {
   const handleMainButton = () => {
     sql.saveBookToList({
       list: 'current',
-      bookId: route.params.id,
+      bookId: route.params.key,
       title: route.params.title,
       author_name: route.params.author_name,
       number_of_pages_median: route.params.number_of_pages_median,
       isbn: route.params.isbn[0],
+      cover_i: route.params.cover_i,
     });
     dispatch(1);
   };
+
+  useEffect(() => {
+    console.log(
+      `https://covers.openlibrary.org/b/id/${route.params.cover_i}-M.jpg`,
+    );
+  }, []);
 
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
@@ -76,8 +83,16 @@ const Single = ({ route }: any): JSX.Element => {
                 }),
               },
             ],
+            minWidth: 200,
+            height: 300,
           }}
-          source={require('../../../assets/images/bookCoverTest.jpg')}
+          source={
+            route.params.cover_i === undefined
+              ? require('../../../assets/images/bookCoverTest.jpg')
+              : {
+                  uri: `https://covers.openlibrary.org/b/id/${route.params.cover_i}-M.jpg`,
+                }
+          }
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -165,6 +180,7 @@ const styles = StyleSheet.create({
   },
   coverContainer: {
     flex: 1,
+    minHeight: 280,
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 25,

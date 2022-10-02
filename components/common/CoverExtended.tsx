@@ -17,6 +17,7 @@ interface Props {
     author_name: string;
     number_of_pages_median: string;
     isbn: Array<string>;
+    cover_i: string;
   }>;
   onPress: Function;
 }
@@ -46,7 +47,7 @@ const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
           item.item.isbn === undefined
             ? require('../../assets/images/bookCoverTest.jpg')
             : {
-                uri: `https://covers.openlibrary.org/b/isbn/${formatedIsbnCode}-M.jpg`,
+                uri: `https://covers.openlibrary.org/b/id/${item.item.cover_i}-M.jpg`,
               }
         }
         resizeMode="contain"
