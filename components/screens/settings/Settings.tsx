@@ -33,14 +33,9 @@ const Settings = (): JSX.Element => {
         action={() => navigate('Options')}
       />
       <SettingsBtn
-        icon="options-outline"
-        text={'clear data from list table'}
-        action={() => sql.clearListTable()}
-      />
-      <SettingsBtn
-        icon="options-outline"
-        text={'drop list table'}
-        action={() => sql.dropAlltables()}
+        icon="flask-outline"
+        text={'Dev'}
+        action={() => navigate('Dev')}
       />
     </View>
   );

@@ -1,8 +1,7 @@
-import React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
-import { ThemeNavigationContext } from '../../../../App';
 import { isNavigationDark } from '../../../../features/navigationTheme/navigationThemeSlice';
 import { isDark } from '../../../../features/theme/themeSlice';
+import { setItem } from '../../../../helpers/Storage';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 
@@ -14,32 +13,38 @@ import { t } from '../../../../i18n/strings';
 const Options = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const colors = useAppSelector(state => state.theme.colors);
-  const { setIsThemeNavigationDark } = React.useContext(ThemeNavigationContext);
 
   return (
     <View style={{ backgroundColor: colors.background, ...styles.container }}>
       {t.getAvailableLanguages().map(item => (
         <Button
           title={item.toUpperCase()}
-          onPress={() => {
+          onPress={async () => {
             t.setLanguage(item);
+
+            // Update language in storage.
+            await setItem('language', item);
           }}
         />
       ))}
       <Button
         title="Light theme"
-        onPress={() => {
+        onPress={async () => {
           dispatch(isDark(false));
           dispatch(isNavigationDark(false));
-          setIsThemeNavigationDark(false);
+
+          // Update theme in storage.
+          await setItem('theme', 'light');
         }}
       />
       <Button
         title="Dark theme"
-        onPress={() => {
+        onPress={async () => {
           dispatch(isDark(true));
           dispatch(isNavigationDark(true));
-          setIsThemeNavigationDark(true);
+
+          // Update theme in storage.
+          await setItem('theme', 'dark');
         }}
       />
     </View>
