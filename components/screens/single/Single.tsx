@@ -9,7 +9,6 @@ import {
 import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
-import { BookType } from '../../../types/bookType';
 import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
@@ -41,12 +40,6 @@ const Single = ({ route }: any): JSX.Element => {
     });
     dispatch(1);
   };
-
-  useEffect(() => {
-    console.log(
-      `https://covers.openlibrary.org/b/id/${route.params.cover_i}-M.jpg`,
-    );
-  }, []);
 
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
