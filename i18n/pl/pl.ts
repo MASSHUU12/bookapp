@@ -20,6 +20,12 @@ export const pl = {
 
     currentReads1: 'Aktualnie Czytane',
 
+    single1: 'Twoja ocena',
+    single2: 'Edytuj ocenę',
+    single3: 'Prywatna notka',
+    single4: 'Edytuj notkę',
+    single5: 'Pierwsze zdanie',
+
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
     settings3: 'Options',

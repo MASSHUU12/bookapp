@@ -2,8 +2,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Pressable } from 'react-native';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
-import { useNavigation } from '@react-navigation/native';
 import { useAppSelector } from '../../../../hooks';
+import { navigate } from '../../../../helpers/Navigate';
 
 /**
  * A search item that takes user to the actual search screen.
@@ -11,14 +11,13 @@ import { useAppSelector } from '../../../../hooks';
  * @return {*}  {JSX.Element}
  */
 const SearchBar = (): JSX.Element => {
-  const navigation = useNavigation();
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
     <Pressable
       style={{ backgroundColor: colors.surface, ...styles.container }}
       // ? It works, but throws error for some reason.
-      onPress={() => navigation.navigate('Search')}>
+      onPress={() => navigate('Search')}>
       <Ionicons
         name="search"
         size={24}

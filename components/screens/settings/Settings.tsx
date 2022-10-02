@@ -2,7 +2,6 @@ import { StyleSheet, View } from 'react-native';
 import { navigate } from '../../../helpers/Navigate';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
-import { RouterProps } from '../../../interfaces/Navigation';
 import sql from '../../../services/sql/sql';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';

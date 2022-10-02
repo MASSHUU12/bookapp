@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
-import api from '../../../../services/api/api';
 import sql from '../../../../services/sql/sql';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';

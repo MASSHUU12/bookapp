@@ -21,6 +21,12 @@ export const en = {
 
     currentReads1: 'Your Current Reads',
 
+    single1: 'Your rating',
+    single2: 'Edit rating',
+    single3: 'Personal note',
+    single4: 'Edit note',
+    single5: 'First sentence',
+
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
     settings3: 'Options',

@@ -17,6 +17,8 @@ export const colors = (isDark = false) => {
       text2: isDark ? '#fff' : '#5B5B5B',
       /** Text color for content. */
       text3: isDark ? '#fff' : '#979595',
+      /** Text color for content. */
+      text4: isDark ? '#fff' : '#28373E',
       /** Color for disabled elements. */
       disabled: isDark ? '#fff' : '#000',
       /** Color for placeholder text. */
@@ -29,6 +31,8 @@ export const colors = (isDark = false) => {
       notification: isDark ? '#000' : '#fff',
       white: isDark ? '#fff' : '#fff',
       link: isDark ? '#fff' : '#597CF3',
+      textBtn: isDark ? '#fff' : '#2487AF',
+      optionsBtn: isDark ? '#fff' : '#E5EFF3',
     },
   };
   return c;

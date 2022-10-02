@@ -7,6 +7,7 @@ export interface ThemeState {
     text: string;
     text2: string;
     text3: string;
+    text4: string;
     disabled: string;
     placeholder: string;
     backdrop: string;
@@ -14,6 +15,8 @@ export interface ThemeState {
     notification: string;
     white: string;
     link: string;
+    textBtn: string;
+    optionsBtn: string;
   };
 }
 

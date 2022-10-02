@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Modal, View } from 'react-native';
+import { useAppSelector } from '../../hooks';
 import P from './P';
 
 interface Props {
@@ -9,16 +10,21 @@ interface Props {
 }
 
 const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
+  const colors = useAppSelector(state => state.theme.colors);
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <Pressable
         style={({ pressed }) => [
-          { opacity: pressed ? 0.5 : 1, ...styles.container },
+          {
+            opacity: pressed ? 0.5 : 1,
+            backgroundColor: colors.optionsBtn,
+            ...styles.container,
+          },
         ]}
         onPress={() => setShowModal(true)}>
-        <P size={16} color="#28373E">
+        <P size={16} color={colors.text4}>
           {text}
         </P>
       </Pressable>
@@ -31,12 +37,14 @@ const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
           <Pressable
             style={styles.centeredView}
             onPress={() => setShowModal(false)}>
-            <View style={styles.modalView}>
+            <View
+              style={{ backgroundColor: colors.white, ...styles.modalView }}>
               {modalTexts.map((item, index) => (
                 <Pressable
                   style={({ pressed }) => [
                     {
                       opacity: pressed ? 0.5 : 1,
+                      backgroundColor: colors.optionsBtn,
                       ...styles.btn,
                     },
                   ]}
@@ -55,7 +63,6 @@ const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#E5EFF3',
     borderRadius: 10,
     padding: 5,
     flex: 1,
@@ -69,7 +76,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.25)',
   },
   modalView: {
-    backgroundColor: '#fff',
     borderRadius: 10,
     paddingVertical: 25,
     paddingHorizontal: 10,
@@ -86,7 +92,6 @@ const styles = StyleSheet.create({
     width: '75%',
   },
   btn: {
-    backgroundColor: '#E5EFF3',
     padding: 5,
     width: '100%',
     display: 'flex',

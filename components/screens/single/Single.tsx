@@ -1,18 +1,17 @@
 import { useRef } from 'react';
-import { View, StyleSheet, ScrollView, Image, Animated } from 'react-native';
+import { View, StyleSheet, ScrollView, Animated } from 'react-native';
 import { useAppSelector } from '../../../hooks';
+import { t } from '../../../i18n/strings';
 import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
 
-const Single = ({ route }): JSX.Element => {
+const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
 
   const testData = {
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    author: 'Dr. Aziz Gazipura',
     bookId: '0394171349',
     tags: ['Game theory', 'Interpersonal relations', 'Social interaction'],
     rating: 4,
@@ -84,7 +83,7 @@ const Single = ({ route }): JSX.Element => {
         </View>
         {/* Rating */}
         <P color={colors.placeholder} size={16}>
-          Your rating
+          {t.single1}
         </P>
         <View
           style={{
@@ -96,8 +95,8 @@ const Single = ({ route }): JSX.Element => {
           <View style={{ marginTop: 0, ...styles.tags }}>
             <Rating rating={3} />
           </View>
-          <P size={16} color="#2487AF">
-            Edit rating
+          <P size={16} color={colors.textBtn}>
+            {t.single2}
           </P>
         </View>
         {/* Mark as button */}
@@ -118,18 +117,18 @@ const Single = ({ route }): JSX.Element => {
             justifyContent: 'space-between',
             ...styles.tags,
           }}>
-          <P size={16}>Personal note</P>
-          <P size={16} color="#2487AF">
-            Edit note
+          <P size={16}>{t.single3}</P>
+          <P size={16} color={colors.textBtn}>
+            {t.single4}
           </P>
         </View>
-        <P size={14} color="#9F9F9F">
+        <P size={14} color={colors.placeholder}>
           {testData.note}
         </P>
         {/* Description */}
         <View style={styles.desc}>
-          <P size={16}>First sentence</P>
-          <P size={14} color="#9F9F9F">
+          <P size={16}>{t.single5}</P>
+          <P size={14} color={colors.placeholder}>
             {testData.firstSentence}
           </P>
         </View>
