@@ -1,5 +1,11 @@
 import { useRef } from 'react';
-import { View, StyleSheet, ScrollView, Animated } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Animated,
+  Pressable,
+} from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import OptionsBtn from '../../common/OptionsBtn';
@@ -59,6 +65,20 @@ const Single = ({ route }: any): JSX.Element => {
           source={require('../../../assets/images/bookCoverTest.jpg')}
         />
       </View>
+      <View style={styles.buttonContainer}>
+        <Pressable
+          onPress={() => {
+            console.log('btn');
+          }}
+          style={{
+            backgroundColor: colors.textBtn,
+            ...styles.mainButton,
+          }}>
+          <P color="white" size={20}>
+            Add to read later
+          </P>
+        </Pressable>
+      </View>
       <View
         style={{
           backgroundColor: colors.background,
@@ -71,7 +91,7 @@ const Single = ({ route }: any): JSX.Element => {
           <P color={colors.text2} size={12}>
             {route.params.author_name}
           </P>
-          <P color={colors.text2} size={12}>
+          <P color={colors.text3} size={12}>
             {testData.bookId}
           </P>
         </View>
@@ -135,6 +155,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 25,
+    paddingBottom: 15,
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    transform: [{ translateY: -20 }],
+  },
+  mainButton: {
+    width: '90%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
   },
   detailsContainer: {
     flex: 1,
