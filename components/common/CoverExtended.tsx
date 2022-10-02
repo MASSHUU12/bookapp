@@ -19,7 +19,6 @@ interface Props {
     isbn: Array<string>;
     cover_i: string;
   }>;
-  onPress: Function;
 }
 
 /**
@@ -28,7 +27,7 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
-const CoverExtended = ({ item, onPress }: Props): JSX.Element => {
+const CoverExtended = ({ item }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const isbnCodes = item.item.isbn;
