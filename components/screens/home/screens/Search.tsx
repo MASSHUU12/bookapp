@@ -31,21 +31,18 @@ const Search = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const onSearch = () => {
-    if (text.length < 2) return setSearchResults([]);
-
-    setLoading(true);
-
     console.log('sent api request');
 
     api.search(text).then(res => {
       setSearchResults(res.data.docs);
       setLoading(false);
     });
-    setLoading(false);
-    setSearchResults([]);
   };
 
   useEffect(() => {
+    if (text.length < 2) return setSearchResults([]);
+
+    setLoading(true);
     const delaySearchTimeout = setTimeout(() => {
       onSearch();
     }, 700);
