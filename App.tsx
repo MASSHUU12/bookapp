@@ -40,7 +40,6 @@ const App = (): JSX.Element => {
   useEffect(() => {
     getItem('language').then(item => t.setLanguage(item as string));
     getItem('theme').then(item => {
-      console.log(item);
       store.dispatch(isDark(item === 'light' ? false : true));
       store.dispatch(isNavigationDark(item === 'light' ? false : true));
     });

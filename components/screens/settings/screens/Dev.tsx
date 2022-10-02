@@ -19,7 +19,7 @@ const Dev = (): JSX.Element => {
         action={() => sql.dropAlltables()}
       />
       <SettingsBtn
-        icon="options-outline"
+        icon="hammer-outline"
         text={'console.log books in current list'}
         action={() =>
           sql.getBooksInList('current', res => {
