@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { t } from '../../i18n/strings';
+import Dev from '../screens/settings/screens/Dev';
 import NotificationPreferences from '../screens/settings/screens/NotificationPreferences';
 import Options from '../screens/settings/screens/Options';
 import ReadingGoals from '../screens/settings/screens/ReadingGoals';
@@ -45,6 +46,7 @@ const SettingsNavigator = (): JSX.Element => {
           component={Options}
           options={{ title: t.settings3 }}
         />
+        <Tab.Screen name="Dev" component={Dev} options={{ title: 'Dev' }} />
       </Stack.Navigator>
     </SafeAreaView>
   );
