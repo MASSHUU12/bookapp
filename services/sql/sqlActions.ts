@@ -1,5 +1,6 @@
 import { saveBookTypes } from './sqlTypes';
 import { SqlModel } from './sqlModel';
+import { ListType } from '../../types/type';
 
 export default class SqlActions {
   db: SqlModel;
@@ -67,6 +68,16 @@ export default class SqlActions {
 
         console.log(resultWithAppendedId);
         callback(resultWithAppendedId);
+      },
+    );
+  }
+
+  changeBookListByKey(key: string, list: ListType) {
+    this.db.execute(
+      `UPDATE lists SET list = ? WHERE key = ?`,
+      [list, key],
+      () => {
+        console.log('success');
       },
     );
   }

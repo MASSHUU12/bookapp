@@ -1,5 +1,5 @@
 export type BookType = {
-  bookId: string;
+  key: string;
   title: string;
   author_name: string;
   number_of_pages_median: string;
