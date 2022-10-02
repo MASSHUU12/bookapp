@@ -28,7 +28,7 @@ const ReadLater = (): JSX.Element => {
         style={styles.list}
         horizontal
         ItemSeparatorComponent={({ highlighted }) => (
-          <View style={{ marginLeft: 0 }} />
+          <View style={{ marginLeft: 10 }} />
         )}
         data={data}
         renderItem={item => <Cover item={item} />}

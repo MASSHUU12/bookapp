@@ -30,14 +30,7 @@ const CurrentReads = (): JSX.Element => {
           <View style={{ marginTop: 15 }} />
         )}
         data={data}
-        renderItem={item => (
-          <CoverExtended
-            item={item}
-            onPress={() => {
-              console.log('pressed');
-            }}
-          />
-        )}
+        renderItem={item => <CoverExtended item={item} />}
       />
     </View>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -18,6 +18,7 @@ const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
   const [state, dispatch] = useGlobalState();
+  const [sqlBookData, setSqlBookData] = useState({});
 
   const testData = {
     bookId: '0394171349',
@@ -40,6 +41,28 @@ const Single = ({ route }: any): JSX.Element => {
     });
     dispatch(1);
   };
+
+  const handleReadLater = () => {
+    sql.saveBookToList({
+      list: 'readLater',
+      bookId: route.params.key,
+      title: route.params.title,
+      author_name: route.params.author_name,
+      number_of_pages_median: route.params.number_of_pages_median,
+      isbn: route.params.isbn[0],
+      cover_i: route.params.cover_i,
+    });
+    dispatch(1);
+  };
+
+  useEffect(() => {
+    sql.getSingleBookDetailedInfo(route.params.key, bookFromSql => {
+      if (bookFromSql === null) return; // book not available locally
+
+      console.log('book found in sql');
+      setSqlBookData(bookFromSql);
+    });
+  }, []);
 
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
@@ -96,7 +119,7 @@ const Single = ({ route }: any): JSX.Element => {
             ...styles.mainButton,
           }}>
           <P color="white" size={20}>
-            Add to read later
+            Add to current reads
           </P>
         </Pressable>
       </View>
@@ -132,12 +155,15 @@ const Single = ({ route }: any): JSX.Element => {
         {/* Mark as button */}
         <OptionsBtn
           text="Mark as..."
-          modalTexts={['Reread', 'Read Once', 'Read Later', 'Not Read']}
+          modalTexts={[
+            'Add to read later',
+            'Add to already read',
+            'Mark as favorite',
+          ]}
           modalActions={[
-            () => console.log('Reread'),
-            () => console.log('Read Once'),
-            () => console.log('Read Later'),
-            () => console.log('Not Read'),
+            () => handleReadLater(),
+            () => console.log('Add to already read'),
+            () => console.log('Mark as favorite'),
           ]}
         />
         {/* Personal note */}

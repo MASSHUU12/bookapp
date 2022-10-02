@@ -4,4 +4,6 @@ export type BookType = {
   author_name: string;
   number_of_pages_median: string;
   isbn: string | Array<string>;
+  cover_i: number;
+  list?: 'current' | 'readLater' | 'alreadyRead';
 };
