@@ -7,7 +7,7 @@ export class ApiRoutes {
 
   constructor(options: OptionsType) {
     this.URL = options.URL;
-    this.limit = 4;
+    this.limit = 3;
   }
 
   search(query: string) {
