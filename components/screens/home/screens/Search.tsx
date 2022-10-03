@@ -1,21 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
   TextInput,
   FlatList,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import api from '../../../../services/api/api';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
-import { debounce, debounce as _ } from 'underscore';
 import NavLink from '../../../common/NavLink';
-import sql from '../../../../services/sql/sql';
 
 /**
  * Search screen.
@@ -26,7 +23,6 @@ const Search = (): JSX.Element => {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<any>([]);
-  const [state, dispatch] = useGlobalState();
 
   const colors = useAppSelector(state => state.theme.colors);
 
@@ -100,7 +96,7 @@ const Search = (): JSX.Element => {
             <View style={styles.beforeSearching}>
               <P color={colors.placeholder}>{t.search4}</P>
               <P color={colors.placeholder}>{t.search5}</P>
-              <NavLink text={t.search3} target="Home" />
+              <NavLink text={t.search3} target="Add" />
             </View>
           )}
         </>

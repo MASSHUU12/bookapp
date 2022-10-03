@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAppSelector } from '../../hooks';
 import { t } from '../../i18n/strings';
 import Dev from '../screens/settings/screens/Dev';
 import NotificationPreferences from '../screens/settings/screens/NotificationPreferences';
@@ -17,6 +18,8 @@ const SettingsNavigator = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 
+  const colors = useAppSelector(state => state.theme.colors);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Navigator
@@ -25,6 +28,10 @@ const SettingsNavigator = (): JSX.Element => {
           headerTitleStyle: {
             fontFamily: 'AndadaPro-Medium',
           },
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerShadowVisible: false,
         }}>
         <Tab.Screen
           name="Settings"
