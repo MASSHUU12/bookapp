@@ -27,6 +27,16 @@ export const en = {
     single4: 'Edit note',
     single5: 'First sentence',
 
+    add1: "Your're adding",
+    add2: 'What is the title of your book?',
+    add3: 'Who is the author of your book?',
+    add4: 'How many pages does your book have?',
+    add5: 'What page are you currently on?',
+    add6: "Skip this if you haven't started yet",
+    add7: 'Link to your book',
+    add8: 'Optional',
+    add9: 'Add',
+
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
     settings3: 'Options',

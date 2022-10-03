@@ -7,6 +7,7 @@ import {
   addTitle,
 } from '../../../../features/add/addSlice';
 import { useAppSelector } from '../../../../hooks';
+import { t } from '../../../../i18n/strings';
 import Btn from '../../../common/Btn';
 import Input from '../../../common/Input';
 import P from '../../../common/P';
@@ -28,7 +29,7 @@ const Add = (): JSX.Element => {
     <ScrollView
       style={{ backgroundColor: colors.background, ...styles.container }}>
       <P color={colors.placeholder} size={16}>
-        You're adding
+        {t.add1}
       </P>
       {/* Preview */}
       <View style={{ backgroundColor: colors.white, ...styles.preview }}>
@@ -55,21 +56,21 @@ const Add = (): JSX.Element => {
       {/* Title */}
       <View style={styles.section}>
         <P color={colors.text2} size={14}>
-          What is the title of your book?
+          {t.add2}
         </P>
         <Input value={titleValue} onChange={addTitle} />
       </View>
       {/* Author */}
       <View style={styles.section}>
         <P color={colors.text2} size={14}>
-          Who is the author of your book?
+          {t.add3}
         </P>
         <Input value={authorValue} onChange={addAuthor} />
       </View>
       {/* Number of pages */}
       <View style={styles.section}>
         <P color={colors.text2} size={14}>
-          How many pages does your book have?
+          {t.add4}
         </P>
         <Input
           value={numberOfPagesValue}
@@ -80,23 +81,23 @@ const Add = (): JSX.Element => {
       {/* Current page */}
       <View style={styles.section}>
         <P color={colors.text2} size={14}>
-          What page are you currently on?
+          {t.add5}
         </P>
         <Input
           value={currentPageValue}
           onChange={addCurrentPage}
           keyboardType="numeric"
-          placeholder="Skip this if you haven't started yet"
+          placeholder={t.add6}
         />
       </View>
       {/* Link */}
       <View style={{ paddingBottom: 15, ...styles.section }}>
         <P color={colors.text2} size={14}>
-          Link to your book
+          {t.add7}
         </P>
-        <Input value={linkValue} onChange={addLink} placeholder="Optional" />
+        <Input value={linkValue} onChange={addLink} placeholder={t.add8} />
       </View>
-      <Btn text="Add" action={() => console.log('Add')} />
+      <Btn text={t.add9} action={() => console.log('Add')} />
     </ScrollView>
   );
 };

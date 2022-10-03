@@ -26,6 +26,16 @@ export const pl = {
     single4: 'Edytuj notkę',
     single5: 'Pierwsze zdanie',
 
+    add1: 'Dodajesz',
+    add2: 'Jaki tytuł ma twoja książka?',
+    add3: 'Kto jest autorem twojej książki?',
+    add4: 'Jak wiele stron ma twoja książka?',
+    add5: 'Na jakiej stronie aktualnie jesteś?',
+    add6: 'Pomiń jeśli jeszcze jej nie zacząłeś',
+    add7: 'Link do twojej książki',
+    add8: 'Opcjonalne',
+    add9: 'Dodaj',
+
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
     settings3: 'Options',
