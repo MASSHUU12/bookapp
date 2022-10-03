@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,6 +9,8 @@ import {
 import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
+import { BookType } from '../../../types/bookType';
+import { ListType } from '../../../types/type';
 import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
@@ -18,6 +20,7 @@ const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
   const [state, dispatch] = useGlobalState();
+  const [sqlBookData, setSqlBookData] = useState<null | BookType>(null);
 
   const testData = {
     bookId: '0394171349',
@@ -30,6 +33,19 @@ const Single = ({ route }: any): JSX.Element => {
 
   const handleMainButton = () => {
     sql.saveBookToList({
+      list: 'readLater',
+      bookId: route.params.key,
+      title: route.params.title,
+      author_name: route.params.author_name,
+      number_of_pages_median: route.params.number_of_pages_median,
+      isbn: route.params.isbn[0],
+      cover_i: route.params.cover_i,
+    });
+    dispatch(1);
+  };
+
+  const handleCurrent = () => {
+    sql.saveBookToList({
       list: 'current',
       bookId: route.params.key,
       title: route.params.title,
@@ -40,6 +56,15 @@ const Single = ({ route }: any): JSX.Element => {
     });
     dispatch(1);
   };
+
+  useEffect(() => {
+    sql.getSingleBookDetailedInfo(route.params.key, bookFromSql => {
+      if (bookFromSql === null) return; // book not available locally
+
+      console.log('Book found in sql:', bookFromSql.list);
+      setSqlBookData(bookFromSql);
+    });
+  }, []);
 
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
@@ -88,18 +113,34 @@ const Single = ({ route }: any): JSX.Element => {
           }
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <Pressable
-          onPress={handleMainButton}
-          style={{
-            backgroundColor: colors.textBtn,
-            ...styles.mainButton,
-          }}>
-          <P color="white" size={20}>
-            Add to read later
-          </P>
-        </Pressable>
-      </View>
+      {!sqlBookData && (
+        <View style={styles.buttonContainer}>
+          <Pressable
+            onPress={handleMainButton}
+            style={{
+              backgroundColor: colors.textBtn,
+              ...styles.mainButton,
+            }}>
+            <P color="white" size={20}>
+              Add to read later
+            </P>
+          </Pressable>
+        </View>
+      )}
+      {sqlBookData && (
+        <View style={styles.buttonContainer}>
+          <Pressable
+            onPress={() => {}}
+            style={{
+              backgroundColor: colors.text2,
+              ...styles.mainButton,
+            }}>
+            <P color="white" size={20}>
+              This book is in: {sqlBookData.list}
+            </P>
+          </Pressable>
+        </View>
+      )}
       <View
         style={{
           backgroundColor: colors.background,
@@ -123,21 +164,29 @@ const Single = ({ route }: any): JSX.Element => {
           ))}
         </View>
         {/* Rating */}
-        <P color={colors.placeholder} size={16}>
-          {t.single1}
-        </P>
-        <View style={{ marginTop: 0, ...styles.tags }}>
-          <Rating rating={3} />
-        </View>
+
+        {sqlBookData && (
+          <>
+            <P color={colors.placeholder} size={16}>
+              {t.single1}
+            </P>
+            <View style={{ marginTop: 0, ...styles.tags }}>
+              <Rating rating={3} />
+            </View>
+          </>
+        )}
         {/* Mark as button */}
         <OptionsBtn
           text="Mark as..."
-          modalTexts={['Reread', 'Read Once', 'Read Later', 'Not Read']}
+          modalTexts={[
+            'Add to current reads',
+            'Add to already read',
+            'Mark as favorite',
+          ]}
           modalActions={[
-            () => console.log('Reread'),
-            () => console.log('Read Once'),
-            () => console.log('Read Later'),
-            () => console.log('Not Read'),
+            () => handleCurrent(),
+            () => console.log('Add to already read'),
+            () => console.log('Mark as favorite'),
           ]}
         />
         {/* Personal note */}

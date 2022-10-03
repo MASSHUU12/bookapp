@@ -25,10 +25,7 @@ export class SqlModel {
 
   private handleError(err: any) {
     console.log(err);
-    if (
-      (err.message =
-        "no such table: lists (code 1 SQLITE_ERROR): , while compiling: SELECT * FROM lists where list = 'current'")
-    ) {
+    if (err.message.includes('no such table')) {
       this.prepareTables();
     }
   }
@@ -39,7 +36,7 @@ export class SqlModel {
         id INTEGER PRIMARY KEY AUTOINCREMENT, 
         list TEXT, 
         cover_i INTERGER, 
-        book_id TEXT, 
+        key TEXT NOT NULL UNIQUE, 
         title TEXT, 
         author_name TEXT, 
         number_of_pages_median INTERGER, 
@@ -50,7 +47,7 @@ export class SqlModel {
     this.execute(
       `CREATE TABLE IF NOT EXISTS list_details (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        book_id TEXT,
+        key TEXT,
         lists_id INTEGER, 
         user_notes TEXT,
         user_rating TEXT,

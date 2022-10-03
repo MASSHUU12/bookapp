@@ -30,9 +30,6 @@ interface Props {
 const CoverExtended = ({ item }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
-  const isbnCodes = item.item.isbn;
-  const formatedIsbnCode = Array.isArray(isbnCodes) ? isbnCodes[0] : isbnCodes;
-
   return (
     <Pressable
       style={{ backgroundColor: colors.white, ...styles.container }}

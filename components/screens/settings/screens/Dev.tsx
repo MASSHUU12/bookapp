@@ -20,6 +20,11 @@ const Dev = (): JSX.Element => {
       />
       <SettingsBtn
         icon="hammer-outline"
+        text={'console.log details'}
+        action={() => sql.selectAllFromDetails()}
+      />
+      <SettingsBtn
+        icon="hammer-outline"
         text={'console.log books in current list'}
         action={() =>
           sql.getBooksInList('current', res => {
