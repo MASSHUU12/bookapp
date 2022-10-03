@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppSelector } from '../../hooks';
 import Home from '../screens/home/Home';
+import Add from '../screens/home/screens/Add';
 import Search from '../screens/home/screens/Search';
 import Single from '../screens/single/Single';
 
@@ -26,6 +27,7 @@ const HomeNavigator = (): JSX.Element => {
           headerTitleStyle: {
             fontFamily: 'AndadaPro-Medium',
           },
+          headerShadowVisible: false,
         }}>
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Search" component={Search} />
@@ -37,6 +39,17 @@ const HomeNavigator = (): JSX.Element => {
             headerStyle: {
               backgroundColor: colors.accent,
             },
+          }}
+        />
+        <Tab.Screen
+          name="Add"
+          component={Add}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: colors.background,
+            },
+            headerTitle: 'Add book manually',
           }}
         />
       </Stack.Navigator>
