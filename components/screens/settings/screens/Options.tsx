@@ -1,6 +1,7 @@
 import { Button, View, StyleSheet } from 'react-native';
 import { isNavigationDark } from '../../../../features/navigationTheme/navigationThemeSlice';
 import { isDark } from '../../../../features/theme/themeSlice';
+import { locale } from '../../../../helpers/Locale';
 import { setItem } from '../../../../helpers/Storage';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
@@ -27,6 +28,15 @@ const Options = (): JSX.Element => {
           }}
         />
       ))}
+      <Button
+        title="Language: auto"
+        onPress={async () => {
+          t.setLanguage(locale.detectWithFallback);
+
+          // Update language in storage.
+          await setItem('language', 'auto');
+        }}
+      />
       <Button
         title="Light theme"
         onPress={async () => {

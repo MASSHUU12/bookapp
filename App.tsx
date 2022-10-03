@@ -19,6 +19,7 @@ import { navigationRef } from './helpers/Navigate';
 import { getItem } from './helpers/Storage';
 import { isDark } from './features/theme/themeSlice';
 import { isNavigationDark } from './features/navigationTheme/navigationThemeSlice';
+import { locale } from './helpers/Locale';
 
 export const globalStateContext = createContext(1);
 export const dispatchStateContext = createContext<any>(undefined);
@@ -39,7 +40,10 @@ const App = (): JSX.Element => {
   // Set settings when app loads.
   useEffect(() => {
     getItem('language').then(item => {
-      item === null ? t.setLanguage('en') : t.setLanguage(item as string);
+      if (item === null || item === 'auto')
+        // Get system language and set it.
+        t.setLanguage(locale.detectWithFallback);
+      else t.setLanguage(item as string);
     });
     getItem('theme').then(item => {
       let i = item === null ? 'light' : item;
