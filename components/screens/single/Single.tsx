@@ -14,6 +14,7 @@ import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
+import MainActionButton from './components/MainActionButton';
 
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -122,34 +123,10 @@ const Single = ({ route }: any): JSX.Element => {
           }
         />
       </View>
-      {!sqlBookData && (
-        <View style={styles.buttonContainer}>
-          <Pressable
-            onPress={handleMainButton}
-            style={{
-              backgroundColor: colors.textBtn,
-              ...styles.mainButton,
-            }}>
-            <P color="white" size={20}>
-              Add to read later
-            </P>
-          </Pressable>
-        </View>
+      {sqlBookData?.list && (
+        <MainActionButton list={sqlBookData.list} bookKey={route.params.key} />
       )}
-      {sqlBookData && (
-        <View style={styles.buttonContainer}>
-          <Pressable
-            onPress={() => {}}
-            style={{
-              backgroundColor: colors.text2,
-              ...styles.mainButton,
-            }}>
-            <P color="white" size={20}>
-              This book is in: {sqlBookData.list}
-            </P>
-          </Pressable>
-        </View>
-      )}
+
       <View
         style={{
           backgroundColor: colors.background,

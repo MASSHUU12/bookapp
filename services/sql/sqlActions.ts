@@ -1,6 +1,7 @@
 import { saveBookTypes, updateBookTypes } from './sqlTypes';
 import { SqlModel } from './sqlModel';
 import { ListType } from '../../types/type';
+import { BookType } from '../../types/bookType';
 
 export default class SqlActions {
   db: SqlModel;
@@ -53,7 +54,7 @@ export default class SqlActions {
     );
   }
 
-  getSingleBookDetailedInfo(id: string, callback: Function) {
+  getSingleBookDetailedInfo(id: string, callback: (book: BookType) => void) {
     console.log('this is id', id);
     this.db.execute(
       `SELECT * FROM lists LEFT JOIN list_details ON lists.key = list_details.key WHERE lists.key = ?;`,
