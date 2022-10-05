@@ -24,9 +24,7 @@ const Single = ({ route }: any): JSX.Element => {
   const [sqlBookData, setSqlBookData] = useState<{} | BookType>({});
 
   const testData = {
-    bookId: '0394171349',
     tags: ['Game theory', 'Interpersonal relations', 'Social interaction'],
-    rating: 4,
     note: 'My note for the book.',
     firstSentence:
       'OBSERVATION of spontaneous social activity, most productively carried out in certain kinds of psychotherapy groups, reveals that from time to time people show noticeable changes in posture, viewpoint, voice, vocabulary, and other aspects of behavior.',
@@ -159,7 +157,7 @@ const Single = ({ route }: any): JSX.Element => {
             {route.params.author_name}
           </P>
           <P color={colors.text3} size={12}>
-            {testData.bookId}
+            {route.params.key.split('/')[2]}
           </P>
         </View>
         {/* Tags */}
