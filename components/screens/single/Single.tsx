@@ -5,6 +5,7 @@ import {
   ScrollView,
   Animated,
   Pressable,
+  Alert,
 } from 'react-native';
 import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
@@ -58,13 +59,29 @@ const Single = ({ route }: any): JSX.Element => {
   };
 
   const handleRemoveBookFromHistory = () => {
-    sql.removeBookFromHistory(route.params.key);
-    dispatch(1);
+    return Alert.alert(
+      'Are your sure?',
+      'Removing a book from history is irreversible',
+      [
+        // The "Yes" button
+        {
+          text: 'Yes',
+          onPress: () => {
+            sql.removeBookFromHistory(route.params.key);
+            dispatch(1);
+          },
+        },
+        {
+          text: 'No',
+        },
+      ],
+    );
   };
 
   const onRatingChange = (rating: number) => {
-    if (sqlBookData === null) return;
+    if (!('key' in sqlBookData)) return;
 
+    console.log(rating);
     sql.updateBookDetails({
       book_key: sqlBookData.key,
       field: 'user_rating',
@@ -153,7 +170,7 @@ const Single = ({ route }: any): JSX.Element => {
         </View>
         {/* Rating */}
 
-        {sqlBookData && (
+        {'user_rating' in sqlBookData && (
           <>
             <P color={colors.placeholder} size={16}>
               {t.single1}
