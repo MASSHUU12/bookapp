@@ -3,7 +3,7 @@ export const pl = {
     nav1: 'Home',
     nav2: 'Książki',
     nav3: 'Listy',
-    nav4: 'Ustawienia',
+    nav4: 'Szukaj',
 
     home1: 'Witaj ponownie',
     home2: 'Zacznij czytać',
@@ -36,9 +36,11 @@ export const pl = {
     add8: 'Opcjonalne',
     add9: 'Dodaj',
 
-    settings1: 'Reading Goals',
-    settings2: 'Notification preferences',
-    settings3: 'Options',
+    settings1: 'Cele czytania',
+    settings2: 'Preferencje powiadomień',
+    settings3: 'Opcje',
+    settings4: 'Język',
+    settings5: 'Motyw',
 
     miscYear: 'Rok',
     miscMonth: 'Miesiąc',
