@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppSelector } from '../../hooks';
 import Home from '../screens/home/Home';
 import Add from '../screens/home/screens/Add';
-import Search from '../screens/home/screens/Search';
 import Single from '../screens/single/Single';
 import SettingsNavigator from './SettingsNavigator';
 
@@ -31,7 +30,6 @@ const HomeNavigator = (): JSX.Element => {
           headerShadowVisible: false,
         }}>
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Search" component={Search} />
         <Tab.Screen
           name="Single"
           component={Single}
