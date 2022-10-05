@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, Pressable, View } from 'react-native';
 import P from '../../common/P';
 import SearchBar from './components/SearchBar';
 import ReadLater from './components/ReadLater';
@@ -6,6 +6,8 @@ import Stats from './components/Stats';
 import { t } from '../../../i18n/strings';
 import CurrentReads from './components/CurrentReads';
 import { useAppSelector } from '../../../hooks';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { navigate } from '../../../helpers/Navigate';
 
 /**
  * Home screen.
@@ -23,10 +25,21 @@ const Home = (): JSX.Element => {
       renderItem={() => {
         return (
           <>
-            <P size={14}>{t.home1}</P>
-            <P size={24} font="AndadaPro-Bold">
-              {t.home2}
-            </P>
+            <View style={styles.header}>
+              <View>
+                <P size={14}>{t.home1}</P>
+                <P size={24} font="AndadaPro-Bold">
+                  {t.home2}
+                </P>
+              </View>
+              <Pressable onPress={() => navigate('SettingsNavigator')}>
+                <Ionicons
+                  name={'ellipsis-vertical'}
+                  size={24}
+                  color={colors.placeholder}
+                />
+              </Pressable>
+            </View>
             <SearchBar />
             <Stats />
             <ReadLater />
@@ -41,6 +54,12 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 25,
     flex: 1,
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 

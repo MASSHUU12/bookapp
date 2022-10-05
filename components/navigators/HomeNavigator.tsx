@@ -6,6 +6,7 @@ import Home from '../screens/home/Home';
 import Add from '../screens/home/screens/Add';
 import Search from '../screens/home/screens/Search';
 import Single from '../screens/single/Single';
+import SettingsNavigator from './SettingsNavigator';
 
 /**
  * Navigator storing all home screens.
@@ -52,6 +53,7 @@ const HomeNavigator = (): JSX.Element => {
             headerTitle: 'Add book manually',
           }}
         />
+        <Tab.Screen name="SettingsNavigator" component={SettingsNavigator} />
       </Stack.Navigator>
     </SafeAreaView>
   );

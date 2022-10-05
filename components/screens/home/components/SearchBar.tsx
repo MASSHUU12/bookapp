@@ -16,7 +16,6 @@ const SearchBar = (): JSX.Element => {
   return (
     <Pressable
       style={{ backgroundColor: colors.surface, ...styles.container }}
-      // ? It works, but throws error for some reason.
       onPress={() => navigate('Search')}>
       <Ionicons
         name="search"

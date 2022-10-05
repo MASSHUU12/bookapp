@@ -86,8 +86,8 @@ const App = (): JSX.Element => {
                     if (route.name === 'ListsNavigator')
                       iconName = focused ? 'checkbox' : 'checkbox-outline';
 
-                    if (route.name === 'SettingsNavigator')
-                      iconName = focused ? 'settings' : 'settings-outline';
+                    // if (route.name === 'SettingsNavigator')
+                    //   iconName = focused ? 'settings' : 'settings-outline';
 
                     return (
                       <Ionicons name={iconName} size={size} color={color} />
@@ -118,11 +118,11 @@ const App = (): JSX.Element => {
                   component={ListsNavigator}
                   options={{ title: t.nav3 }}
                 />
-                <Tab.Screen
+                {/* <Tab.Screen
                   name="SettingsNavigator"
                   component={SettingsNavigator}
                   options={{ title: t.nav4 }}
-                />
+                /> */}
               </Tab.Navigator>
             </NavigationContainer>
           </dispatchStateContext.Provider>
