@@ -20,7 +20,7 @@ const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
   const [state, dispatch] = useGlobalState();
-  const [sqlBookData, setSqlBookData] = useState<null | BookType>(null);
+  const [sqlBookData, setSqlBookData] = useState<{} | BookType>({});
 
   const testData = {
     bookId: '0394171349',
@@ -123,10 +123,7 @@ const Single = ({ route }: any): JSX.Element => {
           }
         />
       </View>
-      {sqlBookData?.list && (
-        <MainActionButton list={sqlBookData.list} bookKey={route.params.key} />
-      )}
-
+      <MainActionButton bookData={sqlBookData} onNewBook={handleMainButton} />
       <View
         style={{
           backgroundColor: colors.background,

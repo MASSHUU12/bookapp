@@ -1,8 +1,9 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import P from '../../../common/P';
 import { useAppSelector, useGlobalState } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
+import { BookType } from '../../../../types/bookType';
 
 /**
  *
@@ -11,41 +12,63 @@ import sql from '../../../../services/sql/sql';
  */
 
 type Params = {
-  list: ListType;
-  bookKey: string;
+  bookData: BookType | {};
+  onNewBook: Function;
 };
 
 type ListType = 'current' | 'readLater' | 'alreadyRead';
+type ListTypeExtended = 'current' | 'readLater' | 'alreadyRead' | 'none';
 
-const MainActionButton = ({ list, bookKey }: Params): JSX.Element => {
+const MainActionButton = ({ bookData, onNewBook }: Params): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const [state, dispatch] = useGlobalState();
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
+
+  const currentList: ListTypeExtended = bookData.list || 'none';
 
   const buttons = {
-    readLater: ['Move to currently reading', () => handleMainButton('current')],
-    current: ['Move to already read', () => handleMainButton('alreadyRead')],
-    alreadyRead: [
-      'Mark with read again tag',
-      () => handleMainButton('current'),
-      ,
-    ],
+    readLater: {
+      title: 'Move to currently reading',
+      action: () => handleMainButton('current'),
+    },
+    current: {
+      title: 'Move to already read',
+      action: () => handleMainButton('alreadyRead'),
+    },
+    alreadyRead: {
+      title: 'Mark with read again tag',
+      action: () => handleMainButton('current'),
+    },
+    none: {
+      title: 'Add to read later',
+      action: () => handleMainButtonNewBook(),
+    },
   };
 
   const handleMainButton = (list: ListType) => {
-    sql.changeBookListByKey(bookKey, list);
+    sql.changeBookListByKey(bookData.key, list);
+    setIsButtonPressed(true);
     dispatch(1);
+  };
+
+  const handleMainButtonNewBook = () => {
+    setIsButtonPressed(true);
+    onNewBook();
   };
 
   return (
     <View style={styles.buttonContainer}>
       <Pressable
-        onPress={() => buttons[list][1]()}
+        disabled={isButtonPressed}
+        onPress={() => buttons[currentList].action()}
         style={{
-          backgroundColor: colors.textBtn,
+          backgroundColor: isButtonPressed
+            ? colors.placeholder
+            : colors.textBtn,
           ...styles.mainButton,
         }}>
         <P color="white" size={20}>
-          {buttons[list][0]}
+          {isButtonPressed ? 'Added successfully' : buttons[currentList].title}
         </P>
       </Pressable>
     </View>
