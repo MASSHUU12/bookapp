@@ -7,3 +7,9 @@ export type saveBookTypes = {
   isbn: string;
   cover_i: number;
 };
+
+export type updateBookTypes = {
+  book_key: string;
+  field: string;
+  value: string | number;
+};

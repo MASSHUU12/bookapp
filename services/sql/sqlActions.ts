@@ -1,4 +1,4 @@
-import { saveBookTypes } from './sqlTypes';
+import { saveBookTypes, updateBookTypes } from './sqlTypes';
 import { SqlModel } from './sqlModel';
 import { ListType } from '../../types/type';
 
@@ -76,6 +76,16 @@ export default class SqlActions {
     this.db.execute(
       `UPDATE lists SET list = ? WHERE key = ?`,
       [list, key],
+      () => {
+        console.log('success');
+      },
+    );
+  }
+
+  updateBookDetails(params: updateBookTypes) {
+    this.db.execute(
+      `UPDATE list_details SET ${params.field} = ? WHERE key = ?`,
+      [params.value, params.book_key],
       () => {
         console.log('success');
       },

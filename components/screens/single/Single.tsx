@@ -10,7 +10,6 @@ import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
 import { BookType } from '../../../types/bookType';
-import { ListType } from '../../../types/type';
 import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
@@ -55,6 +54,16 @@ const Single = ({ route }: any): JSX.Element => {
       cover_i: route.params.cover_i,
     });
     dispatch(1);
+  };
+
+  const onRatingChange = (rating: number) => {
+    if (sqlBookData === null) return;
+
+    sql.updateBookDetails({
+      book_key: sqlBookData.key,
+      field: 'user_rating',
+      value: rating,
+    });
   };
 
   useEffect(() => {
@@ -171,7 +180,10 @@ const Single = ({ route }: any): JSX.Element => {
               {t.single1}
             </P>
             <View style={{ marginTop: 0, ...styles.tags }}>
-              <Rating rating={3} />
+              <Rating
+                rating={sqlBookData.user_rating}
+                onRatingChange={onRatingChange}
+              />
             </View>
           </>
         )}

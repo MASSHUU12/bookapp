@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   rating: number;
+  onRatingChange: Function;
 }
 
-const Rating = ({ rating }: Props): JSX.Element => {
+const Rating = ({ rating, onRatingChange }: Props): JSX.Element => {
   const arr = [0, 0, 0, 0, 0];
   const [r, setR] = useState(rating);
+
+  useEffect(() => {
+    if (typeof onRatingChange === 'function') onRatingChange(r);
+  }, [r]);
 
   return (
     <>
