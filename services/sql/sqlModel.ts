@@ -53,6 +53,7 @@ export class SqlModel {
         user_rating TEXT,
         if_read_again TEXT,
         FOREIGN KEY(lists_id) REFERENCES lists(id)
+        ON DELETE CASCADE
       );`,
     );
   }

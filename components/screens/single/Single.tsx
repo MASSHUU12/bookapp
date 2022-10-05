@@ -57,6 +57,11 @@ const Single = ({ route }: any): JSX.Element => {
     dispatch(1);
   };
 
+  const handleRemoveBookFromHistory = () => {
+    sql.removeBookFromHistory(route.params.key);
+    dispatch(1);
+  };
+
   const onRatingChange = (rating: number) => {
     if (sqlBookData === null) return;
 
@@ -166,12 +171,12 @@ const Single = ({ route }: any): JSX.Element => {
           text="Mark as..."
           modalTexts={[
             'Add to current reads',
-            'Add to already read',
+            'Remove book from history',
             'Mark as favorite',
           ]}
           modalActions={[
             () => handleCurrent(),
-            () => console.log('Add to already read'),
+            () => handleRemoveBookFromHistory(),
             () => console.log('Mark as favorite'),
           ]}
         />

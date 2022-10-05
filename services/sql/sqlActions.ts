@@ -93,6 +93,12 @@ export default class SqlActions {
     );
   }
 
+  removeBookFromHistory(key: string) {
+    this.db.execute(`DELETE FROM lists WHERE key = ?`, [key], () => {
+      console.log('success');
+    });
+  }
+
   selectAllFromDetails() {
     this.db.execute('select * from list_details', [], (tx, res) => {
       const len = res.rows.length;
