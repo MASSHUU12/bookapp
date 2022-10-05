@@ -7,9 +7,15 @@ interface Props {
   text: string;
   modalTexts: Array<string>;
   modalActions: Array<() => any>;
+  marginTop?: number;
 }
 
-const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
+const OptionsBtn = ({
+  text,
+  modalTexts,
+  modalActions,
+  marginTop = 0,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const [showModal, setShowModal] = useState(false);
 
@@ -20,6 +26,7 @@ const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
           {
             opacity: pressed ? 0.5 : 1,
             backgroundColor: colors.optionsBtn,
+            marginTop: marginTop,
             ...styles.container,
           },
         ]}

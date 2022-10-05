@@ -1,10 +1,12 @@
-import { Button, View, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, ScrollView } from 'react-native';
 import { isNavigationDark } from '../../../../features/navigationTheme/navigationThemeSlice';
 import { isDark } from '../../../../features/theme/themeSlice';
 import { locale } from '../../../../helpers/Locale';
 import { setItem } from '../../../../helpers/Storage';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
+import OptionsBtn from '../../../common/OptionsBtn';
 
 /**
  * General options screen. Allows to change the language, or theme.
@@ -15,54 +17,65 @@ const Options = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const colors = useAppSelector(state => state.theme.colors);
 
-  return (
-    <View style={{ backgroundColor: colors.background, ...styles.container }}>
-      {t.getAvailableLanguages().map(item => (
-        <Button
-          title={item.toUpperCase()}
-          onPress={async () => {
-            t.setLanguage(item);
+  // Available languages.
+  const [languages] = useState(['Auto', ...t.getAvailableLanguages()]);
+  // Functions to switch language.
+  const [langFunc, setLangFunc] = useState<any[]>([]);
 
-            // Update language in storage.
-            await setItem('language', item);
-          }}
-        />
-      ))}
-      <Button
-        title="Language: auto"
-        onPress={async () => {
+  // Generates functions that will later be passed to the buttons.
+  useEffect(() => {
+    languages.map(item => {
+      let arr = langFunc;
+
+      arr.push(async () => {
+        if (item.toLowerCase() === 'auto')
           t.setLanguage(locale.detectWithFallback);
+        else t.setLanguage(item);
 
-          // Update language in storage.
-          await setItem('language', 'auto');
-        }}
-      />
-      <Button
-        title="Light theme"
-        onPress={async () => {
-          dispatch(isDark(false));
-          dispatch(isNavigationDark(false));
+        // Update language in storage.
+        await setItem('language', item);
+      });
 
-          // Update theme in storage.
-          await setItem('theme', 'light');
-        }}
-      />
-      <Button
-        title="Dark theme"
-        onPress={async () => {
-          dispatch(isDark(true));
-          dispatch(isNavigationDark(true));
+      setLangFunc(arr);
+    });
+  }, []);
 
-          // Update theme in storage.
-          await setItem('theme', 'dark');
-        }}
+  return (
+    <ScrollView
+      style={{ backgroundColor: colors.background, ...styles.container }}>
+      <OptionsBtn
+        text={t.settings4}
+        modalTexts={languages}
+        modalActions={langFunc}
       />
-    </View>
+      <OptionsBtn
+        text={t.settings5}
+        marginTop={15}
+        modalTexts={['Dark theme', 'Light theme']}
+        modalActions={[
+          async () => {
+            dispatch(isDark(false));
+            dispatch(isNavigationDark(false));
+
+            // Update theme in storage.
+            await setItem('theme', 'light');
+          },
+          async () => {
+            dispatch(isDark(true));
+            dispatch(isNavigationDark(true));
+
+            // Update theme in storage.
+            await setItem('theme', 'dark');
+          },
+        ]}
+      />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 25,
     flex: 1,
   },
 });

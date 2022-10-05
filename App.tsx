@@ -11,7 +11,6 @@ import store from './app/store';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
-import SettingsNavigator from './components/navigators/SettingsNavigator';
 import ListsNavigator from './components/navigators/ListsNavigator';
 import BooksNavigator from './components/navigators/BooksNavigator';
 import HomeNavigator from './components/navigators/HomeNavigator';
@@ -20,6 +19,7 @@ import { getItem } from './helpers/Storage';
 import { isDark } from './features/theme/themeSlice';
 import { isNavigationDark } from './features/navigationTheme/navigationThemeSlice';
 import { locale } from './helpers/Locale';
+import Search from './components/screens/search/Search';
 
 export const globalStateContext = createContext(1);
 export const dispatchStateContext = createContext<any>(undefined);
@@ -80,14 +80,14 @@ const App = (): JSX.Element => {
                     if (route.name === 'HomeNavigator')
                       iconName = focused ? 'home' : 'home-outline';
 
+                    if (route.name === 'Search')
+                      iconName = focused ? 'search' : 'search-outline';
+
                     if (route.name === 'BooksNavigator')
                       iconName = focused ? 'book' : 'book-outline';
 
                     if (route.name === 'ListsNavigator')
                       iconName = focused ? 'checkbox' : 'checkbox-outline';
-
-                    if (route.name === 'SettingsNavigator')
-                      iconName = focused ? 'settings' : 'settings-outline';
 
                     return (
                       <Ionicons name={iconName} size={size} color={color} />
@@ -109,6 +109,13 @@ const App = (): JSX.Element => {
                   options={{ title: t.nav1 }}
                 />
                 <Tab.Screen
+                  name="Search"
+                  component={Search}
+                  options={{
+                    title: t.nav4,
+                  }}
+                />
+                <Tab.Screen
                   name="BooksNavigator"
                   component={BooksNavigator}
                   options={{ title: t.nav2 }}
@@ -117,11 +124,6 @@ const App = (): JSX.Element => {
                   name="ListsNavigator"
                   component={ListsNavigator}
                   options={{ title: t.nav3 }}
-                />
-                <Tab.Screen
-                  name="SettingsNavigator"
-                  component={SettingsNavigator}
-                  options={{ title: t.nav4 }}
                 />
               </Tab.Navigator>
             </NavigationContainer>
