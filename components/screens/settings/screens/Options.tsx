@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { isNavigationDark } from '../../../../features/navigationTheme/navigationThemeSlice';
 import { isDark } from '../../../../features/theme/themeSlice';
 import { locale } from '../../../../helpers/Locale';
@@ -44,12 +44,12 @@ const Options = (): JSX.Element => {
     <ScrollView
       style={{ backgroundColor: colors.background, ...styles.container }}>
       <OptionsBtn
-        text="Language"
+        text={t.settings4}
         modalTexts={languages}
         modalActions={langFunc}
       />
       <OptionsBtn
-        text="Theme"
+        text={t.settings5}
         marginTop={15}
         modalTexts={['Dark theme', 'Light theme']}
         modalActions={[
