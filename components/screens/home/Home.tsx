@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import P from '../../common/P';
 import SearchBar from './components/SearchBar';
 import ReadLater from './components/ReadLater';
@@ -16,18 +16,24 @@ const Home = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
-    <ScrollView
+    <FlatList
       nestedScrollEnabled
-      style={{ backgroundColor: colors.background, ...styles.container }}>
-      <P size={14}>{t.home1}</P>
-      <P size={24} font="AndadaPro-Bold">
-        {t.home2}
-      </P>
-      <SearchBar />
-      <Stats />
-      <ReadLater />
-      <CurrentReads />
-    </ScrollView>
+      style={{ backgroundColor: colors.background, ...styles.container }}
+      data={[0]}
+      renderItem={() => {
+        return (
+          <>
+            <P size={14}>{t.home1}</P>
+            <P size={24} font="AndadaPro-Bold">
+              {t.home2}
+            </P>
+            <SearchBar />
+            <Stats />
+            <ReadLater />
+            <CurrentReads />
+          </>
+        );
+      }}></FlatList>
   );
 };
 
