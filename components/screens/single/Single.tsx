@@ -16,6 +16,7 @@ import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
 import MainActionButton from './components/MainActionButton';
+import MoreOptionsList from './components/MoreOptionsList';
 
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -182,19 +183,7 @@ const Single = ({ route }: any): JSX.Element => {
           </>
         )}
         {/* Mark as button */}
-        <OptionsBtn
-          text="Mark as..."
-          modalTexts={[
-            'Add to current reads',
-            'Remove book from history',
-            'Mark as favorite',
-          ]}
-          modalActions={[
-            () => handleCurrent(),
-            () => handleRemoveBookFromHistory(),
-            () => console.log('Mark as favorite'),
-          ]}
-        />
+        <MoreOptionsList bookData={sqlBookData} />
         {/* Personal note */}
         <View
           style={{
