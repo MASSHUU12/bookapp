@@ -100,7 +100,7 @@ const Single = ({ route }: any): JSX.Element => {
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
     <ScrollView
-      style={{ backgroundColor: colors.accent, ...styles.container }}
+      style={{ backgroundColor: colors.background, ...styles.container }}
       scrollEventThrottle={16}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: pan.y } } }],
@@ -108,6 +108,14 @@ const Single = ({ route }: any): JSX.Element => {
           useNativeDriver: false,
         },
       )}>
+      <View
+        style={{
+          height: 300,
+          width: '100%',
+          position: 'absolute',
+          top: -300,
+          backgroundColor: colors.accent,
+        }}></View>
       {/* Cover image */}
       <View
         style={{
@@ -217,6 +225,7 @@ const Single = ({ route }: any): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 1,
   },
   coverContainer: {
     flex: 1,
