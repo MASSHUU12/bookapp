@@ -100,7 +100,8 @@ const Single = ({ route }: any): JSX.Element => {
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
     <ScrollView
-      style={{ backgroundColor: colors.background, ...styles.container }}
+      style={{ backgroundColor: colors.accent, ...styles.container }}
+      scrollEventThrottle={16}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: pan.y } } }],
         {
@@ -120,14 +121,14 @@ const Single = ({ route }: any): JSX.Element => {
               {
                 translateY: pan.y.interpolate({
                   inputRange: [-1000, 0],
-                  outputRange: [-100, 0],
+                  outputRange: [-400, 0],
                   extrapolate: 'clamp',
                 }),
               },
               {
                 scale: pan.y.interpolate({
                   inputRange: [-3000, 0],
-                  outputRange: [20, 1],
+                  outputRange: [10, 1],
                   extrapolate: 'clamp',
                 }),
               },
@@ -144,7 +145,9 @@ const Single = ({ route }: any): JSX.Element => {
           }
         />
       </View>
-      <MainActionButton bookData={sqlBookData} onNewBook={handleMainButton} />
+      <View style={{ backgroundColor: colors.background }}>
+        <MainActionButton bookData={sqlBookData} onNewBook={handleMainButton} />
+      </View>
       <View
         style={{
           backgroundColor: colors.background,
