@@ -44,39 +44,6 @@ const Single = ({ route }: any): JSX.Element => {
     dispatch(1);
   };
 
-  const handleCurrent = () => {
-    sql.saveBookToList({
-      list: 'current',
-      bookId: route.params.key,
-      title: route.params.title,
-      author_name: route.params.author_name,
-      number_of_pages_median: route.params.number_of_pages_median,
-      isbn: route.params.isbn[0],
-      cover_i: route.params.cover_i,
-    });
-    dispatch(1);
-  };
-
-  const handleRemoveBookFromHistory = () => {
-    return Alert.alert(
-      'Are your sure?',
-      'Removing a book from history is irreversible',
-      [
-        // The "Yes" button
-        {
-          text: 'Yes',
-          onPress: () => {
-            sql.removeBookFromHistory(route.params.key);
-            dispatch(1);
-          },
-        },
-        {
-          text: 'No',
-        },
-      ],
-    );
-  };
-
   const onRatingChange = (rating: number) => {
     if (!('key' in sqlBookData)) return;
 
