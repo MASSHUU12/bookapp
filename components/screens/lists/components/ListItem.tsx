@@ -1,4 +1,5 @@
 import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
+import { navigate } from '../../../../helpers/Navigate';
 import { useAppSelector } from '../../../../hooks';
 import P from '../../../common/P';
 
@@ -6,9 +7,15 @@ interface Props {
   name: string;
   number_of_books: number;
   image: string; // For now
+  list_name: string;
 }
 
-const ListItem = ({ name, number_of_books, image }: Props): JSX.Element => {
+const ListItem = ({
+  name,
+  number_of_books,
+  image,
+  list_name,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
@@ -20,7 +27,9 @@ const ListItem = ({ name, number_of_books, image }: Props): JSX.Element => {
           ...styles.container,
         },
       ]}
-      onPress={() => console.log('Tap')}>
+      onPress={() =>
+        navigate('ListsRecords', { name: name, list_name: list_name })
+      }>
       <Image
         style={styles.image}
         source={require('../../../../assets/images/bookCoverTest.jpg')}

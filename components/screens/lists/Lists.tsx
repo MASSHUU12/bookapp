@@ -13,16 +13,19 @@ const Lists = (): JSX.Element => {
       name: 'Read later',
       number_of_books: 9,
       image: '',
+      list_name: 'read_later',
     },
     {
       name: 'Currently reading',
       number_of_books: 69,
       image: '',
+      list_name: 'currently_reading',
     },
     {
       name: 'Already read',
       number_of_books: 18,
       image: '',
+      list_name: 'already_read',
     },
   ];
 
@@ -40,6 +43,7 @@ const Lists = (): JSX.Element => {
           name={item.name}
           number_of_books={item.number_of_books}
           image={item.image}
+          list_name={item.list_name}
         />
       )}
     />
