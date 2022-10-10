@@ -16,6 +16,7 @@ interface Props {
     | 'AndadaPro-Regular'
     | 'AndadaPro-SemiBold'
     | 'AndadaPro-SemiBoldItalic';
+  styles?: Object;
 }
 
 /**
@@ -37,6 +38,7 @@ const P = (props: Props): JSX.Element => {
         fontSize: props.size ? props.size : 18,
         color: props.color ? props.color : colors.text,
         fontFamily: props.font ? props.font : 'AndadaPro-Regular',
+        ...props.styles,
       }}>
       {props.children}
     </Text>

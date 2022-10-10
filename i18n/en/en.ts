@@ -38,6 +38,8 @@ export const en = {
     add8: 'Optional',
     add9: 'Add',
 
+    lists1: 'Your lists',
+
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
     settings3: 'Options',

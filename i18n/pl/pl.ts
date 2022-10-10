@@ -37,6 +37,8 @@ export const pl = {
     add8: 'Opcjonalne',
     add9: 'Dodaj',
 
+    lists1: 'Twoje listy',
+
     settings1: 'Cele czytania',
     settings2: 'Preferencje powiadomień',
     settings3: 'Opcje',
