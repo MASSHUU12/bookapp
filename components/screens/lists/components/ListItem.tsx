@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
 import { navigate } from '../../../../helpers/Navigate';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
 import { ListType } from '../../../../types/listType';
 import P from '../../../common/P';
@@ -16,12 +16,13 @@ interface Props {
 const ListItem = ({ name, image, list_name }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const [numberOfBooks, setNumberOfBooks] = useState(0);
+  const [update, setUpdate] = useGlobalState();
 
   useEffect(() => {
     sql.countBooksInList(list_name, bookCount => {
       setNumberOfBooks(bookCount);
     });
-  }, []);
+  }, [update]);
 
   return (
     <Pressable
