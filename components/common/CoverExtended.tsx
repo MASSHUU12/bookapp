@@ -32,7 +32,13 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
 
   return (
     <Pressable
-      style={{ backgroundColor: colors.white, ...styles.container }}
+      style={({ pressed }) => [
+        {
+          opacity: pressed ? 0.5 : 1,
+          backgroundColor: colors.white,
+          ...styles.container,
+        },
+      ]}
       onPress={() =>
         // Here later only the ID of the book should be transmitted.
         navigate('Single', item.item)

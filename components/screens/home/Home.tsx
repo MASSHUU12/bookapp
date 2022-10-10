@@ -46,7 +46,8 @@ const Home = (): JSX.Element => {
             <CurrentReads />
           </>
         );
-      }}></FlatList>
+      }}
+    />
   );
 };
 

@@ -29,7 +29,12 @@ const Cover = ({ item }: Props): JSX.Element => {
   return (
     <Pressable
       key={item.item.isbn}
-      onPress={() => navigate('Single', item.item)}>
+      onPress={() => navigate('Single', item.item)}
+      style={({ pressed }) => [
+        {
+          opacity: pressed ? 0.5 : 1,
+        },
+      ]}>
       <Image
         style={styles.image}
         source={
