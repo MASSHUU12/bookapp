@@ -15,7 +15,7 @@ const Settings = (): JSX.Element => {
 
   return (
     <View style={{ backgroundColor: colors.background, ...styles.container }}>
-      <P size={24}>{t.nav4}</P>
+      <P size={24}>{t.nav5}</P>
       <SettingsBtn
         icon="book-outline"
         text={t.settings1}

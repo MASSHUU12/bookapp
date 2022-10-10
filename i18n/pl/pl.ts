@@ -4,6 +4,7 @@ export const pl = {
     nav2: 'Książki',
     nav3: 'Listy',
     nav4: 'Szukaj',
+    nav5: 'Ustawienia',
 
     home1: 'Witaj ponownie',
     home2: 'Zacznij czytać',
