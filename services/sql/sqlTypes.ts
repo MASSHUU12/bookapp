@@ -5,7 +5,7 @@ export type saveBookTypes = {
   author_name: string;
   number_of_pages_median: string;
   isbn: string;
-  cover_i: number;
+  cover_i: number | string;
 };
 
 export type updateBookTypes = {
