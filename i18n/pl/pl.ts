@@ -19,6 +19,8 @@ export const pl = {
     search8: 'wynik',
 
     stats1: 'Twoje statystyki',
+    stats2: 'Cel miesięczny',
+    stats3: 'Cel roczny',
 
     readLater1: 'W Do Przeczytania',
     readLater2:

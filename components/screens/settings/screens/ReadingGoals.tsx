@@ -48,7 +48,6 @@ const ReadingGoals = (): JSX.Element => {
         text={t.rGoals3}
         action={async () => {
           await saveGoals();
-          console.log('aaa');
         }}
       />
     </View>

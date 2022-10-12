@@ -57,7 +57,7 @@ const Stats = (): JSX.Element => {
           },
         ],
       },
-      text_under_chart: 'Target per month',
+      text_under_chart: t.stats2,
       value_under_chart: targetMonth,
     },
     {
@@ -69,7 +69,7 @@ const Stats = (): JSX.Element => {
           },
         ],
       },
-      text_under_chart: 'Target per year',
+      text_under_chart: t.stats3,
       value_under_chart: targetYear,
     },
   ];

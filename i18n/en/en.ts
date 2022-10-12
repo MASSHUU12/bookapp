@@ -20,6 +20,8 @@ export const en = {
     search8: 'result',
 
     stats1: 'Your stats',
+    stats2: 'Target per month',
+    stats3: 'Target per year',
 
     readLater1: 'On Read Later',
     readLater2:
