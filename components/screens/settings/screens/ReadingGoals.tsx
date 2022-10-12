@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { setItem } from '../../../../helpers/Storage';
 import { useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import Btn from '../../../common/Btn';
@@ -11,6 +12,11 @@ const ReadingGoals = (): JSX.Element => {
   const [year, setYear] = useState('');
 
   const colors = useAppSelector(state => state.theme.colors);
+
+  const saveGoals = async () => {
+    await setItem('target_month', month);
+    await setItem('target_year', year);
+  };
 
   return (
     <View style={{ backgroundColor: colors.background, ...styles.container }}>
@@ -38,7 +44,13 @@ const ReadingGoals = (): JSX.Element => {
           limit={3}
         />
       </View>
-      <Btn text={t.rGoals3} action={() => console.log('aaa')} />
+      <Btn
+        text={t.rGoals3}
+        action={async () => {
+          await saveGoals();
+          console.log('aaa');
+        }}
+      />
     </View>
   );
 };
