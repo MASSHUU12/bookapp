@@ -14,6 +14,9 @@ export const pl = {
     search3: 'Dodaj ręcznie',
     search4: 'Zacznij pisać, a my postaramy się znaleźć to, czego szukasz.',
     search5: 'Jeśli zawiedliśmy, są inne opcje',
+    search6: 'Znaleźliśmy',
+    search7: 'wyników',
+    search8: 'wynik',
 
     stats1: 'Twoje statystyki',
 
@@ -30,6 +33,14 @@ export const pl = {
     single3: 'Prywatna notka',
     single4: 'Edytuj notkę',
     single5: 'Pierwsze zdanie',
+    single6: 'Oznacz jako aktualnie czytane',
+    single7: 'Oznacz jako przeczytane',
+    single8: 'Oznacz jako przeczytane ponownie',
+    single9: 'Dodaj do przeczytania później',
+    single10: 'Dodane pomyślnie',
+    single11: 'Jesteś pewien?',
+    single12: 'Książkę możesz dodać ponownie później.',
+    single13: 'Usuń książkę z historii',
 
     add1: 'Dodajesz',
     add2: 'Jaki tytuł ma twoja książka?',
@@ -42,6 +53,7 @@ export const pl = {
     add9: 'Dodaj',
 
     lists1: 'Twoje listy',
+    lists2: 'książki',
 
     settings1: 'Cele czytania',
     settings2: 'Preferencje powiadomień',
@@ -49,7 +61,13 @@ export const pl = {
     settings4: 'Język',
     settings5: 'Motyw',
 
+    options1: 'Ciemny motyw',
+    options2: 'Jasny motyw',
+
     miscYear: 'Rok',
     miscMonth: 'Miesiąc',
+    miscYes: 'Tak',
+    miscNo: 'Nie',
+    miscMore: 'Więcej',
   },
 };

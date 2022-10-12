@@ -1,17 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Animated,
-  Pressable,
-  Alert,
-} from 'react-native';
+import { View, StyleSheet, ScrollView, Animated } from 'react-native';
 import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
 import { BookType } from '../../../types/bookType';
-import OptionsBtn from '../../common/OptionsBtn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
@@ -146,7 +138,6 @@ const Single = ({ route }: any): JSX.Element => {
           ))}
         </View>
         {/* Rating */}
-
         {'user_rating' in sqlBookData && (
           <>
             <P color={colors.placeholder} size={16}>

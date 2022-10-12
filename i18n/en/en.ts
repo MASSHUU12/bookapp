@@ -15,6 +15,9 @@ export const en = {
     search4:
       'Start writing and we will do our best to find what you are looking for.',
     search5: 'If we failed, there are other options.',
+    search6: 'We found',
+    search7: 'results',
+    search8: 'result',
 
     stats1: 'Your stats',
 
@@ -31,6 +34,14 @@ export const en = {
     single3: 'Personal note',
     single4: 'Edit note',
     single5: 'First sentence',
+    single6: 'Mark as currently reading',
+    single7: 'Mark as already read',
+    single8: 'Mark as read again',
+    single9: 'Add to read later',
+    single10: 'Added successfully',
+    single11: 'Are your sure?',
+    single12: 'You can add the book again later.',
+    single13: 'Remove book from history',
 
     add1: "Your're adding",
     add2: 'What is the title of your book?',
@@ -43,6 +54,7 @@ export const en = {
     add9: 'Add',
 
     lists1: 'Your lists',
+    lists2: 'books',
 
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
@@ -50,7 +62,13 @@ export const en = {
     settings4: 'Language',
     settings5: 'Theme',
 
+    options1: 'Dark theme',
+    options2: 'Light theme',
+
     miscYear: 'Year',
     miscMonth: 'Month',
+    miscYes: 'Yes',
+    miscNo: 'No',
+    miscMore: 'More',
   },
 };

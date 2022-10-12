@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
-import sql from '../../../services/sql/sql';
 import P from '../../common/P';
 import ListItem from './components/ListItem';
 

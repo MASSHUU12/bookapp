@@ -51,7 +51,7 @@ const Options = (): JSX.Element => {
       <OptionsBtn
         text={t.settings5}
         marginTop={15}
-        modalTexts={['Dark theme', 'Light theme']}
+        modalTexts={[t.options1, t.options2]}
         modalActions={[
           async () => {
             dispatch(isDark(false));

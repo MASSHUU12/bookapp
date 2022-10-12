@@ -1,9 +1,10 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import { View, Pressable, StyleSheet } from 'react-native';
+import { useState } from 'react';
 import P from '../../../common/P';
 import { useAppSelector, useGlobalState } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
 import { BookType } from '../../../../types/bookType';
+import { t } from '../../../../i18n/strings';
 
 /**
  *
@@ -28,19 +29,19 @@ const MainActionButton = ({ bookData, onNewBook }: Params): JSX.Element => {
 
   const buttons = {
     readLater: {
-      title: 'Move to currently reading',
+      title: t.single6,
       action: () => handleMainButton('current'),
     },
     current: {
-      title: 'Move to already read',
+      title: t.single7,
       action: () => handleMainButton('alreadyRead'),
     },
     alreadyRead: {
-      title: 'Mark with read again tag',
+      title: t.single8,
       action: () => handleMainButton('current'),
     },
     none: {
-      title: 'Add to read later',
+      title: t.single9,
       action: () => handleMainButtonNewBook(),
     },
   };
@@ -68,7 +69,7 @@ const MainActionButton = ({ bookData, onNewBook }: Params): JSX.Element => {
           ...styles.mainButton,
         }}>
         <P color="white" size={20}>
-          {isButtonPressed ? 'Added successfully' : buttons[currentList].title}
+          {isButtonPressed ? t.single10 : buttons[currentList].title}
         </P>
       </Pressable>
     </View>

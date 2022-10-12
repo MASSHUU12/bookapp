@@ -1,9 +1,10 @@
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import React, { useEffect } from 'react';
 import OptionsBtn from '../../../common/OptionsBtn';
 import { BookType } from '../../../../types/bookType';
 import { useGlobalState } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
+import { t } from '../../../../i18n/strings';
 
 type PropsTypes = {
   bookData: BookType | {};
@@ -15,23 +16,19 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
   const handleRemoveBookFromHistory = () => {
     if (!('key' in bookData)) return;
 
-    return Alert.alert(
-      'Are your sure?',
-      'Removing a book from history is irreversible',
-      [
-        // The "Yes" button
-        {
-          text: 'Yes',
-          onPress: () => {
-            sql.removeBookFromHistory(bookData.key);
-            dispatch(1);
-          },
+    return Alert.alert(t.single11, t.single12, [
+      {
+        text: t.miscNo,
+      },
+      // The "Yes" button
+      {
+        text: t.miscYes,
+        onPress: () => {
+          sql.removeBookFromHistory(bookData.key);
+          dispatch(1);
         },
-        {
-          text: 'No',
-        },
-      ],
-    );
+      },
+    ]);
   };
 
   const allOptionsAction = [
@@ -41,12 +38,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
     () => handleRemoveBookFromHistory(),
   ];
 
-  const allOptionsText = [
-    'Add to read later',
-    'Add to currently reading',
-    'Add to already read',
-    'Remove book from history',
-  ];
+  const allOptionsText = [t.single9, t.single6, t.single7, t.single13];
 
   const allOptionsMap = {
     readLater: 0,
@@ -65,7 +57,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
   return (
     <View>
       <OptionsBtn
-        text="Mark as..."
+        text={t.miscMore}
         modalTexts={allOptionsText}
         modalActions={allOptionsAction}
       />

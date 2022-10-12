@@ -75,7 +75,9 @@ const Search = (): JSX.Element => {
             {text.length > 0 ? (
               <>
                 <P size={14} color={colors.placeholder}>
-                  {`We found ${searchResults.length} results`}
+                  {`${t.search6} ${searchResults.length} ${
+                    searchResults.length === 1 ? t.search8 : t.search7
+                  }`}
                 </P>
                 <FlatList
                   ItemSeparatorComponent={({ highlighted }) => (
