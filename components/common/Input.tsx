@@ -6,6 +6,7 @@ interface Props {
   keyboardType?: KeyboardTypeOptions;
   value: string;
   onChange: any;
+  redux?: boolean;
 }
 
 /**
@@ -24,6 +25,7 @@ const Input = ({
   keyboardType = 'default',
   value,
   onChange,
+  redux = true,
 }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const dispatch = useAppDispatch();
@@ -38,7 +40,7 @@ const Input = ({
       placeholder={placeholder}
       placeholderTextColor={colors.placeholder}
       value={value}
-      onChangeText={text => dispatch(onChange(text))}
+      onChangeText={text => (redux ? dispatch(onChange(text)) : onChange(text))}
       keyboardType={keyboardType}
     />
   );
