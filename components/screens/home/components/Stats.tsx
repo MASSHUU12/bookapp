@@ -1,8 +1,6 @@
 import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
-import { useEffect, useState } from 'react';
-import { getItem } from '../../../../helpers/Storage';
 import { BarChart } from 'react-native-chart-kit';
 import { useAppSelector } from '../../../../hooks';
 
@@ -12,29 +10,11 @@ import { useAppSelector } from '../../../../hooks';
  * @return {*}  {JSX.Element}
  */
 const Stats = (): JSX.Element => {
-  const [targetMonth, setTargetMonth] = useState('0');
-  const [targetYear, setTargetYear] = useState('0');
-
+  const targetMonth = useAppSelector(
+    state => state.targets.value.targetPerMonth,
+  );
+  const targetYear = useAppSelector(state => state.targets.value.targetPerYear);
   const colors = useAppSelector(state => state.theme.colors);
-
-  /**
-   * Get user goals.
-   *
-   * @return {*}  {Promise<void>}
-   */
-  const getTargets = async (): Promise<void> => {
-    await getItem('target_month').then(item => {
-      setTargetMonth(item === null ? '0' : item);
-    });
-
-    await getItem('target_year').then(item => {
-      setTargetYear(item === null ? '0' : item);
-    });
-  };
-
-  useEffect(() => {
-    getTargets();
-  }, []);
 
   const chartConfig = {
     backgroundGradientFrom: '#fff',

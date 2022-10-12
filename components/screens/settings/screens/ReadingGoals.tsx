@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import {
+  targetPerMonth,
+  targetPerYear,
+} from '../../../../features/targets/targetSlice';
 import { setItem } from '../../../../helpers/Storage';
-import { useAppSelector } from '../../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import Btn from '../../../common/Btn';
 import Input from '../../../common/Input';
@@ -12,10 +16,16 @@ const ReadingGoals = (): JSX.Element => {
   const [year, setYear] = useState('');
 
   const colors = useAppSelector(state => state.theme.colors);
+  const dispatch = useAppDispatch();
 
   const saveGoals = async () => {
+    // Set in storage.
     await setItem('target_month', month);
     await setItem('target_year', year);
+
+    // Set in redux.
+    dispatch(targetPerMonth(month));
+    dispatch(targetPerYear(year));
   };
 
   return (

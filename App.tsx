@@ -20,6 +20,7 @@ import { isDark } from './features/theme/themeSlice';
 import { isNavigationDark } from './features/navigationTheme/navigationThemeSlice';
 import { locale } from './helpers/Locale';
 import Search from './components/screens/search/Search';
+import { targetPerMonth } from './features/targets/targetSlice';
 
 export const globalStateContext = createContext(1);
 export const dispatchStateContext = createContext<any>(undefined);
@@ -39,17 +40,28 @@ const App = (): JSX.Element => {
 
   // Set settings when app loads.
   useEffect(() => {
+    // Load set language.
     getItem('language').then(item => {
       if (item === null || item === 'auto')
         // Get system language and set it.
         t.setLanguage(locale.detectWithFallback);
       else t.setLanguage(item as string);
     });
+
+    // Load set theme.
     getItem('theme').then(item => {
       let i = item === null ? 'light' : item;
 
       store.dispatch(isDark(i === 'light' ? false : true));
       store.dispatch(isNavigationDark(i === 'light' ? false : true));
+    });
+
+    // Load set goals.
+    getItem('target_month').then(item => {
+      store.dispatch(targetPerMonth(item === null ? '0' : item));
+    });
+    getItem('target_year').then(item => {
+      store.dispatch(targetPerMonth(item === null ? '0' : item));
     });
   }, []);
 
