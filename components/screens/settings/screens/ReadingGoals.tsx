@@ -7,8 +7,8 @@ import Input from '../../../common/Input';
 import P from '../../../common/P';
 
 const ReadingGoals = (): JSX.Element => {
-  const [month, setMonth] = useState(0);
-  const [year, setYear] = useState(0);
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
 
   const colors = useAppSelector(state => state.theme.colors);
 
@@ -20,9 +20,10 @@ const ReadingGoals = (): JSX.Element => {
         </P>
         <Input
           value={`${month}`}
-          onChange={setMonth}
+          onChange={(text: string) => setMonth(text.replace(/[^0-9]/g, ''))}
           keyboardType="numeric"
           redux={false}
+          limit={3}
         />
       </View>
       <View style={styles.section}>
@@ -31,9 +32,10 @@ const ReadingGoals = (): JSX.Element => {
         </P>
         <Input
           value={`${year}`}
-          onChange={setYear}
+          onChange={(text: string) => setYear(text.replace(/[^0-9]/g, ''))}
           keyboardType="numeric"
           redux={false}
+          limit={3}
         />
       </View>
       <Btn text={t.rGoals3} action={() => console.log('aaa')} />

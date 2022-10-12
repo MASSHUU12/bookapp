@@ -7,6 +7,7 @@ interface Props {
   value: string;
   onChange: any;
   redux?: boolean;
+  limit?: number;
 }
 
 /**
@@ -26,6 +27,7 @@ const Input = ({
   value,
   onChange,
   redux = true,
+  limit = 999,
 }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const dispatch = useAppDispatch();
@@ -42,6 +44,7 @@ const Input = ({
       value={value}
       onChangeText={text => (redux ? dispatch(onChange(text)) : onChange(text))}
       keyboardType={keyboardType}
+      maxLength={limit}
     />
   );
 };
