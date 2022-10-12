@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useAppSelector } from '../../../../hooks';
+import { t } from '../../../../i18n/strings';
 import Btn from '../../../common/Btn';
 import Input from '../../../common/Input';
 import P from '../../../common/P';
@@ -15,7 +16,7 @@ const ReadingGoals = (): JSX.Element => {
     <View style={{ backgroundColor: colors.background, ...styles.container }}>
       <View style={styles.section}>
         <P size={16} color={colors.text2}>
-          How many books do you want to read this month?
+          {t.rGoals1}
         </P>
         <Input
           value={`${month}`}
@@ -26,7 +27,7 @@ const ReadingGoals = (): JSX.Element => {
       </View>
       <View style={styles.section}>
         <P size={16} color={colors.text2}>
-          How many books do you want to read this year?
+          {t.rGoals2}
         </P>
         <Input
           value={`${year}`}
@@ -35,7 +36,7 @@ const ReadingGoals = (): JSX.Element => {
           redux={false}
         />
       </View>
-      <Btn text="Save targets" action={() => console.log('aaa')} />
+      <Btn text={t.rGoals3} action={() => console.log('aaa')} />
     </View>
   );
 };

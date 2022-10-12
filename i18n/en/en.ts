@@ -65,6 +65,10 @@ export const en = {
     options1: 'Dark theme',
     options2: 'Light theme',
 
+    rGoals1: 'How many books do you want to read per month?',
+    rGoals2: 'How many books do you want to read per year?',
+    rGoals3: 'Save targets',
+
     miscYear: 'Year',
     miscMonth: 'Month',
     miscYes: 'Yes',
