@@ -3,7 +3,7 @@ import Cover from '../../../common/Cover';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
 import { useEffect, useState } from 'react';
-import { useGlobalState } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
 
 /**
@@ -13,7 +13,9 @@ import sql from '../../../../services/sql/sql';
  */
 const ReadLater = (): JSX.Element => {
   const [data, setData] = useState([]);
-  const [state, dispatch] = useGlobalState();
+  const [state] = useGlobalState();
+
+  const colors = useAppSelector(state => state.theme.colors);
 
   useEffect(() => {
     sql.getBooksInList('readLater', allBooksInList => {
@@ -24,15 +26,22 @@ const ReadLater = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <P>{t.readLater1}</P>
-      <FlatList
-        style={styles.list}
-        horizontal
-        ItemSeparatorComponent={({ highlighted }) => (
-          <View style={{ marginLeft: 10 }} />
-        )}
-        data={data}
-        renderItem={item => <Cover item={item} />}
-      />
+      {/* If list is empty display placeholder. */}
+      {data.length <= 0 ? (
+        <P size={14} color={colors.text2}>
+          {t.readLater2}
+        </P>
+      ) : (
+        <FlatList
+          style={styles.list}
+          horizontal
+          ItemSeparatorComponent={({ highlighted }) => (
+            <View style={{ marginLeft: 10 }} />
+          )}
+          data={data}
+          renderItem={item => <Cover item={item} />}
+        />
+      )}
     </View>
   );
 };

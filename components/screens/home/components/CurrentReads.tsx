@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
-import { useGlobalState } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import sql from '../../../../services/sql/sql';
 import CoverExtended from '../../../common/CoverExtended';
@@ -13,7 +13,9 @@ import P from '../../../common/P';
  */
 const CurrentReads = (): JSX.Element => {
   const [data, setData] = useState([]);
-  const [state, dispatch] = useGlobalState();
+  const [state] = useGlobalState();
+
+  const colors = useAppSelector(state => state.theme.colors);
 
   useEffect(() => {
     sql.getBooksInList('current', allBooksInList => {
@@ -24,14 +26,21 @@ const CurrentReads = (): JSX.Element => {
   return (
     <View>
       <P>{t.currentReads1}</P>
-      <FlatList
-        style={styles.header}
-        ItemSeparatorComponent={({ highlighted }) => (
-          <View style={{ marginTop: 15 }} />
-        )}
-        data={data}
-        renderItem={item => <CoverExtended item={item} />}
-      />
+      {/* If list is empty display placeholder. */}
+      {data.length <= 0 ? (
+        <P size={14} color={colors.text2}>
+          {t.currentReads2}
+        </P>
+      ) : (
+        <FlatList
+          style={styles.header}
+          ItemSeparatorComponent={({ highlighted }) => (
+            <View style={{ marginTop: 15 }} />
+          )}
+          data={data}
+          renderItem={item => <CoverExtended item={item} />}
+        />
+      )}
     </View>
   );
 };

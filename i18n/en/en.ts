@@ -19,8 +19,12 @@ export const en = {
     stats1: 'Your stats',
 
     readLater1: 'On Read Later',
+    readLater2:
+      'This list is empty, you can complete it by adding the books you are interested in.',
 
     currentReads1: 'Your Current Reads',
+    currentReads2:
+      'This list is empty, you can complete it by adding books you wish to read.',
 
     single1: 'Your rating',
     single2: 'Edit rating',

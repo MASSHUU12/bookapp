@@ -18,8 +18,12 @@ export const pl = {
     stats1: 'Twoje statystyki',
 
     readLater1: 'W Do Przeczytania',
+    readLater2:
+      'Ta lista jest pusta, możesz uzupełnić ją, dodając interesujące Cię książki.',
 
     currentReads1: 'Aktualnie Czytane',
+    currentReads2:
+      'Ta lista jest pusta, możesz uzupełnić ją, dodając książki, które pragniesz przeczytać.',
 
     single1: 'Twoja ocena',
     single2: 'Edytuj ocenę',
