@@ -1,22 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
 import { navigate } from '../../../../helpers/Navigate';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
+import sql from '../../../../services/sql/sql';
+import { ListType } from '../../../../types/listType';
 import P from '../../../common/P';
 
 interface Props {
   name: string;
   number_of_books: number;
   image: string; // For now
-  list_name: string;
+  list_name: ListType;
 }
 
-const ListItem = ({
-  name,
-  number_of_books,
-  image,
-  list_name,
-}: Props): JSX.Element => {
+const ListItem = ({ name, image, list_name }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
+  const [numberOfBooks, setNumberOfBooks] = useState(0);
+  const [update, setUpdate] = useGlobalState();
+
+  useEffect(() => {
+    sql.countBooksInList(list_name, bookCount => {
+      setNumberOfBooks(bookCount);
+    });
+  }, [update]);
 
   return (
     <Pressable
@@ -38,7 +44,7 @@ const ListItem = ({
       <View style={styles.info}>
         <P>{name}</P>
         <P size={14} color={colors.text2}>
-          {number_of_books + ' books'}
+          {numberOfBooks + ' books'}
         </P>
       </View>
     </Pressable>

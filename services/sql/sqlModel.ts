@@ -1,4 +1,9 @@
-import { openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
+import {
+  openDatabase,
+  ResultSet,
+  SQLiteDatabase,
+  Transaction,
+} from 'react-native-sqlite-storage';
 
 export class SqlModel {
   db: SQLiteDatabase;
@@ -9,7 +14,11 @@ export class SqlModel {
     this.db = openDatabase({ name: this.dbName });
   }
 
-  execute(statement: string, args?: Array<any>, callback?: Function) {
+  execute(
+    statement: string,
+    args?: Array<any>,
+    callback?: (tx: Transaction, res: ResultSet) => void,
+  ) {
     console.log(statement);
     this.db.transaction(tx => {
       tx.executeSql(

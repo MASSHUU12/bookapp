@@ -37,7 +37,7 @@ export default class SqlActions {
 
   getBooksInList(
     list: 'readLater' | 'current' | 'alreadyRead',
-    callback: Function,
+    callback: (results: Array<BookType>) => void,
   ) {
     this.db.execute(
       `SELECT * FROM lists where list = '${list}'`,
@@ -50,6 +50,21 @@ export default class SqlActions {
         }
         console.log(results);
         callback(results);
+      },
+    );
+  }
+
+  countBooksInList(
+    list: 'readLater' | 'current' | 'alreadyRead',
+    callback: (len: number) => void,
+  ) {
+    this.db.execute(
+      `SELECT * FROM lists where list = '${list}'`,
+      [],
+      (tx, res) => {
+        const len = res.rows.length;
+
+        callback(len);
       },
     );
   }

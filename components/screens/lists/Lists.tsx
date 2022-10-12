@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
+import sql from '../../../services/sql/sql';
 import P from '../../common/P';
 import ListItem from './components/ListItem';
 
@@ -8,24 +10,21 @@ const Lists = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   // Test data
-  const data = [
+  const lists = [
     {
       name: 'Read later',
-      number_of_books: 9,
       image: '',
-      list_name: 'read_later',
+      list_name: 'readLater',
     },
     {
       name: 'Currently reading',
-      number_of_books: 69,
       image: '',
-      list_name: 'currently_reading',
+      list_name: 'current',
     },
     {
       name: 'Already read',
-      number_of_books: 18,
       image: '',
-      list_name: 'already_read',
+      list_name: 'alreadyRead',
     },
   ];
 
@@ -37,11 +36,10 @@ const Lists = (): JSX.Element => {
         </P>
       }
       style={{ backgroundColor: colors.background, ...styles.container }}
-      data={data}
+      data={lists}
       renderItem={({ item }) => (
         <ListItem
           name={item.name}
-          number_of_books={item.number_of_books}
           image={item.image}
           list_name={item.list_name}
         />

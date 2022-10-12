@@ -74,5 +74,3 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
 };
 
 export default MoreOptionsList;
-
-const styles = StyleSheet.create({});
