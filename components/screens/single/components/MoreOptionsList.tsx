@@ -51,6 +51,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
 
     allOptionsText.splice(allOptionsMap[bookData.list], 1);
     allOptionsAction.splice(allOptionsMap[bookData.list], 1);
+
     console.log(allOptionsText);
   }, [bookData]);
 

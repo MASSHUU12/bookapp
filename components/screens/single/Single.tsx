@@ -40,6 +40,7 @@ const Single = ({ route }: any): JSX.Element => {
     if (!('key' in sqlBookData)) return;
 
     console.log(rating);
+
     sql.updateBookDetails({
       book_key: sqlBookData.key,
       field: 'user_rating',
@@ -52,6 +53,7 @@ const Single = ({ route }: any): JSX.Element => {
       if (bookFromSql === null) return; // book not available locally
 
       console.log('Book found in sql:', bookFromSql.list);
+
       setSqlBookData(bookFromSql);
     });
   }, []);
