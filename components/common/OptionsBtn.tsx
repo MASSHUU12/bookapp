@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { toggleModal } from '../../features/modal/modalSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { ModalType } from '../../types/modals';
 import CModal from './CModal';
 import P from './P';
 
@@ -8,6 +9,7 @@ interface Props {
   text: string;
   modalTexts: Array<string>;
   modalActions: Array<() => any>;
+  name: ModalType;
 }
 
 /**
@@ -16,16 +18,21 @@ interface Props {
  * @param {Props} { text, modalTexts, modalActions }
  * @return {*}  {JSX.Element}
  */
-const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
+const OptionsBtn = ({
+  text,
+  modalTexts,
+  modalActions,
+  name,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const dispatch = useAppDispatch();
 
   return (
-    <CModal text={text}>
+    <CModal text={text} name={name}>
       <Pressable
         style={styles.centeredView}
-        onPress={() => dispatch(toggleModal(0))}>
+        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
         <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
           {modalTexts.map((item, index) => (
             <Pressable
@@ -39,7 +46,7 @@ const OptionsBtn = ({ text, modalTexts, modalActions }: Props): JSX.Element => {
               key={index}
               onPress={() => {
                 modalActions[index]();
-                dispatch(toggleModal(0));
+                dispatch(toggleModal({ name, value: 0 }));
               }}>
               <P>{item}</P>
             </Pressable>

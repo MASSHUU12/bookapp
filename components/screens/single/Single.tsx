@@ -9,6 +9,7 @@ import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
 import MainActionButton from './components/MainActionButton';
 import MoreOptionsList from './components/MoreOptionsList';
+import NoteModal from './components/NoteModal';
 
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -163,9 +164,10 @@ const Single = ({ route }: any): JSX.Element => {
             ...styles.tags,
           }}>
           <P size={16}>{t.single3}</P>
-          <P size={16} color={colors.textBtn}>
+          {/* <P size={16} color={colors.textBtn}>
             {t.single4}
-          </P>
+          </P> */}
+          <NoteModal />
         </View>
         <P size={14} color={colors.placeholder}>
           {testData.note}

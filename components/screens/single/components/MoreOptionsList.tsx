@@ -61,6 +61,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
         text={t.miscMore}
         modalTexts={allOptionsText}
         modalActions={allOptionsAction}
+        name="singleMore"
       />
     </View>
   );
