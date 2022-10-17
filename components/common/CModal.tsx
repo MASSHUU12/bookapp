@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Modal, Pressable, StyleSheet } from 'react-native';
 import { toggleModal } from '../../features/modal/modalSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { ModalType } from '../../types/modals';
+import { ModalType } from '../../types/modalsType';
 import P from './P';
 
 interface Props {
@@ -10,7 +10,8 @@ interface Props {
   marginTop?: number;
   children?: JSX.Element;
   name: ModalType;
-  // styles?: Object;
+  styles?: Object;
+  textColor?: string;
 }
 
 /**
@@ -25,15 +26,15 @@ const CModal = (props: Props): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  // const setStyles = (): Object => {
-  //   if (props.styles !== undefined) return { ...props.styles };
+  const setStyles = (): Object => {
+    if (props.styles !== undefined) return { ...props.styles };
 
-  //   return {
-  //     backgroundColor: colors.optionsBtn,
-  //     marginTop: props.marginTop,
-  //     ...styles.container,
-  //   };
-  // };
+    return {
+      backgroundColor: colors.optionsBtn,
+      marginTop: props.marginTop,
+      ...styles.container,
+    };
+  };
 
   useEffect(() => {
     console.log(props.name + ' ' + state);
@@ -45,13 +46,11 @@ const CModal = (props: Props): JSX.Element => {
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
-            backgroundColor: colors.optionsBtn,
-            marginTop: props.marginTop,
-            ...styles.container,
+            ...setStyles(),
           },
         ]}
         onPress={() => dispatch(toggleModal({ name: props.name, value: 1 }))}>
-        <P size={16} color={colors.text4}>
+        <P size={16} color={props.textColor ? props.textColor : colors.text4}>
           {props.text}
         </P>
       </Pressable>

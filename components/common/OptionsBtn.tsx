@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { toggleModal } from '../../features/modal/modalSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { ModalType } from '../../types/modals';
+import { ModalType } from '../../types/modalsType';
 import CModal from './CModal';
 import P from './P';
 

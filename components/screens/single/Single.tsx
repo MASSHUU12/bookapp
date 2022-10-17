@@ -164,10 +164,7 @@ const Single = ({ route }: any): JSX.Element => {
             ...styles.tags,
           }}>
           <P size={16}>{t.single3}</P>
-          {/* <P size={16} color={colors.textBtn}>
-            {t.single4}
-          </P> */}
-          <NoteModal />
+          <NoteModal book_title={sqlBookData.title} />
         </View>
         <P size={14} color={colors.placeholder}>
           {testData.note}

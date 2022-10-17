@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ModalType } from '../../types/modals';
+import { ModalType } from '../../types/modalsType';
 
 export const modalSlice = createSlice({
   name: 'modal',
