@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Animated } from 'react-native';
 import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
-import { BookType } from '../../../types/bookType';
+import { DetailedBookType } from '../../../types/detailedBookType';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
@@ -14,10 +14,10 @@ const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
   const [state, dispatch] = useGlobalState();
-  const [sqlBookData, setSqlBookData] = useState<{} | BookType>({});
+  const [sqlBookData, setSqlBookData] = useState<{} | DetailedBookType>({});
 
   const testData = {
-    tags: ['Game theory', 'Interpersonal relations', 'Social interaction'],
+    tags: ['All time favorites', 'Read again', 'Computer science'],
     note: 'My note for the book.',
     firstSentence:
       'OBSERVATION of spontaneous social activity, most productively carried out in certain kinds of psychotherapy groups, reveals that from time to time people show noticeable changes in posture, viewpoint, voice, vocabulary, and other aspects of behavior.',
@@ -52,6 +52,7 @@ const Single = ({ route }: any): JSX.Element => {
       if (bookFromSql === null) return; // book not available locally
 
       console.log('Book found in sql:', bookFromSql.list);
+      console.log('parsed tags:', JSON.parse(bookFromSql.user_tags));
       setSqlBookData(bookFromSql);
     });
   }, []);
