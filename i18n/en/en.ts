@@ -44,6 +44,7 @@ export const en = {
     single11: 'Are your sure?',
     single12: 'You can add the book again later.',
     single13: 'Remove book from history',
+    single14: "You're editing a note",
 
     add1: "Your're adding",
     add2: 'What is the title of your book?',
@@ -76,5 +77,7 @@ export const en = {
     miscYes: 'Yes',
     miscNo: 'No',
     miscMore: 'More',
+    miscClose: 'close',
+    miscSave: 'Save',
   },
 };

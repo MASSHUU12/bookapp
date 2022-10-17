@@ -45,9 +45,9 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
               alignItems: 'center',
             }}>
             <Ionicons name="close" size={32} color={colors.text4} />
-            <P color={colors.text4}>close</P>
+            <P color={colors.text4}>{t.miscClose}</P>
           </View>
-          <P>You're editing a note</P>
+          <P>{t.single14}</P>
           <P color={colors.text2} size={14}>
             {book_title}
           </P>
@@ -62,7 +62,7 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
             value={text}
             onChangeText={item => setText(item)}
           />
-          <Btn text="Save" action={() => console.log('Boop')} />
+          <Btn text={t.miscSave} action={() => console.log('Boop')} />
         </View>
       </Pressable>
     </CModal>

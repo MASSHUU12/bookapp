@@ -43,6 +43,7 @@ export const pl = {
     single11: 'Jesteś pewien?',
     single12: 'Książkę możesz dodać ponownie później.',
     single13: 'Usuń książkę z historii',
+    single14: 'Edytujesz notatkę',
 
     add1: 'Dodajesz',
     add2: 'Jaki tytuł ma twoja książka?',
@@ -75,5 +76,7 @@ export const pl = {
     miscYes: 'Tak',
     miscNo: 'Nie',
     miscMore: 'Więcej',
+    miscClose: 'zamknij',
+    miscSave: 'Zapisz',
   },
 };
