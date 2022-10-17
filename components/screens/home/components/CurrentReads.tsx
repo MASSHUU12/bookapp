@@ -28,9 +28,11 @@ const CurrentReads = (): JSX.Element => {
       <P>{t.currentReads1}</P>
       {/* If list is empty display placeholder. */}
       {data.length <= 0 ? (
-        <P size={14} color={colors.text2}>
-          {t.currentReads2}
-        </P>
+        <View style={{ minHeight: 150, marginTop: 10 }}>
+          <P size={14} color={colors.text2}>
+            {t.currentReads2}
+          </P>
+        </View>
       ) : (
         <FlatList
           style={styles.header}

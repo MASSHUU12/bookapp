@@ -1,7 +1,11 @@
-import { saveBookTypes, updateBookTypes } from './sqlTypes';
+import {
+  saveBookTypes,
+  updateBookTagsTypes,
+  updateBookTypes,
+} from './sqlTypes';
 import { SqlModel } from './sqlModel';
-import { ListType } from '../../types/type';
 import { BookType } from '../../types/bookType';
+import { DetailedBookType } from '../../types/detailedBookType';
 
 export default class SqlActions {
   db: SqlModel;
@@ -69,7 +73,10 @@ export default class SqlActions {
     );
   }
 
-  getSingleBookDetailedInfo(id: string, callback: (book: BookType) => void) {
+  getSingleBookDetailedInfo(
+    id: string,
+    callback: (book: DetailedBookType) => void,
+  ) {
     console.log('this is id', id);
     this.db.execute(
       `SELECT * FROM lists LEFT JOIN list_details ON lists.key = list_details.key WHERE lists.key = ?;`,
@@ -104,6 +111,36 @@ export default class SqlActions {
       [params.value, params.book_key],
       () => {
         console.log('success');
+      },
+    );
+  }
+
+  updateBookTags(params: updateBookTagsTypes) {
+    this.db.execute(
+      `SELECT * FROM list_details WHERE lists.key = ?;`,
+      [params.key],
+      (tx, res) => {
+        const len = res.rows.length;
+
+        if (len === 0) return console.warn('this book is not in SQL');
+
+        let existingTags = res.rows.item(0).user_tags;
+
+        const formatedExistingTags = JSON.parse(existingTags);
+        const allTags = [];
+
+        if (existingTags != null)
+          allTags.push(...formatedExistingTags, ...params.tags);
+
+        const stringifiedTags = JSON.stringify(allTags);
+
+        this.db.execute(
+          `UPDATE list_details SET user_tags = ? WHERE key = ?`,
+          [stringifiedTags],
+          () => {
+            console.log('success');
+          },
+        );
       },
     );
   }

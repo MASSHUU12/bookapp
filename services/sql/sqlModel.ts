@@ -57,7 +57,8 @@ export class SqlModel {
       `CREATE TABLE IF NOT EXISTS list_details (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         key TEXT,
-        lists_id INTEGER, 
+        lists_id INTEGER,
+        user_tags TEXT DEFAULT "[]",
         user_notes TEXT,
         user_rating TEXT,
         if_read_again TEXT,

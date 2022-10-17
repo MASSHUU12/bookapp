@@ -15,7 +15,7 @@ const Dev = (): JSX.Element => {
       />
       <SettingsBtn
         icon="hammer-outline"
-        text={'drop list table'}
+        text={'drop all tables'}
         action={() => sql.dropAlltables()}
       />
       <SettingsBtn
