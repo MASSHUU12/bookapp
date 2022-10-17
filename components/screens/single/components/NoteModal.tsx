@@ -25,6 +25,7 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
   const [text, setText] = useState('');
 
   const name: ModalType = 'note';
+  const limit = 2048;
 
   return (
     <CModal
@@ -61,7 +62,12 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
             multiline
             value={text}
             onChangeText={item => setText(item)}
+            maxLength={limit}
           />
+          <P
+            color={colors.text2}
+            size={12}
+            styles={styles.charactersNumber}>{`${text.length}/${limit}`}</P>
           <Btn text={t.miscSave} action={() => console.log('Boop')} />
         </View>
       </Pressable>
@@ -101,11 +107,15 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    height: 'auto',
     minHeight: '50%',
     marginVertical: 15,
     borderRadius: 10,
     padding: 10,
+  },
+  charactersNumber: {
+    position: 'absolute',
+    bottom: '15%',
+    right: 20,
   },
 });
 
