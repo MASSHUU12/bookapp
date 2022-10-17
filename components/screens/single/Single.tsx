@@ -9,6 +9,7 @@ import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
 import MainActionButton from './components/MainActionButton';
 import MoreOptionsList from './components/MoreOptionsList';
+import NoteModal from './components/NoteModal';
 
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -40,6 +41,7 @@ const Single = ({ route }: any): JSX.Element => {
     if (!('key' in sqlBookData)) return;
 
     console.log(rating);
+
     sql.updateBookDetails({
       book_key: sqlBookData.key,
       field: 'user_rating',
@@ -53,6 +55,7 @@ const Single = ({ route }: any): JSX.Element => {
 
       console.log('Book found in sql:', bookFromSql.list);
       console.log('parsed tags:', JSON.parse(bookFromSql.user_tags));
+
       setSqlBookData(bookFromSql);
     });
   }, []);
@@ -162,9 +165,7 @@ const Single = ({ route }: any): JSX.Element => {
             ...styles.tags,
           }}>
           <P size={16}>{t.single3}</P>
-          <P size={16} color={colors.textBtn}>
-            {t.single4}
-          </P>
+          <NoteModal book_title={sqlBookData.title} />
         </View>
         <P size={14} color={colors.placeholder}>
           {testData.note}

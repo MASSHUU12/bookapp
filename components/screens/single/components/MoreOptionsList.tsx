@@ -51,6 +51,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
 
     allOptionsText.splice(allOptionsMap[bookData.list], 1);
     allOptionsAction.splice(allOptionsMap[bookData.list], 1);
+
     console.log(allOptionsText);
   }, [bookData]);
 
@@ -60,6 +61,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
         text={t.miscMore}
         modalTexts={allOptionsText}
         modalActions={allOptionsAction}
+        name="singleMore"
       />
     </View>
   );

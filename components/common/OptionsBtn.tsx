@@ -1,89 +1,67 @@
-import { useState } from 'react';
-import { Pressable, StyleSheet, Modal, View } from 'react-native';
-import { useAppSelector } from '../../hooks';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { toggleModal } from '../../features/modal/modalSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { ModalType } from '../../types/modalsType';
+import CModal from './CModal';
 import P from './P';
 
 interface Props {
   text: string;
   modalTexts: Array<string>;
   modalActions: Array<() => any>;
-  marginTop?: number;
+  name: ModalType;
 }
 
+/**
+ * Modal suitable for button storage.
+ *
+ * @param {Props} { text, modalTexts, modalActions }
+ * @return {*}  {JSX.Element}
+ */
 const OptionsBtn = ({
   text,
   modalTexts,
   modalActions,
-  marginTop = 0,
+  name,
 }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
-  const [showModal, setShowModal] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   return (
-    <>
+    <CModal text={text} name={name}>
       <Pressable
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-            backgroundColor: colors.optionsBtn,
-            marginTop: marginTop,
-            ...styles.container,
-          },
-        ]}
-        onPress={() => setShowModal(true)}>
-        <P size={16} color={colors.text4}>
-          {text}
-        </P>
+        style={styles.centeredView}
+        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
+        <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
+          {modalTexts.map((item, index) => (
+            <Pressable
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? 0.5 : 1,
+                  backgroundColor: colors.optionsBtn,
+                  ...styles.btn,
+                },
+              ]}
+              key={index}
+              onPress={() => {
+                modalActions[index]();
+                dispatch(toggleModal({ name, value: 0 }));
+              }}>
+              <P>{item}</P>
+            </Pressable>
+          ))}
+        </View>
       </Pressable>
-      {showModal && (
-        <Modal
-          animationType="slide"
-          transparent
-          onRequestClose={() => setShowModal(false)}
-          onDismiss={() => setShowModal(false)}>
-          <Pressable
-            style={styles.centeredView}
-            onPress={() => setShowModal(false)}>
-            <View
-              style={{ backgroundColor: colors.white, ...styles.modalView }}>
-              {modalTexts.map((item, index) => (
-                <Pressable
-                  style={({ pressed }) => [
-                    {
-                      opacity: pressed ? 0.5 : 1,
-                      backgroundColor: colors.optionsBtn,
-                      ...styles.btn,
-                    },
-                  ]}
-                  key={index}
-                  onPress={() => {
-                    modalActions[index]();
-                    setShowModal(false);
-                  }}>
-                  <P>{item}</P>
-                </Pressable>
-              ))}
-            </View>
-          </Pressable>
-        </Modal>
-      )}
-    </>
+    </CModal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    borderRadius: 10,
-    padding: 5,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   centeredView: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.25)',
   },
   modalView: {
     borderRadius: 10,
@@ -94,6 +72,11 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     alignItems: 'center',
     width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
   },
   btn: {
     paddingVertical: 10,
