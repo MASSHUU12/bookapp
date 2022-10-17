@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.25)',
   },
   modalView: {
     borderRadius: 10,
@@ -94,6 +93,11 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     alignItems: 'center',
     width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
   },
   btn: {
     paddingVertical: 10,
