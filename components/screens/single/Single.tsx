@@ -15,7 +15,7 @@ import TagsModal from './components/TagsModal';
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
-  const [state, dispatch] = useGlobalState();
+  const [onRefresh, dispatch] = useGlobalState();
   const [sqlBookData, setSqlBookData] = useState<{} | DetailedBookType>({});
 
   const testData = {
@@ -54,12 +54,9 @@ const Single = ({ route }: any): JSX.Element => {
     sql.getSingleBookDetailedInfo(route.params.key, bookFromSql => {
       if (bookFromSql === null) return; // book not available locally
 
-      console.log('Book found in sql:', bookFromSql.list);
-      console.log('parsed tags:', JSON.parse(bookFromSql.user_tags));
-
       setSqlBookData(bookFromSql);
     });
-  }, []);
+  }, [onRefresh]);
 
   return (
     //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
@@ -172,26 +169,22 @@ const Single = ({ route }: any): JSX.Element => {
         )}
         {/* Mark as button */}
         <MoreOptionsList bookData={sqlBookData} />
-        {/* Personal note */}
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            ...styles.tags,
-          }}>
-          <P size={16}>{t.single3}</P>
-          <NoteModal book_title={sqlBookData.title} />
-        </View>
-        <P size={14} color={colors.placeholder}>
-          {testData.note}
-        </P>
-        {/* Description */}
-        <View style={styles.desc}>
-          <P size={16}>{t.single5}</P>
-          <P size={14} color={colors.placeholder}>
-            {testData.firstSentence}
-          </P>
-        </View>
+        {'user_notes' in sqlBookData && (
+          <View>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                ...styles.tags,
+              }}>
+              <P size={16}>{t.single3}</P>
+              <NoteModal book={sqlBookData} />
+            </View>
+            <P size={14} color={colors.placeholder}>
+              {sqlBookData.user_notes}
+            </P>
+          </View>
+        )}
       </View>
     </ScrollView>
   );

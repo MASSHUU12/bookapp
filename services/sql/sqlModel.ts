@@ -59,7 +59,7 @@ export class SqlModel {
         key TEXT,
         lists_id INTEGER,
         user_tags TEXT DEFAULT "[]",
-        user_notes TEXT,
+        user_notes TEXT DEFAULT "" NOT NULL,
         user_rating TEXT,
         if_read_again TEXT,
         FOREIGN KEY(lists_id) REFERENCES lists(id)

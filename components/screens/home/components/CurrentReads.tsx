@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import sql from '../../../../services/sql/sql';
+import { BookType } from '../../../../types/bookType';
 import CoverExtended from '../../../common/CoverExtended';
 import P from '../../../common/P';
 
@@ -12,7 +13,7 @@ import P from '../../../common/P';
  * @return {*}  {JSX.Element}
  */
 const CurrentReads = (): JSX.Element => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Array<BookType>>([]);
   const [state] = useGlobalState();
 
   const colors = useAppSelector(state => state.theme.colors);

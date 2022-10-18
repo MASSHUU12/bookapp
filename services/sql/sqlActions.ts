@@ -105,12 +105,12 @@ export default class SqlActions {
     );
   }
 
-  updateBookDetails(params: updateBookTypes) {
+  updateBookDetails(params: updateBookTypes, callback?: () => void) {
     this.db.execute(
       `UPDATE list_details SET ${params.field} = ? WHERE key = ?`,
       [params.value, params.book_key],
       () => {
-        console.log('success');
+        if (typeof callback === 'function') callback();
       },
     );
   }
