@@ -85,10 +85,10 @@ const NoteModal = (): JSX.Element => {
           {/* Header */}
           <View style={styles.header}>
             <P size={24} font="AndadaPro-Bold">
-              Choose tags for this book
+              {t.single17}
             </P>
             <P size={18} color={colors.link}>
-              aaa
+              {t.single18}
             </P>
           </View>
           {/* Tags */}
@@ -96,7 +96,7 @@ const NoteModal = (): JSX.Element => {
             style={styles.list}
             data={tags}
             extraData={extra}
-            ListHeaderComponent={<P>Your existing tags</P>}
+            ListHeaderComponent={<P>{t.single15}</P>}
             ItemSeparatorComponent={() => {
               return <View style={{ marginBottom: 10 }}></View>;
             }}
@@ -112,7 +112,7 @@ const NoteModal = (): JSX.Element => {
             }}
           />
           <Btn
-            text="Save"
+            text={t.miscSave}
             bg={colors.link}
             action={() => dispatch(toggleModal({ name, value: 0 }))}
           />

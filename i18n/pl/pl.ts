@@ -46,6 +46,8 @@ export const pl = {
     single14: 'Edytujesz notatkę',
     single15: 'Twoje tagi',
     single16: 'Edytuj tagi',
+    single17: 'Wybierz tagi dla tej książki',
+    single18: 'Dodaj tagi',
 
     add1: 'Dodajesz',
     add2: 'Jaki tytuł ma twoja książka?',
