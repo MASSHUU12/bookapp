@@ -45,6 +45,8 @@ export const en = {
     single12: 'You can add the book again later.',
     single13: 'Remove book from history',
     single14: "You're editing a note",
+    single15: 'Your tags',
+    single16: 'Edit tags',
 
     add1: "Your're adding",
     add2: 'What is the title of your book?',

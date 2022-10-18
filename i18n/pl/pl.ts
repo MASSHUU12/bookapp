@@ -44,6 +44,8 @@ export const pl = {
     single12: 'Książkę możesz dodać ponownie później.',
     single13: 'Usuń książkę z historii',
     single14: 'Edytujesz notatkę',
+    single15: 'Twoje tagi',
+    single16: 'Edytuj tagi',
 
     add1: 'Dodajesz',
     add2: 'Jaki tytuł ma twoja książka?',

@@ -10,6 +10,7 @@ import Tag from '../../common/Tag';
 import MainActionButton from './components/MainActionButton';
 import MoreOptionsList from './components/MoreOptionsList';
 import NoteModal from './components/NoteModal';
+import TagsModal from './components/TagsModal';
 
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -136,15 +137,29 @@ const Single = ({ route }: any): JSX.Element => {
           </P>
         </View>
         {/* Tags */}
-        <View style={styles.tags}>
-          {testData.tags.map((item, index) => (
-            <Tag key={index} text={item} index={index} />
-          ))}
-        </View>
+        <>
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: 0,
+              ...styles.tags,
+            }}>
+            <P color={colors.placeholder} size={14}>
+              {t.single15}
+            </P>
+            <TagsModal />
+          </View>
+          <View style={{ ...styles.tags, marginTop: 0 }}>
+            {testData.tags.map((item, index) => (
+              <Tag key={index} text={item} index={index} />
+            ))}
+          </View>
+        </>
         {/* Rating */}
         {'user_rating' in sqlBookData && (
           <>
-            <P color={colors.placeholder} size={16}>
+            <P color={colors.placeholder} size={14}>
               {t.single1}
             </P>
             <View style={{ marginTop: 0, ...styles.tags }}>

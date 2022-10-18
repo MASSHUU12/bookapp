@@ -1,10 +1,11 @@
 import { Text, StyleSheet } from 'react-native';
 import { useAppSelector } from '../../hooks';
+import { ColorsType } from '../../types/colors';
 
 interface Props {
   children: string;
   size?: number;
-  color?: string;
+  color?: ColorsType | string;
   font?:
     | 'AndadaPro-Bold'
     | 'AndadaPro-BoldItalic'
@@ -36,7 +37,7 @@ const P = (props: Props): JSX.Element => {
       style={{
         ...styles.text,
         fontSize: props.size ? props.size : 18,
-        color: props.color ? props.color : colors.text,
+        color: props.color ? (props.color as string) : colors.text,
         fontFamily: props.font ? props.font : 'AndadaPro-Regular',
         ...props.styles,
       }}>

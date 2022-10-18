@@ -8,6 +8,7 @@ export const modalSlice = createSlice({
       note: 0,
       singleMore: 0,
       readingGoals: 0,
+      tags: 0,
     },
   },
   reducers: {
@@ -26,6 +27,10 @@ export const modalSlice = createSlice({
 
         case 'readingGoals':
           state.value.readingGoals = action.payload.value;
+          break;
+
+        case 'tags':
+          state.value.tags = action.payload.value;
           break;
 
         default:
