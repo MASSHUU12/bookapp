@@ -1,4 +1,5 @@
 import {
+  RemoveTagFromBookTypes,
   saveBookTypes,
   updateBookTagsTypes,
   updateBookTypes,
@@ -136,6 +137,41 @@ export default class SqlActions {
           allTags.push(...formatedExistingTags, ...tags);
 
         const stringifiedTags = JSON.stringify(allTags);
+
+        this.db.execute(
+          `UPDATE list_details SET user_tags = ? WHERE key = ?`,
+          [stringifiedTags, key],
+          () => {
+            if (typeof callback === 'function') callback();
+          },
+        );
+      },
+    );
+  }
+
+  removeTagFromBook(
+    { key, tag }: RemoveTagFromBookTypes,
+    callback?: () => void,
+  ) {
+    this.db.execute(
+      `SELECT * FROM list_details WHERE list_details.key = ?;`,
+      [key],
+      (tx, res) => {
+        const len = res.rows.length;
+
+        if (len === 0) return console.warn('this book is not in SQL');
+
+        let existingTags = res.rows.item(0).user_tags;
+
+        const formatedExistingTags = JSON.parse(existingTags);
+
+        const indexOfTag = formatedExistingTags.indexOf(tag);
+
+        if (indexOfTag < 0) return console.warn('tag does not exist');
+
+        formatedExistingTags.splice(indexOfTag, 1);
+
+        const stringifiedTags = JSON.stringify(formatedExistingTags);
 
         this.db.execute(
           `UPDATE list_details SET user_tags = ? WHERE key = ?`,

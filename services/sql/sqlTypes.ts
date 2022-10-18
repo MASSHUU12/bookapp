@@ -24,3 +24,8 @@ export type updateBookTagsTypes = {
   key: string;
   tags: Array<string>;
 };
+
+export type RemoveTagFromBookTypes = {
+  key: string;
+  tag: string;
+};

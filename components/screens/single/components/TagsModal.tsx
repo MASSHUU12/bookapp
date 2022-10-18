@@ -61,7 +61,9 @@ const NoteModal = ({ book }: Props): JSX.Element => {
         refresh(1);
       });
     } else {
-      console.log('should remove tag');
+      sql.removeTagFromBook({ key: book.key, tag: passedTag.name }, () => {
+        refresh(1);
+      });
     }
   };
 
