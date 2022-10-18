@@ -17,13 +17,7 @@ const Single = ({ route }: any): JSX.Element => {
   const pan = useRef(new Animated.ValueXY()).current;
   const [onRefresh, dispatch] = useGlobalState();
   const [sqlBookData, setSqlBookData] = useState<{} | DetailedBookType>({});
-
-  const testData = {
-    tags: ['All time favorites', 'Read again', 'Computer science'],
-    note: 'My note for the book.',
-    firstSentence:
-      'OBSERVATION of spontaneous social activity, most productively carried out in certain kinds of psychotherapy groups, reveals that from time to time people show noticeable changes in posture, viewpoint, voice, vocabulary, and other aspects of behavior.',
-  };
+  const [tags, setTags] = useState([]);
 
   const handleMainButton = () => {
     sql.saveBookToList({
@@ -55,6 +49,7 @@ const Single = ({ route }: any): JSX.Element => {
       if (bookFromSql === null) return; // book not available locally
 
       setSqlBookData(bookFromSql);
+      setTags([bookFromSql.list, 'Read again', 'Favourites']);
     });
   }, [onRefresh]);
 
@@ -145,10 +140,10 @@ const Single = ({ route }: any): JSX.Element => {
             <P color={colors.placeholder} size={14}>
               {t.single15}
             </P>
-            <TagsModal />
+            <TagsModal book={sqlBookData} />
           </View>
           <View style={{ ...styles.tags, marginTop: 0 }}>
-            {testData.tags.map((item, index) => (
+            {tags.map((item, index) => (
               <Tag key={index} text={item} index={index} />
             ))}
           </View>

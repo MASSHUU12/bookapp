@@ -115,10 +115,10 @@ export default class SqlActions {
     );
   }
 
-  updateBookTags(params: updateBookTagsTypes) {
+  updateBookTags({ key, tags }: updateBookTagsTypes) {
     this.db.execute(
       `SELECT * FROM list_details WHERE lists.key = ?;`,
-      [params.key],
+      [key],
       (tx, res) => {
         const len = res.rows.length;
 
@@ -130,7 +130,7 @@ export default class SqlActions {
         const allTags = [];
 
         if (existingTags != null)
-          allTags.push(...formatedExistingTags, ...params.tags);
+          allTags.push(...formatedExistingTags, ...tags);
 
         const stringifiedTags = JSON.stringify(allTags);
 
