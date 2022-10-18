@@ -1,1 +1,1 @@
-export type ModalType = 'note' | 'singleMore';
+export type ModalType = 'note' | 'singleMore' | 'readingGoals';

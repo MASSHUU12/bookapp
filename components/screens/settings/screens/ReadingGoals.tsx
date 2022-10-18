@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { toggleModal } from '../../../../features/modal/modalSlice';
 import {
   targetPerMonth,
   targetPerYear,
@@ -7,7 +8,9 @@ import {
 import { setItem } from '../../../../helpers/Storage';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
+import { ModalType } from '../../../../types/modalsType';
 import Btn from '../../../common/Btn';
+import CModal from '../../../common/CModal';
 import Input from '../../../common/Input';
 import P from '../../../common/P';
 
@@ -28,49 +31,79 @@ const ReadingGoals = (): JSX.Element => {
     dispatch(targetPerYear(year));
   };
 
+  const name: ModalType = 'readingGoals';
+
   return (
-    <View style={{ backgroundColor: colors.background, ...styles.container }}>
-      <View style={styles.section}>
-        <P size={16} color={colors.text2}>
-          {t.rGoals1}
-        </P>
-        <Input
-          value={`${month}`}
-          onChange={(text: string) => setMonth(text.replace(/[^0-9]/g, ''))}
-          keyboardType="numeric"
-          redux={false}
-          limit={3}
-        />
-      </View>
-      <View style={styles.section}>
-        <P size={16} color={colors.text2}>
-          {t.rGoals2}
-        </P>
-        <Input
-          value={`${year}`}
-          onChange={(text: string) => setYear(text.replace(/[^0-9]/g, ''))}
-          keyboardType="numeric"
-          redux={false}
-          limit={3}
-        />
-      </View>
-      <Btn
-        text={t.rGoals3}
-        action={async () => {
-          await saveGoals();
-        }}
-      />
-    </View>
+    <CModal text="" name={name} styles={{ display: 'none' }}>
+      <Pressable
+        style={styles.centeredView}
+        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
+        <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
+          <P>{t.rGoals4}</P>
+          <View style={styles.section}>
+            <P size={16} color={colors.text2}>
+              {t.rGoals1}
+            </P>
+            <Input
+              value={`${month}`}
+              onChange={(text: string) => setMonth(text.replace(/[^0-9]/g, ''))}
+              keyboardType="numeric"
+              redux={false}
+              limit={3}
+            />
+          </View>
+          <View style={{ ...styles.section, marginBottom: '70%' }}>
+            <P size={16} color={colors.text2}>
+              {t.rGoals2}
+            </P>
+            <Input
+              value={`${year}`}
+              onChange={(text: string) => setYear(text.replace(/[^0-9]/g, ''))}
+              keyboardType="numeric"
+              redux={false}
+              limit={3}
+            />
+          </View>
+          <Btn
+            text={t.rGoals3}
+            action={async () => {
+              await saveGoals();
+              dispatch(toggleModal({ name, value: 0 }));
+            }}
+          />
+        </View>
+      </Pressable>
+    </CModal>
   );
 };
 
 const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  modalView: {
+    borderRadius: 10,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    paddingVertical: 25,
+    paddingHorizontal: 10,
+    paddingBottom: 45,
+    width: '100%',
+    height: '75%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
   container: {
     paddingHorizontal: 25,
-    flex: 1,
   },
   section: {
     marginVertical: 15,
+    width: '100%',
   },
 });
 

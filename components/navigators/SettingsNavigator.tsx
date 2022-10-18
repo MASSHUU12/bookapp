@@ -5,7 +5,6 @@ import { t } from '../../i18n/strings';
 import Dev from '../screens/settings/screens/Dev';
 import NotificationPreferences from '../screens/settings/screens/NotificationPreferences';
 import Options from '../screens/settings/screens/Options';
-import ReadingGoals from '../screens/settings/screens/ReadingGoals';
 import Settings from '../screens/settings/Settings';
 
 /**
@@ -35,11 +34,6 @@ const SettingsNavigator = (): JSX.Element => {
         name="Settings"
         component={Settings}
         options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="ReadingGoals"
-        component={ReadingGoals}
-        options={{ title: t.settings1 }}
       />
       <Tab.Screen
         name="NotificationPreferences"

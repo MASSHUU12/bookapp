@@ -71,6 +71,7 @@ export const en = {
     rGoals1: 'How many books do you want to read per month?',
     rGoals2: 'How many books do you want to read per year?',
     rGoals3: 'Save targets',
+    rGoals4: "You're editing your reading goals",
 
     miscYear: 'Year',
     miscMonth: 'Month',
