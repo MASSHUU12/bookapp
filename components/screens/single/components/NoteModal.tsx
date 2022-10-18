@@ -29,14 +29,16 @@ const NoteModal = ({ book }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const dispatch = useAppDispatch();
   const [_, refresh] = useGlobalState();
-  const [text, setText] = useState('');
+  const [noteText, setNoteText] = useState('');
+
+  const aaaa = 'asfawwfa';
 
   const onSave = () => {
     sql.updateBookDetails(
       {
         book_key: book.key,
         field: 'user_notes',
-        value: text,
+        value: noteText,
       },
       () => {
         refresh(1);
@@ -46,7 +48,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
   };
 
   useEffect(() => {
-    setText(book.user_notes);
+    setNoteText(book.user_notes);
   }, []);
 
   const name: ModalType = 'note';
@@ -83,14 +85,16 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             }}
             textAlignVertical="top"
             multiline
-            value={text}
-            onChangeText={textFromInput => setText(textFromInput)}
+            value={noteText}
+            onChangeText={textFromInput => setNoteText(textFromInput)}
             maxLength={limit}
           />
           <P
             color={colors.text2}
             size={12}
-            styles={styles.charactersNumber}>{`${text.length}/${limit}`}</P>
+            styles={styles.charactersNumber}>{`${
+            noteText ? noteText.length : 0
+          }/${limit}`}</P>
           <Btn
             text={t.miscSave}
             action={() => {
