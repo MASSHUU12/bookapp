@@ -92,7 +92,9 @@ const NoteModal = ({ book }: Props): JSX.Element => {
           <P
             color={colors.text2}
             size={12}
-            styles={styles.charactersNumber}>{`${text.length}/${limit}`}</P>
+            styles={styles.charactersNumber}>{`${
+            text ? text.length : 0
+          }/${limit}`}</P>
           <Btn text={t.miscSave} action={onSave} />
         </View>
       </Pressable>
