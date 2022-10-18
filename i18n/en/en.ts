@@ -48,7 +48,6 @@ export const en = {
     single15: 'Your tags',
     single16: 'Edit tags',
     single17: 'Choose tags for this book',
-    single18: 'Add tags',
 
     add1: "Your're adding",
     add2: 'What is the title of your book?',

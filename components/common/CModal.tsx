@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Modal, Pressable, StyleSheet } from 'react-native';
-import { toggleModal } from '../../features/modal/modalSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { modal } from '../../helpers/ModalManager';
+import { useAppSelector } from '../../hooks';
 import { ModalType } from '../../types/modalsType';
 import P from './P';
 
@@ -23,8 +23,6 @@ interface Props {
 const CModal = (props: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const state = useAppSelector(state => state.modal.value[props.name]);
-
-  const dispatch = useAppDispatch();
 
   const setStyles = (): Object => {
     if (props.styles !== undefined) return { ...props.styles };
@@ -49,7 +47,7 @@ const CModal = (props: Props): JSX.Element => {
             ...setStyles(),
           },
         ]}
-        onPress={() => dispatch(toggleModal({ name: props.name, value: 1 }))}>
+        onPress={() => modal.open(props.name)}>
         <P size={16} color={props.textColor ? props.textColor : colors.text4}>
           {props.text}
         </P>
@@ -58,12 +56,8 @@ const CModal = (props: Props): JSX.Element => {
         <Modal
           animationType="slide"
           transparent
-          onRequestClose={() =>
-            dispatch(toggleModal({ name: props.name, value: 0 }))
-          }
-          onDismiss={() =>
-            dispatch(toggleModal({ name: props.name, value: 0 }))
-          }>
+          onRequestClose={() => modal.close(props.name)}
+          onDismiss={() => modal.close(props.name)}>
           {props.children}
         </Modal>
       )}

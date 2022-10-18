@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { toggleModal } from '../../../../features/modal/modalSlice';
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
+import { modal } from '../../../../helpers/ModalManager';
+import { useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import { ModalType } from '../../../../types/modalsType';
 import Btn from '../../../common/Btn';
 import CModal from '../../../common/CModal';
+import Input from '../../../common/Input';
 import P from '../../../common/P';
 
 /**
- * Modal for tags editing.
+ * Modal for tags selection.
  *
  * @return {*}  {JSX.Element}
  */
 const NoteModal = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
-  const dispatch = useAppDispatch();
 
   let testData = [
     {
@@ -43,11 +43,13 @@ const NoteModal = (): JSX.Element => {
 
   const [tags, setTags] = useState(testData);
   const [extra, setExtra] = useState(new Date());
+  const [editing, setEditing] = useState(false);
+  const [tag, setTag] = useState('');
 
   const name: ModalType = 'tags';
 
   /**
-   * Function to toggle selected tags.
+   * Function to toggle selected tag.
    *
    * @param {number} index
    */
@@ -60,6 +62,38 @@ const NoteModal = (): JSX.Element => {
     setExtra(new Date());
   };
 
+  /**
+   * Function to remove selected tag.
+   *
+   * @param {number} index
+   */
+  const removeTag = (index: number): void => {
+    let temp = tags;
+
+    temp.splice(index, 1);
+
+    setTags(temp);
+    setExtra(new Date());
+  };
+
+  /**
+   * Function to add specified tag.
+   *
+   * @param {string} name
+   * @param {boolean} selected
+   */
+  const addTag = (): void => {
+    let temp = tags;
+
+    if (tag !== '') {
+      temp.push({ name: tag, selected: false });
+
+      setTags(temp);
+      setExtra(new Date());
+      setTag('');
+    }
+  };
+
   return (
     <CModal
       text={t.single16}
@@ -68,9 +102,7 @@ const NoteModal = (): JSX.Element => {
         backgroundColor: colors.background,
       }}
       textColor={colors.textBtn}>
-      <Pressable
-        style={styles.centeredView}
-        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
+      <Pressable style={styles.centeredView} onPress={() => modal.close(name)}>
         <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
           <View
             style={{
@@ -87,10 +119,28 @@ const NoteModal = (): JSX.Element => {
             <P size={24} font="AndadaPro-Bold">
               {t.single17}
             </P>
-            <P size={18} color={colors.link}>
-              {t.single18}
-            </P>
+            {/* Editing button */}
+            <Pressable onPress={() => setEditing(!editing)}>
+              <P color={colors.textBtn}>{t.single16}</P>
+            </Pressable>
           </View>
+          {/* Add section */}
+          {editing && (
+            <View style={styles.addSection}>
+              <Input value={tag} onChange={setTag} redux={false} />
+              <Pressable
+                style={({ pressed }) => [
+                  {
+                    opacity: pressed ? 0.5 : 1,
+                    backgroundColor: colors.accent,
+                    ...styles.deleteBtn,
+                  },
+                ]}
+                onPress={() => addTag()}>
+                <Ionicons name="add" size={32} color={colors.text4} />
+              </Pressable>
+            </View>
+          )}
           {/* Tags */}
           <FlatList
             style={styles.list}
@@ -102,19 +152,35 @@ const NoteModal = (): JSX.Element => {
             }}
             renderItem={({ item, index }) => {
               return (
-                <Btn
-                  text={item.name}
-                  color={item.selected ? colors.accent : colors.text4}
-                  bg={item.selected ? colors.text4 : colors.accent}
-                  action={() => toggleTag(index)}
-                />
+                <View style={styles.listItem}>
+                  <Btn
+                    text={item.name}
+                    color={item.selected ? colors.accent : colors.text4}
+                    bg={item.selected ? colors.text4 : colors.accent}
+                    action={() => toggleTag(index)}
+                  />
+                  {/* Remove tag button */}
+                  {editing && (
+                    <Pressable
+                      style={({ pressed }) => [
+                        {
+                          opacity: pressed ? 0.5 : 1,
+                          backgroundColor: colors.accent,
+                          ...styles.deleteBtn,
+                        },
+                      ]}
+                      onPress={() => removeTag(index)}>
+                      <Ionicons name="trash" size={32} color={colors.text4} />
+                    </Pressable>
+                  )}
+                </View>
               );
             }}
           />
           <Btn
             text={t.miscSave}
             bg={colors.link}
-            action={() => dispatch(toggleModal({ name, value: 0 }))}
+            action={() => modal.close(name)}
           />
         </View>
       </Pressable>
@@ -134,7 +200,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
     paddingVertical: 25,
     paddingHorizontal: 10,
-    paddingBottom: 45,
     alignItems: 'flex-start',
     width: '100%',
     shadowColor: '#000',
@@ -148,11 +213,29 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   list: {
     height: '70%',
     width: '100%',
     marginTop: 15,
+  },
+  listItem: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  deleteBtn: {
+    width: 'auto',
+    padding: 5,
+    borderRadius: 5,
+    marginLeft: 5,
+  },
+  addSection: {
+    display: 'flex',
+    flexDirection: 'row',
   },
 });
 

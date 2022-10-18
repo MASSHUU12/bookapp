@@ -9,6 +9,7 @@ export const modalSlice = createSlice({
       singleMore: 0,
       readingGoals: 0,
       tags: 0,
+      editTags: 0,
     },
   },
   reducers: {
@@ -30,6 +31,10 @@ export const modalSlice = createSlice({
           break;
 
         case 'tags':
+          state.value.tags = action.payload.value;
+          break;
+
+        case 'editTags':
           state.value.tags = action.payload.value;
           break;
 

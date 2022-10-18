@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
-import { toggleModal } from '../../../../features/modal/modalSlice';
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import { ModalType } from '../../../../types/modalsType';
 import Btn from '../../../common/Btn';
@@ -8,6 +7,7 @@ import CModal from '../../../common/CModal';
 import P from '../../../common/P';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useState } from 'react';
+import { modal } from '../../../../helpers/ModalManager';
 
 interface Props {
   book_title: string;
@@ -20,7 +20,6 @@ interface Props {
  */
 const NoteModal = ({ book_title }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
-  const dispatch = useAppDispatch();
 
   const [text, setText] = useState('');
 
@@ -35,9 +34,7 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
         backgroundColor: colors.background,
       }}
       textColor={colors.textBtn}>
-      <Pressable
-        style={styles.centeredView}
-        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
+      <Pressable style={styles.centeredView} onPress={() => modal.close(name)}>
         <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
           <View
             style={{
@@ -68,7 +65,7 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
             color={colors.text2}
             size={12}
             styles={styles.charactersNumber}>{`${text.length}/${limit}`}</P>
-          <Btn text={t.miscSave} action={() => console.log('Boop')} />
+          <Btn text={t.miscSave} action={() => modal.close(name)} />
         </View>
       </Pressable>
     </CModal>
