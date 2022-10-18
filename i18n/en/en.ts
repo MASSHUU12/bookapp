@@ -84,5 +84,9 @@ export const en = {
     miscMore: 'More',
     miscClose: 'close',
     miscSave: 'Save',
+
+    readLater: 'read later',
+    current: 'currently reading',
+    alreadyRead: 'already read',
   },
 };

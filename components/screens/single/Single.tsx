@@ -17,7 +17,7 @@ const Single = ({ route }: any): JSX.Element => {
   const pan = useRef(new Animated.ValueXY()).current;
   const [onRefresh, dispatch] = useGlobalState();
   const [sqlBookData, setSqlBookData] = useState<{} | DetailedBookType>({});
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<any>([]);
 
   const handleMainButton = () => {
     sql.saveBookToList({
@@ -49,7 +49,7 @@ const Single = ({ route }: any): JSX.Element => {
       if (bookFromSql === null) return; // book not available locally
 
       setSqlBookData(bookFromSql);
-      setTags([bookFromSql.list, 'Read again', 'Favourites']);
+      setTags([t[bookFromSql.list], 'Read again', 'Favourites']);
     });
   }, [onRefresh]);
 

@@ -69,7 +69,9 @@ const MainActionButton = ({ bookData, onNewBook }: Params): JSX.Element => {
           ...styles.mainButton,
         }}>
         <P color="white" size={20}>
-          {isButtonPressed ? t.single10 : buttons[currentList].title}
+          {isButtonPressed
+            ? 'Moved to ' + t[currentList]
+            : buttons[currentList].title}
         </P>
       </Pressable>
     </View>
