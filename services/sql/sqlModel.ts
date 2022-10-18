@@ -66,5 +66,12 @@ export class SqlModel {
         ON DELETE CASCADE
       );`,
     );
+
+    this.execute(
+      `CREATE TABLE IF NOT EXISTS user_tags (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT
+      );`,
+    );
   }
 }

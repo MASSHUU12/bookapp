@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { mergeTags } from '../../../../helpers/helpers';
 import { modal } from '../../../../helpers/ModalManager';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import sql from '../../../../services/sql/sql';
 import { DetailedBookType } from '../../../../types/detailedBookType';
@@ -16,6 +17,12 @@ interface Props {
   book: DetailedBookType;
 }
 
+interface TagType {
+  id: number;
+  name: string;
+  selected: boolean;
+}
+
 /**
  * Modal for tags selection.
  *
@@ -24,29 +31,22 @@ interface Props {
 const NoteModal = ({ book }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
-  let testData = [
-    {
-      name: 'Reread',
-      selected: false,
-    },
-    {
-      name: 'Coding interview',
-      selected: false,
-    },
-    {
-      name: 'Fun books',
-      selected: false,
-    },
-    {
-      name: 'Favorites',
-      selected: false,
-    },
-  ];
-
-  const [tags, setTags] = useState(testData);
+  const [tags, setTags] = useState<Array<TagType>>([]);
   const [extra, setExtra] = useState(new Date());
   const [editing, setEditing] = useState(false);
   const [tag, setTag] = useState('');
+  const [onRefresh, refresh] = useGlobalState();
+
+  useEffect(() => {
+    sql.getAllTags(tagsFromSql => {
+      const mergedTags = mergeTags({
+        bookTags: JSON.parse(book.user_tags),
+        allTags: tagsFromSql,
+      });
+
+      setTags(mergedTags);
+    });
+  }, [onRefresh, book]);
 
   const name: ModalType = 'tags';
 
@@ -55,13 +55,14 @@ const NoteModal = ({ book }: Props): JSX.Element => {
    *
    * @param {number} index
    */
-  const toggleTag = (index: number): void => {
-    let temp = tags;
-
-    temp[index].selected = !temp[index].selected;
-
-    setTags(temp);
-    setExtra(new Date());
+  const onTagPress = (passedTag: TagType): void => {
+    if (passedTag.selected === false) {
+      sql.updateBookTags({ key: book.key, tags: [passedTag.name] }, () => {
+        refresh(1);
+      });
+    } else {
+      console.log('should remove tag');
+    }
   };
 
   /**
@@ -84,16 +85,10 @@ const NoteModal = ({ book }: Props): JSX.Element => {
    * @param {string} name
    * @param {boolean} selected
    */
-  const addTag = (): void => {
-    let temp = tags;
-
-    if (tag !== '') {
-      temp.push({ name: tag, selected: false });
-
-      setTags(temp);
-      setExtra(new Date());
-      setTag('');
-    }
+  const addTag = () => {
+    sql.addTag(tag, () => {
+      refresh(1);
+    });
   };
 
   return (
@@ -159,7 +154,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                     text={item.name}
                     color={item.selected ? colors.accent : colors.text4}
                     bg={item.selected ? colors.text4 : colors.accent}
-                    action={() => toggleTag(index)}
+                    action={() => onTagPress(item)}
                   />
                   {/* Remove tag button */}
                   {editing && (

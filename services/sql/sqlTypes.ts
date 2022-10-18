@@ -22,5 +22,5 @@ type tagType = {
 
 export type updateBookTagsTypes = {
   key: string;
-  tags: Array<tagType>;
+  tags: Array<string>;
 };

@@ -105,19 +105,22 @@ export default class SqlActions {
     );
   }
 
-  updateBookDetails(params: updateBookTypes, callback?: () => void) {
+  updateBookDetails(
+    { book_key, field, value }: updateBookTypes,
+    callback?: () => void,
+  ) {
     this.db.execute(
-      `UPDATE list_details SET ${params.field} = ? WHERE key = ?`,
-      [params.value, params.book_key],
+      `UPDATE list_details SET ${field} = ? WHERE key = ?`,
+      [value, book_key],
       () => {
         if (typeof callback === 'function') callback();
       },
     );
   }
 
-  updateBookTags({ key, tags }: updateBookTagsTypes) {
+  updateBookTags({ key, tags }: updateBookTagsTypes, callback?: () => void) {
     this.db.execute(
-      `SELECT * FROM list_details WHERE lists.key = ?;`,
+      `SELECT * FROM list_details WHERE list_details.key = ?;`,
       [key],
       (tx, res) => {
         const len = res.rows.length;
@@ -136,9 +139,9 @@ export default class SqlActions {
 
         this.db.execute(
           `UPDATE list_details SET user_tags = ? WHERE key = ?`,
-          [stringifiedTags],
+          [stringifiedTags, key],
           () => {
-            console.log('success');
+            if (typeof callback === 'function') callback();
           },
         );
       },
@@ -159,6 +162,23 @@ export default class SqlActions {
         results.push({ ...res.rows.item(i), id: i });
       }
       console.log(results);
+    });
+  }
+
+  getAllTags(callback: (results: Array<any>) => void) {
+    this.db.execute(`SELECT * FROM user_tags `, [], (tx, res) => {
+      const len = res.rows.length;
+      const results = [];
+      for (let i = 0; i < len; i++) {
+        results.push({ ...res.rows.item(i), id: i });
+      }
+      callback(results);
+    });
+  }
+
+  addTag(tag: string, callback?: () => void) {
+    this.db.execute(`INSERT INTO user_tags(name) VALUES (?)`, [tag], () => {
+      if (typeof callback === 'function') callback();
     });
   }
 

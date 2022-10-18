@@ -4,12 +4,14 @@ import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
 import { DetailedBookType } from '../../../types/detailedBookType';
+import Btn from '../../common/Btn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';
 import MainActionButton from './components/MainActionButton';
 import MoreOptionsList from './components/MoreOptionsList';
 import NoteModal from './components/NoteModal';
+import OptionsForNewBook from './components/OptionsForNewBook';
 import TagsModal from './components/TagsModal';
 
 const Single = ({ route }: any): JSX.Element => {
@@ -49,7 +51,7 @@ const Single = ({ route }: any): JSX.Element => {
       if (bookFromSql === null) return; // book not available locally
 
       setSqlBookData(bookFromSql);
-      setTags([t[bookFromSql.list], 'Read again', 'Favourites']);
+      setTags([t[bookFromSql.list], ...JSON.parse(bookFromSql.user_tags)]);
     });
   }, [onRefresh]);
 
@@ -163,7 +165,11 @@ const Single = ({ route }: any): JSX.Element => {
           </>
         )}
         {/* Mark as button */}
-        <MoreOptionsList bookData={sqlBookData} />
+        {'list' in sqlBookData ? (
+          <MoreOptionsList bookData={sqlBookData} />
+        ) : (
+          <OptionsForNewBook book={route.params} />
+        )}
         {'user_notes' in sqlBookData && (
           <View>
             <View
