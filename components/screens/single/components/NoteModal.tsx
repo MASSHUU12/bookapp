@@ -1,16 +1,23 @@
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
+import { toggleModal } from '../../../../features/modal/modalSlice';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useGlobalState,
+} from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import { ModalType } from '../../../../types/modalsType';
 import Btn from '../../../common/Btn';
 import CModal from '../../../common/CModal';
 import P from '../../../common/P';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useState } from 'react';
 import { modal } from '../../../../helpers/ModalManager';
+import { useEffect, useState } from 'react';
+import { DetailedBookType } from '../../../../types/detailedBookType';
+import sql from '../../../../services/sql/sql';
 
 interface Props {
-  book_title: string;
+  book: DetailedBookType;
 }
 
 /**
@@ -18,10 +25,29 @@ interface Props {
  *
  * @return {*}  {JSX.Element}
  */
-const NoteModal = ({ book_title }: Props): JSX.Element => {
+const NoteModal = ({ book }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
-
+  const dispatch = useAppDispatch();
+  const [_, refresh] = useGlobalState();
   const [text, setText] = useState('');
+
+  const onSave = () => {
+    sql.updateBookDetails(
+      {
+        book_key: book.key,
+        field: 'user_notes',
+        value: text,
+      },
+      () => {
+        refresh(1);
+        dispatch(toggleModal({ name, value: 0 }));
+      },
+    );
+  };
+
+  useEffect(() => {
+    setText(book.user_notes);
+  }, []);
 
   const name: ModalType = 'note';
   const limit = 2048;
@@ -47,7 +73,7 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
           </View>
           <P>{t.single14}</P>
           <P color={colors.text2} size={14}>
-            {book_title}
+            {book.title}
           </P>
           <TextInput
             style={{
@@ -58,14 +84,20 @@ const NoteModal = ({ book_title }: Props): JSX.Element => {
             textAlignVertical="top"
             multiline
             value={text}
-            onChangeText={item => setText(item)}
+            onChangeText={textFromInput => setText(textFromInput)}
             maxLength={limit}
           />
           <P
             color={colors.text2}
             size={12}
             styles={styles.charactersNumber}>{`${text.length}/${limit}`}</P>
-          <Btn text={t.miscSave} action={() => modal.close(name)} />
+          <Btn
+            text={t.miscSave}
+            action={() => {
+              onSave();
+              modal.close(name);
+            }}
+          />
         </View>
       </Pressable>
     </CModal>

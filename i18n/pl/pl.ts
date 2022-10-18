@@ -82,5 +82,9 @@ export const pl = {
     miscMore: 'Więcej',
     miscClose: 'zamknij',
     miscSave: 'Zapisz',
+
+    readLater: 'czytaj później',
+    current: 'teraz czytane',
+    alreadyRead: 'już przeczytane',
   },
 };

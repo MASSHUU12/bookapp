@@ -105,20 +105,20 @@ export default class SqlActions {
     );
   }
 
-  updateBookDetails(params: updateBookTypes) {
+  updateBookDetails(params: updateBookTypes, callback?: () => void) {
     this.db.execute(
       `UPDATE list_details SET ${params.field} = ? WHERE key = ?`,
       [params.value, params.book_key],
       () => {
-        console.log('success');
+        if (typeof callback === 'function') callback();
       },
     );
   }
 
-  updateBookTags(params: updateBookTagsTypes) {
+  updateBookTags({ key, tags }: updateBookTagsTypes) {
     this.db.execute(
       `SELECT * FROM list_details WHERE lists.key = ?;`,
-      [params.key],
+      [key],
       (tx, res) => {
         const len = res.rows.length;
 
@@ -130,7 +130,7 @@ export default class SqlActions {
         const allTags = [];
 
         if (existingTags != null)
-          allTags.push(...formatedExistingTags, ...params.tags);
+          allTags.push(...formatedExistingTags, ...tags);
 
         const stringifiedTags = JSON.stringify(allTags);
 

@@ -4,39 +4,41 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { modal } from '../../../../helpers/ModalManager';
 import { useAppSelector } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
+import sql from '../../../../services/sql/sql';
+import { DetailedBookType } from '../../../../types/detailedBookType';
 import { ModalType } from '../../../../types/modalsType';
 import Btn from '../../../common/Btn';
 import CModal from '../../../common/CModal';
 import Input from '../../../common/Input';
 import P from '../../../common/P';
 
+interface Props {
+  book: DetailedBookType;
+}
+
 /**
  * Modal for tags selection.
  *
  * @return {*}  {JSX.Element}
  */
-const NoteModal = (): JSX.Element => {
+const NoteModal = ({ book }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   let testData = [
     {
-      name: 'Computer Science',
+      name: 'Reread',
       selected: false,
     },
     {
-      name: 'Romance',
+      name: 'Coding interview',
       selected: false,
     },
     {
-      name: 'Social interaction',
+      name: 'Fun books',
       selected: false,
     },
     {
-      name: 'Interpersonal relations',
-      selected: false,
-    },
-    {
-      name: 'Game theory',
+      name: 'Favorites',
       selected: false,
     },
   ];
