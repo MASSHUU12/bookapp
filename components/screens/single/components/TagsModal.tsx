@@ -189,11 +189,6 @@ const NoteModal = ({ book }: Props): JSX.Element => {
               );
             }}
           />
-          <Btn
-            text={t.miscSave}
-            bg={colors.link}
-            action={() => modal.close(name)}
-          />
         </View>
       </View>
     </CModal>
@@ -231,7 +226,6 @@ const styles = StyleSheet.create({
     height: '70%',
     width: '100%',
     marginTop: 15,
-    marginBottom: 10,
   },
   listItem: {
     display: 'flex',
