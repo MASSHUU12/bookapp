@@ -83,6 +83,7 @@ export const en = {
     miscMore: 'More',
     miscClose: 'close',
     miscSave: 'Save',
+    miscTarget: 'Target',
 
     readLater: 'read later',
     current: 'currently reading',

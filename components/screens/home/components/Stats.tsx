@@ -1,8 +1,10 @@
-import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
+import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
-import { BarChart } from 'react-native-chart-kit';
 import { useAppSelector } from '../../../../hooks';
+import { navigate } from '../../../../helpers/Navigate';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { commonStyles } from '../../../../styles/commonStyles';
 
 /**
  * Component displaying user statistics.
@@ -16,77 +18,70 @@ const Stats = (): JSX.Element => {
   const targetYear = useAppSelector(state => state.targets.value.targetPerYear);
   const colors = useAppSelector(state => state.theme.colors);
 
-  const chartConfig = {
-    backgroundGradientFrom: '#fff',
-    backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: '#fff',
-    backgroundGradientToOpacity: 0,
-    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-    strokeWidth: 2, // default 3
-    barPercentage: 1,
-    useShadowColorFromDataset: false, // optional
+  const booksThisMonth = 21;
+  const booksThisYear = 69;
+
+  const config = {
+    size: Dimensions.get('window').width / 3,
+    tintColor: colors.text4,
+    width: 15,
+    backgroundColor: colors.placeholder,
+    rotation: -90,
+    arcSweepAngle: 180,
   };
 
-  const slides = [
-    {
-      data: {
-        labels: ['January', 'February', 'March', 'April'],
-        datasets: [
-          {
-            data: [20, 45, 28, 80],
-          },
-        ],
-      },
-      text_under_chart: t.stats2,
-      value_under_chart: targetMonth,
-    },
-    {
-      data: {
-        labels: ['2019', '2020', '2021', '2022'],
-        datasets: [
-          {
-            data: [230, 189, 420, 69],
-          },
-        ],
-      },
-      text_under_chart: t.stats3,
-      value_under_chart: targetYear,
-    },
-  ];
-
   return (
-    <View>
+    <Pressable onPress={() => navigate('Stats')}>
       <P>{t.stats1}</P>
-      <FlatList
-        style={styles.container}
-        data={slides}
-        horizontal
-        renderItem={({ item }): JSX.Element => {
-          return (
-            <View style={styles.item}>
-              <BarChart
-                data={item.data}
-                width={Dimensions.get('window').width - 50}
-                height={220}
-                chartConfig={chartConfig}
-                fromZero
-                showValuesOnTopOfBars
-                yAxisLabel=""
-                yAxisSuffix=""
-              />
+      <View
+        style={{
+          ...commonStyles.flexCenter,
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          marginTop: 15,
+        }}>
+        {/* Month */}
+        <AnimatedCircularProgress
+          {...config}
+          fill={(booksThisMonth * 100) / parseInt(targetMonth)}
+          onAnimationComplete={() => console.log(targetMonth)}
+          lineCap="round">
+          {() => (
+            <View style={{ ...commonStyles.flexCenter }}>
+              <P size={12} color={colors.placeholder}>
+                {t.miscMonth.toLowerCase()}
+              </P>
+              <P>{`${booksThisMonth}`}</P>
               <P
-                size={14}
+                size={12}
                 color={
-                  colors.text2
-                }>{`${item.text_under_chart}: ${item.value_under_chart}`}</P>
+                  colors.placeholder
+                }>{`${t.miscTarget}: ${targetMonth}`}</P>
             </View>
-          );
-        }}
-      />
-      <View style={styles.dots}>
-        <P size={24}>••</P>
+          )}
+        </AnimatedCircularProgress>
+        {/* Year */}
+        <AnimatedCircularProgress
+          {...config}
+          fill={(booksThisYear * 100) / parseInt(targetYear)}
+          onAnimationComplete={() => console.log(targetYear)}
+          lineCap="round">
+          {() => (
+            <View style={{ ...commonStyles.flexCenter }}>
+              <P size={12} color={colors.placeholder}>
+                {t.miscYear.toLowerCase()}
+              </P>
+              <P>{`${booksThisYear}`}</P>
+              <P
+                size={12}
+                color={
+                  colors.placeholder
+                }>{`${t.miscTarget}: ${targetYear}`}</P>
+            </View>
+          )}
+        </AnimatedCircularProgress>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

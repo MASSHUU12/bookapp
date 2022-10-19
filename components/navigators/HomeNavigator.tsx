@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppSelector } from '../../hooks';
 import Home from '../screens/home/Home';
 import Add from '../screens/home/screens/Add';
+import StatsScreen from '../screens/home/screens/StatsScreen';
 import Single from '../screens/single/Single';
 import SettingsNavigator from './SettingsNavigator';
 
@@ -54,6 +55,16 @@ const HomeNavigator = (): JSX.Element => {
             },
             headerTitle: 'Add book manually',
             tabBarHideOnKeyboard: true,
+          }}
+        />
+        <Tab.Screen
+          name="Stats"
+          component={StatsScreen}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: colors.background,
+            },
           }}
         />
         <Tab.Screen name="SettingsNavigator" component={SettingsNavigator} />
