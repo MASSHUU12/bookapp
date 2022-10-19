@@ -222,6 +222,10 @@ export default class SqlActions {
   }
 
   addTag(tag: string, callback?: () => void) {
+    const MAX_TAG_LENGTH = 15;
+    if (tag.length > MAX_TAG_LENGTH)
+      return console.warn('Tag name is too long');
+
     this.db.execute(`INSERT INTO user_tags(name) VALUES (?)`, [tag], () => {
       if (typeof callback === 'function') callback();
     });
