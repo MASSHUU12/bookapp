@@ -156,7 +156,9 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             style={styles.list}
             data={tags}
             extraData={extra}
-            ListHeaderComponent={<P>{t.single15}</P>}
+            ListHeaderComponent={
+              <P styles={{ marginBottom: 15 }}>{t.single15}</P>
+            }
             ItemSeparatorComponent={() => {
               return <View style={{ marginBottom: 10 }}></View>;
             }}
@@ -168,7 +170,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                   <Btn
                     text={item.name}
                     color={item.selected ? colors.accent : colors.text4}
-                    bg={item.selected ? colors.text4 : colors.accent}
+                    bg={item.selected ? colors.textBtn : colors.optionsBtn}
                     action={() => onTagPress(item)}
                   />
                   {/* Remove tag button */}
