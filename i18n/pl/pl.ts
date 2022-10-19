@@ -82,6 +82,7 @@ export const pl = {
     miscMore: 'Więcej',
     miscClose: 'zamknij',
     miscSave: 'Zapisz',
+    miscTarget: 'Cel',
 
     readLater: 'czytaj później',
     current: 'teraz czytane',
