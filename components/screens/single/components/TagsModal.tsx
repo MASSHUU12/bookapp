@@ -88,9 +88,13 @@ const NoteModal = ({ book }: Props): JSX.Element => {
    * @param {boolean} selected
    */
   const addTag = () => {
-    sql.addTag(tag, () => {
-      refresh(1);
-    });
+    if (tag.length > 0) {
+      sql.addTag(tag, () => {
+        refresh(1);
+      });
+
+      setTag('');
+    }
   };
 
   return (
@@ -101,7 +105,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
         backgroundColor: colors.background,
       }}
       textColor={colors.textBtn}>
-      <Pressable style={styles.centeredView} onPress={() => modal.close(name)}>
+      <View style={styles.centeredView}>
         <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
           <View
             style={{
@@ -110,12 +114,21 @@ const NoteModal = ({ book }: Props): JSX.Element => {
               alignItems: 'center',
             }}>
             {/* Close */}
-            <Ionicons name="close" size={32} color={colors.text4} />
-            <P color={colors.text4}>{t.miscClose}</P>
+            <Pressable
+              onPress={() => modal.close(name)}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Ionicons name="close" size={32} color={colors.text4} />
+              <P color={colors.text4}>{t.miscClose}</P>
+            </Pressable>
           </View>
           {/* Header */}
           <View style={styles.header}>
-            <P size={24} font="AndadaPro-Bold">
+            <P size={22} font="AndadaPro-Bold">
               {t.single17}
             </P>
             {/* Editing button */}
@@ -182,7 +195,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             action={() => modal.close(name)}
           />
         </View>
-      </Pressable>
+      </View>
     </CModal>
   );
 };
@@ -218,6 +231,7 @@ const styles = StyleSheet.create({
     height: '70%',
     width: '100%',
     marginTop: 15,
+    marginBottom: 10,
   },
   listItem: {
     display: 'flex',
