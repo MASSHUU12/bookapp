@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 5,
     borderRadius: 5,
   },
   info: {
@@ -92,13 +92,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     flexShrink: 1,
+    paddingVertical: 5,
+    paddingLeft: 2,
   },
   infoTop: {
     width: 'auto',
     flex: 1,
   },
   image: {
-    height: Dimensions.get('window').height * 0.15,
+    height: Dimensions.get('window').height * 0.13,
     width: Dimensions.get('window').width * 0.25,
   },
 });
