@@ -49,7 +49,8 @@ export class SqlModel {
         title TEXT, 
         author_name TEXT, 
         number_of_pages_median INTERGER, 
-        isbn TEXT
+        isbn TEXT,
+        list_updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );`,
     );
 

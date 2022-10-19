@@ -1,10 +1,12 @@
 import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import P from '../../../common/P';
 import { t } from '../../../../i18n/strings';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { navigate } from '../../../../helpers/Navigate';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { commonStyles } from '../../../../styles/commonStyles';
+import { useEffect, useState } from 'react';
+import sql from '../../../../services/sql/sql';
 
 /**
  * Component displaying user statistics.
@@ -12,23 +14,35 @@ import { commonStyles } from '../../../../styles/commonStyles';
  * @return {*}  {JSX.Element}
  */
 const Stats = (): JSX.Element => {
-  const targetMonth = useAppSelector(
-    state => state.targets.value.targetPerMonth,
-  );
-  const targetYear = useAppSelector(state => state.targets.value.targetPerYear);
+  // const targetMonth = useAppSelector(
+  //   state => state.targets.value.targetPerMonth,
+  // );
+  // const targetYear = useAppSelector(state => state.targets.value.targetPerYear);
+  const targetMonth = 10;
+  const targetYear = 120;
   const colors = useAppSelector(state => state.theme.colors);
 
-  const booksThisMonth = 21;
-  const booksThisYear = 69;
+  const [booksThisMonth, setBooksThisMonth] = useState(0);
+  const [booksThisYear, setBooksThisYear] = useState(0);
+
+  const [onRefresh, refresh] = useGlobalState();
 
   const config = {
     size: Dimensions.get('window').width / 3,
     tintColor: colors.text4,
-    width: 15,
+    width: 5,
     backgroundColor: colors.placeholder,
     rotation: -90,
     arcSweepAngle: 180,
   };
+
+  useEffect(() => {
+    console.log('stats refreshed');
+    sql.getStatsForMonth({}, numberOfBooks => {
+      setBooksThisMonth(numberOfBooks);
+      setBooksThisYear(numberOfBooks);
+    });
+  }, [onRefresh]);
 
   return (
     <Pressable onPress={() => navigate('Stats')}>
@@ -44,7 +58,7 @@ const Stats = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisMonth * 100) / parseInt(targetMonth)}
-          onAnimationComplete={() => console.log(targetMonth)}
+          onAnimationComplete={() => console.log('completed')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>
@@ -64,7 +78,7 @@ const Stats = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisYear * 100) / parseInt(targetYear)}
-          onAnimationComplete={() => console.log(targetYear)}
+          onAnimationComplete={() => console.log('completed')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>

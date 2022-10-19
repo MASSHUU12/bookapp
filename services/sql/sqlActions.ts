@@ -7,6 +7,7 @@ import {
 import { SqlModel } from './sqlModel';
 import { BookType } from '../../types/bookType';
 import { DetailedBookType } from '../../types/detailedBookType';
+import { generateCurrentTimestamp } from '../../helpers/helpers';
 
 export default class SqlActions {
   db: SqlModel;
@@ -97,11 +98,12 @@ export default class SqlActions {
   }
 
   changeBookListByKey(key: string, list: ListType) {
+    const currentTimestamp = generateCurrentTimestamp();
     this.db.execute(
-      `UPDATE lists SET list = ? WHERE key = ?`,
-      [list, key],
+      `UPDATE lists SET list = ?, list_updated_at = ? WHERE key = ?`,
+      [list, currentTimestamp, key],
       () => {
-        console.log('success');
+        console.log('Book list updated');
       },
     );
   }
@@ -253,6 +255,18 @@ export default class SqlActions {
         this.db.execute('DELETE FROM user_tags WHERE name = ?', [tag], () => {
           if (typeof callback === 'function') callback();
         });
+      },
+    );
+  }
+
+  getStatsForMonth({ month, year }, callback: (results: number) => void) {
+    this.db.execute(
+      `SELECT * FROM lists WHERE list_updated_at BETWEEN '2021-03-26 00:00:01' AND '2023-03-26 23:59:59'`,
+      [],
+      (tx, res) => {
+        const len = res.rows.length;
+
+        callback(len);
       },
     );
   }

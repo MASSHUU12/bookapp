@@ -14,3 +14,13 @@ export function mergeTags({ bookTags, allTags }: MergeTagsType) {
 
   return allTags;
 }
+
+export function generateCurrentTimestamp() {
+  var d = new Date(),
+    timestamp =
+      [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('-') +
+      ' ' +
+      [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
+
+  return timestamp;
+}
