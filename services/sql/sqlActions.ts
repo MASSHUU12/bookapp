@@ -126,11 +126,20 @@ export default class SqlActions {
       (tx, res) => {
         const len = res.rows.length;
 
+        const MAX_TAGS_FOR_BOOK = 10;
+
         if (len === 0) return console.warn('this book is not in SQL');
 
         let existingTags = res.rows.item(0).user_tags;
 
         const formatedExistingTags = JSON.parse(existingTags);
+
+        if (formatedExistingTags.length >= MAX_TAGS_FOR_BOOK) {
+          return console.warn(
+            `You can't add more than ${MAX_TAGS_FOR_BOOK} tags for one book`,
+          );
+        }
+
         const allTags = [];
 
         if (existingTags != null)
