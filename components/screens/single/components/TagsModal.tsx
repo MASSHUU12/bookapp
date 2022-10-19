@@ -157,7 +157,9 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             data={tags}
             extraData={extra}
             ListHeaderComponent={
-              <P styles={{ marginBottom: 15 }}>{t.single15}</P>
+              <P size={16} styles={{ marginBottom: 10, color: colors.text4 }}>
+                {t.single15}
+              </P>
             }
             ItemSeparatorComponent={() => {
               return <View style={{ marginBottom: 10 }}></View>;
