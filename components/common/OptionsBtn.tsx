@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, View } from 'react-native';
-import { toggleModal } from '../../features/modal/modalSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { modal } from '../../helpers/ModalManager';
+import { useAppSelector } from '../../hooks';
 import { ModalType } from '../../types/modalsType';
 import CModal from './CModal';
-import P from './P';
+import SlimBtn from './SlimBtn';
 
 interface Props {
   text: string;
@@ -26,30 +26,19 @@ const OptionsBtn = ({
 }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
-  const dispatch = useAppDispatch();
-
   return (
     <CModal text={text} name={name}>
-      <Pressable
-        style={styles.centeredView}
-        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
+      <Pressable style={styles.centeredView} onPress={() => modal.close(name)}>
         <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
           {modalTexts.map((item, index) => (
-            <Pressable
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.5 : 1,
-                  backgroundColor: colors.optionsBtn,
-                  ...styles.btn,
-                },
-              ]}
+            <SlimBtn
+              text={item}
               key={index}
-              onPress={() => {
+              action={() => {
                 modalActions[index]();
-                dispatch(toggleModal({ name, value: 0 }));
-              }}>
-              <P>{item}</P>
-            </Pressable>
+                modal.close(name);
+              }}
+            />
           ))}
         </View>
       </Pressable>

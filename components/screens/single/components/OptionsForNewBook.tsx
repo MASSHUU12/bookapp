@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
-import Btn from '../../../common/Btn';
 import sql from '../../../../services/sql/sql';
 import { BookType } from '../../../../types/bookType';
 import { useGlobalState } from '../../../../hooks';
 import { ListType } from '../../../../types/listType';
+import { t } from '../../../../i18n/strings';
+import SlimBtn from '../../../common/SlimBtn';
 
 interface Props {
   book: BookType;
@@ -17,15 +18,16 @@ interface ActionsType {
 
 const OptionsForNewBook = ({ book }: Props) => {
   const [onRefresh, refresh] = useGlobalState();
+
   const actions: Array<ActionsType> = [
     {
-      name: 'Add to currently reading',
+      name: t.single6,
       action: () => {
         saveBookToList('current');
       },
     },
     {
-      name: 'Add to already read',
+      name: t.single7,
       action: () => {
         saveBookToList('alreadyRead');
       },
@@ -48,7 +50,7 @@ const OptionsForNewBook = ({ book }: Props) => {
   return (
     <View>
       {actions.map(action => (
-        <Btn text={action.name} action={action.action}></Btn>
+        <SlimBtn text={action.name} action={action.action} />
       ))}
     </View>
   );

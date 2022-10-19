@@ -48,7 +48,7 @@ const CModal = (props: Props): JSX.Element => {
           },
         ]}
         onPress={() => modal.open(props.name)}>
-        <P size={16} color={props.textColor ? props.textColor : colors.text4}>
+        <P color={props.textColor ? props.textColor : colors.text4}>
           {props.text}
         </P>
       </Pressable>
