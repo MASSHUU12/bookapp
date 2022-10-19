@@ -74,6 +74,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
+              marginBottom: 20,
             }}>
             <Ionicons name="close" size={32} color={colors.text4} />
             <P color={colors.text4}>{t.miscClose}</P>
