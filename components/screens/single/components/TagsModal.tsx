@@ -51,11 +51,6 @@ const NoteModal = ({ book }: Props): JSX.Element => {
 
   const name: ModalType = 'tags';
 
-  /**
-   * Function to toggle selected tag.
-   *
-   * @param {number} index
-   */
   const onTagPress = (passedTag: TagType): void => {
     if (passedTag.selected === false) {
       sql.updateBookTags({ key: book.key, tags: [passedTag.name] }, () => {
@@ -68,11 +63,6 @@ const NoteModal = ({ book }: Props): JSX.Element => {
     }
   };
 
-  /**
-   * Function to remove selected tag.
-   *
-   * @param {number} index
-   */
   const removeTag = (passedTag: TagType): void => {
     return Alert.alert(
       `Are you sure?`,
@@ -94,12 +84,6 @@ const NoteModal = ({ book }: Props): JSX.Element => {
     );
   };
 
-  /**
-   * Function to add specified tag.
-   *
-   * @param {string} name
-   * @param {boolean} selected
-   */
   const addTag = () => {
     if (tag.length > 0) {
       sql.addTag(tag, () => {
