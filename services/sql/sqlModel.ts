@@ -70,7 +70,7 @@ export class SqlModel {
     this.execute(
       `CREATE TABLE IF NOT EXISTS user_tags (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT
+        name TEXT NOT NULL UNIQUE
       );`,
     );
   }

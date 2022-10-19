@@ -255,7 +255,9 @@ export default class SqlActions {
   dropAlltables() {
     this.db.execute('DROP TABLE lists', [], () => {
       this.db.execute('DROP TABLE list_details', [], () => {
-        console.log('success');
+        this.db.execute('DROP TABLE user_tags', [], () => {
+          console.log('Tables dropped');
+        });
       });
     });
   }
