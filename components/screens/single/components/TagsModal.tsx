@@ -166,7 +166,9 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             }}
             renderItem={({ item, index }) => {
               return (
-                <View key={index} style={styles.listItem}>
+                <View
+                  key={index}
+                  style={{ ...commonStyles.flexCenter, ...styles.listItem }}>
                   <Btn
                     text={item.name}
                     color={item.selected ? colors.accent : colors.text4}
@@ -216,10 +218,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   listItem: {
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     width: '100%',
   },
   deleteBtn: {

@@ -32,6 +32,7 @@ const Btn = ({ text, color, bg, action }: Props): JSX.Element => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     width: '100%',
     paddingVertical: 10,
     borderRadius: 5,
