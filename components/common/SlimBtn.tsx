@@ -22,17 +22,19 @@ const SlimBtn = ({ text, action }: Props): JSX.Element => {
         },
       ]}
       onPress={() => action()}>
-      <P>{text}</P>
+      <P size={14} color={colors.text4}>
+        {text}
+      </P>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   btn: {
-    paddingVertical: 8,
+    paddingVertical: 7,
     width: '100%',
-    marginBottom: 5,
-    borderRadius: 5,
+    marginBottom: 10,
+    borderRadius: 20,
   },
 });
 
