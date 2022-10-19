@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 import { useAppSelector } from '../../hooks';
+import { commonStyles } from '../../styles/commonStyles';
 import P from './P';
 
 interface Props {
@@ -16,6 +17,7 @@ const SlimBtn = ({ text, action }: Props): JSX.Element => {
         {
           opacity: pressed ? 0.5 : 1,
           backgroundColor: colors.optionsBtn,
+          ...commonStyles.flexCenter,
           ...styles.btn,
         },
       ]}
@@ -29,9 +31,6 @@ const styles = StyleSheet.create({
   btn: {
     paddingVertical: 8,
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     marginBottom: 5,
     borderRadius: 5,
   },

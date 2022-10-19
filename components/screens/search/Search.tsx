@@ -14,6 +14,7 @@ import CoverExtended from '../../common/CoverExtended';
 import P from '../../common/P';
 import NavLink from '../../common/NavLink';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { commonStyles } from '../../../styles/commonStyles';
 
 /**
  * Search screen.
@@ -52,7 +53,11 @@ const Search = (): JSX.Element => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ backgroundColor: colors.background, ...styles.container }}>
+      <View
+        style={{
+          backgroundColor: colors.background,
+          ...commonStyles.basicScreen,
+        }}>
         <View style={{ backgroundColor: colors.surface, ...styles.searchBar }}>
           <Ionicons
             name="search"
@@ -111,10 +116,6 @@ const Search = (): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 25,
-  },
   searchBar: {
     width: '100%',
     height: 'auto',

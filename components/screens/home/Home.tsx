@@ -8,6 +8,7 @@ import CurrentReads from './components/CurrentReads';
 import { useAppSelector } from '../../../hooks';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { navigate } from '../../../helpers/Navigate';
+import { commonStyles } from '../../../styles/commonStyles';
 
 /**
  * Home screen.
@@ -20,7 +21,10 @@ const Home = (): JSX.Element => {
   return (
     <FlatList
       nestedScrollEnabled
-      style={{ backgroundColor: colors.background, ...styles.container }}
+      style={{
+        backgroundColor: colors.background,
+        ...commonStyles.basicScreen,
+      }}
       data={[0]}
       renderItem={() => {
         return (
@@ -52,10 +56,6 @@ const Home = (): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 25,
-    flex: 1,
-  },
   header: {
     display: 'flex',
     flexDirection: 'row',

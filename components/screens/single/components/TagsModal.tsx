@@ -6,6 +6,7 @@ import { modal } from '../../../../helpers/ModalManager';
 import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
 import sql from '../../../../services/sql/sql';
+import { commonStyles } from '../../../../styles/commonStyles';
 import { DetailedBookType } from '../../../../types/detailedBookType';
 import { ModalType } from '../../../../types/modalsType';
 import Btn from '../../../common/Btn';
@@ -106,7 +107,8 @@ const NoteModal = ({ book }: Props): JSX.Element => {
       }}
       textColor={colors.textBtn}>
       <View style={styles.centeredView}>
-        <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
+        <View
+          style={{ backgroundColor: colors.white, ...commonStyles.basicModal }}>
           <View
             style={{
               display: 'flex',
@@ -200,20 +202,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-  },
-  modalView: {
-    borderRadius: 10,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    paddingVertical: 25,
-    paddingHorizontal: 10,
-    alignItems: 'flex-start',
-    width: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
   },
   header: {
     width: '100%',

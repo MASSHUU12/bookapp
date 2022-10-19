@@ -38,6 +38,10 @@ const HomeNavigator = (): JSX.Element => {
             headerStyle: {
               backgroundColor: colors.accent,
             },
+            // !
+            tabBarStyle: {
+              display: 'none',
+            },
           }}
         />
         <Tab.Screen
@@ -49,6 +53,7 @@ const HomeNavigator = (): JSX.Element => {
               backgroundColor: colors.background,
             },
             headerTitle: 'Add book manually',
+            tabBarHideOnKeyboard: true,
           }}
         />
         <Tab.Screen name="SettingsNavigator" component={SettingsNavigator} />

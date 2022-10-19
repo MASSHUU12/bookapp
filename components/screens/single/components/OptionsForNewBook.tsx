@@ -49,8 +49,8 @@ const OptionsForNewBook = ({ book }: Props) => {
 
   return (
     <View>
-      {actions.map(action => (
-        <SlimBtn text={action.name} action={action.action} />
+      {actions.map((action, index) => (
+        <SlimBtn key={index} text={action.name} action={action.action} />
       ))}
     </View>
   );

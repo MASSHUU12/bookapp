@@ -1,6 +1,7 @@
 import { Modal, Pressable, StyleSheet } from 'react-native';
 import { modal } from '../../helpers/ModalManager';
 import { useAppSelector } from '../../hooks';
+import { commonStyles } from '../../styles/commonStyles';
 import { ModalType } from '../../types/modalsType';
 import P from './P';
 
@@ -29,6 +30,7 @@ const CModal = (props: Props): JSX.Element => {
     return {
       backgroundColor: colors.optionsBtn,
       marginTop: props.marginTop,
+      ...commonStyles.flexCenter,
       ...styles.container,
     };
   };
@@ -66,17 +68,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginBottom: 5,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btn: {
-    paddingVertical: 10,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 5,
-    borderRadius: 5,
   },
 });
 

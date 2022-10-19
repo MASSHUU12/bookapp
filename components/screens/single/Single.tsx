@@ -4,7 +4,6 @@ import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
 import { DetailedBookType } from '../../../types/detailedBookType';
-import Btn from '../../common/Btn';
 import P from '../../common/P';
 import Rating from '../../common/Rating';
 import Tag from '../../common/Tag';

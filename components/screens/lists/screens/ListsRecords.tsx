@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useAppSelector } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
+import { commonStyles } from '../../../../styles/commonStyles';
 import CoverExtended from '../../../common/CoverExtended';
 
 const ListsRecords = ({ route }: any): JSX.Element => {
@@ -17,19 +18,15 @@ const ListsRecords = ({ route }: any): JSX.Element => {
 
   return (
     <FlatList
-      style={{ backgroundColor: colors.background, ...styles.container }}
+      style={{
+        backgroundColor: colors.background,
+        ...commonStyles.basicScreen,
+      }}
       ItemSeparatorComponent={() => <View style={{ marginTop: 10 }} />}
       data={data}
       renderItem={item => <CoverExtended item={item} />}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 25,
-    flex: 1,
-  },
-});
 
 export default ListsRecords;

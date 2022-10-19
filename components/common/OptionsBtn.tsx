@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { modal } from '../../helpers/ModalManager';
 import { useAppSelector } from '../../hooks';
+import { commonStyles } from '../../styles/commonStyles';
 import { ModalType } from '../../types/modalsType';
 import CModal from './CModal';
 import SlimBtn from './SlimBtn';
@@ -29,7 +30,8 @@ const OptionsBtn = ({
   return (
     <CModal text={text} name={name}>
       <Pressable style={styles.centeredView} onPress={() => modal.close(name)}>
-        <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
+        <View
+          style={{ backgroundColor: colors.white, ...commonStyles.basicModal }}>
           {modalTexts.map((item, index) => (
             <SlimBtn
               text={item}
@@ -51,30 +53,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-  },
-  modalView: {
-    borderRadius: 10,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    paddingVertical: 25,
-    paddingHorizontal: 10,
-    paddingBottom: 20,
-    alignItems: 'center',
-    width: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-  },
-  btn: {
-    paddingVertical: 10,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 5,
-    borderRadius: 5,
   },
 });
 

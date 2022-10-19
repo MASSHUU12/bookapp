@@ -1,6 +1,7 @@
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
+import { commonStyles } from '../../../styles/commonStyles';
 import P from '../../common/P';
 import ListItem from './components/ListItem';
 
@@ -33,7 +34,10 @@ const Lists = (): JSX.Element => {
           {t.lists1}
         </P>
       }
-      style={{ backgroundColor: colors.background, ...styles.container }}
+      style={{
+        backgroundColor: colors.background,
+        ...commonStyles.basicScreen,
+      }}
       data={lists}
       renderItem={({ item }) => (
         <ListItem
@@ -45,12 +49,5 @@ const Lists = (): JSX.Element => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 25,
-    flex: 1,
-  },
-});
 
 export default Lists;

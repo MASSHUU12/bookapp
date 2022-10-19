@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 import { useAppSelector } from '../../hooks';
+import { commonStyles } from '../../styles/commonStyles';
 import { ColorsType } from '../../types/colors';
 import P from './P';
 
@@ -20,6 +21,7 @@ const Btn = ({ text, color, bg, action }: Props): JSX.Element => {
         {
           opacity: pressed ? 0.5 : 1,
           backgroundColor: bg === undefined ? colors.text4 : (bg as string),
+          ...commonStyles.flexCenter,
           ...styles.container,
         },
       ]}>
@@ -31,8 +33,6 @@ const Btn = ({ text, color, bg, action }: Props): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
     paddingVertical: 10,
     borderRadius: 5,
   },

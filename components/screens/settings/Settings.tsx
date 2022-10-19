@@ -3,6 +3,7 @@ import { toggleModal } from '../../../features/modal/modalSlice';
 import { navigate } from '../../../helpers/Navigate';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
+import { commonStyles } from '../../../styles/commonStyles';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
 import ReadingGoals from './screens/ReadingGoals';
@@ -18,7 +19,11 @@ const Settings = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   return (
-    <View style={{ backgroundColor: colors.background, ...styles.container }}>
+    <View
+      style={{
+        backgroundColor: colors.background,
+        ...commonStyles.basicScreen,
+      }}>
       <P size={24}>{t.nav5}</P>
       <SettingsBtn
         icon="book-outline"
@@ -45,11 +50,6 @@ const Settings = (): JSX.Element => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 25,
-    flex: 1,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default Settings;

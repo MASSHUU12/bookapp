@@ -5,6 +5,7 @@ import { useAppSelector, useGlobalState } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
 import { BookType } from '../../../../types/bookType';
 import { t } from '../../../../i18n/strings';
+import { commonStyles } from '../../../../styles/commonStyles';
 
 /**
  *
@@ -66,6 +67,7 @@ const MainActionButton = ({ bookData, onNewBook }: Params): JSX.Element => {
           backgroundColor: isButtonPressed
             ? colors.placeholder
             : colors.textBtn,
+          ...commonStyles.flexCenter,
           ...styles.mainButton,
         }}>
         <P color="white" size={20}>
@@ -87,8 +89,6 @@ const styles = StyleSheet.create({
   mainButton: {
     width: '90%',
     height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
