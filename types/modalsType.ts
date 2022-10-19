@@ -3,4 +3,6 @@ export type ModalType =
   | 'singleMore'
   | 'readingGoals'
   | 'tags'
-  | 'editTags';
+  | 'editTags'
+  | 'languageSelection'
+  | 'themeSelection';

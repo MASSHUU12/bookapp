@@ -10,6 +10,8 @@ export const modalSlice = createSlice({
       readingGoals: 0,
       tags: 0,
       editTags: 0,
+      languageSelection: 0,
+      themeSelection: 0,
     },
   },
   reducers: {
@@ -35,6 +37,14 @@ export const modalSlice = createSlice({
           break;
 
         case 'editTags':
+          state.value.tags = action.payload.value;
+          break;
+
+        case 'languageSelection':
+          state.value.tags = action.payload.value;
+          break;
+
+        case 'themeSelection':
           state.value.tags = action.payload.value;
           break;
 

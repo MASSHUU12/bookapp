@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Modal, Pressable, StyleSheet } from 'react-native';
 import { modal } from '../../helpers/ModalManager';
 import { useAppSelector } from '../../hooks';
@@ -34,10 +33,6 @@ const CModal = (props: Props): JSX.Element => {
     };
   };
 
-  useEffect(() => {
-    console.log(props.name + ' ' + state);
-  }, []);
-
   return (
     <>
       <Pressable
@@ -68,7 +63,8 @@ const CModal = (props: Props): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    padding: 5,
+    paddingVertical: 10,
+    marginBottom: 5,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

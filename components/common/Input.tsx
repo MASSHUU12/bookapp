@@ -55,9 +55,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     width: '100%',
     borderRadius: 5,
-    padding: 10,
+    paddingVertical: 10,
     paddingHorizontal: 15,
-    flex: 1,
   },
 });
 

@@ -164,7 +164,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             }}
             renderItem={({ item, index }) => {
               return (
-                <View style={styles.listItem}>
+                <View key={index} style={styles.listItem}>
                   <Btn
                     text={item.name}
                     color={item.selected ? colors.accent : colors.text4}

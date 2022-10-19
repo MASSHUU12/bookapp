@@ -21,8 +21,6 @@ const closeModal = (name: ModalType): void => {
 };
 
 export const modal = {
-  /** Open specified modal. */
   open: openModal,
-  /** Close specified modal. */
   close: closeModal,
 };

@@ -35,7 +35,6 @@ const Options = (): JSX.Element => {
         // Update language in storage.
         await setItem('language', item);
       });
-
       setLangFunc(arr);
     });
   }, []);
@@ -44,13 +43,14 @@ const Options = (): JSX.Element => {
     <ScrollView
       style={{ backgroundColor: colors.background, ...styles.container }}>
       <OptionsBtn
+        name="languageSelection"
         text={t.settings4}
         modalTexts={languages}
         modalActions={langFunc}
       />
       <OptionsBtn
+        name="themeSelection"
         text={t.settings5}
-        marginTop={15}
         modalTexts={[t.options1, t.options2]}
         modalActions={[
           async () => {
