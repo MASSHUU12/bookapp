@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { Alert, FlatList, Pressable, StyleSheet, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { mergeTags } from '../../../../helpers/helpers';
 import { modal } from '../../../../helpers/ModalManager';
@@ -73,13 +73,25 @@ const NoteModal = ({ book }: Props): JSX.Element => {
    *
    * @param {number} index
    */
-  const removeTag = (index: number): void => {
-    let temp = tags;
-
-    temp.splice(index, 1);
-
-    setTags(temp);
-    setExtra(new Date());
+  const removeTag = (passedTag: TagType): void => {
+    return Alert.alert(
+      `Are you sure?`,
+      `This action will remove ${passedTag.name} from all books and remove the tag`,
+      [
+        {
+          text: t.miscNo,
+        },
+        // The "Yes" button
+        {
+          text: t.miscYes,
+          onPress: () => {
+            sql.removeTag(passedTag.name, () => {
+              refresh(1);
+            });
+          },
+        },
+      ],
+    );
   };
 
   /**
@@ -185,7 +197,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                           ...styles.deleteBtn,
                         },
                       ]}
-                      onPress={() => removeTag(index)}>
+                      onPress={() => removeTag(item)}>
                       <Ionicons name="trash" size={32} color={colors.text4} />
                     </Pressable>
                   )}

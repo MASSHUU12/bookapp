@@ -218,6 +218,32 @@ export default class SqlActions {
     });
   }
 
+  removeTag(tag: string, callback?: () => void) {
+    // find all books which contain the tag we are about to remove
+    this.db.execute(
+      `SELECT * FROM list_details WHERE user_tags LIKE ?`,
+      [`%"${tag}"%`],
+      (tx, res) => {
+        console.log(tag);
+        const len = res.rows.length;
+        const results = [];
+        for (let i = 0; i < len; i++) {
+          results.push({ ...res.rows.item(i), id: i });
+        }
+
+        // remove tag from every single book which contains it
+        results.forEach(result => {
+          this.removeTagFromBook({ key: result.key, tag: tag });
+        });
+
+        // remove tag from user_tags table
+        this.db.execute('DELETE FROM user_tags WHERE name = ?', [tag], () => {
+          if (typeof callback === 'function') callback();
+        });
+      },
+    );
+  }
+
   clearListTable() {
     this.db.execute('DELETE FROM lists', [], () => {
       this.db.execute('DELETE FROM list_details', [], () => {
