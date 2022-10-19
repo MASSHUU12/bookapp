@@ -119,6 +119,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
+                marginBottom: 30,
               }}>
               <Ionicons name="close" size={32} color={colors.text4} />
               <P color={colors.text4}>{t.miscClose}</P>
@@ -156,7 +157,11 @@ const NoteModal = ({ book }: Props): JSX.Element => {
             style={styles.list}
             data={tags}
             extraData={extra}
-            ListHeaderComponent={<P>{t.single15}</P>}
+            ListHeaderComponent={
+              <P size={16} styles={{ marginBottom: 10, color: colors.text4 }}>
+                {t.single15}
+              </P>
+            }
             ItemSeparatorComponent={() => {
               return <View style={{ marginBottom: 10 }}></View>;
             }}
@@ -168,7 +173,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                   <Btn
                     text={item.name}
                     color={item.selected ? colors.accent : colors.text4}
-                    bg={item.selected ? colors.text4 : colors.accent}
+                    bg={item.selected ? colors.textBtn : colors.optionsBtn}
                     action={() => onTagPress(item)}
                   />
                   {/* Remove tag button */}
@@ -177,12 +182,16 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                       style={({ pressed }) => [
                         {
                           opacity: pressed ? 0.5 : 1,
-                          backgroundColor: colors.accent,
+                          backgroundColor: '#E23636',
                           ...styles.deleteBtn,
                         },
                       ]}
                       onPress={() => removeTag(item)}>
-                      <Ionicons name="trash" size={32} color={colors.text4} />
+                      <Ionicons
+                        name="close-outline"
+                        size={32}
+                        color={'white'}
+                      />
                     </Pressable>
                   )}
                 </View>
@@ -219,13 +228,14 @@ const styles = StyleSheet.create({
   },
   deleteBtn: {
     width: 'auto',
-    padding: 5,
+    padding: 3,
     borderRadius: 5,
-    marginLeft: 5,
+    marginLeft: 2,
   },
   addSection: {
     display: 'flex',
     flexDirection: 'row',
+    maxWidth: '89%',
   },
 });
 
