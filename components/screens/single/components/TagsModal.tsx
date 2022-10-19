@@ -119,6 +119,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
+                marginBottom: 30,
               }}>
               <Ionicons name="close" size={32} color={colors.text4} />
               <P color={colors.text4}>{t.miscClose}</P>
@@ -181,12 +182,16 @@ const NoteModal = ({ book }: Props): JSX.Element => {
                       style={({ pressed }) => [
                         {
                           opacity: pressed ? 0.5 : 1,
-                          backgroundColor: colors.accent,
+                          backgroundColor: '#E23636',
                           ...styles.deleteBtn,
                         },
                       ]}
                       onPress={() => removeTag(item)}>
-                      <Ionicons name="trash" size={32} color={colors.text4} />
+                      <Ionicons
+                        name="close-outline"
+                        size={32}
+                        color={'white'}
+                      />
                     </Pressable>
                   )}
                 </View>
@@ -223,13 +228,14 @@ const styles = StyleSheet.create({
   },
   deleteBtn: {
     width: 'auto',
-    padding: 5,
+    padding: 3,
     borderRadius: 5,
-    marginLeft: 5,
+    marginLeft: 2,
   },
   addSection: {
     display: 'flex',
     flexDirection: 'row',
+    maxWidth: '89%',
   },
 });
 
