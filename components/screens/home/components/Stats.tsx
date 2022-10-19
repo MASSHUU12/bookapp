@@ -65,7 +65,7 @@ const Stats = (): JSX.Element => {
               <P size={12} color={colors.placeholder}>
                 {t.miscMonth.toLowerCase()}
               </P>
-              <P>{`${booksThisMonth}`}</P>
+              <P size={32}>{`${booksThisMonth}`}</P>
               <P
                 size={12}
                 color={
@@ -85,7 +85,7 @@ const Stats = (): JSX.Element => {
               <P size={12} color={colors.placeholder}>
                 {t.miscYear.toLowerCase()}
               </P>
-              <P>{`${booksThisYear}`}</P>
+              <P size={32}>{`${booksThisYear}`}</P>
               <P
                 size={12}
                 color={
