@@ -1,10 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Button } from 'react-native';
 import { useAppSelector } from '../../hooks';
 import { t } from '../../i18n/strings';
 import Dev from '../screens/settings/screens/Dev';
 import NotificationPreferences from '../screens/settings/screens/NotificationPreferences';
 import Options from '../screens/settings/screens/Options';
+import ReadingGoals from '../screens/settings/screens/ReadingGoals';
 import Settings from '../screens/settings/Settings';
 
 /**
@@ -45,7 +47,38 @@ const SettingsNavigator = (): JSX.Element => {
         component={Options}
         options={{ title: t.settings3 }}
       />
-      <Tab.Screen name="Dev" component={Dev} options={{ title: 'Dev' }} />
+      <Stack.Screen
+        name="Dev"
+        component={Dev}
+        options={{
+          title: 'Dev',
+          headerShown: true,
+          presentation: 'containedModal',
+        }}
+      />
+      <Stack.Screen
+        name="ReadingGoals"
+        component={ReadingGoals}
+        options={{
+          title: '',
+          headerShown: true,
+          presentation: 'modal',
+          headerLeft: () => (
+            <Button
+              onPress={() => console.log('here')}
+              title="Back"
+              color="#007AFF"
+            />
+          ),
+          headerRight: () => (
+            <Button
+              onPress={() => console.log('here')}
+              title="Save"
+              color="#007AFF"
+            />
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 };

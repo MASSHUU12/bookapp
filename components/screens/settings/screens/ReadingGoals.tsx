@@ -31,49 +31,34 @@ const ReadingGoals = (): JSX.Element => {
     dispatch(targetPerYear(year));
   };
 
-  const name: ModalType = 'readingGoals';
-
   return (
-    <CModal text="" name={name} styles={{ display: 'none' }}>
-      <Pressable
-        style={styles.centeredView}
-        onPress={() => dispatch(toggleModal({ name, value: 0 }))}>
-        <View style={{ backgroundColor: colors.white, ...styles.modalView }}>
-          <P>{t.rGoals4}</P>
-          <View style={styles.section}>
-            <P size={16} color={colors.text2}>
-              {t.rGoals1}
-            </P>
-            <Input
-              value={`${month}`}
-              onChange={(text: string) => setMonth(text.replace(/[^0-9]/g, ''))}
-              keyboardType="numeric"
-              redux={false}
-              limit={3}
-            />
-          </View>
-          <View style={{ ...styles.section, marginBottom: '70%' }}>
-            <P size={16} color={colors.text2}>
-              {t.rGoals2}
-            </P>
-            <Input
-              value={`${year}`}
-              onChange={(text: string) => setYear(text.replace(/[^0-9]/g, ''))}
-              keyboardType="numeric"
-              redux={false}
-              limit={3}
-            />
-          </View>
-          <Btn
-            text={t.rGoals3}
-            action={async () => {
-              await saveGoals();
-              dispatch(toggleModal({ name, value: 0 }));
-            }}
-          />
-        </View>
-      </Pressable>
-    </CModal>
+    <View style={{ backgroundColor: colors.background, ...styles.container }}>
+      <P>{t.rGoals4}</P>
+      <View style={styles.section}>
+        <P size={16} color={colors.text2}>
+          {t.rGoals1}
+        </P>
+        <Input
+          value={`${month}`}
+          onChange={(text: string) => setMonth(text.replace(/[^0-9]/g, ''))}
+          keyboardType="numeric"
+          redux={false}
+          limit={3}
+        />
+      </View>
+      <View style={{ ...styles.section, marginBottom: '70%' }}>
+        <P size={16} color={colors.text2}>
+          {t.rGoals2}
+        </P>
+        <Input
+          value={`${year}`}
+          onChange={(text: string) => setYear(text.replace(/[^0-9]/g, ''))}
+          keyboardType="numeric"
+          redux={false}
+          limit={3}
+        />
+      </View>
+    </View>
   );
 };
 

@@ -28,7 +28,7 @@ const Settings = (): JSX.Element => {
       <SettingsBtn
         icon="book-outline"
         text={t.settings1}
-        action={() => dispatch(toggleModal({ name: 'readingGoals', value: 1 }))}
+        action={() => navigate('ReadingGoals')}
       />
       <SettingsBtn
         icon="notifications-outline"
@@ -45,7 +45,6 @@ const Settings = (): JSX.Element => {
         text={'Dev'}
         action={() => navigate('Dev')}
       />
-      <ReadingGoals />
     </View>
   );
 };
