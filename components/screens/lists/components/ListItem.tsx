@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { navigate } from '../../../../helpers/Navigate';
 import { useAppSelector, useGlobalState } from '../../../../hooks';
 import { t } from '../../../../i18n/strings';
@@ -10,7 +10,7 @@ import P from '../../../common/P';
 interface Props {
   name: string;
   number_of_books: number;
-  image: string; // For now
+  image: any;
   list_name: ListType;
 }
 
@@ -37,15 +37,11 @@ const ListItem = ({ name, image, list_name }: Props): JSX.Element => {
       onPress={() =>
         navigate('ListsRecords', { name: name, list_name: list_name })
       }>
-      <Image
-        style={styles.image}
-        source={require('../../../../assets/images/bookCoverTest.jpg')}
-        resizeMode="contain"
-      />
+      {image}
       <View style={styles.info}>
         <P>{name}</P>
         <P size={14} color={colors.text2}>
-          {numberOfBooks + ' ' + t.lists2}
+          {`${numberOfBooks} ${t.lists2}`}
         </P>
       </View>
     </Pressable>
@@ -71,11 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     marginLeft: 15,
     flexShrink: 1,
-  },
-  image: {
-    height: Dimensions.get('window').height * 0.15,
-    width: Dimensions.get('window').width * 0.2,
-    borderRadius: 5,
   },
 });
 
