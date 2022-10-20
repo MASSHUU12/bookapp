@@ -1,11 +1,6 @@
-import {
-  Dimensions,
-  Image,
-  ListRenderItemInfo,
-  Pressable,
-  StyleSheet,
-} from 'react-native';
+import { Dimensions, Image, ListRenderItemInfo, Pressable } from 'react-native';
 import { navigate } from '../../helpers/Navigate';
+import CoverImage from './CoverImage';
 
 interface Props {
   item: ListRenderItemInfo<{
@@ -23,8 +18,8 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const Cover = ({ item }: Props): JSX.Element => {
-  const isbnCodes = item.item.isbn;
-  const formatedIsbnCode = Array.isArray(isbnCodes) ? isbnCodes[0] : isbnCodes;
+  const h = Dimensions.get('window').height * 0.2;
+  const w = 110;
 
   return (
     <Pressable
@@ -35,27 +30,9 @@ const Cover = ({ item }: Props): JSX.Element => {
           opacity: pressed ? 0.5 : 1,
         },
       ]}>
-      <Image
-        style={styles.image}
-        source={
-          item.item.cover_i === undefined
-            ? require('../../assets/images/bookCoverTest.jpg')
-            : {
-                uri: `https://covers.openlibrary.org/b/id/${item.item.cover_i}-M.jpg`,
-              }
-        }
-        resizeMode="cover"
-        // TODO: loadingIndicatorSource={}
-      />
+      <CoverImage width={w} height={h} cover={item.item.cover_i} />
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    height: Dimensions.get('window').height * 0.2,
-    width: 110,
-  },
-});
 
 export default Cover;

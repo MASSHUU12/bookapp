@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { View, StyleSheet, ScrollView, Animated } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { useAppSelector, useGlobalState } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import sql from '../../../services/sql/sql';
@@ -12,13 +12,17 @@ import MoreOptionsList from './components/MoreOptionsList';
 import NoteModal from './components/NoteModal';
 import OptionsForNewBook from './components/OptionsForNewBook';
 import TagsModal from './components/TagsModal';
+import CoverImage from '../../common/CoverImage';
 
 const Single = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
-  const pan = useRef(new Animated.ValueXY()).current;
   const [onRefresh, dispatch] = useGlobalState();
+
   const [sqlBookData, setSqlBookData] = useState<{} | DetailedBookType>({});
   const [tags, setTags] = useState<any>([]);
+
+  const h = Dimensions.get('window').height * 0.4;
+  const w = Dimensions.get('window').width * 0.5;
 
   const handleMainButton = () => {
     sql.saveBookToList({
@@ -55,16 +59,8 @@ const Single = ({ route }: any): JSX.Element => {
   }, [onRefresh]);
 
   return (
-    //  https://dev.to/reime005/image-scroll-zoom-in-react-native-29f7
     <ScrollView
-      style={{ backgroundColor: colors.background, ...styles.container }}
-      scrollEventThrottle={16}
-      onScroll={Animated.event(
-        [{ nativeEvent: { contentOffset: { y: pan.y } } }],
-        {
-          useNativeDriver: false,
-        },
-      )}>
+      style={{ backgroundColor: colors.background, ...styles.container }}>
       <View
         style={{
           height: 300,
@@ -79,36 +75,7 @@ const Single = ({ route }: any): JSX.Element => {
           backgroundColor: colors.accent,
           ...styles.coverContainer,
         }}>
-        <Animated.Image
-          resizeMode="cover"
-          style={{
-            transform: [
-              {
-                translateY: pan.y.interpolate({
-                  inputRange: [-1000, 0],
-                  outputRange: [-400, 0],
-                  extrapolate: 'clamp',
-                }),
-              },
-              {
-                scale: pan.y.interpolate({
-                  inputRange: [-3000, 0],
-                  outputRange: [10, 1],
-                  extrapolate: 'clamp',
-                }),
-              },
-            ],
-            minWidth: 200,
-            height: 300,
-          }}
-          source={
-            route.params.cover_i === undefined
-              ? require('../../../assets/images/bookCoverTest.jpg')
-              : {
-                  uri: `https://covers.openlibrary.org/b/id/${route.params.cover_i}-M.jpg`,
-                }
-          }
-        />
+        <CoverImage width={w} height={h} cover={route.params.cover_i} />
       </View>
       <View style={{ backgroundColor: colors.background }}>
         <MainActionButton bookData={sqlBookData} onNewBook={handleMainButton} />

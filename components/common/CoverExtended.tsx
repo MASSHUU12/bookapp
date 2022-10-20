@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Image,
   Pressable,
@@ -10,7 +9,7 @@ import {
 import { navigate } from '../../helpers/Navigate';
 import { useAppSelector } from '../../hooks';
 import P from './P';
-import NoImage from '../../assets/images/no_image_found.svg';
+import CoverImage from './CoverImage';
 
 interface Props {
   item: ListRenderItemInfo<{
@@ -30,12 +29,10 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const CoverExtended = ({ item }: Props): JSX.Element => {
-  const [err, setErr] = useState(false);
-
   const colors = useAppSelector(state => state.theme.colors);
 
-  const h = Dimensions.get('window').height * 0.13;
-  const w = Dimensions.get('window').height * 0.13;
+  const h = Dimensions.get('window').height * 0.15;
+  const w = Dimensions.get('window').width * 0.25;
 
   return (
     <Pressable
@@ -47,23 +44,7 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
         },
       ]}
       onPress={() => navigate('Single', item.item)}>
-      {!err ? (
-        <Image
-          style={{
-            width: w,
-            height: h,
-          }}
-          source={{
-            uri: `https://covers.openlibrary.org/b/id/${item.item.cover_i}-M.jpg?default=false`,
-          }}
-          onError={() => setErr(true)}
-          resizeMode="contain"
-          // TODO: Need to be replaced with better image.
-          loadingIndicatorSource={require('../../assets/images/bookCoverTest.jpg')}
-        />
-      ) : (
-        <NoImage width={w} height={h} />
-      )}
+      <CoverImage width={w} height={h} cover={item.item.cover_i} />
       <View style={styles.info}>
         <View style={styles.infoTop}>
           <P size={14}>{item.item.title}</P>
