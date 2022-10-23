@@ -9,8 +9,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './helpers/Navigate';
 import { settingsLoader } from './helpers/SettingsLoader';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CommonNavigator from './navigators/CommonNavigator';
 import OtherNavigator from './navigators/OtherNavigator';
+import MainNavigator from './navigators/MainNavigator';
 
 export const globalStateContext = createContext(1);
 export const dispatchStateContext = createContext<any>(undefined);
@@ -53,7 +53,7 @@ const App = (): JSX.Element => {
             {/* Navigation container. */}
             <NavigationContainer theme={theme} ref={navigationRef}>
               <Stack.Navigator
-                initialRouteName="Common"
+                initialRouteName="Main"
                 screenOptions={{
                   headerShown: false,
                   headerTitleStyle: {
@@ -61,7 +61,7 @@ const App = (): JSX.Element => {
                   },
                   headerShadowVisible: false,
                 }}>
-                <Stack.Screen name="Common" component={CommonNavigator} />
+                <Stack.Screen name="Main" component={MainNavigator} />
                 <Stack.Screen name="Other" component={OtherNavigator} />
               </Stack.Navigator>
             </NavigationContainer>

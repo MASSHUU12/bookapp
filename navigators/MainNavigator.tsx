@@ -9,7 +9,7 @@ import BooksNavigator from './BooksNavigator';
 import HomeNavigator from './HomeNavigator';
 import ListsNavigator from './ListsNavigator';
 
-const CommonNavigator = (): JSX.Element => {
+const MainNavigator = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
 
   const { colors } = useTheme();
@@ -72,4 +72,4 @@ const CommonNavigator = (): JSX.Element => {
   );
 };
 
-export default CommonNavigator;
+export default MainNavigator;
