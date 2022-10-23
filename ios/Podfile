@@ -21,6 +21,8 @@ target 'bookapp' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   target 'bookappTests' do
     inherit! :complete
     # Pods for testing

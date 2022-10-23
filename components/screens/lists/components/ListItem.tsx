@@ -48,7 +48,7 @@ const ListItem = ({ name, image, list_name }: Props): JSX.Element => {
             ? require('../../../../assets/images/lists/list_already_read.png')
             : require('../../../../assets/images/no_image_found.png')
         }
-        resizeMode="contain"
+        resizeMode="stretch"
       />
       <View style={styles.info}>
         <P>{name}</P>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: Dimensions.get('window').height * 0.2,
-    width: Dimensions.get('window').width * 0.2,
+    width: Dimensions.get('window').width * 0.22,
   },
 });
 

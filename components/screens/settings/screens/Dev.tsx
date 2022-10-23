@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { navigate } from '../../../../helpers/Navigate';
 import { useAppSelector } from '../../../../hooks';
 import sql from '../../../../services/sql/sql';
 import SettingsBtn from '../components/SettingsBtn';
@@ -31,6 +32,11 @@ const Dev = (): JSX.Element => {
             console.log(res);
           })
         }
+      />
+      <SettingsBtn
+        icon="hammer-outline"
+        text="Move to welcome screen"
+        action={() => navigate('Other', { screen: 'Welcome' })}
       />
     </View>
   );

@@ -1,22 +1,16 @@
 import { createContext, useEffect, useReducer, useState } from 'react';
 import { StatusBar } from 'react-native';
-
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { t } from './i18n/strings';
 import store from './app/store';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
-import ListsNavigator from './components/navigators/ListsNavigator';
-import BooksNavigator from './components/navigators/BooksNavigator';
-import HomeNavigator from './components/navigators/HomeNavigator';
 import { navigationRef } from './helpers/Navigate';
-import Search from './components/screens/search/Search';
 import { settingsLoader } from './helpers/SettingsLoader';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import OtherNavigator from './navigators/OtherNavigator';
+import MainNavigator from './navigators/MainNavigator';
 
 export const globalStateContext = createContext(1);
 export const dispatchStateContext = createContext<any>(undefined);
@@ -32,7 +26,7 @@ const App = (): JSX.Element => {
 
   const [state, dispatch] = useReducer(x => x + 1, 0);
 
-  const Tab = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
 
   // Set settings when app loads.
   useEffect(() => {
@@ -58,60 +52,18 @@ const App = (): JSX.Element => {
           <dispatchStateContext.Provider value={dispatch}>
             {/* Navigation container. */}
             <NavigationContainer theme={theme} ref={navigationRef}>
-              <Tab.Navigator
-                screenOptions={({ route }) => ({
-                  tabBarIcon: ({ focused, color, size }) => {
-                    let iconName = 'alert';
-
-                    if (route.name === 'HomeNavigator')
-                      iconName = focused ? 'home' : 'home-outline';
-
-                    if (route.name === 'Search')
-                      iconName = focused ? 'search' : 'search-outline';
-
-                    if (route.name === 'BooksNavigator')
-                      iconName = focused ? 'book' : 'book-outline';
-
-                    if (route.name === 'ListsNavigator')
-                      iconName = focused ? 'checkbox' : 'checkbox-outline';
-
-                    return (
-                      <Ionicons name={iconName} size={size} color={color} />
-                    );
-                  },
-                  tabBarActiveTintColor: theme.colors.primary,
-                  tabBarInactiveTintColor: theme.colors.text,
-                  tabBarActiveBackgroundColor: theme.colors.card,
-                  tabBarInactiveBackgroundColor: theme.colors.card,
-                  tabBarLabelStyle: {
+              <Stack.Navigator
+                initialRouteName="Main"
+                screenOptions={{
+                  headerShown: false,
+                  headerTitleStyle: {
                     fontFamily: 'AndadaPro-Medium',
                   },
-                  headerShown: false,
-                })}
-                initialRouteName="Home">
-                <Tab.Screen
-                  name="HomeNavigator"
-                  component={HomeNavigator}
-                  options={{ title: t.nav1 }}
-                />
-                <Tab.Screen
-                  name="Search"
-                  component={Search}
-                  options={{
-                    title: t.nav4,
-                  }}
-                />
-                <Tab.Screen
-                  name="BooksNavigator"
-                  component={BooksNavigator}
-                  options={{ title: t.nav2 }}
-                />
-                <Tab.Screen
-                  name="ListsNavigator"
-                  component={ListsNavigator}
-                  options={{ title: t.nav3 }}
-                />
-              </Tab.Navigator>
+                  headerShadowVisible: false,
+                }}>
+                <Stack.Screen name="Main" component={MainNavigator} />
+                <Stack.Screen name="Other" component={OtherNavigator} />
+              </Stack.Navigator>
             </NavigationContainer>
           </dispatchStateContext.Provider>
         </globalStateContext.Provider>

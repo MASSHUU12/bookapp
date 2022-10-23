@@ -1,4 +1,4 @@
-import { Dimensions, Image, ListRenderItemInfo, Pressable } from 'react-native';
+import { Dimensions, ListRenderItemInfo, Pressable } from 'react-native';
 import { navigate } from '../../helpers/Navigate';
 import CoverImage from './CoverImage';
 
@@ -18,8 +18,8 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const Cover = ({ item }: Props): JSX.Element => {
-  const h = Dimensions.get('window').height * 0.2;
-  const w = 110;
+  const h = Dimensions.get('window').height * 0.23;
+  const w = Dimensions.get('window').width * 0.31;
 
   return (
     <Pressable

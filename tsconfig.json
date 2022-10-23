@@ -8,7 +8,7 @@
     "isolatedModules": true,
     "jsx": "react-native",
     "lib": ["es2017"],
-    "types": ["react-native", "jest"],
+    "types": ["react-native", "jest", "node"],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
