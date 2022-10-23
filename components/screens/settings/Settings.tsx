@@ -1,12 +1,11 @@
 import { View } from 'react-native';
-import { toggleModal } from '../../../features/modal/modalSlice';
+import Config from 'react-native-config';
 import { navigate } from '../../../helpers/Navigate';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { useAppSelector } from '../../../hooks';
 import { t } from '../../../i18n/strings';
 import { commonStyles } from '../../../styles/commonStyles';
 import P from '../../common/P';
 import SettingsBtn from './components/SettingsBtn';
-import ReadingGoals from './screens/ReadingGoals';
 
 /**
  * The main settings screen, gives access to all options.
@@ -15,8 +14,6 @@ import ReadingGoals from './screens/ReadingGoals';
  */
 const Settings = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
-
-  const dispatch = useAppDispatch();
 
   return (
     <View
@@ -40,11 +37,13 @@ const Settings = (): JSX.Element => {
         text={t.settings3}
         action={() => navigate('Options')}
       />
-      <SettingsBtn
-        icon="flask-outline"
-        text={'Dev'}
-        action={() => navigate('Dev')}
-      />
+      {Config.PRODUCTION !== 'true' && (
+        <SettingsBtn
+          icon="flask-outline"
+          text={'Dev'}
+          action={() => navigate('Dev')}
+        />
+      )}
     </View>
   );
 };
