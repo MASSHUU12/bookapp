@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { View } from 'react-native';
+import Config from 'react-native-config';
+import { commonStyles } from '../../../styles/commonStyles';
 import P from '../../common/P';
 
 const Welcome = ({ navigation }: any): JSX.Element => {
@@ -13,8 +15,8 @@ const Welcome = ({ navigation }: any): JSX.Element => {
   }, [navigation]);
 
   return (
-    <View>
-      <P>aaaaaa</P>
+    <View style={{ ...commonStyles.basicScreen }}>
+      <P>{`Welcome to ${Config.APP_NAME}`}</P>
     </View>
   );
 };

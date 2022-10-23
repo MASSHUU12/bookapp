@@ -7,7 +7,11 @@ const OtherNavigator = (): JSX.Element => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator
+        initialRouteName="Welcome"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="Welcome" component={Welcome} />
       </Stack.Navigator>
     </SafeAreaView>
