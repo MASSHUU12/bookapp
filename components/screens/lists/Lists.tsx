@@ -12,17 +12,17 @@ const Lists = (): JSX.Element => {
   const lists = [
     {
       name: 'Read later',
-      image: '',
+      image: 0,
       list_name: 'readLater',
     },
     {
       name: 'Currently reading',
-      image: '',
+      image: 1,
       list_name: 'current',
     },
     {
       name: 'Already read',
-      image: '',
+      image: 2,
       list_name: 'alreadyRead',
     },
   ];

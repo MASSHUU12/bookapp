@@ -1,5 +1,4 @@
 import {
-  Image,
   Pressable,
   View,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
 import { navigate } from '../../helpers/Navigate';
 import { useAppSelector } from '../../hooks';
 import P from './P';
+import CoverImage from './CoverImage';
 
 interface Props {
   item: ListRenderItemInfo<{
@@ -30,6 +30,9 @@ interface Props {
 const CoverExtended = ({ item }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
+  const h = Dimensions.get('window').height * 0.15;
+  const w = Dimensions.get('window').width * 0.25;
+
   return (
     <Pressable
       style={({ pressed }) => [
@@ -39,23 +42,8 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
           ...styles.container,
         },
       ]}
-      onPress={() =>
-        // Here later only the ID of the book should be transmitted.
-        navigate('Single', item.item)
-      }>
-      <Image
-        style={styles.image}
-        source={
-          item.item.isbn === undefined
-            ? require('../../assets/images/bookCoverTest.jpg')
-            : {
-                uri: `https://covers.openlibrary.org/b/id/${item.item.cover_i}-M.jpg`,
-              }
-        }
-        resizeMode="contain"
-        // TODO: Need to be replaced with better image.
-        loadingIndicatorSource={require('../../assets/images/bookCoverTest.jpg')}
-      />
+      onPress={() => navigate('Single', item.item)}>
+      <CoverImage width={w} height={h} cover={item.item.cover_i} />
       <View style={styles.info}>
         <View style={styles.infoTop}>
           <P size={14}>{item.item.title}</P>
@@ -98,10 +86,6 @@ const styles = StyleSheet.create({
   infoTop: {
     width: 'auto',
     flex: 1,
-  },
-  image: {
-    height: Dimensions.get('window').height * 0.13,
-    width: Dimensions.get('window').width * 0.25,
   },
 });
 

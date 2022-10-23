@@ -10,7 +10,7 @@ import P from '../../../common/P';
 interface Props {
   name: string;
   number_of_books: number;
-  image: string; // For now
+  image: number;
   list_name: ListType;
 }
 
@@ -39,13 +39,21 @@ const ListItem = ({ name, image, list_name }: Props): JSX.Element => {
       }>
       <Image
         style={styles.image}
-        source={require('../../../../assets/images/bookCoverTest.jpg')}
+        source={
+          image === 0
+            ? require('../../../../assets/images/lists/list_read_later.png')
+            : image === 1
+            ? require('../../../../assets/images/lists/list_currently_reading.png')
+            : image === 2
+            ? require('../../../../assets/images/lists/list_already_read.png')
+            : require('../../../../assets/images/no_image_found.png')
+        }
         resizeMode="contain"
       />
       <View style={styles.info}>
         <P>{name}</P>
         <P size={14} color={colors.text2}>
-          {numberOfBooks + ' ' + t.lists2}
+          {`${numberOfBooks} ${t.lists2}`}
         </P>
       </View>
     </Pressable>
@@ -73,9 +81,8 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   image: {
-    height: Dimensions.get('window').height * 0.15,
+    height: Dimensions.get('window').height * 0.2,
     width: Dimensions.get('window').width * 0.2,
-    borderRadius: 5,
   },
 });
 
