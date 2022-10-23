@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { toggleModal } from '../../../features/modal/modalSlice';
 import { navigate } from '../../../helpers/Navigate';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
@@ -49,7 +49,5 @@ const Settings = (): JSX.Element => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Settings;
