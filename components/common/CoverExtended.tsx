@@ -30,8 +30,8 @@ interface Props {
 const CoverExtended = ({ item }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
-  const h = Dimensions.get('window').height * 0.15;
-  const w = Dimensions.get('window').width * 0.25;
+  const h = Dimensions.get('window').height * 0.25;
+  const w = Dimensions.get('window').width * 0.3;
 
   return (
     <Pressable
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexShrink: 1,
     paddingVertical: 5,
-    paddingLeft: 2,
+    paddingLeft: 10,
   },
   infoTop: {
     width: 'auto',

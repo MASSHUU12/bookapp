@@ -26,7 +26,7 @@ const CoverImage = ({ width, height, cover = '000' }: Props): JSX.Element => {
       }}
       source={err}
       onError={() => setErr(require('../../assets/images/no_image_found.png'))}
-      resizeMode="contain"
+      resizeMode="stretch"
       // TODO: Need to be replaced with better image.
       loadingIndicatorSource={require('../../assets/images/bookCoverTest.jpg')}
     />

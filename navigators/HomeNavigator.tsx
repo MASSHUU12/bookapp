@@ -33,6 +33,7 @@ const HomeNavigator = (): JSX.Element => {
           headerStyle: {
             backgroundColor: colors.accent,
           },
+          headerShadowVisible: false,
           // !
           tabBarStyle: {
             display: 'none',
