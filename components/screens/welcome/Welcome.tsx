@@ -6,6 +6,7 @@ import Btn from '@common/Btn';
 import SetGoalsScreen from './screens/SetGoalsScreen';
 import TrackBooksScreen from './screens/TrackBooksScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
+import ListDots from '@components/common/ListDots';
 
 /**
  * Welcome screen.
@@ -107,6 +108,7 @@ const Welcome = ({ navigation }: any): JSX.Element => {
           bg={colors.background}
           action={backScreen}
         />
+        <ListDots current={currentScreen} length={screens.length} />
         <Btn
           text="Next"
           color={nextColor}
