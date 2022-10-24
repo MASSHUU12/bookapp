@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import { useAppSelector } from 'hooks';
 import { commonStyles } from 'styles/commonStyles';
 import P from '@common/P';
+import { t } from 'i18n/strings';
 
 const SetGoalsScreen = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -9,7 +10,7 @@ const SetGoalsScreen = (): JSX.Element => {
   return (
     <View style={{ ...commonStyles.flexCenter, ...styles.container }}>
       <View style={{ marginBottom: 15 }}>
-        <P>Set your goals</P>
+        <P>{t.welcome3}</P>
       </View>
       <P size={14} color={colors.text3}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque maiores

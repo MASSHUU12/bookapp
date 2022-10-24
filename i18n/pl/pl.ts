@@ -61,6 +61,10 @@ export const pl = {
     lists1: 'Twoje listy',
     lists2: 'książki',
 
+    welcome1: 'Witaj w',
+    welcome2: 'Śledź czytane książki',
+    welcome3: 'Ustal swoje cele',
+
     settings1: 'Cele czytania',
     settings2: 'Preferencje powiadomień',
     settings3: 'Opcje',

@@ -2,6 +2,7 @@ import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import { useAppSelector } from 'hooks';
 import { commonStyles } from 'styles/commonStyles';
 import P from '@common/P';
+import { t } from 'i18n/strings';
 
 const TrackBooksScreen = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -9,7 +10,7 @@ const TrackBooksScreen = (): JSX.Element => {
   return (
     <View style={{ ...commonStyles.flexCenter, ...styles.container }}>
       <View style={{ marginBottom: 15 }}>
-        <P>Track books</P>
+        <P>{t.welcome2}</P>
       </View>
       <P size={14} color={colors.text3}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque maiores
@@ -18,7 +19,7 @@ const TrackBooksScreen = (): JSX.Element => {
       <Image
         style={styles.img}
         resizeMode="contain"
-        source={require('../../../../assets/images/welcome_book_lover.png')}
+        source={require('assets/images/welcome_book_lover.png')}
       />
     </View>
   );

@@ -3,6 +3,7 @@ import Config from 'react-native-config';
 import { useAppSelector } from 'hooks';
 import { commonStyles } from 'styles/commonStyles';
 import P from '@common/P';
+import { t } from 'i18n/strings';
 
 const WelcomeScreen = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
@@ -10,7 +11,7 @@ const WelcomeScreen = (): JSX.Element => {
   return (
     <View style={{ ...commonStyles.flexCenter, ...styles.container }}>
       <View style={{ marginBottom: 15 }}>
-        <P>{`Welcome to ${Config.APP_NAME}`}</P>
+        <P>{`${t.welcome1} ${Config.APP_NAME}`}</P>
       </View>
       <P size={14} color={colors.text3}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque maiores
@@ -19,7 +20,7 @@ const WelcomeScreen = (): JSX.Element => {
       <Image
         style={styles.img}
         resizeMode="contain"
-        source={require('../../../../assets/images/welcome_book_lover.png')}
+        source={require('assets/images/welcome_book_lover.png')}
       />
     </View>
   );

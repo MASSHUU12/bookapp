@@ -62,6 +62,10 @@ export const en = {
     lists1: 'Your lists',
     lists2: 'books',
 
+    welcome1: 'Welcome to',
+    welcome2: 'Track books',
+    welcome3: 'Set your goals',
+
     settings1: 'Reading Goals',
     settings2: 'Notification preferences',
     settings3: 'Options',

@@ -40,7 +40,9 @@ const ListDots = ({
       if (i === current) c = activeBg ? activeBg : colors.text4;
       else c = inactiveBg ? inactiveBg : colors.accent;
 
-      arr.push(<Entypo name="dot-single" size={32} color={`${c}`} />);
+      arr.push(
+        <Entypo name="dot-single" size={32} color={`${c}`} key={`dots-${i}`} />,
+      );
     }
     return arr;
   };
