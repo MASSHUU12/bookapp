@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import { useAppSelector } from '../../../hooks';
-import { commonStyles } from '../../../styles/commonStyles';
-import Btn from '../../common/Btn';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FlatList, View, ViewToken } from 'react-native';
+import { useAppSelector } from 'hooks';
+import { commonStyles } from 'styles/commonStyles';
+import Btn from '@common/Btn';
 import SetGoalsScreen from './screens/SetGoalsScreen';
 import TrackBooksScreen from './screens/TrackBooksScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -17,9 +17,11 @@ const Welcome = ({ navigation }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const listRef = useRef<any>(null);
 
-  const screens = [<WelcomeScreen />, <TrackBooksScreen />, <SetGoalsScreen />];
+  const [currentScreen, setCurrentScreen] = useState(0);
+  const [nextColor, setNextColor] = useState(colors.textBtn);
+  const [backColor, setBackColor] = useState(colors.textBtn);
 
-  const [currentScreen, setCurrentScreen] = useState(1);
+  const screens = [<WelcomeScreen />, <TrackBooksScreen />, <SetGoalsScreen />];
 
   /**
    * Move to the next screen.
@@ -27,13 +29,36 @@ const Welcome = ({ navigation }: any): JSX.Element => {
    * @return {*}  {void}
    */
   const nextScreen = (): void => {
-    let num = currentScreen + 1;
+    if (currentScreen >= screens.length - 1) return;
 
-    if (num > screens.length) return;
-
-    setCurrentScreen(num);
-    listRef.current.scrollToIndex({ animated: true, index: currentScreen });
+    listRef.current.scrollToIndex({ animated: true, index: currentScreen + 1 });
   };
+
+  /**
+   * Move to the previous screen.
+   *
+   * @return {*}  {void}
+   */
+  const backScreen = (): void => {
+    if (currentScreen <= 0) return;
+
+    listRef.current.scrollToIndex({ animated: true, index: currentScreen - 1 });
+  };
+
+  /**
+   * Set index of current screen.
+   *
+   * @type {*}  {any}
+   *
+   */
+  const onViewableItemsChanged: any = useCallback(
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      setCurrentScreen(
+        viewableItems[0]?.index ? viewableItems[0].index : currentScreen,
+      );
+    },
+    [],
+  );
 
   useEffect(() => {
     // Prevent going back & closing an app using back button.
@@ -44,6 +69,15 @@ const Welcome = ({ navigation }: any): JSX.Element => {
       },
     );
   }, [navigation]);
+
+  useEffect(() => {
+    // Update colors of buttons
+    if (currentScreen >= screens.length - 1) setNextColor(colors.text3);
+    else setNextColor(colors.textBtn);
+
+    if (currentScreen < 1) setBackColor(colors.text3);
+    else setBackColor(colors.textBtn);
+  }, [currentScreen]);
 
   return (
     <View
@@ -59,11 +93,23 @@ const Welcome = ({ navigation }: any): JSX.Element => {
         horizontal
         ref={listRef}
         scrollEnabled={false}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        viewabilityConfig={{
+          viewAreaCoveragePercentThreshold: 75,
+        }}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
-      <View style={{ ...styles.footer, ...commonStyles.wrapRow }}>
+      <View style={{ width: '100%', height: 'auto', ...commonStyles.wrapRow }}>
+        <Btn
+          text="Back"
+          color={backColor}
+          bg={colors.background}
+          action={backScreen}
+        />
         <Btn
           text="Next"
-          color={colors.textBtn}
+          color={nextColor}
           bg={colors.background}
           action={nextScreen}
         />
@@ -71,12 +117,5 @@ const Welcome = ({ navigation }: any): JSX.Element => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  footer: {
-    width: '100%',
-    height: 'auto',
-  },
-});
 
 export default Welcome;

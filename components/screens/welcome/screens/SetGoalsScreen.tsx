@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
-import { commonStyles } from '../../../../styles/commonStyles';
-import P from '../../../common/P';
+import { useAppSelector } from 'hooks';
+import { commonStyles } from 'styles/commonStyles';
+import P from '@common/P';
 
 const SetGoalsScreen = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
