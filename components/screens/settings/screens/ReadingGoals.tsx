@@ -1,18 +1,12 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import { toggleModal } from '../../../../features/modal/modalSlice';
-import {
-  targetPerMonth,
-  targetPerYear,
-} from '../../../../features/targets/targetSlice';
-import { setItem } from '../../../../helpers/Storage';
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import { ModalType } from '../../../../types/modalsType';
-import Btn from '../../../common/Btn';
-import CModal from '../../../common/CModal';
-import Input from '../../../common/Input';
-import P from '../../../common/P';
+import { StyleSheet, View } from 'react-native';
+import { targetPerMonth, targetPerYear } from 'features/targets/targetSlice';
+import { setItem } from 'helpers/Storage';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+
+import Input from '@common/Input';
+import P from '@common/P';
 
 const ReadingGoals = (): JSX.Element => {
   const [month, setMonth] = useState('');

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { View, StyleSheet, ScrollView, Animated } from 'react-native';
-import { useAppSelector, useGlobalState } from '../../../hooks';
-import { t } from '../../../i18n/strings';
-import sql from '../../../services/sql/sql';
-import { DetailedBookType } from '../../../types/detailedBookType';
-import P from '../../common/P';
+import { useAppSelector, useGlobalState } from 'hooks';
+import { t } from 'i18n/strings';
+import sql from 'services/sql/sql';
+import { DetailedBookType } from 'types/detailedBookType';
 import MainActionButton from './components/MainActionButton';
+import P from '@common/P';
 
 import TagsSection from './sections/TagsSection';
 import RatingSection from './sections/RatingSection';

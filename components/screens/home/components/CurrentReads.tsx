@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import sql from '../../../../services/sql/sql';
-import { BookType } from '../../../../types/bookType';
-import CoverExtended from '../../../common/CoverExtended';
-import P from '../../../common/P';
+import { useAppSelector, useGlobalState } from 'hooks';
+import { t } from 'i18n/strings';
+import sql from 'services/sql/sql';
+import { BookType } from 'types/bookType';
+
+import CoverExtended from '@common/CoverExtended';
+import P from '@common/P';
 
 /**
  * A component that displays the books user are currently reading.

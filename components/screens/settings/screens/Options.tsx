@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { isNavigationDark } from '../../../../features/navigationTheme/navigationThemeSlice';
-import { isDark } from '../../../../features/theme/themeSlice';
-import { locale } from '../../../../helpers/Locale';
-import { setItem } from '../../../../helpers/Storage';
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import OptionsBtn from '../../../common/OptionsBtn';
+import { isNavigationDark } from 'features/navigationTheme/navigationThemeSlice';
+import { isDark } from 'features/theme/themeSlice';
+import { locale } from 'helpers/Locale';
+import { setItem } from 'helpers/Storage';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import OptionsBtn from '@common/OptionsBtn';
 
 /**
  * General options screen. Allows to change the language, or theme.

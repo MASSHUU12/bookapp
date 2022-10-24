@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet } from 'react-native';
-import { useAppSelector } from '../../hooks';
-import { commonStyles } from '../../styles/commonStyles';
-import { ColorsType } from '../../types/colors';
+import { useAppSelector } from 'hooks';
+import { commonStyles } from 'styles/commonStyles';
+import { ColorsType } from 'types/colors';
 import P from './P';
 
 interface Props {

@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 import { Alert, FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { useAppSelector, useGlobalState } from 'hooks';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { mergeTags } from '../../../../helpers/helpers';
-import { modal } from '../../../../helpers/ModalManager';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import sql from '../../../../services/sql/sql';
-import { commonStyles } from '../../../../styles/commonStyles';
-import { DetailedBookType } from '../../../../types/detailedBookType';
-import { ModalType } from '../../../../types/modalsType';
-import Btn from '../../../common/Btn';
-import CModal from '../../../common/CModal';
-import Input from '../../../common/Input';
-import P from '../../../common/P';
+import { t } from 'i18n/strings';
+import sql from 'services/sql/sql';
+import { commonStyles } from 'styles/commonStyles';
+
+import { mergeTags } from 'helpers/helpers';
+import { modal } from 'helpers/ModalManager';
+
+import { DetailedBookType } from 'types/detailedBookType';
+import { ModalType } from 'types/modalsType';
+
+import Btn from '@common/Btn';
+import CModal from '@common/CModal';
+import Input from '@common/Input';
+import P from '@common/P';
 
 interface Props {
   book: DetailedBookType;

@@ -5,8 +5,8 @@ import {
   Dimensions,
   ListRenderItemInfo,
 } from 'react-native';
-import { navigate } from '../../helpers/Navigate';
-import { useAppSelector } from '../../hooks';
+import { navigate } from 'helpers/Navigate';
+import { useAppSelector } from 'hooks';
 import P from './P';
 import CoverImage from './CoverImage';
 

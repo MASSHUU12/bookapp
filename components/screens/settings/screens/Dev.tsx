@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
-import { navigate } from '../../../../helpers/Navigate';
-import { useAppSelector } from '../../../../hooks';
-import sql from '../../../../services/sql/sql';
+import { navigate } from 'helpers/Navigate';
+import { useAppSelector } from 'hooks';
+import sql from 'services/sql/sql';
 import SettingsBtn from '../components/SettingsBtn';
 
 const Dev = (): JSX.Element => {

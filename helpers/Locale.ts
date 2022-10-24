@@ -1,5 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
-import { t } from '../i18n/strings';
+import { t } from 'i18n/strings';
 
 const getLocale = (): string => {
   return Platform.OS === 'ios'

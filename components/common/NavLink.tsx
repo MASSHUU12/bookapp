@@ -1,6 +1,6 @@
 import { Pressable } from 'react-native';
-import { navigate } from '../../helpers/Navigate';
-import { useAppSelector } from '../../hooks';
+import { navigate } from 'helpers/Navigate';
+import { useAppSelector } from 'hooks';
 import P from './P';
 
 interface Props {

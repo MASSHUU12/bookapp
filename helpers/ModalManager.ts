@@ -1,6 +1,6 @@
-import store from '../app/store';
-import { toggleModal } from '../features/modal/modalSlice';
-import { ModalType } from '../types/modalsType';
+import store from 'app/store';
+import { toggleModal } from 'features/modal/modalSlice';
+import { ModalType } from 'types/modalsType';
 
 /**
  * Open specified modal.

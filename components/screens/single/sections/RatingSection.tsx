@@ -1,11 +1,12 @@
-import { StyleSheet, View } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import sql from '../../../../services/sql/sql';
-import { commonStyles } from '../../../../styles/commonStyles';
-import { DetailedBookType } from '../../../../types/detailedBookType';
-import P from '../../../common/P';
-import Rating from '../../../common/Rating';
+import { View } from 'react-native';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import sql from 'services/sql/sql';
+import { commonStyles } from 'styles/commonStyles';
+import { DetailedBookType } from 'types/detailedBookType';
+
+import P from '@common/P';
+import Rating from '@common/Rating';
 
 interface Props {
   bookData: DetailedBookType;

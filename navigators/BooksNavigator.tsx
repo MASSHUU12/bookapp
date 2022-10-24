@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Books from '../components/screens/books/Books';
+import Books from '@screens/books/Books';
 
 /**
  * Navigator storing all books screens.

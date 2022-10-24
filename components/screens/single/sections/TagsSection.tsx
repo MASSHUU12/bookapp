@@ -1,11 +1,12 @@
 import { View } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import { commonStyles } from '../../../../styles/commonStyles';
-import { DetailedBookType } from '../../../../types/detailedBookType';
-import P from '../../../common/P';
-import Tag from '../../../common/Tag';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import { commonStyles } from 'styles/commonStyles';
+import { DetailedBookType } from 'types/detailedBookType';
 import TagsModal from '../components/TagsModal';
+
+import P from '@common/P';
+import Tag from '@common/Tag';
 
 interface Props {
   bookData: DetailedBookType;

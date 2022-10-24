@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAppSelector } from '../hooks';
-import Home from '../components/screens/home/Home';
-import Add from '../components/screens/home/screens/Add';
-import StatsScreen from '../components/screens/home/screens/StatsScreen';
-import Single from '../components/screens/single/Single';
+import { useAppSelector } from 'hooks';
+import Home from '@screens/home/Home';
+import Add from '@screens/home/screens/Add';
+import StatsScreen from '@screens/home/screens/StatsScreen';
+import Single from '@screens/single/Single';
 import SettingsNavigator from './SettingsNavigator';
 
 /**

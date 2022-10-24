@@ -1,9 +1,9 @@
 import { Dimensions, ScrollView } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
-import { useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import { commonStyles } from '../../../../styles/commonStyles';
-import P from '../../../common/P';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import { commonStyles } from 'styles/commonStyles';
+import P from '@common/P';
 
 const StatsScreen = (): JSX.Element => {
   const targetMonth = useAppSelector(

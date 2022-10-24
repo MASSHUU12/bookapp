@@ -2,15 +2,15 @@ import { createContext, useEffect, useReducer, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import store from './app/store';
+import store from 'app/store';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { navigationRef } from './helpers/Navigate';
-import { settingsLoader } from './helpers/SettingsLoader';
+import { navigationRef } from 'helpers/Navigate';
+import { settingsLoader } from 'helpers/SettingsLoader';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import OtherNavigator from './navigators/OtherNavigator';
-import MainNavigator from './navigators/MainNavigator';
+import OtherNavigator from 'navigators/OtherNavigator';
+import MainNavigator from 'navigators/MainNavigator';
 
 export const globalStateContext = createContext(1);
 export const dispatchStateContext = createContext<any>(undefined);

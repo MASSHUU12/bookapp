@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ThemeNavigation } from '../../interfaces/Theme';
-import { colorsNavigation as c } from '../../themes/colorsNavigation';
+import { ThemeNavigation } from 'interfaces/Theme';
+import { colorsNavigation as c } from 'themes/colorsNavigation';
 
 const initialState: ThemeNavigation = {
   value: { ...c() },

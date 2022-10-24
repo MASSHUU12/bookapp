@@ -3,11 +3,11 @@ import {
   saveBookTypes,
   updateBookTagsTypes,
   updateBookTypes,
-} from './sqlTypes';
+} from 'types/sqlTypes';
 import { SqlModel } from './sqlModel';
-import { BookType } from '../../types/bookType';
-import { DetailedBookType } from '../../types/detailedBookType';
-import { generateCurrentTimestamp } from '../../helpers/helpers';
+import { BookType } from 'types/bookType';
+import { DetailedBookType } from 'types/detailedBookType';
+import { generateCurrentTimestamp } from 'helpers/helpers';
 
 export default class SqlActions {
   db: SqlModel;

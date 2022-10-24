@@ -1,10 +1,11 @@
 import { FlatList, View, StyleSheet } from 'react-native';
-import Cover from '../../../common/Cover';
-import P from '../../../common/P';
-import { t } from '../../../../i18n/strings';
+import { t } from 'i18n/strings';
 import { useEffect, useState } from 'react';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
-import sql from '../../../../services/sql/sql';
+import { useAppSelector, useGlobalState } from 'hooks';
+import sql from 'services/sql/sql';
+
+import Cover from '@common/Cover';
+import P from '@common/P';
 
 /**
  * A component that displays books from a to-read list.

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
-import { navigate } from '../../../../helpers/Navigate';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import sql from '../../../../services/sql/sql';
-import { ListType } from '../../../../types/listType';
-import P from '../../../common/P';
+import { navigate } from 'helpers/Navigate';
+import { useAppSelector, useGlobalState } from 'hooks';
+import { t } from 'i18n/strings';
+import sql from 'services/sql/sql';
+import { ListType } from 'types/listType';
+import P from '@common/P';
 
 interface Props {
   name: string;

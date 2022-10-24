@@ -1,4 +1,4 @@
-import { ThemeState } from '../interfaces/Theme';
+import { ThemeState } from 'interfaces/Theme';
 
 export const colors = (isDark = false) => {
   const c: ThemeState = {

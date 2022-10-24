@@ -1,5 +1,5 @@
 import { Dimensions, ListRenderItemInfo, Pressable } from 'react-native';
-import { navigate } from '../../helpers/Navigate';
+import { navigate } from 'helpers/Navigate';
 import CoverImage from './CoverImage';
 
 interface Props {

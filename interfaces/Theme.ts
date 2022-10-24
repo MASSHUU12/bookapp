@@ -1,4 +1,4 @@
-import { ColorsType } from '../types/colors';
+import { ColorsType } from 'types/colors';
 
 export interface ThemeState {
   colors: ColorsType;

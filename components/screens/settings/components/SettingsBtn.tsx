@@ -1,7 +1,7 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Pressable, StyleSheet } from 'react-native';
-import P from '../../../common/P';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector } from 'hooks';
+import P from '@common/P';
 
 interface Props {
   icon?: string;

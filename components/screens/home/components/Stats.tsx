@@ -1,12 +1,12 @@
 import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
-import P from '../../../common/P';
-import { t } from '../../../../i18n/strings';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
-import { navigate } from '../../../../helpers/Navigate';
+import P from '@common/P';
+import { t } from 'i18n/strings';
+import { useAppSelector, useGlobalState } from 'hooks';
+import { navigate } from 'helpers/Navigate';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { commonStyles } from '../../../../styles/commonStyles';
+import { commonStyles } from 'styles/commonStyles';
 import { useEffect, useState } from 'react';
-import sql from '../../../../services/sql/sql';
+import sql from 'services/sql/sql';
 
 /**
  * Component displaying user statistics.

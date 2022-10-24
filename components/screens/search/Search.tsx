@@ -7,14 +7,15 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useAppSelector } from '../../../hooks';
-import { t } from '../../../i18n/strings';
-import api from '../../../services/api/api';
-import CoverExtended from '../../common/CoverExtended';
-import P from '../../common/P';
-import NavLink from '../../common/NavLink';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import api from 'services/api/api';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { commonStyles } from '../../../styles/commonStyles';
+import { commonStyles } from 'styles/commonStyles';
+
+import CoverExtended from '@common/CoverExtended';
+import P from '@common/P';
+import NavLink from '@common/NavLink';
 
 /**
  * Search screen.

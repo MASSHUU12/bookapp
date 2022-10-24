@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Search from '../components/screens/search/Search';
-import { t } from '../i18n/strings';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { t } from 'i18n/strings';
+import Search from '@screens/search/Search';
 
 import BooksNavigator from './BooksNavigator';
 import HomeNavigator from './HomeNavigator';

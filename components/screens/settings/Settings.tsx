@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 import Config from 'react-native-config';
-import { navigate } from '../../../helpers/Navigate';
-import { useAppSelector } from '../../../hooks';
-import { t } from '../../../i18n/strings';
-import { commonStyles } from '../../../styles/commonStyles';
-import P from '../../common/P';
+import { navigate } from 'helpers/Navigate';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import { commonStyles } from 'styles/commonStyles';
 import SettingsBtn from './components/SettingsBtn';
+import P from '@common/P';
 
 /**
  * The main settings screen, gives access to all options.

@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import themeReducer from '../features/theme/themeSlice';
-import themeNavigationReducer from '../features/navigationTheme/navigationThemeSlice';
-import addReducer from '../features/add/addSlice';
-import targetReducer from '../features/targets/targetSlice';
-import modalSlice from '../features/modal/modalSlice';
+
+import themeReducer from 'features/theme/themeSlice';
+import themeNavigationReducer from 'features/navigationTheme/navigationThemeSlice';
+import addReducer from 'features/add/addSlice';
+import targetReducer from 'features/targets/targetSlice';
+import modalSlice from 'features/modal/modalSlice';
 
 const store = configureStore({
   reducer: {

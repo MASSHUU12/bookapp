@@ -1,5 +1,5 @@
 import { KeyboardTypeOptions, StyleSheet, TextInput } from 'react-native';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 interface Props {
   placeholder?: string;

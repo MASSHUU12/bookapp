@@ -1,6 +1,6 @@
 import { Text, StyleSheet } from 'react-native';
-import { useAppSelector } from '../../hooks';
-import { ColorsType } from '../../types/colors';
+import { useAppSelector } from 'hooks';
+import { ColorsType } from 'types/colors';
 
 interface Props {
   children: string;

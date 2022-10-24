@@ -5,12 +5,13 @@ import {
   addLink,
   addNumberOfPages,
   addTitle,
-} from '../../../../features/add/addSlice';
-import { useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import Btn from '../../../common/Btn';
-import Input from '../../../common/Input';
-import P from '../../../common/P';
+} from 'features/add/addSlice';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+
+import Btn from '@common/Btn';
+import Input from '@common/Input';
+import P from '@common/P';
 
 const Add = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);

@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, View } from 'react-native';
-import { modal } from '../../helpers/ModalManager';
-import { useAppSelector } from '../../hooks';
-import { commonStyles } from '../../styles/commonStyles';
-import { ModalType } from '../../types/modalsType';
+import { modal } from 'helpers/ModalManager';
+import { useAppSelector } from 'hooks';
+import { commonStyles } from 'styles/commonStyles';
+import { ModalType } from 'types/modalsType';
 import CModal from './CModal';
 import SlimBtn from './SlimBtn';
 

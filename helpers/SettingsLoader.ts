@@ -1,8 +1,8 @@
-import store from '../app/store';
-import { isNavigationDark } from '../features/navigationTheme/navigationThemeSlice';
-import { targetPerMonth } from '../features/targets/targetSlice';
-import { isDark } from '../features/theme/themeSlice';
-import { t } from '../i18n/strings';
+import store from 'app/store';
+import { isNavigationDark } from 'features/navigationTheme/navigationThemeSlice';
+import { targetPerMonth } from 'features/targets/targetSlice';
+import { isDark } from 'features/theme/themeSlice';
+import { t } from 'i18n/strings';
 import { locale } from './Locale';
 import { getItem } from './Storage';
 

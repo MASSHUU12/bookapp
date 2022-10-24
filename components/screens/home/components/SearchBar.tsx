@@ -1,9 +1,9 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Pressable } from 'react-native';
-import P from '../../../common/P';
-import { t } from '../../../../i18n/strings';
-import { useAppSelector } from '../../../../hooks';
-import { navigate } from '../../../../helpers/Navigate';
+import P from '@common/P';
+import { t } from 'i18n/strings';
+import { useAppSelector } from 'hooks';
+import { navigate } from 'helpers/Navigate';
 
 /**
  * A search item that takes user to the actual search screen.

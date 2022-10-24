@@ -1,14 +1,14 @@
 import { StyleSheet, FlatList, Pressable, View } from 'react-native';
-import P from '../../common/P';
+import P from '@common/P';
 import SearchBar from './components/SearchBar';
 import ReadLater from './components/ReadLater';
 import Stats from './components/Stats';
-import { t } from '../../../i18n/strings';
+import { t } from 'i18n/strings';
 import CurrentReads from './components/CurrentReads';
-import { useAppSelector } from '../../../hooks';
+import { useAppSelector } from 'hooks';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { navigate } from '../../../helpers/Navigate';
-import { commonStyles } from '../../../styles/commonStyles';
+import { navigate } from 'helpers/Navigate';
+import { commonStyles } from 'styles/commonStyles';
 
 /**
  * Home screen.

@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
-import P from '../../../common/P';
+import { useAppSelector } from 'hooks';
+import P from '@common/P';
 
 interface Props {
   route: any;

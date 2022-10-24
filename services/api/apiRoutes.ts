@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { OptionsType } from './apiTypes';
+import { OptionsType } from 'types/apiTypes';
 
 export class ApiRoutes {
   URL: string;

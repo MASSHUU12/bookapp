@@ -1,8 +1,8 @@
 import { FlatList } from 'react-native';
-import { useAppSelector } from '../../../hooks';
-import { t } from '../../../i18n/strings';
-import { commonStyles } from '../../../styles/commonStyles';
-import P from '../../common/P';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import { commonStyles } from 'styles/commonStyles';
+import P from '@common/P';
 import ListItem from './components/ListItem';
 
 const Lists = (): JSX.Element => {

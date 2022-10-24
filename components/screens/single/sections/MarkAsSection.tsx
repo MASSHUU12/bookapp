@@ -1,9 +1,10 @@
 import { View } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
-import { t } from '../../../../i18n/strings';
-import { commonStyles } from '../../../../styles/commonStyles';
-import { DetailedBookType } from '../../../../types/detailedBookType';
-import P from '../../../common/P';
+import { useAppSelector } from 'hooks';
+import { t } from 'i18n/strings';
+import { commonStyles } from 'styles/commonStyles';
+import { DetailedBookType } from 'types/detailedBookType';
+import P from '@common/P';
+
 import MoreOptionsList from '../components/MoreOptionsList';
 import NoteModal from '../components/NoteModal';
 import OptionsForNewBook from '../components/OptionsForNewBook';

@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAppSelector } from '../hooks';
-import Lists from '../components/screens/lists/Lists';
-import ListsRecords from '../components/screens/lists/screens/ListsRecords';
+import { useAppSelector } from 'hooks';
+import Lists from '@screens/lists/Lists';
+import ListsRecords from '@screens/lists/screens/ListsRecords';
 
 /**
  * Navigator storing all lists screens.

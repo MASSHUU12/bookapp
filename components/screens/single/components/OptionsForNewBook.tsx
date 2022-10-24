@@ -1,11 +1,12 @@
 import { View } from 'react-native';
 import React from 'react';
-import sql from '../../../../services/sql/sql';
-import { BookType } from '../../../../types/bookType';
-import { useGlobalState } from '../../../../hooks';
-import { ListType } from '../../../../types/listType';
-import { t } from '../../../../i18n/strings';
-import SlimBtn from '../../../common/SlimBtn';
+import sql from 'services/sql/sql';
+import { useGlobalState } from 'hooks';
+import { t } from 'i18n/strings';
+import SlimBtn from '@common/SlimBtn';
+
+import { ListType } from 'types/listType';
+import { BookType } from 'types/bookType';
 
 interface Props {
   book: BookType;

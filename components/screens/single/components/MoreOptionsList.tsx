@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import { Alert, View } from 'react-native';
-import React, { useEffect } from 'react';
-import OptionsBtn from '../../../common/OptionsBtn';
-import { BookType } from '../../../../types/bookType';
-import { useGlobalState } from '../../../../hooks';
-import sql from '../../../../services/sql/sql';
-import { t } from '../../../../i18n/strings';
+import OptionsBtn from '@common/OptionsBtn';
+import { BookType } from 'types/bookType';
+import { useGlobalState } from 'hooks';
+import sql from 'services/sql/sql';
+import { t } from 'i18n/strings';
 
 type PropsTypes = {
   bookData: BookType | {};

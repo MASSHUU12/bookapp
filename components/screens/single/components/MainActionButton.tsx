@@ -1,11 +1,11 @@
-import { View, Pressable, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import P from '../../../common/P';
-import { useAppSelector, useGlobalState } from '../../../../hooks';
-import sql from '../../../../services/sql/sql';
-import { BookType } from '../../../../types/bookType';
-import { t } from '../../../../i18n/strings';
-import { commonStyles } from '../../../../styles/commonStyles';
+import { View, Pressable, StyleSheet } from 'react-native';
+import P from '@common/P';
+import { useAppSelector, useGlobalState } from 'hooks';
+import sql from 'services/sql/sql';
+import { BookType } from 'types/bookType';
+import { t } from 'i18n/strings';
+import { commonStyles } from 'styles/commonStyles';
 
 /**
  *

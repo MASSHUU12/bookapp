@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ThemeState } from '../../interfaces/Theme';
-import { colors as c } from '../../themes/colors';
+import { ThemeState } from 'interfaces/Theme';
+import { colors as c } from 'themes/colors';
 
 const initialState: ThemeState = {
   colors: { ...c().colors },

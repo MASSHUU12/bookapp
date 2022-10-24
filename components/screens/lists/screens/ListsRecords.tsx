@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import { useAppSelector } from '../../../../hooks';
-import sql from '../../../../services/sql/sql';
-import { commonStyles } from '../../../../styles/commonStyles';
-import CoverExtended from '../../../common/CoverExtended';
+import { FlatList, View } from 'react-native';
+import { useAppSelector } from 'hooks';
+import sql from 'services/sql/sql';
+import { commonStyles } from 'styles/commonStyles';
+import CoverExtended from '@common/CoverExtended';
 
 const ListsRecords = ({ route }: any): JSX.Element => {
   const { name, list_name } = route.params;
