@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from 'react-native';
-import { useAppSelector } from '../../hooks';
-import { t } from '../../i18n/strings';
-import Dev from '../screens/settings/screens/Dev';
-import NotificationPreferences from '../screens/settings/screens/NotificationPreferences';
-import Options from '../screens/settings/screens/Options';
-import ReadingGoals from '../screens/settings/screens/ReadingGoals';
-import Settings from '../screens/settings/Settings';
+import Dev from '../components/screens/settings/screens/Dev';
+import NotificationPreferences from '../components/screens/settings/screens/NotificationPreferences';
+import Options from '../components/screens/settings/screens/Options';
+import ReadingGoals from '../components/screens/settings/screens/ReadingGoals';
+import Settings from '../components/screens/settings/Settings';
+import { useAppSelector } from '../hooks';
+import { t } from '../i18n/strings';
 
 /**
  * Navigator storing all setting screens.
