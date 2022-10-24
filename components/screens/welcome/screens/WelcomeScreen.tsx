@@ -1,8 +1,8 @@
 import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import Config from 'react-native-config';
-import { useAppSelector } from '../../../../hooks';
-import { commonStyles } from '../../../../styles/commonStyles';
-import P from '../../../common/P';
+import { useAppSelector } from 'hooks';
+import { commonStyles } from 'styles/commonStyles';
+import P from '@common/P';
 
 const WelcomeScreen = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);

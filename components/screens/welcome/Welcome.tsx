@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FlatList, View, ViewToken } from 'react-native';
 import { useAppSelector } from 'hooks';
 import { commonStyles } from 'styles/commonStyles';
 import Btn from '@common/Btn';
@@ -17,7 +17,7 @@ const Welcome = ({ navigation }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const listRef = useRef<any>(null);
 
-  const [currentScreen, setCurrentScreen] = useState(1);
+  const [currentScreen, setCurrentScreen] = useState(0);
   const [nextColor, setNextColor] = useState(colors.textBtn);
   const [backColor, setBackColor] = useState(colors.textBtn);
 
@@ -29,10 +29,9 @@ const Welcome = ({ navigation }: any): JSX.Element => {
    * @return {*}  {void}
    */
   const nextScreen = (): void => {
-    if (currentScreen >= screens.length) return;
+    if (currentScreen >= screens.length - 1) return;
 
-    setCurrentScreen(state => state + 1);
-    listRef.current.scrollToIndex({ animated: true, index: currentScreen });
+    listRef.current.scrollToIndex({ animated: true, index: currentScreen + 1 });
   };
 
   /**
@@ -41,11 +40,25 @@ const Welcome = ({ navigation }: any): JSX.Element => {
    * @return {*}  {void}
    */
   const backScreen = (): void => {
-    if (currentScreen <= 1) return;
+    if (currentScreen <= 0) return;
 
-    setCurrentScreen(state => state - 1);
-    listRef.current.scrollToIndex({ animated: true, index: currentScreen });
+    listRef.current.scrollToIndex({ animated: true, index: currentScreen - 1 });
   };
+
+  /**
+   * Set index of current screen.
+   *
+   * @type {*}  {any}
+   *
+   */
+  const onViewableItemsChanged: any = useCallback(
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      setCurrentScreen(
+        viewableItems[0]?.index ? viewableItems[0].index : currentScreen,
+      );
+    },
+    [],
+  );
 
   useEffect(() => {
     // Prevent going back & closing an app using back button.
@@ -59,10 +72,10 @@ const Welcome = ({ navigation }: any): JSX.Element => {
 
   useEffect(() => {
     // Update colors of buttons
-    if (currentScreen >= screens.length) setNextColor(colors.text3);
+    if (currentScreen >= screens.length - 1) setNextColor(colors.text3);
     else setNextColor(colors.textBtn);
 
-    if (currentScreen <= 1) setBackColor(colors.text3);
+    if (currentScreen < 1) setBackColor(colors.text3);
     else setBackColor(colors.textBtn);
   }, [currentScreen]);
 
@@ -82,8 +95,12 @@ const Welcome = ({ navigation }: any): JSX.Element => {
         scrollEnabled={false}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
+        viewabilityConfig={{
+          viewAreaCoveragePercentThreshold: 75,
+        }}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
-      <View style={{ ...styles.footer, ...commonStyles.wrapRow }}>
+      <View style={{ width: '100%', height: 'auto', ...commonStyles.wrapRow }}>
         <Btn
           text="Back"
           color={backColor}
@@ -100,12 +117,5 @@ const Welcome = ({ navigation }: any): JSX.Element => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  footer: {
-    width: '100%',
-    height: 'auto',
-  },
-});
 
 export default Welcome;
