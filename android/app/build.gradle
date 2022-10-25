@@ -131,6 +131,8 @@ def reactNativeArchitectures() {
 }
 
 android {
+
+    namespace 'com.bookapp'
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
