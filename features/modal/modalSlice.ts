@@ -37,15 +37,15 @@ export const modalSlice = createSlice({
           break;
 
         case 'editTags':
-          state.value.tags = action.payload.value;
+          state.value.editTags = action.payload.value;
           break;
 
         case 'languageSelection':
-          state.value.tags = action.payload.value;
+          state.value.languageSelection = action.payload.value;
           break;
 
         case 'themeSelection':
-          state.value.tags = action.payload.value;
+          state.value.themeSelection = action.payload.value;
           break;
 
         default:

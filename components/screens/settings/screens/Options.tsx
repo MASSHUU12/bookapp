@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { isNavigationDark } from 'features/navigationTheme/navigationThemeSlice';
 import { isDark } from 'features/theme/themeSlice';
 import { locale } from 'helpers/Locale';
@@ -7,6 +7,7 @@ import { setItem } from 'helpers/Storage';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { t } from 'i18n/strings';
 import OptionsBtn from '@common/OptionsBtn';
+import { commonStyles } from 'styles/commonStyles';
 
 /**
  * General options screen. Allows to change the language, or theme.
@@ -41,7 +42,10 @@ const Options = (): JSX.Element => {
 
   return (
     <ScrollView
-      style={{ backgroundColor: colors.background, ...styles.container }}>
+      style={{
+        backgroundColor: colors.background,
+        ...commonStyles.basicScreen,
+      }}>
       <OptionsBtn
         name="languageSelection"
         text={t.settings4}
@@ -72,12 +76,5 @@ const Options = (): JSX.Element => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 25,
-    flex: 1,
-  },
-});
 
 export default Options;
