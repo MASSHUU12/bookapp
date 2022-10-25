@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { navigationRef } from 'helpers/Navigate';
 import { settingsLoader } from 'helpers/SettingsLoader';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OtherNavigator from 'navigators/OtherNavigator';
 import MainNavigator from 'navigators/MainNavigator';
@@ -28,15 +29,11 @@ const App = (): JSX.Element => {
 
   const Stack = createNativeStackNavigator();
 
-  // Set settings when app loads.
+  // Set settings when app loads or when setting change.
   useEffect(() => {
     settingsLoader();
-  }, []);
-
-  // Update settings when store changes.
-  store.subscribe(() => {
     setTheme(store.getState().themeNavigation.value);
-  });
+  }, [state]);
 
   return (
     // Store provider.
