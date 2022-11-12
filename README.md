@@ -46,6 +46,35 @@ Then run `npm run android` or `npm run ios`.
 
 More information can be found [here](https://reactnative.dev/docs/environment-setup).
 
+## Building
+
+### Android
+
+#### Building with Android Studio
+
+`Build` -> `Generate Signed Bundle or APK`.
+
+Select `APK`, and click `Next`.
+
+This will walk you through a process of locating your keys to sign the APK or creating your keys if you don't have them already which is all very straightforward.
+
+Select `release`, and `Next`.
+
+#### Building with terminal
+
+<!-- ```
+keytool -genkey -v -keystore release.keystore -alias releaseKey -keyalg RSA -keysize 2048 -validity 10000
+```
+
+```
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+```
+
+```
+cd .\android\
+.\gradlew assembleRelease
+``` -->
+
 # License
 
 Licensed under the [MIT](https://github.com/MASSHUU12/bookapp/blob/master/LICENSE) license.
