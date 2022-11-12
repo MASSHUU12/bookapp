@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useAppSelector } from 'hooks';
 import P from '@common/P';
-import { useState } from 'react';
 
 interface Props {
   route: {
