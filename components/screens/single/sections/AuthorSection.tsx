@@ -1,18 +1,25 @@
 import { View, StyleSheet } from 'react-native';
 import { useAppSelector } from 'hooks';
 import P from '@common/P';
+import { useState } from 'react';
 
 interface Props {
-  route: any;
+  route: {
+    params: {
+      author_name: string;
+      key: string;
+    };
+  };
 }
 
 const AuthorSection = ({ route }: Props): JSX.Element => {
+  const [authors] = useState(route.params.author_name);
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
-    <View style={styles.author}>
+    <View style={styles.container}>
       <P color={colors.text2} size={12}>
-        {route.params.author_name}
+        {authors.split(/,/g).join(', ')}
       </P>
       <P color={colors.text3} size={12}>
         {route.params.key.split('/')[2]}
@@ -22,11 +29,12 @@ const AuthorSection = ({ route }: Props): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
-  author: {
+  container: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
 });
 
