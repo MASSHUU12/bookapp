@@ -1,4 +1,4 @@
-import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
+import { Dimensions, Pressable, View } from 'react-native';
 import P from '@common/P';
 import { t } from 'i18n/strings';
 import { useAppSelector, useGlobalState } from 'hooks';
@@ -7,6 +7,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { commonStyles } from 'styles/commonStyles';
 import { useEffect, useState } from 'react';
 import sql from 'services/sql/sql';
+import { log } from "helpers/log";
 
 /**
  * Component displaying user statistics.
@@ -25,7 +26,7 @@ const Stats = (): JSX.Element => {
   const [booksThisMonth, setBooksThisMonth] = useState(0);
   const [booksThisYear, setBooksThisYear] = useState(0);
 
-  const [onRefresh, refresh] = useGlobalState();
+  const [onRefresh] = useGlobalState();
 
   const config = {
     size: Dimensions.get('window').width / 3,
@@ -37,7 +38,8 @@ const Stats = (): JSX.Element => {
   };
 
   useEffect(() => {
-    console.log('stats refreshed');
+    log('stats refreshed');
+
     sql.getStatsForMonth({}, numberOfBooks => {
       setBooksThisMonth(numberOfBooks);
       setBooksThisYear(numberOfBooks);
@@ -58,7 +60,7 @@ const Stats = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisMonth * 100) / parseInt(targetMonth)}
-          onAnimationComplete={() => console.log('completed')}
+          onAnimationComplete={() => log('completed')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>
@@ -78,7 +80,7 @@ const Stats = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisYear * 100) / parseInt(targetYear)}
-          onAnimationComplete={() => console.log('completed')}
+          onAnimationComplete={() => log('completed')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>
@@ -98,21 +100,5 @@ const Stats = (): JSX.Element => {
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-  },
-  item: {
-    flex: 1,
-    width: '100%',
-    height: 'auto',
-  },
-  dots: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
 
 export default Stats;

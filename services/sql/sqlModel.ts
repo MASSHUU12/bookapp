@@ -4,6 +4,7 @@ import {
   SQLiteDatabase,
   Transaction,
 } from 'react-native-sqlite-storage';
+import { log } from "helpers/log";
 
 export class SqlModel {
   db: SQLiteDatabase;
@@ -19,7 +20,8 @@ export class SqlModel {
     args?: Array<any>,
     callback?: (tx: Transaction, res: ResultSet) => void,
   ) {
-    console.log(statement);
+    log(statement);
+
     this.db.transaction(tx => {
       tx.executeSql(
         statement,
@@ -33,7 +35,8 @@ export class SqlModel {
   }
 
   private handleError(err: any) {
-    console.log(err);
+    log(err);
+
     if (err.message.includes('no such table')) {
       this.prepareTables();
     }
@@ -42,13 +45,13 @@ export class SqlModel {
   private prepareTables() {
     this.execute(
       `CREATE TABLE IF NOT EXISTS lists (
-        id INTEGER PRIMARY KEY AUTOINCREMENT, 
-        list TEXT, 
-        cover_i INTERGER, 
-        key TEXT NOT NULL UNIQUE, 
-        title TEXT, 
-        author_name TEXT, 
-        number_of_pages_median INTERGER, 
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        list TEXT,
+        cover_i INTERGER,
+        key TEXT NOT NULL UNIQUE,
+        title TEXT,
+        author_name TEXT,
+        number_of_pages_median INTERGER,
         isbn TEXT,
         list_updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );`,

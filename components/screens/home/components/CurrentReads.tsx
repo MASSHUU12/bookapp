@@ -38,7 +38,7 @@ const CurrentReads = (): JSX.Element => {
       ) : (
         <FlatList
           style={styles.header}
-          ItemSeparatorComponent={({ highlighted }) => (
+          ItemSeparatorComponent={() => (
             <View style={{ marginTop: 15 }} />
           )}
           data={data}

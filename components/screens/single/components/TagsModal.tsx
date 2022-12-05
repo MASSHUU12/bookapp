@@ -36,7 +36,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const [tags, setTags] = useState<Array<TagType>>([]);
-  const [extra, setExtra] = useState(new Date());
+  const [extra] = useState(new Date());
   const [editing, setEditing] = useState(false);
   const [tag, setTag] = useState('');
   const [onRefresh, refresh] = useGlobalState();
@@ -55,7 +55,7 @@ const NoteModal = ({ book }: Props): JSX.Element => {
   const name: ModalType = 'tags';
 
   const onTagPress = (passedTag: TagType): void => {
-    if (passedTag.selected === false) {
+    if (!passedTag.selected) {
       sql.updateBookTags({ key: book.key, tags: [passedTag.name] }, () => {
         refresh(1);
       });

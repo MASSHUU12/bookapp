@@ -5,22 +5,15 @@ type MergeTagsType = {
 
 export function mergeTags({ bookTags, allTags }: MergeTagsType) {
   allTags.forEach(tag => {
-    if (Object.values(bookTags).indexOf(tag.name) > -1) {
-      tag.selected = true;
-    } else {
-      tag.selected = false;
-    }
+    tag.selected = Object.values(bookTags).indexOf(tag.name) > -1;
   });
 
   return allTags;
 }
 
 export function generateCurrentTimestamp() {
-  var d = new Date(),
-    timestamp =
-      [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('-') +
-      ' ' +
-      [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
-
-  return timestamp;
+  const d = new Date();
+  return [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('-') +
+    ' ' +
+    [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
 }

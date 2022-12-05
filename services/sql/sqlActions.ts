@@ -4,10 +4,14 @@ import {
   updateBookTagsTypes,
   updateBookTypes,
 } from 'types/sqlTypes';
-import { SqlModel } from './sqlModel';
 import { BookType } from 'types/bookType';
 import { DetailedBookType } from 'types/detailedBookType';
+import { ListType } from 'types/listType';
+
 import { generateCurrentTimestamp } from 'helpers/helpers';
+import { log } from "helpers/log";
+
+import { SqlModel } from './sqlModel';
 
 export default class SqlActions {
   db: SqlModel;
@@ -33,9 +37,7 @@ export default class SqlActions {
         this.db.execute(
           `INSERT INTO list_details(key, lists_id) VALUES (?, ?)`,
           [params.bookId, list_id],
-          () => {
-            console.log('success');
-          },
+          () => log("success")
         );
       },
     );
@@ -51,10 +53,12 @@ export default class SqlActions {
       (tx, res) => {
         const len = res.rows.length;
         const results = [];
+
         for (let i = 0; i < len; i++) {
           results.push({ ...res.rows.item(i), id: i });
         }
-        console.log(results);
+
+        log(results);
         callback(results);
       },
     );
@@ -79,19 +83,19 @@ export default class SqlActions {
     id: string,
     callback: (book: DetailedBookType) => void,
   ) {
-    console.log('this is id', id);
+    log(['this is id', id]);
     this.db.execute(
       `SELECT * FROM lists LEFT JOIN list_details ON lists.key = list_details.key WHERE lists.key = ?;`,
       [id],
       (tx, res) => {
         const len = res.rows.length;
 
-        if (len === 0) console.log('this book is not in SQL');
+        if (len === 0) log('this book is not in SQL');
         if (len === 0) return null;
 
         const resultWithAppendedId = { ...res.rows.item(0), id: 0 };
 
-        console.log(resultWithAppendedId);
+        log(resultWithAppendedId);
         callback(resultWithAppendedId);
       },
     );
@@ -103,7 +107,7 @@ export default class SqlActions {
       `UPDATE lists SET list = ?, list_updated_at = ? WHERE key = ?`,
       [list, currentTimestamp, key],
       () => {
-        console.log('Book list updated');
+        log('Book list updated');
       },
     );
   }
@@ -130,14 +134,14 @@ export default class SqlActions {
 
         const MAX_TAGS_FOR_BOOK = 10;
 
-        if (len === 0) return console.warn('this book is not in SQL');
+        if (len === 0) return log('this book is not in SQL');
 
         let existingTags = res.rows.item(0).user_tags;
 
-        const formatedExistingTags = JSON.parse(existingTags);
+        const formattedExistingTags = JSON.parse(existingTags);
 
-        if (formatedExistingTags.length >= MAX_TAGS_FOR_BOOK) {
-          return console.warn(
+        if (formattedExistingTags.length >= MAX_TAGS_FOR_BOOK) {
+          return log(
             `You can't add more than ${MAX_TAGS_FOR_BOOK} tags for one book`,
           );
         }
@@ -145,7 +149,7 @@ export default class SqlActions {
         const allTags = [];
 
         if (existingTags != null)
-          allTags.push(...formatedExistingTags, ...tags);
+          allTags.push(...formattedExistingTags, ...tags);
 
         const stringifiedTags = JSON.stringify(allTags);
 
@@ -170,19 +174,19 @@ export default class SqlActions {
       (tx, res) => {
         const len = res.rows.length;
 
-        if (len === 0) return console.warn('this book is not in SQL');
+        if (len === 0) return log('this book is not in SQL');
 
         let existingTags = res.rows.item(0).user_tags;
 
-        const formatedExistingTags = JSON.parse(existingTags);
+        const formattedExistingTags = JSON.parse(existingTags);
 
-        const indexOfTag = formatedExistingTags.indexOf(tag);
+        const indexOfTag = formattedExistingTags.indexOf(tag);
 
-        if (indexOfTag < 0) return console.warn('tag does not exist');
+        if (indexOfTag < 0) return log('tag does not exist');
 
-        formatedExistingTags.splice(indexOfTag, 1);
+        formattedExistingTags.splice(indexOfTag, 1);
 
-        const stringifiedTags = JSON.stringify(formatedExistingTags);
+        const stringifiedTags = JSON.stringify(formattedExistingTags);
 
         this.db.execute(
           `UPDATE list_details SET user_tags = ? WHERE key = ?`,
@@ -197,7 +201,7 @@ export default class SqlActions {
 
   removeBookFromHistory(key: string) {
     this.db.execute(`DELETE FROM lists WHERE key = ?`, [key], () => {
-      console.log('success');
+      log('success');
     });
   }
 
@@ -205,10 +209,11 @@ export default class SqlActions {
     this.db.execute('select * from list_details', [], (tx, res) => {
       const len = res.rows.length;
       const results = [];
+
       for (let i = 0; i < len; i++) {
         results.push({ ...res.rows.item(i), id: i });
       }
-      console.log(results);
+      log(results);
     });
   }
 
@@ -216,6 +221,7 @@ export default class SqlActions {
     this.db.execute(`SELECT * FROM user_tags `, [], (tx, res) => {
       const len = res.rows.length;
       const results = [];
+
       for (let i = 0; i < len; i++) {
         results.push({ ...res.rows.item(i), id: i });
       }
@@ -226,7 +232,7 @@ export default class SqlActions {
   addTag(tag: string, callback?: () => void) {
     const MAX_TAG_LENGTH = 15;
     if (tag.length > MAX_TAG_LENGTH)
-      return console.warn('Tag name is too long');
+      return log('Tag name is too long');
 
     this.db.execute(`INSERT INTO user_tags(name) VALUES (?)`, [tag], () => {
       if (typeof callback === 'function') callback();
@@ -239,9 +245,12 @@ export default class SqlActions {
       `SELECT * FROM list_details WHERE user_tags LIKE ?`,
       [`%"${tag}"%`],
       (tx, res) => {
-        console.log(tag);
+
+        log(tag);
+
         const len = res.rows.length;
         const results = [];
+
         for (let i = 0; i < len; i++) {
           results.push({ ...res.rows.item(i), id: i });
         }
@@ -274,16 +283,16 @@ export default class SqlActions {
   clearListTable() {
     this.db.execute('DELETE FROM lists', [], () => {
       this.db.execute('DELETE FROM list_details', [], () => {
-        console.log('success');
+        log('success');
       });
     });
   }
 
-  dropAlltables() {
+  dropAllTables() {
     this.db.execute('DROP TABLE lists', [], () => {
       this.db.execute('DROP TABLE list_details', [], () => {
         this.db.execute('DROP TABLE user_tags', [], () => {
-          console.log('Tables dropped');
+          log('Tables dropped');
         });
       });
     });

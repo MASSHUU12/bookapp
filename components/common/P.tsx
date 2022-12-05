@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 import { useAppSelector } from 'hooks';
 import { ColorsType } from 'types/colors';
 
@@ -35,7 +35,6 @@ const P = (props: Props): JSX.Element => {
   return (
     <Text
       style={{
-        ...styles.text,
         fontSize: props.size ? props.size : 18,
         color: props.color ? (props.color as string) : colors.text,
         fontFamily: props.font ? props.font : 'AndadaPro-Regular',
@@ -45,11 +44,5 @@ const P = (props: Props): JSX.Element => {
     </Text>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 18,
-  },
-});
 
 export default P;

@@ -86,7 +86,7 @@ const Search = (): JSX.Element => {
                   }`}
                 </P>
                 <FlatList
-                  ItemSeparatorComponent={({ highlighted }) => (
+                  ItemSeparatorComponent={() => (
                     <View style={{ marginTop: 15 }} />
                   )}
                   ListHeaderComponent={

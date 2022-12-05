@@ -4,7 +4,9 @@ import { targetPerMonth } from 'features/targets/targetSlice';
 import { isDark } from 'features/theme/themeSlice';
 import { t } from 'i18n/strings';
 import { locale } from './Locale';
-import { getItem } from './Storage';
+import { getItem, setItem } from './Storage';
+import Config from "react-native-config";
+import { log } from "./log";
 
 /**
  * Loads application settings.
@@ -29,8 +31,8 @@ export const settingsLoader = (): void => {
   getItem('theme').then(item => {
     let i = item === null ? 'light' : item;
 
-    store.dispatch(isDark(i === 'light' ? false : true));
-    store.dispatch(isNavigationDark(i === 'light' ? false : true));
+    store.dispatch(isDark(i !== 'light'));
+    store.dispatch(isNavigationDark(i !== 'light'));
   });
 
   // Load goals.
@@ -40,4 +42,10 @@ export const settingsLoader = (): void => {
   getItem('target_year').then(item => {
     store.dispatch(targetPerMonth(item === null ? '0' : item));
   });
+
+  // Load config for logs
+  if (Config.PRODUCTION === 'true')
+    getItem('logsEnabled').then((enabled) => {
+      setItem('logsEnabled', enabled === null ? 'true' : enabled).catch((e) => log(e))
+    })
 };

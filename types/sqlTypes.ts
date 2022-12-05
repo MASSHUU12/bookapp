@@ -14,12 +14,6 @@ export type updateBookTypes = {
   value: string | number;
 };
 
-type tagType = {
-  textColor: string;
-  backgroundColor: string;
-  name: string;
-};
-
 export type updateBookTagsTypes = {
   key: string;
   tags: Array<string>;

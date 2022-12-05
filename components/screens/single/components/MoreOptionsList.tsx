@@ -5,6 +5,7 @@ import { BookType } from 'types/bookType';
 import { useGlobalState } from 'hooks';
 import sql from 'services/sql/sql';
 import { t } from 'i18n/strings';
+import { log } from "helpers/log";
 
 type PropsTypes = {
   bookData: BookType | {};
@@ -34,7 +35,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
   const allOptionsAction = [
     () => null,
     () => null,
-    () => console.log('Mark as favorite'),
+    () => log('Mark as favorite'),
     () => handleRemoveBookFromHistory(),
   ];
 
@@ -52,7 +53,7 @@ const MoreOptionsList = ({ bookData }: PropsTypes) => {
     allOptionsText.splice(allOptionsMap[bookData.list], 1);
     allOptionsAction.splice(allOptionsMap[bookData.list], 1);
 
-    console.log(allOptionsText);
+    log(allOptionsText);
   }, [bookData]);
 
   return (

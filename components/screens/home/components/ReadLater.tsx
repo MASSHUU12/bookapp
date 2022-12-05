@@ -38,7 +38,7 @@ const ReadLater = (): JSX.Element => {
         <FlatList
           style={styles.list}
           horizontal
-          ItemSeparatorComponent={({ highlighted }) => (
+          ItemSeparatorComponent={() => (
             <View style={{ marginLeft: 10 }} />
           )}
           data={data}

@@ -11,8 +11,6 @@ interface Props {
 }
 
 /**
- *
- *
  * @param {Props} {
  *   placeholder,
  *   keyboardType = 'default',

@@ -1,4 +1,3 @@
-import { Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -65,20 +64,6 @@ const SettingsNavigator = (): JSX.Element => {
           title: '',
           headerShown: true,
           presentation: 'modal',
-          headerLeft: () => (
-            <Button
-              onPress={() => console.log('here')}
-              title="Back"
-              color="#007AFF"
-            />
-          ),
-          headerRight: () => (
-            <Button
-              onPress={() => console.log('here')}
-              title="Save"
-              color="#007AFF"
-            />
-          ),
         }}
       />
     </Stack.Navigator>

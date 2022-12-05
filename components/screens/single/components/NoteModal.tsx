@@ -30,8 +30,6 @@ const NoteModal = ({ book }: Props): JSX.Element => {
   const [_, refresh] = useGlobalState();
   const [noteText, setNoteText] = useState('');
 
-  const aaaa = 'asfawwfa';
-
   const onSave = () => {
     sql.updateBookDetails(
       {

@@ -9,7 +9,7 @@ const getLocale = (): string => {
 };
 
 const getLocaleShort = (): string => {
-  return getLocale().split(/(_|-)/)[0];
+  return getLocale().split(/([_\-])/)[0];
 };
 
 const detectWithFallback = (): string => {
