@@ -7,12 +7,6 @@ import { BookType } from 'types/bookType';
 import { t } from 'i18n/strings';
 import { commonStyles } from 'styles/commonStyles';
 
-/**
- *
- *
- * @return {*}  {JSX.Element}
- */
-
 type Params = {
   bookData: BookType | {};
   onNewBook: Function;
@@ -21,7 +15,16 @@ type Params = {
 type ListType = 'current' | 'readLater' | 'alreadyRead';
 type ListTypeExtended = 'current' | 'readLater' | 'alreadyRead' | 'none';
 
-const MainActionButton = ({ bookData, onNewBook }: Params): JSX.Element => {
+/**
+ *
+ *
+ * @param {Params} { bookData, onNewBook }
+ * @return {*}  {JSX.Element}
+ */
+const MainActionButton: React.FunctionComponent<Params> = ({
+  bookData,
+  onNewBook,
+}: Params): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const [state, dispatch] = useGlobalState();
   const [isButtonPressed, setIsButtonPressed] = useState(false);

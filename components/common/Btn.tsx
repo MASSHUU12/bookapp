@@ -11,7 +11,12 @@ interface Props {
   action: () => any;
 }
 
-const Btn = ({ text, color, bg, action }: Props): JSX.Element => {
+const Btn: React.FunctionComponent<Props> = ({
+  text,
+  color,
+  bg,
+  action,
+}): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

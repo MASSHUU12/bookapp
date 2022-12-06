@@ -14,7 +14,10 @@ interface Props {
  * @param {Props} { text, target }
  * @return {*}  {JSX.Element}
  */
-const NavLink = ({ text, target }: Props): JSX.Element => {
+const NavLink: React.FunctionComponent<Props> = ({
+  text,
+  target,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

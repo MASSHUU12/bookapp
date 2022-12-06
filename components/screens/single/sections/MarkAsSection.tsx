@@ -14,7 +14,16 @@ interface Props {
   params: any;
 }
 
-const MarkAsSection = ({ bookData, params }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {Props} { bookData, params }
+ * @return {*}  {JSX.Element}
+ */
+const MarkAsSection: React.FunctionComponent<Props> = ({
+  bookData,
+  params,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

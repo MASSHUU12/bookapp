@@ -19,7 +19,7 @@ interface Props {
  * @param {Props} { text, modalTexts, modalActions }
  * @return {*}  {JSX.Element}
  */
-const OptionsBtn = ({
+const OptionsBtn: React.FunctionComponent<Props> = ({
   text,
   modalTexts,
   modalActions,

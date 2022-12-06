@@ -17,7 +17,9 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
-const Cover = ({ item }: Props): JSX.Element => {
+const Cover: React.FunctionComponent<Props> = ({
+  item,
+}: Props): JSX.Element => {
   const h = Dimensions.get('window').height * 0.23;
   const w = Dimensions.get('window').width * 0.31;
 

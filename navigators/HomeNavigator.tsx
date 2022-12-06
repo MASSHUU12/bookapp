@@ -12,7 +12,7 @@ import SettingsNavigator from './SettingsNavigator';
  *
  * @return {*}  {JSX.Element}
  */
-const HomeNavigator = (): JSX.Element => {
+const HomeNavigator: React.FunctionComponent<any> = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

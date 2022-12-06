@@ -14,7 +14,9 @@ import ListDots from '@components/common/ListDots';
  * @param {*} { navigation }
  * @return {*}  {JSX.Element}
  */
-const Welcome = ({ navigation }: any): JSX.Element => {
+const Welcome: React.FunctionComponent<any> = ({
+  navigation,
+}: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const listRef = useRef<any>(null);
 

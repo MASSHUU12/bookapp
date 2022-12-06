@@ -8,7 +8,12 @@ import { t } from 'i18n/strings';
 import Input from '@common/Input';
 import P from '@common/P';
 
-const ReadingGoals = (): JSX.Element => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ReadingGoals: React.FunctionComponent<any> = (): JSX.Element => {
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
 

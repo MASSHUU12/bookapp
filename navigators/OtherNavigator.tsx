@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Welcome from '@screens/welcome/Welcome';
 
-const OtherNavigator = (): JSX.Element => {
+const OtherNavigator: React.FunctionComponent<any> = (): JSX.Element => {
   const Stack = createNativeStackNavigator();
 
   return (

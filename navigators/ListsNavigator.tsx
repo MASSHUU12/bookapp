@@ -9,7 +9,7 @@ import ListsRecords from '@screens/lists/screens/ListsRecords';
  *
  * @return {*}  {JSX.Element}
  */
-const ListsNavigator = (): JSX.Element => {
+const ListsNavigator: React.FunctionComponent<any> = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

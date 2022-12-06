@@ -12,7 +12,15 @@ interface Props {
   };
 }
 
-const AuthorSection = ({ route }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {Props} { route }
+ * @return {*}  {JSX.Element}
+ */
+const AuthorSection: React.FunctionComponent<Props> = ({
+  route,
+}: Props): JSX.Element => {
   const [authors] = useState(route.params.author_name);
   const colors = useAppSelector(state => state.theme.colors);
 

@@ -32,7 +32,9 @@ interface TagType {
  *
  * @return {*}  {JSX.Element}
  */
-const NoteModal = ({ book }: Props): JSX.Element => {
+const NoteModal: React.FunctionComponent<Props> = ({
+  book,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const [tags, setTags] = useState<Array<TagType>>([]);

@@ -5,7 +5,12 @@ import { commonStyles } from 'styles/commonStyles';
 import P from '@common/P';
 import { t } from 'i18n/strings';
 
-const WelcomeScreen = (): JSX.Element => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+const WelcomeScreen: React.FunctionComponent<any> = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

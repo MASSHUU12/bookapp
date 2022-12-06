@@ -13,7 +13,11 @@ interface Props {
  * @param {Props} { width, height, cover = '000' }
  * @return {*}  {JSX.Element}
  */
-const CoverImage = ({ width, height, cover }: Props): JSX.Element => {
+const CoverImage: React.FunctionComponent<Props> = ({
+  width,
+  height,
+  cover,
+}: Props): JSX.Element => {
   const [err, setErr] = useState<any>({
     uri: `https://covers.openlibrary.org/b/id/${cover}-M.jpg?default=false`,
   });

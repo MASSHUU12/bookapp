@@ -17,7 +17,11 @@ interface Props {
  * @param {Props} { icon, text, action }
  * @return {*}  {JSX.Element}
  */
-const SettingsBtn = ({ icon, text, action }: Props): JSX.Element => {
+const SettingsBtn: React.FunctionComponent<Props> = ({
+  icon,
+  text,
+  action,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

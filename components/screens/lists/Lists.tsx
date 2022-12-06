@@ -5,7 +5,12 @@ import { commonStyles } from 'styles/commonStyles';
 import P from '@common/P';
 import ListItem from './components/ListItem';
 
-const Lists = (): JSX.Element => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Lists: React.FunctionComponent<any> = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   // Test data

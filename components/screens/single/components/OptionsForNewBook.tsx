@@ -17,7 +17,15 @@ interface ActionsType {
   action: () => void;
 }
 
-const OptionsForNewBook = ({ book }: Props) => {
+/**
+ *
+ *
+ * @param {Props} { book }
+ * @return {*}
+ */
+const OptionsForNewBook: React.FunctionComponent<Props> = ({
+  book,
+}: Props): any => {
   const [onRefresh, refresh] = useGlobalState();
 
   const actions: Array<ActionsType> = [

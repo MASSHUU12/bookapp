@@ -14,7 +14,17 @@ interface Props {
   list_name: ListType;
 }
 
-const ListItem = ({ name, image, list_name }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {Props} { name, image, list_name }
+ * @return {*}  {JSX.Element}
+ */
+const ListItem: React.FunctionComponent<Props> = ({
+  name,
+  image,
+  list_name,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const [numberOfBooks, setNumberOfBooks] = useState(0);
   const [update] = useGlobalState();

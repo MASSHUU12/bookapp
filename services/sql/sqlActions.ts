@@ -9,7 +9,7 @@ import { DetailedBookType } from 'types/detailedBookType';
 import { ListType } from 'types/listType';
 
 import { generateCurrentTimestamp } from 'helpers/helpers';
-import { log } from "helpers/log";
+import { log } from 'helpers/log';
 
 import { SqlModel } from './sqlModel';
 
@@ -37,7 +37,7 @@ export default class SqlActions {
         this.db.execute(
           `INSERT INTO list_details(key, lists_id) VALUES (?, ?)`,
           [params.bookId, list_id],
-          () => log("success")
+          () => log('success'),
         );
       },
     );
@@ -90,8 +90,10 @@ export default class SqlActions {
       (tx, res) => {
         const len = res.rows.length;
 
-        if (len === 0) log('this book is not in SQL');
-        if (len === 0) return null;
+        if (len === 0) {
+          log('this book is not in SQL');
+          return null;
+        }
 
         const resultWithAppendedId = { ...res.rows.item(0), id: 0 };
 
@@ -231,8 +233,7 @@ export default class SqlActions {
 
   addTag(tag: string, callback?: () => void) {
     const MAX_TAG_LENGTH = 15;
-    if (tag.length > MAX_TAG_LENGTH)
-      return log('Tag name is too long');
+    if (tag.length > MAX_TAG_LENGTH) return log('Tag name is too long');
 
     this.db.execute(`INSERT INTO user_tags(name) VALUES (?)`, [tag], () => {
       if (typeof callback === 'function') callback();
@@ -245,7 +246,6 @@ export default class SqlActions {
       `SELECT * FROM list_details WHERE user_tags LIKE ?`,
       [`%"${tag}"%`],
       (tx, res) => {
-
         log(tag);
 
         const len = res.rows.length;

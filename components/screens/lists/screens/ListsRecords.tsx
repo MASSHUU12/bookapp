@@ -5,7 +5,15 @@ import sql from 'services/sql/sql';
 import { commonStyles } from 'styles/commonStyles';
 import CoverExtended from '@common/CoverExtended';
 
-const ListsRecords = ({ route }: any): JSX.Element => {
+/**
+ *
+ *
+ * @param {*} { route }
+ * @return {*}  {JSX.Element}
+ */
+const ListsRecords: React.FunctionComponent<any> = ({
+  route,
+}: any): JSX.Element => {
   const { name, list_name } = route.params;
   const colors = useAppSelector(state => state.theme.colors);
   const [data, setData] = useState<any>();

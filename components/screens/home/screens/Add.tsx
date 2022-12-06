@@ -8,12 +8,18 @@ import {
 } from 'features/add/addSlice';
 import { useAppSelector } from 'hooks';
 import { t } from 'i18n/strings';
+import { log } from 'helpers/log';
 
 import Btn from '@common/Btn';
 import Input from '@common/Input';
 import P from '@common/P';
 
-const Add = (): JSX.Element => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Add: React.FunctionComponent<any> = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const titleValue = useAppSelector(state => state.add.value.title);
@@ -98,7 +104,7 @@ const Add = (): JSX.Element => {
         </P>
         <Input value={linkValue} onChange={addLink} placeholder={t.add8} />
       </View>
-      <Btn text={t.add9} action={() => console.log('Add')} />
+      <Btn text={t.add9} action={() => log('Add')} />
     </ScrollView>
   );
 };

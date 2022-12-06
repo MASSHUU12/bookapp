@@ -12,7 +12,13 @@ import RatingSection from './sections/RatingSection';
 import MarkAsSection from './sections/MarkAsSection';
 import AuthorSection from './sections/AuthorSection';
 
-const Single = ({ route }: any): JSX.Element => {
+/**
+ *
+ *
+ * @param {*} { route }
+ * @return {*}  {JSX.Element}
+ */
+const Single: React.FunctionComponent<any> = ({ route }: any): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const pan = useRef(new Animated.ValueXY()).current;
   const [onRefresh, dispatch] = useGlobalState();

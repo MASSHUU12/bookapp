@@ -15,7 +15,7 @@ import { commonStyles } from 'styles/commonStyles';
  *
  * @return {*}  {JSX.Element}
  */
-const Home = (): JSX.Element => {
+const Home: React.FunctionComponent<any> = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

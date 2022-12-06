@@ -21,9 +21,10 @@ interface Props {
  *   inactiveBg,
  *   activeBg,
  * }
+ *
  * @return {*}  {JSX.Element}
  */
-const ListDots = ({
+const ListDots: React.FunctionComponent<Props> = ({
   current,
   length,
   inactiveBg,
@@ -37,8 +38,11 @@ const ListDots = ({
     for (let i = 0; i < length; i++) {
       let c: ColorsType | string = '';
 
-      if (i === current) c = activeBg ? activeBg : colors.text4;
-      else c = inactiveBg ? inactiveBg : colors.accent;
+      if (i === current) {
+        c = activeBg || colors.text4;
+      } else {
+        c = inactiveBg || colors.accent;
+      }
 
       arr.push(
         <Entypo name="dot-single" size={32} color={`${c}`} key={`dots-${i}`} />,

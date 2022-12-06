@@ -5,13 +5,21 @@ import { BookType } from 'types/bookType';
 import { useGlobalState } from 'hooks';
 import sql from 'services/sql/sql';
 import { t } from 'i18n/strings';
-import { log } from "helpers/log";
+import { log } from 'helpers/log';
 
 type PropsTypes = {
   bookData: BookType | {};
 };
 
-const MoreOptionsList = ({ bookData }: PropsTypes) => {
+/**
+ *
+ *
+ * @param {PropsTypes} { bookData }
+ * @return {*}
+ */
+const MoreOptionsList: React.FunctionComponent<PropsTypes> = ({
+  bookData,
+}: PropsTypes): any => {
   const [state, dispatch] = useGlobalState();
 
   const handleRemoveBookFromHistory = () => {

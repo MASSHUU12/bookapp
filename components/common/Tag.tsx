@@ -6,7 +6,19 @@ interface Props {
   index: number;
 }
 
-const Tag = ({ text, index }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {*} {
+ *     text,
+ *     index
+ * }
+ * @return {*}  {JSX.Element}
+ */
+const Tag: React.FunctionComponent<Props> = ({
+  text,
+  index,
+}: Props): JSX.Element => {
   const getBackground = (): string => {
     if (index === 0) return '#FFA9A9';
     if (index === 1) return '#ABFFA9';

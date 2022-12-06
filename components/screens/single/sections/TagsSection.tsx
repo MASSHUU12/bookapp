@@ -13,7 +13,16 @@ interface Props {
   tags: any[];
 }
 
-const TagsSection = ({ bookData, tags }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {Props} { bookData, tags }
+ * @return {*}  {JSX.Element}
+ */
+const TagsSection: React.FunctionComponent<Props> = ({
+  bookData,
+  tags,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

@@ -20,19 +20,19 @@ interface Props {
  * @param {Props} props
  * @return {*}  {JSX.Element}
  */
-const CModal = (props: Props): JSX.Element => {
+const CModal: React.FunctionComponent<Props> = (props: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
   const state = useAppSelector(state => state.modal.value[props.name]);
 
   const setStyles = (): Object => {
-    if (props.styles !== undefined) return { ...props.styles };
-
-    return {
-      backgroundColor: colors.optionsBtn,
-      marginTop: props.marginTop,
-      ...commonStyles.flexCenter,
-      ...styles.container,
-    };
+    return props.styles !== undefined
+      ? { ...props.styles }
+      : {
+          backgroundColor: colors.optionsBtn,
+          marginTop: props.marginTop,
+          ...commonStyles.flexCenter,
+          ...styles.container,
+        };
   };
 
   return (

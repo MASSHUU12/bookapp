@@ -7,7 +7,7 @@ import Books from '@screens/books/Books';
  *
  * @return {*}  {JSX.Element}
  */
-const BooksNavigator = (): JSX.Element => {
+const BooksNavigator: React.FunctionComponent<any> = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 

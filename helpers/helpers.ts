@@ -3,17 +3,19 @@ type MergeTagsType = {
   allTags: Array<any>;
 };
 
-export function mergeTags({ bookTags, allTags }: MergeTagsType) {
+export const mergeTags = ({ bookTags, allTags }: MergeTagsType): any[] => {
   allTags.forEach(tag => {
     tag.selected = Object.values(bookTags).indexOf(tag.name) > -1;
   });
 
   return allTags;
-}
+};
 
-export function generateCurrentTimestamp() {
+export const generateCurrentTimestamp = (): string => {
   const d = new Date();
-  return [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('-') +
+  return `${
+    [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('-') +
     ' ' +
-    [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
-}
+    [d.getHours(), d.getMinutes(), d.getSeconds()].join(':')
+  }`;
+};

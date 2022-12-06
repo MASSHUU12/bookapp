@@ -10,7 +10,7 @@ import BooksNavigator from './BooksNavigator';
 import HomeNavigator from './HomeNavigator';
 import ListsNavigator from './ListsNavigator';
 
-const MainNavigator = (): JSX.Element => {
+const MainNavigator: React.FunctionComponent<any> = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
 
   const { colors } = useTheme();

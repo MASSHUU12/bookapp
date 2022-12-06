@@ -13,7 +13,7 @@ import P from '@common/P';
  *
  * @return {*}  {JSX.Element}
  */
-const CurrentReads = (): JSX.Element => {
+const CurrentReads: React.FunctionComponent<any> = (): JSX.Element => {
   const [data, setData] = useState<Array<BookType>>([]);
   const [state] = useGlobalState();
 
@@ -38,9 +38,7 @@ const CurrentReads = (): JSX.Element => {
       ) : (
         <FlatList
           style={styles.header}
-          ItemSeparatorComponent={() => (
-            <View style={{ marginTop: 15 }} />
-          )}
+          ItemSeparatorComponent={() => <View style={{ marginTop: 15 }} />}
           data={data}
           renderItem={item => <CoverExtended item={item} />}
         />

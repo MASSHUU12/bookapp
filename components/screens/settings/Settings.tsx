@@ -12,7 +12,7 @@ import P from '@common/P';
  *
  * @return {*}  {JSX.Element}
  */
-const Settings = (): JSX.Element => {
+const Settings: React.FunctionComponent<any> = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

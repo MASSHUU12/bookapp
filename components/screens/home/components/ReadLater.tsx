@@ -12,7 +12,7 @@ import P from '@common/P';
  *
  * @return {*}  {JSX.Element}
  */
-const ReadLater = (): JSX.Element => {
+const ReadLater: React.FunctionComponent<any> = (): JSX.Element => {
   const [data, setData] = useState([]);
   const [state] = useGlobalState();
 
@@ -38,9 +38,7 @@ const ReadLater = (): JSX.Element => {
         <FlatList
           style={styles.list}
           horizontal
-          ItemSeparatorComponent={() => (
-            <View style={{ marginLeft: 10 }} />
-          )}
+          ItemSeparatorComponent={() => <View style={{ marginLeft: 10 }} />}
           data={data}
           renderItem={item => <Cover item={item} />}
         />

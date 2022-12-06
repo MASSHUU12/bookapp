@@ -5,7 +5,12 @@ import { t } from 'i18n/strings';
 import { commonStyles } from 'styles/commonStyles';
 import P from '@common/P';
 
-const StatsScreen = (): JSX.Element => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+const StatsScreen: React.FunctionComponent<any> = (): JSX.Element => {
   const targetMonth = useAppSelector(
     state => state.targets.value.targetPerMonth,
   );

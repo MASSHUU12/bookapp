@@ -10,7 +10,7 @@ import { navigate } from 'helpers/Navigate';
  *
  * @return {*}  {JSX.Element}
  */
-const SearchBar = (): JSX.Element => {
+const SearchBar: React.FunctionComponent<any> = (): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (

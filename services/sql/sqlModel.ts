@@ -4,7 +4,7 @@ import {
   SQLiteDatabase,
   Transaction,
 } from 'react-native-sqlite-storage';
-import { log } from "helpers/log";
+import { log } from 'helpers/log';
 
 export class SqlModel {
   db: SQLiteDatabase;
@@ -37,9 +37,7 @@ export class SqlModel {
   private handleError(err: any) {
     log(err);
 
-    if (err.message.includes('no such table')) {
-      this.prepareTables();
-    }
+    if (err.message.includes('no such table')) this.prepareTables();
   }
 
   private prepareTables() {

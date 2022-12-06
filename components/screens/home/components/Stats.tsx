@@ -7,14 +7,14 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { commonStyles } from 'styles/commonStyles';
 import { useEffect, useState } from 'react';
 import sql from 'services/sql/sql';
-import { log } from "helpers/log";
+import { log } from 'helpers/log';
 
 /**
  * Component displaying user statistics.
  *
  * @return {*}  {JSX.Element}
  */
-const Stats = (): JSX.Element => {
+const Stats: React.FunctionComponent<any> = (): JSX.Element => {
   // const targetMonth = useAppSelector(
   //   state => state.targets.value.targetPerMonth,
   // );

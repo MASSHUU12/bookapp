@@ -7,7 +7,19 @@ interface Props {
   onRatingChange: Function;
 }
 
-const Rating = ({ rating, onRatingChange }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {Props} {
+ *   rating,
+ *   onRatingChange,
+ * }
+ * @return {*}  {JSX.Element}
+ */
+const Rating: React.FunctionComponent<Props> = ({
+  rating,
+  onRatingChange,
+}: Props): JSX.Element => {
   const arr = [0, 0, 0, 0, 0];
   const [r, setR] = useState(rating);
 

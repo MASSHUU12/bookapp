@@ -15,7 +15,7 @@ import { dispatchStateContext } from 'App';
  *
  * @return {*} {JSX.Element}
  */
-const Options = (): JSX.Element => {
+const Options: React.FunctionComponent<any> = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const colors = useAppSelector(state => state.theme.colors);
 
@@ -32,9 +32,9 @@ const Options = (): JSX.Element => {
       let arr = langFunc;
 
       arr.push(async () => {
-        if (item.toLowerCase() === 'auto')
-          t.setLanguage(locale.detectWithFallback);
-        else t.setLanguage(item);
+        item.toLowerCase() === 'auto'
+          ? t.setLanguage(locale.detectWithFallback)
+          : t.setLanguage(item);
 
         cont();
 

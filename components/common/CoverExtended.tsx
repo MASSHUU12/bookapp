@@ -27,7 +27,9 @@ interface Props {
  * @param {Props} { item }
  * @return {*}  {JSX.Element}
  */
-const CoverExtended = ({ item }: Props): JSX.Element => {
+const CoverExtended: React.FunctionComponent<Props> = ({
+  item,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   const h = Dimensions.get('window').height * 0.25;
@@ -56,11 +58,7 @@ const CoverExtended = ({ item }: Props): JSX.Element => {
             book
           </P>
           <P size={12} color={colors.text3}>
-            {`pages: ${
-              item.item.number_of_pages_median
-                ? item.item.number_of_pages_median
-                : 'N/A'
-            }`}
+            {`pages: ${item.item.number_of_pages_median || 'N/A'}`}
           </P>
         </View>
       </View>

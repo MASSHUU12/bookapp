@@ -21,7 +21,7 @@ export const dispatchStateContext = createContext<any>(undefined);
  *
  * @return {*}  {JSX.Element}
  */
-const App = (): JSX.Element => {
+const App: React.FunctionComponent<any> = (props): JSX.Element => {
   // Get theme from the store.
   const [theme, setTheme] = useState(store.getState().themeNavigation.value);
 

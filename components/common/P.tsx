@@ -29,15 +29,15 @@ interface Props {
  *  @param font - Font name
  *
  */
-const P = (props: Props): JSX.Element => {
+const P: React.FunctionComponent<Props> = (props: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
     <Text
       style={{
-        fontSize: props.size ? props.size : 18,
+        fontSize: props.size || 18,
         color: props.color ? (props.color as string) : colors.text,
-        fontFamily: props.font ? props.font : 'AndadaPro-Regular',
+        fontFamily: props.font || 'AndadaPro-Regular',
         ...props.styles,
       }}>
       {props.children}

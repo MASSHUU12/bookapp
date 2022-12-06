@@ -22,7 +22,7 @@ import NavLink from '@common/NavLink';
  *
  * @return {*}  {JSX.Element}
  */
-const Search = (): JSX.Element => {
+const Search: React.FunctionComponent<any> = (): JSX.Element => {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<any>([]);

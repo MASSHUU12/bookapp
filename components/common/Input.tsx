@@ -19,7 +19,7 @@ interface Props {
  * }
  * @return {*}  {JSX.Element}
  */
-const Input = ({
+const Input: React.FunctionComponent<Props> = ({
   placeholder,
   keyboardType = 'default',
   value,

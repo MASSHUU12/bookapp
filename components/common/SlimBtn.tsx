@@ -8,7 +8,19 @@ interface Props {
   action: () => any;
 }
 
-const SlimBtn = ({ text, action }: Props): JSX.Element => {
+/**
+ *
+ *
+ * @param {Props} {
+ *   text,
+ *   action,
+ * }
+ * @return {*}  {JSX.Element}
+ */
+const SlimBtn: React.FunctionComponent<Props> = ({
+  text,
+  action,
+}: Props): JSX.Element => {
   const colors = useAppSelector(state => state.theme.colors);
 
   return (
