@@ -43,7 +43,7 @@ const MoreOptionsList: React.FunctionComponent<PropsTypes> = ({
   const allOptionsAction = [
     () => null,
     () => null,
-    () => Log('Mark as favorite'),
+    () => Log.Clean('Mark as favorite.'),
     () => handleRemoveBookFromHistory(),
   ];
 
@@ -61,7 +61,7 @@ const MoreOptionsList: React.FunctionComponent<PropsTypes> = ({
     allOptionsText.splice(allOptionsMap[bookData.list], 1);
     allOptionsAction.splice(allOptionsMap[bookData.list], 1);
 
-    Log(allOptionsText);
+    Log.Info(allOptionsText);
   }, [bookData]);
 
   return (

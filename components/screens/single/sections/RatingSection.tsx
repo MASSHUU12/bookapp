@@ -27,7 +27,7 @@ const RatingSection: React.FunctionComponent<Props> = ({
   const onRatingChange = (rating: number) => {
     if (!('key' in bookData)) return;
 
-    Log(rating);
+    Log.Info(`Rating: ${rating}`);
 
     sql.updateBookDetails({
       book_key: bookData.key,

@@ -47,7 +47,7 @@ export const settingsLoader = (): void => {
   if (Config.PRODUCTION === 'true')
     getItem('LogsEnabled').then(enabled => {
       setItem('LogsEnabled', enabled === null ? 'true' : enabled).catch(e =>
-        Log(e),
+        Log.Ignore.Error(e),
       );
     });
 };

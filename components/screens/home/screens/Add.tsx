@@ -104,7 +104,7 @@ const Add: React.FunctionComponent<any> = (): JSX.Element => {
         </P>
         <Input value={linkValue} onChange={addLink} placeholder={t.add8} />
       </View>
-      <Btn text={t.add9} action={() => Log('Add')} />
+      <Btn text={t.add9} action={() => Log.Clean('Add')} />
     </ScrollView>
   );
 };

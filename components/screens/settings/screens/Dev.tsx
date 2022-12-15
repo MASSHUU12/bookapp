@@ -37,7 +37,7 @@ const Dev: React.FunctionComponent<any> = (): JSX.Element => {
         text={'console.Log books in current list'}
         action={() =>
           sql.getBooksInList('current', res => {
-            Log(res);
+            Log.Clean(res);
           })
         }
       />
@@ -51,9 +51,13 @@ const Dev: React.FunctionComponent<any> = (): JSX.Element => {
         text={'Toggle Logs'}
         action={() => {
           getItem('LogsEnabled').then(name => {
-            setItem('LogsEnabled', name === 'true' ? 'false' : 'true').catch(
-              e => Log(e),
-            );
+            setItem('LogsEnabled', name === 'true' ? 'false' : 'true')
+              .then(() => {
+                Log.Ignore.Info(
+                  `Logs enabled: ${name === 'true' ? 'false' : 'true'}`,
+                );
+              })
+              .catch(e => Log.Ignore.Error(e));
           });
         }}
       />

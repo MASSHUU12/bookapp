@@ -20,7 +20,7 @@ export class SqlModel {
     args?: Array<any>,
     callback?: (tx: Transaction, res: ResultSet) => void,
   ) {
-    Log(statement);
+    Log.Clean(statement);
 
     this.db.transaction(tx => {
       tx.executeSql(
@@ -35,7 +35,7 @@ export class SqlModel {
   }
 
   private handleError(err: any) {
-    Log(err);
+    Log.Error(err);
 
     if (err.message.includes('no such table')) this.prepareTables();
   }

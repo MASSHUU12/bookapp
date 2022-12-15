@@ -37,7 +37,7 @@ export default class SqlActions {
         this.db.execute(
           `INSERT INTO list_details(key, lists_id) VALUES (?, ?)`,
           [params.bookId, list_id],
-          () => Log('success'),
+          () => Log.Info('Success.'),
         );
       },
     );
@@ -58,7 +58,7 @@ export default class SqlActions {
           results.push({ ...res.rows.item(i), id: i });
         }
 
-        Log(results);
+        Log.Clean(results);
         callback(results);
       },
     );
@@ -83,7 +83,7 @@ export default class SqlActions {
     id: string,
     callback: (book: DetailedBookType) => void,
   ) {
-    Log(['this is id', id]);
+    Log.Clean(['this is id', id]);
     this.db.execute(
       `SELECT * FROM lists LEFT JOIN list_details ON lists.key = list_details.key WHERE lists.key = ?;`,
       [id],
@@ -91,13 +91,13 @@ export default class SqlActions {
         const len = res.rows.length;
 
         if (len === 0) {
-          Log('this book is not in SQL');
+          Log.Warn('This book is not in SQL.');
           return null;
         }
 
         const resultWithAppendedId = { ...res.rows.item(0), id: 0 };
 
-        Log(resultWithAppendedId);
+        Log.Clean(resultWithAppendedId);
         callback(resultWithAppendedId);
       },
     );
@@ -109,7 +109,7 @@ export default class SqlActions {
       `UPDATE lists SET list = ?, list_updated_at = ? WHERE key = ?`,
       [list, currentTimestamp, key],
       () => {
-        Log('Book list updated');
+        Log.Info('Book list updated');
       },
     );
   }
@@ -136,14 +136,14 @@ export default class SqlActions {
 
         const MAX_TAGS_FOR_BOOK = 10;
 
-        if (len === 0) return Log('this book is not in SQL');
+        if (len === 0) return Log.Warn('This book is not in SQL.');
 
         let existingTags = res.rows.item(0).user_tags;
 
         const formattedExistingTags = JSON.parse(existingTags);
 
         if (formattedExistingTags.length >= MAX_TAGS_FOR_BOOK) {
-          return Log(
+          return Log.Warn(
             `You can't add more than ${MAX_TAGS_FOR_BOOK} tags for one book`,
           );
         }
@@ -176,7 +176,7 @@ export default class SqlActions {
       (tx, res) => {
         const len = res.rows.length;
 
-        if (len === 0) return Log('this book is not in SQL');
+        if (len === 0) return Log.Warn('This book is not in SQL.');
 
         let existingTags = res.rows.item(0).user_tags;
 
@@ -184,7 +184,7 @@ export default class SqlActions {
 
         const indexOfTag = formattedExistingTags.indexOf(tag);
 
-        if (indexOfTag < 0) return Log('tag does not exist');
+        if (indexOfTag < 0) return Log.Warn('Tag does not exist.');
 
         formattedExistingTags.splice(indexOfTag, 1);
 
@@ -203,7 +203,7 @@ export default class SqlActions {
 
   removeBookFromHistory(key: string) {
     this.db.execute(`DELETE FROM lists WHERE key = ?`, [key], () => {
-      Log('success');
+      Log.Info('Success.');
     });
   }
 
@@ -215,7 +215,7 @@ export default class SqlActions {
       for (let i = 0; i < len; i++) {
         results.push({ ...res.rows.item(i), id: i });
       }
-      Log(results);
+      Log.Clean(results);
     });
   }
 
@@ -233,7 +233,7 @@ export default class SqlActions {
 
   addTag(tag: string, callback?: () => void) {
     const MAX_TAG_LENGTH = 15;
-    if (tag.length > MAX_TAG_LENGTH) return Log('Tag name is too long');
+    if (tag.length > MAX_TAG_LENGTH) return Log.Warn('Tag name is too long.');
 
     this.db.execute(`INSERT INTO user_tags(name) VALUES (?)`, [tag], () => {
       if (typeof callback === 'function') callback();
@@ -246,7 +246,7 @@ export default class SqlActions {
       `SELECT * FROM list_details WHERE user_tags LIKE ?`,
       [`%"${tag}"%`],
       (tx, res) => {
-        Log(tag);
+        Log.Clean(tag);
 
         const len = res.rows.length;
         const results = [];
@@ -283,7 +283,7 @@ export default class SqlActions {
   clearListTable() {
     this.db.execute('DELETE FROM lists', [], () => {
       this.db.execute('DELETE FROM list_details', [], () => {
-        Log('success');
+        Log.Info('Success.');
       });
     });
   }
@@ -292,7 +292,7 @@ export default class SqlActions {
     this.db.execute('DROP TABLE lists', [], () => {
       this.db.execute('DROP TABLE list_details', [], () => {
         this.db.execute('DROP TABLE user_tags', [], () => {
-          Log('Tables dropped');
+          Log.Info('Tables dropped.');
         });
       });
     });

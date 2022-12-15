@@ -38,7 +38,7 @@ const Stats: React.FunctionComponent<any> = (): JSX.Element => {
   };
 
   useEffect(() => {
-    Log('stats refreshed');
+    Log.Info('Stats refreshed.');
 
     sql.getStatsForMonth({}, numberOfBooks => {
       setBooksThisMonth(numberOfBooks);
@@ -60,7 +60,7 @@ const Stats: React.FunctionComponent<any> = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisMonth * 100) / parseInt(targetMonth)}
-          onAnimationComplete={() => Log('completed')}
+          onAnimationComplete={() => Log.Info('Completed.')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>
@@ -80,7 +80,7 @@ const Stats: React.FunctionComponent<any> = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisYear * 100) / parseInt(targetYear)}
-          onAnimationComplete={() => Log('completed')}
+          onAnimationComplete={() => Log.Info('Completed.')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>
