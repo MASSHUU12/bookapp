@@ -27,7 +27,7 @@ const AuthorSection: React.FunctionComponent<Props> = ({
   return (
     <View style={styles.container}>
       <P color={colors.text2} size={12}>
-        {authors.split(/,/g).join(', ')}
+        {String(authors).split(/,/g).join(', ')}
       </P>
       <P color={colors.text3} size={12}>
         {route.params.key.split('/')[2]}
