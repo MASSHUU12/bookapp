@@ -4,7 +4,7 @@ import { t } from 'i18n/strings';
 import sql from 'services/sql/sql';
 import { commonStyles } from 'styles/commonStyles';
 import { DetailedBookType } from 'types/detailedBookType';
-import { log } from 'helpers/log';
+import { Log } from 'helpers/Log';
 
 import P from '@common/P';
 import Rating from '@common/Rating';
@@ -27,7 +27,7 @@ const RatingSection: React.FunctionComponent<Props> = ({
   const onRatingChange = (rating: number) => {
     if (!('key' in bookData)) return;
 
-    log(rating);
+    Log(rating);
 
     sql.updateBookDetails({
       book_key: bookData.key,

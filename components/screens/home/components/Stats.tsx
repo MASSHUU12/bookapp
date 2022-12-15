@@ -7,7 +7,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { commonStyles } from 'styles/commonStyles';
 import { useEffect, useState } from 'react';
 import sql from 'services/sql/sql';
-import { log } from 'helpers/log';
+import { Log } from 'helpers/Log';
 
 /**
  * Component displaying user statistics.
@@ -38,7 +38,7 @@ const Stats: React.FunctionComponent<any> = (): JSX.Element => {
   };
 
   useEffect(() => {
-    log('stats refreshed');
+    Log('stats refreshed');
 
     sql.getStatsForMonth({}, numberOfBooks => {
       setBooksThisMonth(numberOfBooks);
@@ -60,7 +60,7 @@ const Stats: React.FunctionComponent<any> = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisMonth * 100) / parseInt(targetMonth)}
-          onAnimationComplete={() => log('completed')}
+          onAnimationComplete={() => Log('completed')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>
@@ -80,7 +80,7 @@ const Stats: React.FunctionComponent<any> = (): JSX.Element => {
         <AnimatedCircularProgress
           {...config}
           fill={(booksThisYear * 100) / parseInt(targetYear)}
-          onAnimationComplete={() => log('completed')}
+          onAnimationComplete={() => Log('completed')}
           lineCap="round">
           {() => (
             <View style={{ ...commonStyles.flexCenter }}>

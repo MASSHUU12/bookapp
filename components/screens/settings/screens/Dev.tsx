@@ -5,7 +5,7 @@ import SettingsBtn from '../components/SettingsBtn';
 
 import { navigate } from 'helpers/Navigate';
 import { getItem, setItem } from 'helpers/Storage';
-import { log } from 'helpers/log';
+import { Log } from 'helpers/Log';
 
 /**
  * Development options.
@@ -29,15 +29,15 @@ const Dev: React.FunctionComponent<any> = (): JSX.Element => {
       />
       <SettingsBtn
         icon="hammer-outline"
-        text={'console.log details'}
+        text={'console.Log details'}
         action={() => sql.selectAllFromDetails()}
       />
       <SettingsBtn
         icon="hammer-outline"
-        text={'console.log books in current list'}
+        text={'console.Log books in current list'}
         action={() =>
           sql.getBooksInList('current', res => {
-            log(res);
+            Log(res);
           })
         }
       />
@@ -48,11 +48,11 @@ const Dev: React.FunctionComponent<any> = (): JSX.Element => {
       />
       <SettingsBtn
         icon={'hammer-outline'}
-        text={'Toggle logs'}
+        text={'Toggle Logs'}
         action={() => {
-          getItem('logsEnabled').then(name => {
-            setItem('logsEnabled', name === 'true' ? 'false' : 'true').catch(
-              e => log(e),
+          getItem('LogsEnabled').then(name => {
+            setItem('LogsEnabled', name === 'true' ? 'false' : 'true').catch(
+              e => Log(e),
             );
           });
         }}

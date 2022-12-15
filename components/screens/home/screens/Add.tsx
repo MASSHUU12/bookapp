@@ -8,7 +8,7 @@ import {
 } from 'features/add/addSlice';
 import { useAppSelector } from 'hooks';
 import { t } from 'i18n/strings';
-import { log } from 'helpers/log';
+import { Log } from 'helpers/Log';
 
 import Btn from '@common/Btn';
 import Input from '@common/Input';
@@ -104,7 +104,7 @@ const Add: React.FunctionComponent<any> = (): JSX.Element => {
         </P>
         <Input value={linkValue} onChange={addLink} placeholder={t.add8} />
       </View>
-      <Btn text={t.add9} action={() => log('Add')} />
+      <Btn text={t.add9} action={() => Log('Add')} />
     </ScrollView>
   );
 };

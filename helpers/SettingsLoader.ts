@@ -5,8 +5,8 @@ import { isDark } from 'features/theme/themeSlice';
 import { t } from 'i18n/strings';
 import { locale } from './Locale';
 import { getItem, setItem } from './Storage';
-import Config from "react-native-config";
-import { log } from "./log";
+import Config from 'react-native-config';
+import { Log } from './Log';
 
 /**
  * Loads application settings.
@@ -43,9 +43,11 @@ export const settingsLoader = (): void => {
     store.dispatch(targetPerMonth(item === null ? '0' : item));
   });
 
-  // Load config for logs
+  // Load config for Logs
   if (Config.PRODUCTION === 'true')
-    getItem('logsEnabled').then((enabled) => {
-      setItem('logsEnabled', enabled === null ? 'true' : enabled).catch((e) => log(e))
-    })
+    getItem('LogsEnabled').then(enabled => {
+      setItem('LogsEnabled', enabled === null ? 'true' : enabled).catch(e =>
+        Log(e),
+      );
+    });
 };
