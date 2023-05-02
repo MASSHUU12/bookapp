@@ -7,24 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* bookappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* bookappTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-bookapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-bookapp.a */; };
-		13320014B6A6482580E59AE1 /* AndadaPro-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 14006FF384094BF5A41B03FA /* AndadaPro-ExtraBold.otf */; };
+		00E356F31AD99517003FC87E /* BookappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BookappTests.m */; };
+		0C80B921A6F3F58F76C31292 /* libPods-Bookapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Bookapp.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		33A60120F31149C98788FE95 /* AndadaPro-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B989D15D494648F8AD474997 /* AndadaPro-SemiBoldItalic.otf */; };
-		356554F8A5804316AEBDC58E /* AndadaPro-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB93F2C3BF9E4855B4454401 /* AndadaPro-SemiBold.otf */; };
-		3B2F04E228E477B30012E0DF /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 3B2F04E128E477B30012E0DF /* Fonts */; };
-		413F64B825A24853A5C54C6A /* AndadaPro-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08402805C3D4455A9F860337 /* AndadaPro-BoldItalic.otf */; };
-		4EB0758AFACF44C08E0BDA63 /* AndadaPro-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5EF049E36F3D4ABD9FD19138 /* AndadaPro-ExtraBoldItalic.otf */; };
-		6455C054568048E0B5AC17E3 /* AndadaPro-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A742C22E35D435BBB639822 /* AndadaPro-MediumItalic.otf */; };
-		7699B88040F8A987B510C191 /* libPods-bookapp-bookappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-bookapp-bookappTests.a */; };
+		7699B88040F8A987B510C191 /* libPods-Bookapp-BookappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Bookapp-BookappTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A0672C5DC6B94DC69908B7C6 /* AndadaPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0A94F94494A638184DDCC /* AndadaPro-Medium.otf */; };
-		C044BB9E5B9C41CD974F3B33 /* AndadaPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 73769CF9C5A1493EAC94A089 /* AndadaPro-Italic.otf */; };
-		C75353CC772A48BC8B6E91BC /* AndadaPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F0BBD0AB82844EC99A8673F /* AndadaPro-Regular.otf */; };
-		E895DBB4485E4792ABE60044 /* AndadaPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C614AD2414C469A982EA82B /* AndadaPro-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,39 +22,28 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = bookapp;
+			remoteInfo = Bookapp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* bookappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BookappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* bookappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bookappTests.m; sourceTree = "<group>"; };
-		08402805C3D4455A9F860337 /* AndadaPro-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-BoldItalic.otf"; path = "../assets/fonts/AndadaPro-BoldItalic.otf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* bookapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = bookapp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = bookapp/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bookapp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = bookapp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = bookapp/main.m; sourceTree = "<group>"; };
-		14006FF384094BF5A41B03FA /* AndadaPro-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-ExtraBold.otf"; path = "../assets/fonts/AndadaPro-ExtraBold.otf"; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-bookapp-bookappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bookapp-bookappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B2F04E128E477B30012E0DF /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-bookapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookapp.debug.xcconfig"; path = "Target Support Files/Pods-bookapp/Pods-bookapp.debug.xcconfig"; sourceTree = "<group>"; };
-		3F0BBD0AB82844EC99A8673F /* AndadaPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-Regular.otf"; path = "../assets/fonts/AndadaPro-Regular.otf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-bookapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookapp.release.xcconfig"; path = "Target Support Files/Pods-bookapp/Pods-bookapp.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-bookapp-bookappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookapp-bookappTests.debug.xcconfig"; path = "Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-bookapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bookapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EF049E36F3D4ABD9FD19138 /* AndadaPro-ExtraBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-ExtraBoldItalic.otf"; path = "../assets/fonts/AndadaPro-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
-		6C614AD2414C469A982EA82B /* AndadaPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-Bold.otf"; path = "../assets/fonts/AndadaPro-Bold.otf"; sourceTree = "<group>"; };
-		6FD0A94F94494A638184DDCC /* AndadaPro-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-Medium.otf"; path = "../assets/fonts/AndadaPro-Medium.otf"; sourceTree = "<group>"; };
-		73769CF9C5A1493EAC94A089 /* AndadaPro-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-Italic.otf"; path = "../assets/fonts/AndadaPro-Italic.otf"; sourceTree = "<group>"; };
-		7A742C22E35D435BBB639822 /* AndadaPro-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-MediumItalic.otf"; path = "../assets/fonts/AndadaPro-MediumItalic.otf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = bookapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-bookapp-bookappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookapp-bookappTests.release.xcconfig"; path = "Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests.release.xcconfig"; sourceTree = "<group>"; };
-		B989D15D494648F8AD474997 /* AndadaPro-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-SemiBoldItalic.otf"; path = "../assets/fonts/AndadaPro-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* BookappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookappTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Bookapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Bookapp/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Bookapp/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Bookapp/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Bookapp/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Bookapp/main.m; sourceTree = "<group>"; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Bookapp-BookappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bookapp-BookappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4392A12AC88292D35C810B /* Pods-Bookapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bookapp.debug.xcconfig"; path = "Target Support Files/Pods-Bookapp/Pods-Bookapp.debug.xcconfig"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-Bookapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bookapp.release.xcconfig"; path = "Target Support Files/Pods-Bookapp/Pods-Bookapp.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-Bookapp-BookappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bookapp-BookappTests.debug.xcconfig"; path = "Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-Bookapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bookapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Bookapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-Bookapp-BookappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bookapp-BookappTests.release.xcconfig"; path = "Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FB93F2C3BF9E4855B4454401 /* AndadaPro-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AndadaPro-SemiBold.otf"; path = "../assets/fonts/AndadaPro-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-bookapp-bookappTests.a in Frameworks */,
+				7699B88040F8A987B510C191 /* libPods-Bookapp-BookappTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,20 +59,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-bookapp.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* libPods-Bookapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* bookappTests */ = {
+		00E356EF1AD99517003FC87E /* BookappTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* bookappTests.m */,
+				00E356F21AD99517003FC87E /* BookappTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = bookappTests;
+			path = BookappTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -105,10 +83,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* bookapp */ = {
+		13B07FAE1A68108700A75B9A /* Bookapp */ = {
 			isa = PBXGroup;
 			children = (
-				3B2F04E128E477B30012E0DF /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -116,34 +93,17 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = bookapp;
+			name = Bookapp;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-bookapp.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-bookapp-bookappTests.a */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-Bookapp.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Bookapp-BookappTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		67792894826846469190B575 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6C614AD2414C469A982EA82B /* AndadaPro-Bold.otf */,
-				08402805C3D4455A9F860337 /* AndadaPro-BoldItalic.otf */,
-				14006FF384094BF5A41B03FA /* AndadaPro-ExtraBold.otf */,
-				5EF049E36F3D4ABD9FD19138 /* AndadaPro-ExtraBoldItalic.otf */,
-				73769CF9C5A1493EAC94A089 /* AndadaPro-Italic.otf */,
-				6FD0A94F94494A638184DDCC /* AndadaPro-Medium.otf */,
-				7A742C22E35D435BBB639822 /* AndadaPro-MediumItalic.otf */,
-				3F0BBD0AB82844EC99A8673F /* AndadaPro-Regular.otf */,
-				FB93F2C3BF9E4855B4454401 /* AndadaPro-SemiBold.otf */,
-				B989D15D494648F8AD474997 /* AndadaPro-SemiBoldItalic.otf */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -156,13 +116,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* bookapp */,
+				13B07FAE1A68108700A75B9A /* Bookapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* bookappTests */,
+				00E356EF1AD99517003FC87E /* BookappTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
-				67792894826846469190B575 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -172,8 +131,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* bookapp.app */,
-				00E356EE1AD99517003FC87E /* bookappTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Bookapp.app */,
+				00E356EE1AD99517003FC87E /* BookappTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,10 +140,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-bookapp.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-bookapp.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-bookapp-bookappTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-bookapp-bookappTests.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-Bookapp.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-Bookapp.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-Bookapp-BookappTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-Bookapp-BookappTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -192,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* bookappTests */ = {
+		00E356ED1AD99517003FC87E /* BookappTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "bookappTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BookappTests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -208,14 +167,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = bookappTests;
-			productName = bookappTests;
-			productReference = 00E356EE1AD99517003FC87E /* bookappTests.xctest */;
+			name = BookappTests;
+			productName = BookappTests;
+			productReference = 00E356EE1AD99517003FC87E /* BookappTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* bookapp */ = {
+		13B07F861A680F5B00A75B9A /* Bookapp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "bookapp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Bookapp" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -230,9 +189,9 @@
 			);
 			dependencies = (
 			);
-			name = bookapp;
-			productName = bookapp;
-			productReference = 13B07F961A680F5B00A75B9A /* bookapp.app */;
+			name = Bookapp;
+			productName = Bookapp;
+			productReference = 13B07F961A680F5B00A75B9A /* Bookapp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -252,7 +211,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "bookapp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Bookapp" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -265,8 +224,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* bookapp */,
-				00E356ED1AD99517003FC87E /* bookappTests */,
+				13B07F861A680F5B00A75B9A /* Bookapp */,
+				00E356ED1AD99517003FC87E /* BookappTests */,
 			);
 		};
 /* End PBXProject section */
@@ -285,17 +244,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				E895DBB4485E4792ABE60044 /* AndadaPro-Bold.otf in Resources */,
-				413F64B825A24853A5C54C6A /* AndadaPro-BoldItalic.otf in Resources */,
-				13320014B6A6482580E59AE1 /* AndadaPro-ExtraBold.otf in Resources */,
-				3B2F04E228E477B30012E0DF /* Fonts in Resources */,
-				4EB0758AFACF44C08E0BDA63 /* AndadaPro-ExtraBoldItalic.otf in Resources */,
-				C044BB9E5B9C41CD974F3B33 /* AndadaPro-Italic.otf in Resources */,
-				A0672C5DC6B94DC69908B7C6 /* AndadaPro-Medium.otf in Resources */,
-				6455C054568048E0B5AC17E3 /* AndadaPro-MediumItalic.otf in Resources */,
-				C75353CC772A48BC8B6E91BC /* AndadaPro-Regular.otf in Resources */,
-				356554F8A5804316AEBDC58E /* AndadaPro-SemiBold.otf in Resources */,
-				33A60120F31149C98788FE95 /* AndadaPro-SemiBoldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,13 +256,15 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
 			);
 			name = "Bundle React Native code and images";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
 		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -322,15 +272,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp/Pods-bookapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp/Pods-Bookapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp/Pods-bookapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp/Pods-Bookapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bookapp/Pods-bookapp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bookapp/Pods-Bookapp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
@@ -348,7 +298,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bookapp-bookappTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Bookapp-BookappTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -370,7 +320,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bookapp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Bookapp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -383,15 +333,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
@@ -400,15 +350,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp/Pods-bookapp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp/Pods-Bookapp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp/Pods-bookapp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp/Pods-Bookapp-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bookapp/Pods-bookapp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bookapp/Pods-Bookapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
@@ -417,15 +367,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bookapp-bookappTests/Pods-bookapp-bookappTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bookapp-BookappTests/Pods-Bookapp-BookappTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -454,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* bookappTests.m in Sources */,
+				00E356F31AD99517003FC87E /* BookappTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +422,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* bookapp */;
+			target = 13B07F861A680F5B00A75B9A /* Bookapp */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -480,15 +430,15 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-bookapp-bookappTests.debug.xcconfig */;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Bookapp-BookappTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = bookappTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = BookappTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -501,18 +451,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookapp.app/bookapp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bookapp.app/Bookapp";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-bookapp-bookappTests.release.xcconfig */;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Bookapp-BookappTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = bookappTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = BookappTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -525,31 +475,31 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookapp.app/bookapp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bookapp.app/Bookapp";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-bookapp.debug.xcconfig */;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Bookapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y5MBPA9D73;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = bookapp/Info.plist;
+				INFOPLIST_FILE = Bookapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.ios.bookapp;
-				PRODUCT_NAME = bookapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Bookapp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -558,24 +508,24 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-bookapp.release.xcconfig */;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Bookapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y5MBPA9D73;
-				INFOPLIST_FILE = bookapp/Info.plist;
+				INFOPLIST_FILE = Bookapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.ios.bookapp;
-				PRODUCT_NAME = bookapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Bookapp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -630,7 +580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -694,7 +644,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -719,7 +669,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "bookappTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BookappTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -728,7 +678,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "bookapp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Bookapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -737,7 +687,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "bookapp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Bookapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
